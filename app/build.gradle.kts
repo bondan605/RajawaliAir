@@ -8,12 +8,12 @@ plugins {
 }
 
 android {
-    namespace = "com.rajawaliair.app"
+    namespace = "com.rajawali.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.rajawaliair.app"
-        minSdk = 21
+        applicationId = "com.rajawali.app"
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
