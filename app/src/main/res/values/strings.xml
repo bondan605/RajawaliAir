@@ -40,5 +40,8 @@
     <!--  util  -->
     <string name="btn_test_crash">Crash Test</string>
     <string name="btn_next">Next</string>
-    <string name="btn_skip">Skip</string>
+    <string name="btn_skip"><u>Skip</u></string>
+
+
+    <string name="rajawali_air_logo">Rajawali Air Logo</string>
 </resources>
