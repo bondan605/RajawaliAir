@@ -1,6 +1,44 @@
 <resources>
     <string name="app_name">Rajawali Air</string>
 
+    <!--  onboarding 1  -->
+    <string name="tv_onboarding_1_label">Select Your Destination</string>
+    <string name="tv_onboarding_1_description">Discover your dream destination with us. We offer a variety of flight ticket options to various tourist destinations. </string>
 
+    <!--  onboarding 3  -->
+    <string name="tv_onboarding_2_label">Explore Promos and Discounts</string>
+    <string name="tv_onboarding_2_description">Get exclusive access to the latest promotions and discounts. Be the first to grab the best deals for your travels.</string>
+
+    <!--  onboarding 3  -->
+    <string name="tv_onboarding_3_label">Effortless  Ticket Booking</string>
+    <string name="tv_onboarding_3_description">Enjoy the convenience of booking airline tickets for your journey with friends or family. We prioritize your comfort throughout the booking process.</string>
+
+    <!--  get started  -->
+    <string name="tv_get_started_label">Get Ready for Adventure!</string>
+    <string name="tv_get_started_description">You’re now ready to explore the world. Discover limitless travel experiences with Rajawali.</string>
+    <string name="btn_get_started_label">Get Started</string>
+
+    <!--  register  -->
+    <string name="tv_register_label">Get Ready for Adventure!</string>
+    <string name="tv_register_form_label">Register Your Account</string>
+    <string name="tv_register_form_description">Enhance your journey with exciting promotions!</string>
+    <string name="et_full_name_label">Full Name</string>
+    <string name="et_email_label">Email</string>
+    <string name="et_phone_number_label">Phone Number</string>
+    <string name="et_password_label">Password</string>
+    <string name="et_confirm_password_label">Confirm Password</string>
+    <string name="cb_register_term_description">I agree to the Terms &amp; Conditions and Privacy Policy of the application.</string>
+    <string name="btn_register_label">Register</string>
+
+    <!--  Verification  -->
+    <string name="tv_verification_label">Account Verification</string>
+    <string name="tv_verification_form_label">Verification</string>
+    <string name="tv_verification_form_description">Enter the verification code that has been sent to your email</string>
+    <string name="tv_resend_verification_label">Resend Code</string>
+    <string name="btn_verification_label">Verify</string>
+
+    <!--  util  -->
     <string name="btn_test_crash">Crash Test</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_skip">Skip</string>
 </resources>
