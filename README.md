@@ -42,3 +42,15 @@ Additional feature buat nilai tambahan
 - [ ] Play Feature Delivery
 - [ ] Menambahkan fitur Customer satisfying (FAQ atau Email untuk Report dll)
 - [ ] Analytic
+
+# Useful Link
+library, dokumentasi, dll
+
+<details>
+<summary>Date Picker</summary>
+
+- [material.io](https://m3.material.io/components/date-pickers/guidelines)
+- [material.io GitHub docs](https://github.com/material-components/material-components-android/blob/master/docs/components/DatePicker.md)
+
+</details>
+
