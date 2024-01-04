@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "675211571527",
+    "project_id": "rajawali-air-app",
+    "storage_bucket": "rajawali-air-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675211571527:android:3bc59ac29fec5623301c62",
+        "android_client_info": {
+          "package_name": "com.rajawali.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA85YIDEpgmfqP8b3v8Fl0fAKYjJuJxPak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
