@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Rajawali Air"
 include(":app")
+include(":core")
