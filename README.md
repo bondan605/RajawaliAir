@@ -30,7 +30,7 @@ Total 12 requiment wajib.
 - [ ] Menggunakan API yang disediakan oleh anggota dari student Back End
 - [ ] Menggunakan Retrofit
 - [x] Menggunakan salah satu fitur Firebase contoh crashlytics
-- [ ] Menggunakan CI/CD pada salah satu branch untuk auto membuild APK/AAB.
+- [x] Menggunakan CI/CD pada salah satu branch untuk auto membuild APK/AAB.
 
 # Additional Feature (Opsional)
 Additional feature buat nilai tambahan
