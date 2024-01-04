@@ -1,4 +1,4 @@
-package com.rajawaliair.app
+package com.rajawali.app
 
 import org.junit.Test
 
