@@ -7,15 +7,15 @@
 
     <ImageView
         android:id="@+id/iv_rajawali_logo"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/png_big_rajawali_air_logo"
+        app:srcCompat="@drawable/png_rajawali_air_logo_transparent"
         android:contentDescription="@string/rajawali_air_logo" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_skip"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="@string/btn_skip"
