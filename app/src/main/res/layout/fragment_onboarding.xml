@@ -126,33 +126,13 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_3" />
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_next"
+    <include
+        android:id="@+id/include_get_started"
+        layout="@layout/item_get_started"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
-        android:text="@string/btn_next"
-        android:textSize="16sp"
-        app:cornerRadius="4dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_get_started"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
-        android:text="@string/btn_next"
-        android:textSize="16sp"
-        app:cornerRadius="4dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu1"
@@ -186,6 +166,34 @@
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/svg_other_location" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_color"
+        android:text="@string/btn_next"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        app:cornerRadius="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get_started"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_color"
+        android:text="@string/btn_get_started_label"
+        android:textSize="16sp"
+        app:cornerRadius="4dp"
+        android:fontFamily="@font/roboto_bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

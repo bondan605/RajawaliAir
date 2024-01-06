@@ -16,7 +16,6 @@ class OnboardingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentOnboardingBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -24,13 +23,15 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO 1: Login layout is needed.
         binding.btnGetStarted.setOnClickListener {
-            Toast.makeText(activity, "pindah", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "login", Toast.LENGTH_SHORT).show()
         }
 
-//        binding.includeToolbar.tvSkip.setOnClickListener {
-//            binding.motionLayout.transitionToEnd()
-//        }
+        //TODO 2: Login layout is needed.
+        binding.includeToolbar.tvSkip.setOnClickListener {
+            Toast.makeText(activity, "login", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroy() {
