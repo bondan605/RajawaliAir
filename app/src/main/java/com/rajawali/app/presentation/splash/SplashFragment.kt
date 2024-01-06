@@ -30,6 +30,7 @@ class SplashFragment : Fragment() {
 
     private fun automaticallyNavigate() {
         CoroutineScope(Dispatchers.Main).launch {
+            // 2 sec delay
             delay(2000)
             view?.findNavController()?.navigate(R.id.action_splashFragment_to_onboardingFragment)
         }

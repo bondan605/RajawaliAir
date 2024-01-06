@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,14 +13,15 @@
         app:srcCompat="@drawable/png_rajawali_air_logo_transparent"
         android:contentDescription="@string/rajawali_air_logo" />
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/tv_skip"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="@string/btn_skip"
-        android:textColor="@color/main_color"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
+        android:text="@string/btn_skip"
+        android:textColor="@color/main_color"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_rajawali_logo"
         app:layout_constraintEnd_toEndOf="parent"
