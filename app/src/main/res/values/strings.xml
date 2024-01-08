@@ -37,6 +37,12 @@
     <string name="tv_resend_verification_label">Resend Code</string>
     <string name="btn_verification_label">Verify</string>
 
+    <!--  menu home page  -->
+    <string name="item_home">Home</string>
+    <string name="item_bookings">Bookings</string>
+    <string name="item_History">History</string>
+    <string name="item_account">Account</string>
+
     <!--  util  -->
     <string name="btn_test_crash">Crash Test</string>
     <string name="btn_next">Next</string>

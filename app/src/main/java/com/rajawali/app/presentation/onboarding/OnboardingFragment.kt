@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {
@@ -25,7 +26,7 @@ class OnboardingFragment : Fragment() {
 
         //TODO 1: Login layout is needed.
         binding.btnGetStarted.setOnClickListener {
-            Toast.makeText(activity, "login", Toast.LENGTH_SHORT).show()
+            view.findNavController().navigate(R.id.action_onboardingFragment_to_homePageFragment)
         }
     }
 
