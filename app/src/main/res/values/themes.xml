@@ -8,6 +8,8 @@
         <item name="android:windowLightStatusBar">true</item>
         <!--    font    -->
         <item name="android:fontFamily">@font/roboto</item>
+        <!--    app background    -->
+        <item name="android:windowBackground">@color/white</item>
 
     </style>
 

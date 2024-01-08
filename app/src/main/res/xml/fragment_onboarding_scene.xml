@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--  onboarding 1  -->
+    <ConstraintSet android:id="@+id/onboarding_1">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:id="@+id/logoMenu1"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.262"
+            app:layout_editor_absoluteX="22dp" />
+        <Constraint
+            android:id="@+id/menu3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/menu2"
+            app:layout_constraintTop_toTopOf="@+id/menu2"
+            app:layout_constraintVertical_bias="0.0">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintEnd_toStartOf="@+id/menu2">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_description_1">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/iv_background_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/iv_background_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/iv_background_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintDimensionRatio="w,"
+            app:layout_constraintEnd_toEndOf="@+id/tv_onboarding_label_1"
+            app:layout_constraintStart_toStartOf="@+id/tv_onboarding_label_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_1" />
+        <Constraint
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_2" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_onboarding_label_2"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_2" />
+        <Constraint
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/btn_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_3"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_3" />
+        <Constraint
+            android:id="@+id/include_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <!--  onboarding 2  -->
+    <ConstraintSet android:id="@+id/onboarding_2">
+        <Constraint android:id="@id/widget" />
+        <Constraint
+            android:id="@+id/logoMenu1"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.40" />
+        <Constraint
+            android:id="@+id/menu1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintEnd_toStartOf="@+id/menu2"
+            app:layout_constraintTop_toTopOf="@+id/menu2">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu3"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintStart_toEndOf="@+id/menu2"
+            app:layout_constraintTop_toTopOf="@+id/menu2"
+            app:layout_constraintVertical_bias="0.0">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_description_2">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/iv_background_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/iv_background_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/iv_background_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintDimensionRatio="w,"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_3"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_2"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_2" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_1"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_1" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintDimensionRatio="w,"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_1" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_2" />
+        <Constraint
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/btn_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/include_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/onboarding_2"
+        app:constraintSetStart="@+id/onboarding_1">
+        <OnSwipe app:dragDirection="dragLeft" />
+        <OnClick app:targetId="@id/btn_next" />
+    </Transition>
+
+    <!--  onboarding 3  -->
+    <ConstraintSet
+        android:id="@+id/onboarding_3"
+        app:deriveConstraintsFrom="@+id/onboarding_2">
+        <Constraint
+            android:id="@+id/iv_background_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/iv_background_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintDimensionRatio="w,"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_3"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_2"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_2" />
+        <Constraint
+            android:id="@+id/menu3"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintStart_toEndOf="@+id/menu2"
+            app:layout_constraintTop_toTopOf="@+id/menu2"
+            app:layout_constraintVertical_bias="0.0">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:crossfade="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_description_3">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            app:crossfade="0"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintEnd_toStartOf="@+id/menu2"
+            app:layout_constraintTop_toTopOf="@+id/menu2" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_1"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_1" />
+        <Constraint
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="6dp" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_2" />
+        <Constraint
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/btn_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/include_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetEnd="@+id/onboarding_3"
+        app:constraintSetStart="@+id/onboarding_2">
+        <OnSwipe app:dragDirection="dragLeft" />
+        <OnClick app:targetId="@id/btn_next" />
+    </Transition>
+
+    <!--  get started  -->
+    <ConstraintSet
+        android:id="@+id/get_started"
+        app:deriveConstraintsFrom="@+id/onboarding_3">
+        <Constraint
+            android:id="@+id/btn_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/iv_background_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/tv_onboarding_label_3"
+            android:layout_width="386dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_3" />
+        <Constraint
+            android:id="@+id/tv_onboarding_description_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintDimensionRatio="w,"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_label_3" />
+        <Constraint
+            android:id="@+id/menu2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onboarding_description_3" />
+        <Constraint
+            android:id="@+id/menu3"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/menu2"
+            app:layout_constraintStart_toEndOf="@+id/menu1"
+            app:layout_constraintTop_toTopOf="@+id/menu2"
+            app:layout_constraintVertical_bias="0.0" />
+        <Constraint
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/include_get_started"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.531"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            android:id="@+id/include_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetEnd="@+id/get_started"
+        app:constraintSetStart="@+id/onboarding_3">
+        <OnSwipe app:dragDirection="dragLeft" />
+        <OnClick app:targetId="@id/btn_next" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_1"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_2"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_3"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
+    </Transition>
+
+</MotionScene>
