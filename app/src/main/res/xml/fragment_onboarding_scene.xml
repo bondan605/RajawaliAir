@@ -135,6 +135,12 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+        <Constraint
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 
     <!--  onboarding 2  -->
@@ -492,6 +498,21 @@
         app:constraintSetStart="@+id/onboarding_3">
         <OnSwipe app:dragDirection="dragLeft" />
         <OnClick app:targetId="@id/btn_next" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_1"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_2"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
+    </Transition>
+    <Transition
+        app:constraintSetStart="@+id/onboarding_3"
+        app:constraintSetEnd="@+id/get_started" >
+        <OnClick app:targetId="@+id/btn_skip" />
     </Transition>
 
 </MotionScene>

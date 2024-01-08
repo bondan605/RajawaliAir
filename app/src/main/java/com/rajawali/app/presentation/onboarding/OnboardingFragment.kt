@@ -27,11 +27,6 @@ class OnboardingFragment : Fragment() {
         binding.btnGetStarted.setOnClickListener {
             Toast.makeText(activity, "login", Toast.LENGTH_SHORT).show()
         }
-
-        //TODO 2: Login layout is needed.
-        binding.includeToolbar.tvSkip.setOnClickListener {
-            Toast.makeText(activity, "login", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onDestroy() {
