@@ -41,7 +41,11 @@
     <string name="btn_test_crash">Crash Test</string>
     <string name="btn_next">Next</string>
     <string name="btn_skip"><u>Skip</u></string>
+    <string name="btn_register"><u>Register</u></string>
+    <string name="resent_code"><u>Resend Code</u></string>
 
 
     <string name="rajawali_air_logo">Rajawali Air Logo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

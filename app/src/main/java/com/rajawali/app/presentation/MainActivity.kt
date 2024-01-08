@@ -9,9 +9,9 @@ import com.rajawali.app.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_verification)
 
-        forceCrash()
+//        forceCrash()
     }
 
     //for testing Firebase Crashlytics
