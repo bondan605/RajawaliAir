@@ -65,4 +65,11 @@ dependencies {
 
     //constraintLayout
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    //endless scroll of recyclerview
+    implementation ("com.github.beksomega:loopinglayout:0.5.0")
+
+    //page indicator for recyclerview
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
 }

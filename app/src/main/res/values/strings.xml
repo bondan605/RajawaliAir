@@ -37,17 +37,35 @@
     <string name="tv_resend_verification_label">Resend Code</string>
     <string name="btn_verification_label">Verify</string>
 
+    <!--  home page  -->
+    <!--  home page booking flight  -->
+    <string name="tv_home_page_booking_flight_label">Fly with Us</string>
+    <string name="tv_home_page_departure_label">Departure</string>
+    <string name="tv_home_page_arrive_label">Arrive</string>
+    <string name="btn_home_page_book_now">Book Now</string>
+
     <!--  menu home page  -->
     <string name="item_home">Home</string>
     <string name="item_bookings">Bookings</string>
     <string name="item_History">History</string>
     <string name="item_account">Account</string>
 
+    <!--  home page tourist destination  -->
+    <string name="tv_tourist_destination_label">Tourist Destination</string>
+
+
     <!--  util  -->
     <string name="btn_test_crash">Crash Test</string>
     <string name="btn_next">Next</string>
     <string name="btn_skip"><u>Skip</u></string>
-
-
     <string name="rajawali_air_logo">Rajawali Air Logo</string>
+
+
+
+    <!--  booking flight sample data  -->
+    <string name="tv_yogyakarta_airport_code">YIA</string>
+    <string name="tv_yogyakarta_city">Yogyakarta(YK)</string>
+    <string name="tv_balikpapan_airport_code">Sepinggan</string>
+    <string name="tv_balikpapan_city">Balikpapan(BPN)</string>
+
 </resources>

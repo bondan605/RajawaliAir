@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rajawali Air</string>
+
+    <!--  item card promotion sample data  -->
+    <string name="tv_promotion_label">Bali</string>
+    <string name="tv_promotion_description">Jakarta (CGK) - Bali (DPS)</string>
+    <string name="tv_promotion_price_label">From</string>
+    <string name="tv_promotion_price_value">IDR 540.000,-</string>
+
+    <!--  tourist destination sample data  -->
+    <string name="tv_jakarta">Jakarta</string>
+    <string name="tv_semarang_to_jakarta_route">Semarang (SRG) - Jakarta (CGK)</string>
+    <string name="tv_semarang_to_jakarta_route_price">IDR 359.000,00</string>
+
+</resources>
