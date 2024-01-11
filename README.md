@@ -1,3 +1,7 @@
+# Deadline
+3 sprint (total 6 minggu)
+sprint saat ini: 1 sprint
+
 # Overview
 
 | Judul | Requirement |
