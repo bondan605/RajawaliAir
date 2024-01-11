@@ -1,9 +1,15 @@
 # Deadline
-3 sprint (total 6 minggu)
+| Judul | Keterangan |
+| --- | --- |
+| Sprint saat ini | 1 sprint |
+| Total Sprint | 3 sprint (total 6 minggu) |
+| Submission Proyek | 12 Februari 2024 |
+| Presentasi Proyek | 19 Februari 2024 |
 
-sprint saat ini: 1 sprint
+<img src="https://github.com/bondan605/RajawaliAir/assets/60184727/36cfa8e8-6398-44cb-83bc-aa3d12797bd4" width="650" height="400" alt="Timeline"></image>
 
-# Overview
+
+# Overview Requirement
 
 | Judul | Requirement |
 | --- | --- |
