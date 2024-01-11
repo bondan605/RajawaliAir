@@ -9,6 +9,12 @@
 | Deployment | CI/CD |
 | Output | Package Aplikasi (.apk atau .aab) |
 
+# How to Download App
+1. Klik halaman Actions yang berada di samping kanan Pull request
+2. Pilih dan klik _workflows_ terbaru
+3. scroll sampai kebawah
+4. klik android-apk yang berlogo kotak untuk mulai mendownload.
+
 # Related Link
 Link website yang berhubungan dengan proyek app ini.
 
