@@ -13,4 +13,8 @@
     <string name="tv_semarang_to_jakarta_route">Semarang (SRG) - Jakarta (CGK)</string>
     <string name="tv_semarang_to_jakarta_route_price">IDR 359.000,00</string>
 
+    <!--  item search result sample data  -->
+    <string name="tv_denpasar">Bali / Denpasar, Indonesia</string>
+    <string name="tv_denpasar_airport">DPS - Ngurah Rai International Airport</string>
+
 </resources>
