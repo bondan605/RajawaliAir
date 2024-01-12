@@ -7,4 +7,5 @@
     <color name="secondary_color">#0f53b7</color>
     <color name="grey_text">#505050</color>
     <color name="hint_text">#646464</color>
+    <color name="neutral_700">#757575</color>
 </resources>
