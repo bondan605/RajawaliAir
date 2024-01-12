@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentHomePageBinding
+import com.rajawali.app.presentation.pickCity.PickCityFragment
 import com.rajawali.core.domain.model.PromotionList
 import com.rajawali.core.domain.model.TouristDestinationList
 import com.rajawali.core.presentation.adapter.PromotionAdapter
@@ -45,7 +46,7 @@ class HomePageFragment : Fragment() {
 
         promotionViewPager()
         touristDestinationRecyclerview()
-
+        btnBookNow()
     }
 
     private fun promotionViewPager() {
@@ -56,7 +57,10 @@ class HomePageFragment : Fragment() {
         _adapter.submitList(PromotionList.promotions)
         vpPromotion.apply {
             adapter = _adapter
-            setPreviewBothSide(R.dimen.vp_next_item_visible_size, R.dimen.vp_current_item_horizontal_margin)
+            setPreviewBothSide(
+                R.dimen.vp_next_item_visible_size,
+                R.dimen.vp_current_item_horizontal_margin
+            )
         }
 
         pageIndicator.attachTo(vpPromotion)
@@ -78,6 +82,16 @@ class HomePageFragment : Fragment() {
             adapter = _adapter
             layoutManager = _layoutManager
             setHasFixedSize(true)
+        }
+    }
+
+    private fun btnBookNow() {
+        binding.btnBookNow.setOnClickListener {
+            val pickCityBottomSheet = PickCityFragment()
+
+            pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityFragment.TAG)
+
+
         }
     }
 }

@@ -61,11 +61,16 @@
     <string name="rajawali_air_logo">Rajawali Air Logo</string>
 
 
-
     <!--  booking flight sample data  -->
     <string name="tv_yogyakarta_airport_code">YIA</string>
     <string name="tv_yogyakarta_city">Yogyakarta(YK)</string>
     <string name="tv_balikpapan_airport_code">Sepinggan</string>
     <string name="tv_balikpapan_city">Balikpapan(BPN)</string>
+
+    <!--  Select city  -->
+    <string name="tv_pick_city_label">Select City or Airport</string>
+    <string name="tv_recent_search_label">Recent Searches</string>
+    <string name="btn_clear_recent_search_label">Clear</string>
+
 
 </resources>
