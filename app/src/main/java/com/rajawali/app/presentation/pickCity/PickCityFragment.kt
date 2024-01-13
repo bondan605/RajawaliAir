@@ -21,6 +21,7 @@ class PickCityFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPickCityBinding.inflate(layoutInflater, container, false)
+
         return binding.root
     }
 

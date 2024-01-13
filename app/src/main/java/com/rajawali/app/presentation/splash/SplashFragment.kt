@@ -1,9 +1,11 @@
 package com.rajawali.app.presentation.splash
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.rajawali.app.R
@@ -22,6 +24,12 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
+
+        //setting status bar
+        activity?.window?.statusBarColor = Color.WHITE
+        val windowInsetController = WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView)
+        windowInsetController.isAppearanceLightStatusBars = true
+
         return binding.root
     }
 

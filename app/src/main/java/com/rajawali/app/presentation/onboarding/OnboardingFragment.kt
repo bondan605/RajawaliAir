@@ -1,9 +1,11 @@
 package com.rajawali.app.presentation.onboarding
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.rajawali.app.R
@@ -18,6 +20,15 @@ class OnboardingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentOnboardingBinding.inflate(layoutInflater, container, false)
+
+        //work wonderful. setting the status bar
+        activity?.window?.statusBarColor = Color.WHITE
+        val windowInsetController = WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        )
+        windowInsetController.isAppearanceLightStatusBars = true
+
         return binding.root
     }
 
