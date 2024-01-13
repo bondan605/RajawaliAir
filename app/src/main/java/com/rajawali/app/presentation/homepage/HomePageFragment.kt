@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -20,18 +22,21 @@ class HomePageFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentHomePageBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        //change app notification color background / android:windowBackground
-//        activity?.window?.setBackgroundDrawableResource(R.color.main_color)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomePageBinding.inflate(layoutInflater, container, false)
+
+        //work wonderful. setting the status bar
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireActivity(), R.color.main_color)
+        val windowInsetController = WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        )
+        windowInsetController.isAppearanceLightStatusBars = false
+
         return binding.root
     }
 
@@ -90,8 +95,6 @@ class HomePageFragment : Fragment() {
             val pickCityBottomSheet = PickCityFragment()
 
             pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityFragment.TAG)
-
-
         }
     }
 }
