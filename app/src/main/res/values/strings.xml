@@ -63,10 +63,6 @@
 
 
     <string name="rajawali_air_logo">Rajawali Air Logo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="rajawali_air_logo">Rajawali Air Logo</string>
-
 
     <!--  booking flight sample data  -->
     <string name="tv_yogyakarta_airport_code">YIA</string>

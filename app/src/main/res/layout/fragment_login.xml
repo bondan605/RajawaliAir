@@ -14,7 +14,7 @@
 
 
         <ImageView
-            android:id="@+id/icon"
+            android:id="@+id/iv_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/icon_rajawali"
@@ -22,16 +22,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/skip"
+            android:id="@+id/tv_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_skip"
             android:textColor="@color/main_color"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/icon"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/icon" />
+            app:layout_constraintTop_toTopOf="@id/iv_icon" />
 
         <ImageView
             android:id="@+id/ilustration"
@@ -41,7 +41,7 @@
             android:src="@drawable/login_ilustration"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skip" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_skip" />
 
         <TextView
             android:id="@+id/login"
@@ -194,6 +194,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
