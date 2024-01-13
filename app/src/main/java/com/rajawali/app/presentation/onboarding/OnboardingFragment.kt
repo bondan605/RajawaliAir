@@ -37,7 +37,7 @@ class OnboardingFragment : Fragment() {
 
         //TODO 1: Login layout is needed.
         binding.btnGetStarted.setOnClickListener {
-            view.findNavController().navigate(R.id.action_onboardingFragment_to_homePageFragment)
+            view.findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
     }
 
