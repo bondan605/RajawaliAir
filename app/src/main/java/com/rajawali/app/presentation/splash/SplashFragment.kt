@@ -7,19 +7,27 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.rajawali.app.R
+import com.rajawali.app.databinding.FragmentSplashBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
+    private val binding get() = _binding!!
+    private var _binding: FragmentSplashBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+    ): View {
+        _binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

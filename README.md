@@ -1,4 +1,15 @@
-# Overview
+# Deadline
+| Judul | Keterangan |
+| --- | --- |
+| Sprint saat ini | 1 sprint |
+| Total Sprint | 3 sprint (total 6 minggu) |
+| Submission Proyek | 12 Februari 2024 |
+| Presentasi Proyek | 19 Februari 2024 |
+
+<img src="https://github.com/bondan605/RajawaliAir/assets/60184727/36cfa8e8-6398-44cb-83bc-aa3d12797bd4" width="650" height="400" alt="Timeline"></image>
+
+
+# Overview Requirement
 
 | Judul | Requirement |
 | --- | --- |
@@ -8,6 +19,12 @@
 | Testing | Unit Testing |
 | Deployment | CI/CD |
 | Output | Package Aplikasi (.apk atau .aab) |
+
+# How to Download The App
+1. Klik halaman Actions yang berada di samping kanan Pull request
+2. Pilih dan klik _workflows_ terbaru
+3. scroll sampai kebawah
+4. klik android-apk yang berlogo kotak untuk mulai mendownload.
 
 # Related Link
 Link website yang berhubungan dengan proyek app ini.
