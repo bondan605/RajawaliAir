@@ -70,4 +70,14 @@ library, dokumentasi, dll
 - [material.io GitHub docs](https://github.com/material-components/material-components-android/blob/master/docs/components/DatePicker.md)
 
 </details>
+<details>
+<summary>Naming Color</summary>
+
+- [Name that Color](https://chir.ag/projects/name-that-color/#6195ED)
+
+Alternatifnya bisa menggunakan web dibawah. 
+- [Color Name & Hue](https://www.color-blindness.com/color-name-hue/)
+
+Tidak disarankan untuk menggunakan kedua web dalam 1 proyek karena Penamaan warna yang diberikan berbeda.
+</details>
 
