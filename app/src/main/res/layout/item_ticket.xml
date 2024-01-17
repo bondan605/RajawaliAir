@@ -35,21 +35,22 @@
                     android:layout_width="26dp"
                     android:layout_height="16dp"
                     android:layout_marginEnd="6dp"
-                    android:src="@drawable/icon_rajawali" />
+                    android:src="@drawable/ic_rajawali" />
 
                 <TextView
+                    android:id="@+id/airplane_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RW225, RW752"
+                    android:text="@string/tv_airplane_id"
                     android:textColor="@color/neutral_700"
-                    android:textSize="8sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_marginBottom="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -59,20 +60,22 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/departure_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="08:15"
+                        android:text="@string/tv_departure_time"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tv_departure_city_code_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="YIA"
+                        android:text="@string/tv_departure_city_code_label"
                         android:textColor="@color/neutral_700"
-                        android:textSize="8sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,11 +86,12 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/direct_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1h 50m"
+                        android:text="@string/tv_direct_time"
                         android:textColor="@color/neutral_700"
-                        android:textSize="8sp" />
+                        android:textSize="10sp" />
 
                     <ImageView
                         android:layout_width="32dp"
@@ -99,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:text="Direct"
                         android:textColor="@color/neutral_700"
-                        android:textSize="8sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -109,20 +113,22 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/arrive_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="09:05"
+                        android:text="@string/tv_arrive_time"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tv_arrive_city_code_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BPN"
+                        android:text="@string/tv_arrive_city_code_label"
                         android:textColor="@color/neutral_700"
-                        android:textSize="8sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -132,11 +138,12 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/price_ticket"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="IDR 1.179.200/pax"
+                        android:text="@string/tv_price_ticket"
                         android:textColor="@color/main_color"
                         android:textSize="16sp" />
 
@@ -152,49 +159,58 @@
                             android:src="@drawable/coins_circle" />
 
                         <TextView
+                            android:id="@+id/point"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="1234 Loyalty Points"
+                            android:text="@string/tv_point"
                             android:textColor="@color/neutral_700"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginBottom="8dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
                 <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_width="32dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/baggage"/>
+                    android:src="@drawable/baggage" />
+
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/food"/>
+                    android:src="@drawable/food" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
+                    android:id="@+id/btn_reschedule"
                     android:layout_width="166dp"
                     android:layout_height="19dp"
-                    android:src="@drawable/btn_reschedule"/>
+                    android:src="@drawable/btn_reschedule" />
+
                 <LinearLayout
-                    android:gravity="end"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
                     <ImageView
+                        android:id="@+id/btn_hide"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@drawable/down_line"/>
+                        android:src="@drawable/down_line" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        
 
 
     </com.google.android.material.card.MaterialCardView>
