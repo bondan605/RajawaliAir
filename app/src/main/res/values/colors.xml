@@ -15,4 +15,5 @@
     <color name="neutral_700">#757575</color>
     <color name="tertiary_color">#A4E0FF</color>
     <color name="quaternary_color">#1e90ff</color>
+    <color name="green">#18AF5E</color>
 </resources>
