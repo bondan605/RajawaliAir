@@ -109,4 +109,15 @@
     <string name="tv_departure">Yogyakarta</string>
     <string name="tv_arrive">Balikpapan</string>
     <string name="tv_passenger">2 Adults</string>
+
+    <!--  Details Information  -->
+    <string name="tv_departure_date">Thu, 25 Jan 2024</string>
+    <string name="tv_direct_flight">08:15 - 09:05 | Direct Flight</string>
+    <string name="tv_passenger_detail">Passenger 1 (Adult)</string>
+    <string name="tv_passenger_detail_other">Passenger 2 (Adult)</string>
+
+    <!-- Radio Button   -->
+    <string name="radio_mr">Mr.</string>
+    <string name="radio_mrs">Mrs.</string>
+    <string name="radio_ms">Ms.</string>
 </resources>
