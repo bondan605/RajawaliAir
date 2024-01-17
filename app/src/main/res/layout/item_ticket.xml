@@ -194,8 +194,8 @@
 
                 <ImageView
                     android:id="@+id/btn_reschedule"
-                    android:layout_width="166dp"
-                    android:layout_height="19dp"
+                    android:layout_width="148dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/btn_reschedule" />
 
                 <LinearLayout

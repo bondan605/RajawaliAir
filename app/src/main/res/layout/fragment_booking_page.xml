@@ -46,27 +46,28 @@
             app:strokeWidth="2dp" />
     </LinearLayout>
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/include_bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/include_bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tabLayout">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <include
+                layout="@layout/fragment_one_way_trip"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <include
-                    layout="@layout/fragment_one_way_trip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </ScrollView>
+    </ScrollView>
 
 
     <include

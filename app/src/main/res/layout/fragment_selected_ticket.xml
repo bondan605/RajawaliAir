@@ -1,683 +1,724 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/homeToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/main_color"
-            android:elevation="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:liftOnScroll="true">
+            android:layout_height="?actionBarSize">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/homeToolbar"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize">
+                android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/iv_back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/arrow_back"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txt_flight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="Your Selected Flight"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.appbar.MaterialToolbar>
-        </com.google.android.material.appbar.AppBarLayout>
-        <LinearLayout
-            android:id="@+id/ln_1"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/departure"
-                android:layout_marginEnd="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_bold"
-                android:textSize="14sp"
-                android:text="@string/tv_departure"/>
-            <ImageView
-                android:layout_marginEnd="8dp"
-                android:layout_width="14dp"
-                android:layout_height="16dp"
-                android:src="@drawable/long_arrow_right" />
-            <TextView
-                android:id="@+id/arrive"
-                android:layout_marginEnd="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_bold"
-                android:textSize="14sp"
-                android:text="@string/tv_arrive"/>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/passenger"
-            android:layout_marginEnd="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/neutral_700"
-            android:fontFamily="@font/roboto_medium"
-            android:textSize="12sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ln_1"
-            android:text="@string/tv_passenger"/>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/selected_ticket_card"
-            style="?attr/materialCardViewElevatedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passenger">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_date_departure"
+                <ImageView
+                    android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/tv_date_departure"
-                    android:textColor="@color/neutral_700"
+                    android:src="@drawable/arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_flight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Your Selected Flight"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ln_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/tv_departure"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/long_arrow_right" />
+
+                <TextView
+                    android:id="@+id/arrive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/tv_arrive"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/passenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/tv_passenger"
+                android:textColor="@color/neutral_700"
+                android:textSize="12sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/selected_ticket_card"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_date_departure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/tv_date_departure"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/departure_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/tv_departure_time"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_departure_date_month"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="199dp"
+                                android:text="@string/tv_date_month"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/arrive_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/tv_arrive_time"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_arrive_date_month"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tv_date_month"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="11dp"
+                            android:layout_height="247dp"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/spacer" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_departure_city_name_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/tv_departure_city"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_departure_airport_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/tv_departure_airport_name"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:layout_marginBottom="8dp"
+                                app:cardBackgroundColor="@color/white">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="12dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="12dp">
+
+                                        <ImageView
+                                            android:layout_width="32dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginEnd="12dp"
+                                            android:src="@drawable/ic_rajawali" />
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/airplane_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="2dp"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:text="@string/tv_nama_maskapai"
+                                                android:textColor="@color/black"
+                                                android:textSize="10sp" />
+
+                                            <TextView
+                                                android:id="@+id/ticket_detail"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:text="@string/tv_ticket_detail"
+                                                android:textColor="@color/neutral_700"
+                                                android:textSize="10sp" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:text="Direct Flight"
+                                                android:textColor="@color/neutral_700"
+                                                android:textSize="10sp" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="8dp">
+
+                                        <ImageView
+                                            android:layout_width="32dp"
+                                            android:layout_height="24dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:src="@drawable/baggage" />
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/baggage"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:text="@string/tv_baggage"
+                                                android:textColor="@color/neutral_700"
+                                                android:textSize="10sp" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="12dp"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:layout_width="32dp"
+                                            android:layout_height="24dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:src="@drawable/food" />
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/food"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:text="@string/tv_food"
+                                                android:textColor="@color/neutral_700"
+                                                android:textSize="10sp" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/btn_more_facilities"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_medium"
+                                        android:text="See more facilities"
+                                        android:textColor="@color/main_color"
+                                        android:textSize="10sp" />
+
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:id="@+id/tv_arrive_city_name_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/tv_arrive_city"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_arrive_airport_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tv_arrive_airport_name"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/select_your_ticket_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Select Your Ticket Type"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_ticket_type"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ticket_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/tv_ticket_type"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_calendar_edit" />
 
                         <TextView
-                            android:id="@+id/departure_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/tv_departure_time"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_departure_date_month"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="199dp"
-                            android:text="@string/tv_date_month"
-                            android:textColor="@color/neutral_700"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:id="@+id/arrive_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/tv_arrive_time"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_arrive_date_month"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tv_date_month"
-                            android:textColor="@color/neutral_700"
+                            android:text="Reschedule Available"
+                            android:textColor="@color/grey_text"
                             android:textSize="10sp" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="11dp"
-                        android:layout_height="247dp"
-                        android:layout_marginTop="4dp"
-                        android:src="@drawable/spacer" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="32dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_money_bill" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Refundable up to 75%"
+                            android:textColor="@color/grey_text"
+                            android:textSize="10sp" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical">
 
-                        <TextView
-                            android:id="@+id/tv_departure_city_name_label"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/tv_departure_city"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_departure_airport_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:text="@string/tv_departure_airport_name"
-                            android:textColor="@color/neutral_700"
-                            android:textSize="10sp" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="180dp"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/white">
+                            <TextView
+                                android:id="@+id/price_ticket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
+                                android:text="@string/tv_price_ticket"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
 
                             <LinearLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="12dp"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="12dp">
-
-                                    <ImageView
-                                        android:layout_width="32dp"
-                                        android:layout_height="20dp"
-                                        android:layout_marginEnd="12dp"
-                                        android:src="@drawable/ic_rajawali" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/airplane_name"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="2dp"
-                                            android:fontFamily="@font/roboto_medium"
-                                            android:text="@string/tv_nama_maskapai"
-                                            android:textColor="@color/black"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:id="@+id/ticket_detail"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/roboto_medium"
-                                            android:text="@string/tv_ticket_detail"
-                                            android:textColor="@color/neutral_700"
-                                            android:textSize="10sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/roboto_medium"
-                                            android:text="Direct Flight"
-                                            android:textColor="@color/neutral_700"
-                                            android:textSize="10sp" />
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp">
-
-                                    <ImageView
-                                        android:layout_width="32dp"
-                                        android:layout_height="24dp"
-                                        android:layout_marginEnd="10dp"
-                                        android:src="@drawable/baggage" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/baggage"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/roboto_medium"
-                                            android:text="@string/tv_baggage"
-                                            android:textColor="@color/neutral_700"
-                                            android:textSize="10sp" />
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="12dp"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="32dp"
-                                        android:layout_height="24dp"
-                                        android:layout_marginEnd="10dp"
-                                        android:src="@drawable/food" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/food"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/roboto_medium"
-                                            android:text="@string/tv_food"
-                                            android:textColor="@color/neutral_700"
-                                            android:textSize="10sp" />
-                                    </LinearLayout>
-
-                                </LinearLayout>
+                                android:layout_marginBottom="2dp">
 
                                 <TextView
-                                    android:id="@+id/btn_more_facilities"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/roboto_medium"
-                                    android:text="See more facilities"
-                                    android:textColor="@color/main_color"
+                                    android:layout_marginEnd="2dp"
+                                    android:text="Total"
+                                    android:textColor="@color/neutral_700"
                                     android:textSize="10sp" />
 
+                                <TextView
+                                    android:id="@+id/total_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/tv_total_price"
+                                    android:textColor="@color/main_color"
+                                    android:textSize="12sp" />
                             </LinearLayout>
-                        </com.google.android.material.card.MaterialCardView>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="2dp"
+                                    android:text="Get"
+                                    android:textColor="@color/neutral_700"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/point"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tv_point"
+                                    android:textColor="@color/main_color"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_select"
+                                android:layout_width="72dp"
+                                android:layout_height="24dp"
+                                android:backgroundTint="@color/main_color"
+                                android:fontFamily="@font/roboto_medium"
+                                android:padding="0dp"
+                                android:text="Select"
+                                android:textAllCaps="false"
+                                android:textSize="10sp"
+                                app:cornerRadius="4dp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/safe_ticket_type"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/safe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/tv_safe"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_calendar_edit" />
 
                         <TextView
-                            android:id="@+id/tv_arrive_city_name_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/tv_arrive_city"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_arrive_airport_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tv_arrive_airport_name"
-                            android:textColor="@color/neutral_700"
+                            android:text="Reschedule Available"
+                            android:textColor="@color/grey_text"
                             android:textSize="10sp" />
                     </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/select_your_ticket_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selected_ticket_card"
-            android:text="Select Your Ticket Type"/>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_ticket_type"
-            style="?attr/materialCardViewElevatedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="2dp"
-            app:layout_constraintBottom_toTopOf="@id/safe_ticket_type"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/select_your_ticket_type">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/ticket_type"
-                    android:layout_marginBottom="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/tv_ticket_type"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-                <LinearLayout
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_calendar_edit"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="@color/grey_text"
-                        android:text="Reschedule Available"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="32dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_money_bill"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="@color/grey_text"
-                        android:text="Refundable up to 75%"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_money_bill"
+                            android:tint="@color/green"
+                            tools:ignore="UseAppTint" />
+
                         <TextView
-                            android:id="@+id/price_ticket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="2dp"
-                            android:textColor="@color/neutral_700"
-                            android:textSize="10sp"
-                            android:text="@string/tv_price_ticket"/>
-                        <LinearLayout
-                            android:layout_marginBottom="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/neutral_700"
-                                android:textSize="10sp"
-                                android:text="Total"/>
-                            <TextView
-                                android:id="@+id/total_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_bold"
-                                android:textSize="12sp"
-                                android:textColor="@color/main_color"
-                                android:text="@string/tv_total_price"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/neutral_700"
-                                android:textSize="10sp"
-                                android:text="Get"/>
-                            <TextView
-                                android:id="@+id/point"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="10sp"
-                                android:textColor="@color/main_color"
-                                android:text="@string/tv_point"/>
-                        </LinearLayout>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="end"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_select"
-                            android:layout_width="72dp"
-                            android:layout_height="24dp"
-                            android:backgroundTint="@color/main_color"
-                            android:text="Select"
-                            android:padding="0dp"
-                            android:textAllCaps="false"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/roboto_medium"
-                            app:cornerRadius="4dp" />
+                            android:text="100% Refund From Original Ticket Price"
+                            android:textColor="@color/green"
+                            android:textSize="10sp" />
                     </LinearLayout>
 
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/safe_ticket_type"
-            style="?attr/materialCardViewElevatedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="12dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_ticket_type">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/safe"
-                    android:layout_marginBottom="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/tv_safe"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-                <LinearLayout
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_calendar_edit"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="@color/grey_text"
-                        android:text="Reschedule Available"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_money_bill"
-                        android:tint="@color/green"
-                        tools:ignore="UseAppTint" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="@color/green"
-                        android:text="100% Refund From Original Ticket Price"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="11dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/ic_insurance_hand"
-                        android:tint="@color/green"
-                        tools:ignore="UseAppTint" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="@color/green"
-                        android:text="Travel Insurance"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="11dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_insurance_hand"
+                            android:tint="@color/green"
+                            tools:ignore="UseAppTint" />
+
                         <TextView
-                            android:id="@+id/safe_price_ticket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="2dp"
-                            android:textColor="@color/neutral_700"
-                            android:textSize="10sp"
-                            android:text="@string/tv_price_ticket"/>
-                        <LinearLayout
-                            android:layout_marginBottom="2dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/neutral_700"
-                                android:textSize="10sp"
-                                android:text="Total"/>
-                            <TextView
-                                android:id="@+id/safe_total_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_bold"
-                                android:textSize="12sp"
-                                android:textColor="@color/main_color"
-                                android:text="@string/tv_safe_total_price"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_marginEnd="2dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/neutral_700"
-                                android:textSize="10sp"
-                                android:text="Get"/>
-                            <TextView
-                                android:id="@+id/safe_point"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="10sp"
-                                android:textColor="@color/main_color"
-                                android:text="@string/tv_point"/>
-                        </LinearLayout>
-
+                            android:text="Travel Insurance"
+                            android:textColor="@color/green"
+                            android:textSize="10sp" />
                     </LinearLayout>
+
                     <LinearLayout
-                        android:gravity="end"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/safe_btn_select"
-                            android:layout_width="72dp"
-                            android:layout_height="24dp"
-                            android:backgroundTint="@color/main_color"
-                            android:text="Select"
-                            android:padding="0dp"
-                            android:textAllCaps="false"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/roboto_medium"
-                            app:cornerRadius="4dp" />
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/safe_price_ticket"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
+                                android:text="@string/tv_price_ticket"
+                                android:textColor="@color/neutral_700"
+                                android:textSize="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="2dp"
+                                    android:text="Total"
+                                    android:textColor="@color/neutral_700"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/safe_total_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/tv_safe_total_price"
+                                    android:textColor="@color/main_color"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="2dp"
+                                    android:text="Get"
+                                    android:textColor="@color/neutral_700"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/safe_point"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tv_point"
+                                    android:textColor="@color/main_color"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/safe_btn_select"
+                                android:layout_width="72dp"
+                                android:layout_height="24dp"
+                                android:backgroundTint="@color/main_color"
+                                android:fontFamily="@font/roboto_medium"
+                                android:padding="0dp"
+                                android:text="Select"
+                                android:textAllCaps="false"
+                                android:textSize="10sp"
+                                app:cornerRadius="4dp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

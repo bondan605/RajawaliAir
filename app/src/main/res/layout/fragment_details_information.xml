@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/homeToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_flight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Fill Details Information"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_ticket"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/plane_departure" />
+
+                            <TextView
+                                android:id="@+id/departure_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/tv_departure_date"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_vertical">
+
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_rajawali" />
+
+                            <TextView
+                                android:id="@+id/tv_departure_city_code_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/tv_departure_city_code_label"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="8dp"
+                                android:layout_marginHorizontal="8dp"
+                                android:src="@drawable/arrow_right" />
+
+                            <TextView
+                                android:id="@+id/tv_arrive_city_code_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@string/tv_arrive_city_code_label"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/direct_flight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_direct_flight"
+                            android:textColor="@color/neutral_700"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/ticket_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/tv_ticket_type"
+                            android:textColor="@color/neutral_700"
+                            android:textSize="10sp" />
+
+                        <ImageView
+                            android:id="@+id/btn_reschedule"
+                            android:layout_width="148dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/btn_reschedule" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_forward"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/arrow_forward" />
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Contact Details"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Contact details will be used to send the e-ticket and for\nrefund or reschedule purposes."
+                android:textColor="@color/neutral_700"
+                android:textSize="12sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/contact_details_form"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_button_mr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/radio_mr"
+                            app:buttonTint="@color/main_color" />
+
+                        <RadioButton
+                            android:id="@+id/radio_button_mrs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="40dp"
+                            android:text="@string/radio_mrs"
+                            app:buttonTint="@color/main_color" />
+
+                        <RadioButton
+                            android:id="@+id/radio_button_ms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/radio_ms"
+                            app:buttonTint="@color/main_color" />
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/full_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/radioGroup"
+                        android:layout_marginVertical="12dp"
+                        android:hint="Full Name"
+                        app:boxCornerRadiusBottomEnd="4dp"
+                        app:boxCornerRadiusBottomStart="4dp"
+                        app:boxCornerRadiusTopEnd="4dp"
+                        app:boxCornerRadiusTopStart="4dp"
+                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeWidth="2dp"
+                        app:cursorColor="@color/black"
+                        app:hintTextColor="@color/hint_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_full_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="true"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tv_62"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_below="@+id/full_name"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="5dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="4dp"
+                        app:strokeColor="@color/main_color"
+                        app:strokeWidth="2dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center"
+                            android:text="+62"
+                            android:textColor="@color/grey_text"
+                            android:textSize="12sp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phone"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/full_name"
+                        android:layout_marginBottom="12dp"
+                        android:layout_toRightOf="@id/tv_62"
+                        android:hint="Phone Number"
+                        app:boxCornerRadiusBottomEnd="4dp"
+                        app:boxCornerRadiusBottomStart="4dp"
+                        app:boxCornerRadiusTopEnd="4dp"
+                        app:boxCornerRadiusTopStart="4dp"
+                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeWidth="2dp"
+                        app:cursorColor="@color/black"
+                        app:hintTextColor="@color/hint_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="true"
+                            android:inputType="number|phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/phone"
+                        android:hint="Email Address"
+                        app:boxCornerRadiusBottomEnd="4dp"
+                        app:boxCornerRadiusBottomStart="4dp"
+                        app:boxCornerRadiusTopEnd="4dp"
+                        app:boxCornerRadiusTopStart="4dp"
+                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeWidth="2dp"
+                        app:cursorColor="@color/black"
+                        app:hintTextColor="@color/hint_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="true"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Passenger Details"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_passenger"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Same as contact details"
+                            android:textColor="@color/neutral_700"
+                            android:textSize="10sp" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/btn_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:checked="false"
+                            android:gravity="end"
+                            app:thumbTint="@color/main_color" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_text" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_passenger_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/tv_passenger_detail"
+                            android:textColor="@color/main_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/btn_expand"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/arrow_forward"
+                            android:tint="@color/main_color"
+                            tools:ignore="UseAppTint" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_passenger_other"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_passenger_detail_other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/tv_passenger_detail_other"
+                            android:textColor="@color/main_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/btn_expand_other"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/arrow_forward"
+                            android:tint="@color/main_color"
+                            tools:ignore="UseAppTint" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Flight Facilities"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_add_baggage"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_marginBottom="12dp"
+                            android:id="@+id/title_baggage"
+                            android:gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/add_baggage"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="Baggage"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_below="@+id/title_baggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You can bring up to 20kg baggage per passenger.\nAre you sure this is enough?"
+                            android:textColor="@color/grey_text"
+                            android:textSize="10sp" />
+                        <ImageView
+                            android:id="@+id/btn_add_baggage"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/add_circle" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_add_seat"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_marginBottom="12dp"
+                            android:id="@+id/title_seat_number"
+                            android:gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/seat_number"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="Seat Number"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_below="@+id/title_seat_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sitting by the window is truly delightful. Don’t miss the\nopportunity to enjoy beautiful views near the window."
+                            android:textColor="@color/grey_text"
+                            android:textSize="10sp" />
+                        <ImageView
+                            android:id="@+id/btn_add_seat_number"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/add_circle" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_add_food"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_marginBottom="12dp"
+                            android:id="@+id/title_food"
+                            android:gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/add_food"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="In-flight Meals"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_below="@+id/title_food"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Don’t let yourself go hungry during the flight.\nEnjoy the meals we have prepared for you."
+                            android:textColor="@color/grey_text"
+                            android:textSize="10sp" />
+                        <ImageView
+                            android:id="@+id/btn_add_food"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/add_circle" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_next_page"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/main_color"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_bold"
+                app:cornerRadius="5dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
