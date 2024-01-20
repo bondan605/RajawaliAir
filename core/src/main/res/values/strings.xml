@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--  departure  -->
+    <string name="tv_departure_schedule_reschedule_refund_options"><![CDATA[Reschedule & Refund Options]]></string>
+    <string name="tv_departure_schedule__loyalty_poin">1234 Loyalty Poin</string>
+    <string name="tv_departure_schedule_arrive_time">09:15</string>
+    <string name="tv_departure_schedule_city_code_bpn">BPN</string>
+    <string name="tv_departure_schedule_ticket_code">RW225, RW752</string>
+    <string name="tv_departure_schedule_yia">YIA</string>
+    <string name="tv_flying_length_hour">1h 50m</string>
+    <string name="tv_departure_time">08:15</string>
+    <string name="tv_flying_type">Direct</string>
+    <string name="tv_ticket_pax">pax</string>
+    <string name="tv_ticket_price">IDR 1.179.000/</string>
+
     <string name="app_name">Rajawali Air</string>
 
     <!--  item card promotion sample data  -->
@@ -16,5 +30,8 @@
     <!--  item search result sample data  -->
     <string name="tv_denpasar">Bali / Denpasar, Indonesia</string>
     <string name="tv_denpasar_airport">DPS - Ngurah Rai International Airport</string>
+
+    <!--  choose ticket sample data -->
+    <string name="tv_choose_ticket_pick_date">Thu, 25</string>
 
 </resources>

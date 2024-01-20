@@ -137,6 +137,13 @@
                     android:gravity="end"
                     android:orientation="vertical">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+
                     <TextView
                         android:id="@+id/price_ticket"
                         android:layout_width="wrap_content"
@@ -146,6 +153,16 @@
                         android:text="@string/tv_price_ticket"
                         android:textColor="@color/main_color"
                         android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="/pax"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -177,21 +194,20 @@
                 android:layout_marginBottom="8dp">
 
                 <ImageView
+                    android:layout_marginEnd="8dp"
                     android:layout_width="32dp"
                     android:layout_height="24dp"
-                    android:layout_marginEnd="8dp"
                     android:src="@drawable/baggage" />
 
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/food" />
+                    android:src="@drawable/food"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <ImageView
                     android:id="@+id/btn_reschedule"
                     android:layout_width="148dp"
@@ -207,10 +223,11 @@
                         android:id="@+id/btn_hide"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@drawable/down_line" />
+                        android:src="@drawable/down_line"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        
 
 
     </com.google.android.material.card.MaterialCardView>
