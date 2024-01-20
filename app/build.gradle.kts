@@ -5,6 +5,9 @@ plugins {
 
     //firebase
     id("com.google.firebase.crashlytics")
+
+    //navigation
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -31,11 +34,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+//        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -50,6 +54,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.annotation:annotation:1.7.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -71,5 +76,16 @@ dependencies {
 
     //page indicator for recyclerview
     implementation("com.tbuonomo:dotsindicator:5.0")
+
+    //coroutine
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    //koin
+    implementation ("io.insert-koin:koin-core:3.2.2")
+    implementation ("io.insert-koin:koin-android:3.3.0")
+
+    //livedata
+    api ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
 }

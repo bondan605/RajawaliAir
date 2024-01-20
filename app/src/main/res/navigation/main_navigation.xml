@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homePageFragment">
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.rajawali.app.presentation.onboarding.OnboardingFragment"
@@ -26,7 +26,14 @@
         android:id="@+id/homePageFragment"
         android:name="com.rajawali.app.presentation.homepage.HomePageFragment"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_airportBottomSheetDialog"
+            app:destination="@id/airportBottomSheetDialog" />
+        <action
+            android:id="@+id/action_homePageFragment_to_oneWayTripFragment"
+            app:destination="@id/oneWayTripFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.rajawali.app.presentation.ui.auth.login.LoginFragment"
@@ -50,4 +57,21 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/airportBottomSheetDialog"
+        android:name="com.rajawali.app.AirportBottomSheetDialog"
+        android:label="bottom_sheet_dialog_airport"
+        tools:layout="@layout/bottom_sheet_dialog_airport" >
+        <action
+            android:id="@+id/action_airportBottomSheetDialog_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <argument
+            android:name="airport"
+            app:argType="com.rajawali.core.domain.enums.AirportTypeEnum" />
+    </dialog>
+    <fragment
+        android:id="@+id/oneWayTripFragment"
+        android:name="com.rajawali.app.presentation.booking.OneWayTripFragment"
+        android:label="fragment_one_way_trip"
+        tools:layout="@layout/fragment_one_way_trip" />
 </navigation>

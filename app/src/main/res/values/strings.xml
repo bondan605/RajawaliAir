@@ -43,12 +43,24 @@
     <string name="tv_home_page_departure_label">Departure</string>
     <string name="tv_home_page_arrive_label">Arrive</string>
     <string name="btn_home_page_book_now">Book Now</string>
+    <string name="tv_departure_city_name_label">%1$s (%2$s)</string>
+    <string name="tv_arrive_city_name_label">%1$s (%2$s)</string>
+
+    <!--  choose ticket  -->
+    <string name="tv_choose_ticket_flight_route">%1$s ➜ %2$s</string>
+    <string name="tv_choose_ticket_flight_route_description">%1$s | %2$s | %3$s</string>
+    <string name="tv_choose_ticket_departure_schedule_label">Departure Schedule</string>
+
 
     <!--  menu home page  -->
     <string name="item_home">Home</string>
     <string name="item_bookings">Bookings</string>
     <string name="item_History">History</string>
     <string name="item_account">Account</string>
+
+    <!--  menu choose ticket  -->
+    <string name="item_filter">Filter</string>
+    <string name="item_sort">Sort</string>
 
     <!--  home page tourist destination  -->
     <string name="tv_tourist_destination_label">Tourist Destination</string>
@@ -62,9 +74,7 @@
     <string name="resent_code"><u>Resend Code</u></string>
 
 
-
     <string name="rajawali_air_logo">Rajawali Air Logo</string>
-
 
     <!--  booking flight sample data  -->
     <string name="tv_yogyakarta_airport_code">YIA</string>
@@ -76,6 +86,27 @@
     <string name="tv_pick_city_label">Select City or Airport</string>
     <string name="tv_recent_search_label">Recent Searches</string>
     <string name="btn_clear_recent_search_label">Clear</string>
+
+    <!--  passenger  -->
+    <string name="et_passenger">0</string>
+    <string name="tv_adult_label">Adult</string>
+    <string name="tv_adult_decription">Age 12 and over</string>
+    <string name="tv_child_label">Child</string>
+    <string name="tv_child_description">Age 2 - 11</string>
+    <string name="tv_infant_label">Infant</string>
+    <string name="tv_infant_description">Age 0 - 2</string>
+    <string name="tv_class_description">Select cabin class</string>
+    <string name="tv_class_label">Class</string>
+    <string name="tv_economy_description">Fly affordably with all your essentials covered.</string>
+    <string name="tv_economy_label">Economy</string>
+    <string name="tv_passenger_description">Select amount of Passengers</string>
+    <string name="tv_passenger_label">Passenger(s)</string>
+    <string name="tv_business_label">Business</string>
+    <string name="tv_business_description">Fly in style with exclusive check-in and seating.</string>
+    <string name="tv_first_label">First Class</string>
+    <string name="tv_first_description">The most luxurious class, with personalized \nfive-star services.</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_continue">Continue</string>
 
     <!-- Item Ticket   -->
     <string name="tv_airplane_id">RW225, RW752</string>
@@ -99,10 +130,27 @@
     <string name="tv_baggage">Cabin baggage 7kg\nBaggage 20 kg</string>
     <string name="tv_food">In-flight meals</string>
 
+    <!-- bottom sheet dialog flight detail   -->
+    <string name="tv_flight_detail_label">Flight Details</string>
+    <string name="tv_flight_length">1h 50m</string>
+    <string name="tv_flight_date">Thursday, 25 Jan 2024</string>
+    <string name="tv_departing__city_code_time">%1$s | %2$s</string>
+    <string name="tv_departing_airport">%1$s | %2$s</string>
+    <string name="tv_flight_seat">%1$s | %2$s</string>
+    <string name="tv_arriving__city_code_time">%1$s | %2$s</string>
+    <string name="tv_arriving_airport">%1$s | %2$s</string>
+    <string name="earn_10000_loyalty_points">Earn %1$s Loyalty Points</string>
+    <string name="tv_luggage_additional_description">Baggage 20 kg</string>
+    <string name="tv_luggage_description">Cabin baggage 7kg</string>
+    <string name="tv_meal_description">In-flight meals</string>
+    <string name="tv_total_label">Total</string>
+    <string name="tv_wifi_description">WiFi not available</string>
+    <string name="tv_usb_port_description">Power/USB port not available</string>
+
     <!-- Ticket Type   -->
     <string name="tv_ticket_type">Normal</string>
-    <string name="tv_total_price">IDR 2.358.400</string>
-    <string name="tv_safe_total_price">IDR 2.658.400</string>
+    <string name="tv_total_price">IDR %1$s</string>
+    <string name="tv_safe_total_price">IDR %1$s</string>
     <string name="tv_safe">Safe</string>
 
     <!--  Your Selected Flight  -->
@@ -120,4 +168,17 @@
     <string name="radio_mr">Mr.</string>
     <string name="radio_mrs">Mrs.</string>
     <string name="radio_ms">Ms.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+
 </resources>

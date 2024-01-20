@@ -6,21 +6,26 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.rajawali.app.databinding.FragmentPickCityBinding
-import com.rajawali.core.domain.model.SearchList
+import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
+import com.rajawali.core.domain.model.SearchModel
+import com.rajawali.core.domain.result.UCResult
 import com.rajawali.core.presentation.adapter.SearchAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PickCityFragment : BottomSheetDialogFragment() {
-    private val binding: FragmentPickCityBinding get() = _binding!!
-    private var _binding: FragmentPickCityBinding? = null
+class PickCityBottomSheetDialog : BottomSheetDialogFragment() {
+    private val binding: BottomSheetDialogPickCityBinding get() = _binding!!
+    private var _binding: BottomSheetDialogPickCityBinding? = null
+
+    private val viewModel: SearchViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPickCityBinding.inflate(layoutInflater, container, false)
+        _binding = BottomSheetDialogPickCityBinding.inflate(layoutInflater, container, false)
 
         return binding.root
     }
@@ -34,20 +39,42 @@ class PickCityFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //do something here.
+
         whenSearching()
         dismissBottomSheet()
 
-        searchResult()
+
         recentSearch()
     }
 
-    private fun searchResult() {
+    private fun searchResult(keyword: String) {
         val recyclerview = binding.rvSearchResult
         val _adapter = SearchAdapter()
         val _layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-        _adapter.submitList(SearchList.searchResult)
+
+        _adapter.setOnAirportClickCallback(object: SearchAdapter.OnAirportClickCallback {
+            override fun onAirportClickCallback(airport: SearchModel) {
+
+            }
+        })
+
+        viewModel.getSearchedAirport(keyword).observe(viewLifecycleOwner) {
+            //need to add loading animation.
+
+            when (it) {
+                is UCResult.Success -> {
+                    _adapter.submitList(it.data)
+                }
+
+                is UCResult.Error -> {
+                    Toast.makeText(activity, it.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
         recyclerview.apply {
             adapter = _adapter
             layoutManager = _layoutManager
@@ -61,7 +88,18 @@ class PickCityFragment : BottomSheetDialogFragment() {
         val _layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-        _adapter.submitList(SearchList.recentSearch)
+//        viewModel.getRecentSearch.observe(viewLifecycleOwner) {
+//            when (it) {
+//                is UCResult.Success -> {
+//                    _adapter.submitList(it.data)
+//                }
+//
+////                TODO need to add response when data is empty
+//                is UCResult.Error -> {}
+//            }
+//
+//        }
+
         recyclerview.apply {
             adapter = _adapter
             layoutManager = _layoutManager
@@ -94,6 +132,9 @@ class PickCityFragment : BottomSheetDialogFragment() {
 
                     rvSearchResult.visibility = View.GONE
                 } else {
+                    //search with keyword
+                    searchResult(text.toString())
+
                     tvRecentSearchLabel.visibility = View.GONE
                     btnClearRecentSearch.visibility = View.GONE
                     rvRecentSearch.visibility = View.GONE

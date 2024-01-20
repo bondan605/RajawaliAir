@@ -4,23 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentHomePageBinding
-import com.rajawali.app.presentation.pickCity.PickCityFragment
+import com.rajawali.app.presentation.pickCity.AirportsViewModel
+import com.rajawali.app.util.NavigationUtils.safeNavigate
+import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.PromotionList
 import com.rajawali.core.domain.model.TouristDestinationList
 import com.rajawali.core.presentation.adapter.PromotionAdapter
 import com.rajawali.core.presentation.adapter.TouristDestinationAdapter
 import com.rajawali.core.presentation.customView.setPreviewBothSide
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class HomePageFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentHomePageBinding? = null
+
+    private val airportsViewModel: AirportsViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +59,8 @@ class HomePageFragment : Fragment() {
         promotionViewPager()
         touristDestinationRecyclerview()
         btnBookNow()
+        setDeparture()
+        setArriving()
     }
 
     private fun promotionViewPager() {
@@ -92,9 +101,47 @@ class HomePageFragment : Fragment() {
 
     private fun btnBookNow() {
         binding.btnBookNow.setOnClickListener {
-            val pickCityBottomSheet = PickCityFragment()
-
-            pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityFragment.TAG)
+            val destination =
+                HomePageFragmentDirections.actionHomePageFragmentToOneWayTripFragment()
+            findNavController().safeNavigate(destination)
         }
+    }
+
+    private fun setDeparture() {
+        /* very old way
+        val pickCityBottomSheet = PickCityBottomSheetDialog()
+        pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityBottomSheetDialog.TAG)
+        */
+        binding.clDeparture.setOnClickListener {
+            val destination =
+                HomePageFragmentDirections.actionHomePageFragmentToAirportBottomSheetDialog(
+                    AirportTypeEnum.DEPARTURE
+                )
+            findNavController().safeNavigate(destination)
+        }
+
+        airportsViewModel.departureAirport.observe(viewLifecycleOwner) { departure ->
+            binding.tvDepartureCityCodeLabel.text = departure.cityCode
+            binding.tvDepartureCityNameLabel.text =
+                getString(R.string.tv_departure_city_name_label, departure.city, departure.cityCode)
+        }
+    }
+
+    private fun setArriving() {
+        binding.clArrive.setOnClickListener {
+            val destination =
+                HomePageFragmentDirections.actionHomePageFragmentToAirportBottomSheetDialog(
+                    AirportTypeEnum.ARRIVING
+                )
+            findNavController().safeNavigate(destination)
+        }
+
+        airportsViewModel.arrivingAirport.observe(viewLifecycleOwner) { arriving ->
+
+            binding.tvArriveCityCodeLabel.text = arriving.cityCode
+            binding.tvArriveCityNameLabel.text =
+                getString(R.string.tv_departure_city_name_label, arriving.city, arriving.cityCode)
+        }
+
     }
 }

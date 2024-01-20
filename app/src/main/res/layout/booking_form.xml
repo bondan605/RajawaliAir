@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/from"
+                android:id="@+id/ll_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -56,10 +56,11 @@
                         android:src="@drawable/plane_departure" />
 
                     <TextView
+                        android:id="@+id/tv_from_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Yogyakarta (YIA)"
+                        android:text="@string/tv_departure_city_name_label"
                         android:textColor="@color/grey_text"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -100,6 +101,7 @@
                         android:src="@drawable/plane_arrival" />
 
                     <TextView
+                        android:id="@+id/tv_arriving_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"

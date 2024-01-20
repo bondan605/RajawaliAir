@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/custom_bottom_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@color/white"
+        app:itemActiveIndicatorStyle="@style/Widget.Material3.BottomNavigationView.ActiveIndicator"
+        app:itemTextAppearanceActive="@style/Widget.BottomNavigationView.InactiveTextStyle"
+        app:itemTextAppearanceInactive="@style/Widget.BottomNavigationView.InactiveTextStyle"
+        app:itemIconSize="24dp"
+        app:labelVisibilityMode="labeled"
+        app:itemTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingHorizontal="100dp"
+        app:menu="@menu/menu_choose_ticket"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

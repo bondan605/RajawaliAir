@@ -8,7 +8,7 @@
     android:paddingHorizontal="16dp"
     android:paddingBottom="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".presentation.pickCity.PickCityFragment">
+    tools:context=".presentation.pickCity.PickCityBottomSheetDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

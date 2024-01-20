@@ -7,4 +7,10 @@ plugins {
     id("com.google.gms.google-services") version "4.4.0" apply false
     id("com.google.firebase.crashlytics") version "2.9.9" apply false
     id("com.android.library") version "8.1.0" apply false
+
+    //ksp
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
+
+    //navigation safeArgs
+    id("androidx.navigation.safeargs") version "2.5.0" apply false
 }
