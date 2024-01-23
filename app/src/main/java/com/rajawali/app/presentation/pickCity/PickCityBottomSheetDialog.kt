@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
@@ -54,7 +55,7 @@ class PickCityBottomSheetDialog : BottomSheetDialogFragment() {
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
 
-        _adapter.setOnAirportClickCallback(object: SearchAdapter.OnAirportClickCallback {
+        _adapter.setOnAirportClickCallback(object : SearchAdapter.OnAirportClickCallback {
             override fun onAirportClickCallback(airport: SearchModel) {
 
             }
@@ -118,34 +119,30 @@ class PickCityBottomSheetDialog : BottomSheetDialogFragment() {
         val gone = View.GONE
 
         etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                TODO("Not yet implemented")
-            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 val textLength = text?.length ?: 0
 
                 if (textLength < 1) {
-                    tvRecentSearchLabel.visibility = View.VISIBLE
-                    btnClearRecentSearch.visibility = View.VISIBLE
-                    rvRecentSearch.visibility = View.VISIBLE
+                    tvRecentSearchLabel.visibility = visible
+                    btnClearRecentSearch.visibility = visible
+                    rvRecentSearch.visibility = visible
 
-                    rvSearchResult.visibility = View.GONE
+                    rvSearchResult.visibility = gone
                 } else {
                     //search with keyword
                     searchResult(text.toString())
 
-                    tvRecentSearchLabel.visibility = View.GONE
-                    btnClearRecentSearch.visibility = View.GONE
-                    rvRecentSearch.visibility = View.GONE
+                    tvRecentSearchLabel.visibility = gone
+                    btnClearRecentSearch.visibility = gone
+                    rvRecentSearch.visibility = gone
 
-                    rvSearchResult.visibility = View.VISIBLE
+                    rvSearchResult.visibility = visible
                 }
             }
 
-            override fun afterTextChanged(p0: Editable?) {
-//                TODO("Not yet implemented")
-            }
+            override fun afterTextChanged(p0: Editable?) {}
 
         }
         )
@@ -153,11 +150,7 @@ class PickCityBottomSheetDialog : BottomSheetDialogFragment() {
 
     private fun dismissBottomSheet() {
         binding.btnExit.setOnClickListener {
-            dismiss()
+            findNavController().popBackStack()
         }
-    }
-
-    companion object {
-        const val TAG = "PickCityBottomSheet"
     }
 }

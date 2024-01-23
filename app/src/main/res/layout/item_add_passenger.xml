@@ -36,11 +36,13 @@
         android:layout_marginStart="6dp"
         android:background="@drawable/custom_et_passenger"
         android:inputType="number"
-        android:maxEms="6"
+        android:minWidth="65dp"
         android:text="@string/et_passenger"
         android:textAlignment="center"
         android:textSize="10sp"
+        android:labelFor="@+id/et_passenger"
         app:layout_constraintStart_toEndOf="@+id/ib_remove"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

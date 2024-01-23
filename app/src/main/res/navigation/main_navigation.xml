@@ -59,12 +59,9 @@
     </fragment>
     <dialog
         android:id="@+id/airportBottomSheetDialog"
-        android:name="com.rajawali.app.AirportBottomSheetDialog"
+        android:name="com.rajawali.app.presentation.pickCity.AirportBottomSheetDialog"
         android:label="bottom_sheet_dialog_airport"
         tools:layout="@layout/bottom_sheet_dialog_airport" >
-        <action
-            android:id="@+id/action_airportBottomSheetDialog_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
         <argument
             android:name="airport"
             app:argType="com.rajawali.core.domain.enums.AirportTypeEnum" />
@@ -73,5 +70,16 @@
         android:id="@+id/oneWayTripFragment"
         android:name="com.rajawali.app.presentation.booking.OneWayTripFragment"
         android:label="fragment_one_way_trip"
-        tools:layout="@layout/fragment_one_way_trip" />
+        tools:layout="@layout/fragment_one_way_trip" >
+        <action
+            android:id="@+id/action_oneWayTripFragment_to_airportBottomSheetDialog"
+            app:destination="@id/airportBottomSheetDialog" />
+        <action
+            android:id="@+id/action_oneWayTripFragment_to_passengerBottomSheetDialog"
+            app:destination="@id/passengerBottomSheetDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/passengerBottomSheetDialog"
+        android:name="com.rajawali.app.presentation.bottomSheetDialog.passenger.PassengerBottomSheetDialog"
+        android:label="PassengerBottomSheetDialog" />
 </navigation>

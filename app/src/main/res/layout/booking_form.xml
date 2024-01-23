@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/ll_from"
+                android:id="@+id/ll_departure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -56,11 +56,11 @@
                         android:src="@drawable/plane_departure" />
 
                     <TextView
-                        android:id="@+id/tv_from_city"
+                        android:id="@+id/tv_departure_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="@string/tv_departure_city_name_label"
+                        android:text="@string/tv_home_page_departure_label"
                         android:textColor="@color/grey_text"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -72,7 +72,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/to"
+                android:id="@+id/ll_arriving"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Balikpapan (BPN)"
+                        android:text="@string/tv_home_page_arrive_label"
                         android:textColor="@color/grey_text"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -117,7 +117,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/departure"
+                android:id="@+id/ll_departure_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -146,7 +146,8 @@
                         android:src="@drawable/calendar" />
 
                     <TextView
-                        android:layout_toRightOf="@id/calendar"
+                        android:id="@+id/tv_departure_date_value"
+                        android:layout_toEndOf="@id/calendar"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,13 +171,12 @@
                             android:textSize="14sp"
                             android:textColor="@color/hint_text"/>
                         <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/btn_switch"
+                            android:id="@+id/btn_switch_round_trip"
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             app:thumbTint="@color/main_color"
                             app:trackTint="@color/secondary_color"
-                            android:checked="true"
-                            android:layout_below="@+id/txt_round_trip"/>
+                            android:checked="false" />
                     </LinearLayout>
 
                 </RelativeLayout>
@@ -187,9 +187,10 @@
                     android:background="@color/grey_text" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/returnDate"
+                android:id="@+id/ll_return_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginBottom="12dp"
                 android:orientation="vertical">
 
@@ -217,6 +218,7 @@
                         android:src="@drawable/calendar" />
 
                     <TextView
+                        android:id="@+id/tv_return_date_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -233,7 +235,7 @@
                     android:background="@color/grey_text" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/passenger"
+                android:id="@+id/ll_passenger"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -262,11 +264,12 @@
                         android:src="@drawable/passenger" />
 
                     <TextView
+                        android:id="@+id/tv_passenger_value"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="2 Adults, Economy Class"
+                        android:text="@string/tv_passenger_default_value"
                         android:textColor="@color/grey_text"
                         android:textSize="18sp" />
                 </LinearLayout>

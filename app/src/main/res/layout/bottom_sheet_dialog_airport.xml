@@ -8,7 +8,7 @@
     android:paddingHorizontal="16dp"
     android:paddingBottom="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".AirportBottomSheetDialog">
+    tools:context=".presentation.pickCity.AirportBottomSheetDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,10 +60,12 @@
             android:inputType="text"
             android:paddingHorizontal="12dp"
             android:textSize="14sp"
+            android:labelFor="@+id/et_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_search_label"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/tv_recent_search"
