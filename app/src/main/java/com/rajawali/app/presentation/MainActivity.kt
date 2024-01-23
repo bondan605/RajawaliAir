@@ -3,7 +3,6 @@ package com.rajawali.app.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rajawali.app.databinding.ActivityMainBinding
-import com.rajawali.app.databinding.FragmentDetailsInformationBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

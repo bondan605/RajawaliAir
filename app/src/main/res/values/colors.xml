@@ -14,7 +14,11 @@
     <color name="hint_text">#646464</color>
     <color name="neutral_700">#757575</color>
     <color name="tertiary_color">#A4E0FF</color>
+    <color name="background_app">#E3EEFF</color>
     <color name="quaternary_color">#1e90ff</color>
     <color name="green">#18AF5E</color>
     <color name="background_color">#e3eeff</color>
+    <color name="light_blue">#E9F8FF</color>
+    <color name="neutral_400">#E0E0E0</color>
+    <color name="super_light_blue">#D2F1FF</color>
 </resources>

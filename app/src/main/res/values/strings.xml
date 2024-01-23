@@ -148,7 +148,7 @@
     <string name="tv_usb_port_description">Power/USB port not available</string>
 
     <!-- Ticket Type   -->
-    <string name="tv_ticket_type">Normal</string>
+    <string name="tv_ticket_type">Economy</string>
     <string name="tv_total_price">IDR %1$s</string>
     <string name="tv_safe_total_price">IDR %1$s</string>
     <string name="tv_safe">Safe</string>
@@ -179,6 +179,38 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="_25_jan_2024_08_15_09_05">25 Jan 2024, 08:15 - 09:05</string>
+    <string name="_1h_50m">1h 50m</string>
+    <string name="_0_kg">0 Kg</string>
+    <string name="idr_0">IDR 0</string>
+    <string name="_5_kg">5 Kg</string>
+    <string name="idr_250_000">IDR 250.000</string>
+    <string name="_10_kg">10 Kg</string>
+    <string name="idr_500_000">IDR 500.000</string>
+    <string name="_20_kg">20 Kg</string>
+    <string name="idr_1_000_000">IDR 1.000.000</string>
+    <string name="_30_kg">30 Kg</string>
+    <string name="idr_2_000_000">IDR 2.000.000</string>
+    <string name="passenger_1_adult">Passenger 1 (Adult)</string>
+    <string name="total_price">IDR 500.000</string>
+    <string name="_3_meals_idr_146_000">3 Meals (IDR 146.000)</string>
+    <string name="passenger_2_adult">Passenger 2 (Adult)</string>
+    <string name="no_orders_yet">No orders yet</string>
+    <string name="_25_jan_2024_08_15_09_05_1h_50m">25 Jan 2024, 08:15 - 09:05 | 1h 50m</string>
+    <string name="vegetarian_lasagna">Vegetarian Lasagna</string>
+    <string name="vegetarian_lasagna_with_tomato_sauce_nand_parsley">Vegetarian lasagna with tomato sauce\nand parsley.</string>
+    <string name="idr_55_500">IDR 55.500</string>
+    <string name="idr_146_000">IDR 146.000</string>
+    <string name="_123456789">123456789</string>
+    <string name="economy_direct_flight">Economy | Direct Flight</string>
+    <string name="jam">02</string>
+    <string name="menit">59</string>
+    <string name="detik">59</string>
+    <string name="bca_transfer">BCA Transfer</string>
+    <string name="mandiri_virtual_acccount">Mandiri Virtual Acccount</string>
+    <string name="bni_transfer">BNI Transfer</string>
+    <string name="pay_with_virtual_account">Pay with Virtual Account</string>
+    <string name="apply">Apply</string>
 
 
 </resources>
