@@ -1,4 +1,4 @@
-package com.rajawali.app
+package com.rajawali.app.presentation.pickCity
 
 import android.os.Bundle
 import android.text.Editable
@@ -11,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
-import com.rajawali.app.presentation.pickCity.AirportsViewModel
-import com.rajawali.app.presentation.pickCity.SearchViewModel
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.SearchModel
 import com.rajawali.core.domain.result.UCResult
@@ -73,9 +71,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
                         airportViewModel.setArrivingAirport(airport)
                 }
 
-                val navigation =
-                    AirportBottomSheetDialogDirections.actionAirportBottomSheetDialogToHomePageFragment()
-                findNavController().navigate(navigation)
+                findNavController().popBackStack()
             }
         })
     }
@@ -90,7 +86,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         _adapter.onAirportClickCallback()
 
         searchViewModel.getSearchedAirport(keyword).observe(viewLifecycleOwner) {
-            //need to add loading animation.
+            //TODO need to add loading animation.
 
             when (it) {
                 is UCResult.Success -> {
@@ -147,9 +143,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         val gone = View.GONE
 
         etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                TODO("Not yet implemented")
-            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 val textLength = text?.length ?: 0
@@ -172,9 +166,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
                 }
             }
 
-            override fun afterTextChanged(p0: Editable?) {
-//                TODO("Not yet implemented")
-            }
+            override fun afterTextChanged(p0: Editable?) {}
 
         }
         )
@@ -182,7 +174,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
 
     private fun dismissBottomSheet() {
         binding.btnExit.setOnClickListener {
-            dismiss()
+            findNavController().popBackStack()
         }
     }
 

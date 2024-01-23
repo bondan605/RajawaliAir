@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     android:minHeight="700dp"
     android:paddingHorizontal="16dp"
+    android:backgroundTint="@color/white"
     android:paddingBottom="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".presentation.pickCity.PickCityBottomSheetDialog">
+    tools:context=".presentation.bottomSheetDialog.passenger.PassengerBottomSheetDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -62,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="4dp"
-            android:background="?android:attr/listDivider"
+            android:background="@color/silver_chalice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_passenger_description" />
@@ -71,6 +72,7 @@
             android:id="@+id/tv_adult_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_adult_label"
@@ -104,6 +106,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_child_label"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,6 +137,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_infant_label"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="4dp"
-            android:background="?android:attr/listDivider"
+            android:background="@color/silver_chalice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_class_description" />
@@ -204,8 +208,8 @@
                 android:id="@+id/tv_economy_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_economy_label"
                 android:fontFamily="@font/roboto_medium"
+                android:text="@string/tv_economy_label"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -214,21 +218,21 @@
                 android:id="@+id/tv_economy_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@string/tv_economy_description"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_economy_label" />
 
             <ImageView
                 android:id="@+id/iv_economy_check"
                 android:layout_width="wrap_content"
-                android:visibility="invisible"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_check"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_economy_description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_economy_label"
-                android:contentDescription="@string/app_name" />
+                app:layout_constraintTop_toTopOf="@+id/tv_economy_label" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -248,8 +252,8 @@
                 android:id="@+id/tv_business_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_business_label"
                 android:fontFamily="@font/roboto_medium"
+                android:text="@string/tv_business_label"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -258,21 +262,21 @@
                 android:id="@+id/tv_business_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@string/tv_business_description"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_business_label" />
 
             <ImageView
                 android:id="@+id/iv_business_check"
                 android:layout_width="wrap_content"
-                android:visibility="invisible"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_check"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_business_description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_business_label"
-                android:contentDescription="@string/app_name" />
+                app:layout_constraintTop_toTopOf="@+id/tv_business_label" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -292,8 +296,8 @@
                 android:id="@+id/tv_first_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_first_label"
                 android:fontFamily="@font/roboto_medium"
+                android:text="@string/tv_first_label"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -302,21 +306,21 @@
                 android:id="@+id/tv_first_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@string/tv_first_description"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_first_label" />
 
             <ImageView
                 android:id="@+id/iv_first_check"
                 android:layout_width="wrap_content"
-                android:visibility="invisible"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_check"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_first_description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_first_label"
-                android:contentDescription="@string/app_name" />
+                app:layout_constraintTop_toTopOf="@+id/tv_first_label" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -325,14 +329,17 @@
             android:id="@+id/btn_done"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_done"
-            app:cornerRadius="4dp"
+            android:layout_marginTop="50dp"
             android:backgroundTint="@color/main_color"
             android:fontFamily="@font/roboto_bold"
+            android:text="@string/btn_done"
             android:textSize="16sp"
+            android:textColor="@color/white"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_class_first" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

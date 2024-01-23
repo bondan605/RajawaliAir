@@ -92,9 +92,9 @@
     <string name="tv_adult_label">Adult</string>
     <string name="tv_adult_decription">Age 12 and over</string>
     <string name="tv_child_label">Child</string>
-    <string name="tv_child_description">Age 2 - 11</string>
+    <string name="tv_child_description">Age 2 – 11</string>
     <string name="tv_infant_label">Infant</string>
-    <string name="tv_infant_description">Age 0 - 2</string>
+    <string name="tv_infant_description">Age 0 – 2</string>
     <string name="tv_class_description">Select cabin class</string>
     <string name="tv_class_label">Class</string>
     <string name="tv_economy_description">Fly affordably with all your essentials covered.</string>
@@ -168,8 +168,7 @@
     <string name="radio_mr">Mr.</string>
     <string name="radio_mrs">Mrs.</string>
     <string name="radio_ms">Ms.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -212,5 +211,18 @@
     <string name="pay_with_virtual_account">Pay with Virtual Account</string>
     <string name="apply">Apply</string>
 
+    <!-- booking form -->
+    <string name="tv_passenger_adult_category">%1$d Adult</string>
+    <string name="tv_passenger_child_category">%1$d Child</string>
+    <string name="tv_passenger_infant_category">%1$d Infant</string>
+    <string name="tv_passenger_economy_class">Economy Class</string>
+    <string name="tv_passenger_business_class">Business Class</string>
+    <string name="tv_passenger_first_class">First Class</string>
+    <string name="tv_passenger_default_value">1 Adult, Economy Class</string>
+
+    <!-- date picker -->
+    <string name="dp_departure_label">Select departure date</string>
+    <string name="dp_return_label">Select return date</string>
+    <string name="dp_range_date_label">Select departure - return date</string>
 
 </resources>

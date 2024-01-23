@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
@@ -108,9 +107,9 @@ class HomePageFragment : Fragment() {
     }
 
     private fun setDeparture() {
-        /* very old way
-        val pickCityBottomSheet = PickCityBottomSheetDialog()
-        pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityBottomSheetDialog.TAG)
+        /*  alternative way
+                val pickCityBottomSheet = PickCityBottomSheetDialog()
+                pickCityBottomSheet.show(requireActivity().supportFragmentManager, PickCityBottomSheetDialog.TAG)
         */
         binding.clDeparture.setOnClickListener {
             val destination =
