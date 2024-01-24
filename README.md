@@ -1,7 +1,7 @@
 # Deadline
 | Judul | Keterangan |
 | --- | --- |
-| Sprint saat ini | 1 sprint |
+| Sprint saat ini | 2 sprint |
 | Total Sprint | 3 sprint (total 6 minggu) |
 | Submission Proyek | 12 Februari 2024 |
 | Presentasi Proyek | 19 Februari 2024 |
@@ -25,6 +25,13 @@
 2. Pilih dan klik _workflows_ terbaru
 3. scroll sampai kebawah
 4. klik android-apk yang berlogo kotak untuk mulai mendownload.
+
+# App Is Not Working
+Bila ada fitur yang tidak bekerja sesuai dengan tujuannya, atau ada masalah pada aplikasi, feel free untuk membuat Issue dengan cara:
+1. Klik halaman issues yang berada di bagian atas, disamping Code.
+2. Tekan tombol 'New Issue' yang bewarna hijau
+3. Isi judul, deskripsi dan screenshoot dari issue.
+4. Klik 'Submit new issue' untuk memposting issue tersebut.
 
 # Related Link
 Link website yang berhubungan dengan proyek app ini.
