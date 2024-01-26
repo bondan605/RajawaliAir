@@ -43,16 +43,16 @@ Link website yang berhubungan dengan proyek app ini.
 # Requirement
 Total 12 requiment wajib.
 
-- [ ] Menerapkan architecture pattern MVVM dengan clean architecture
+- [x] Menerapkan architecture pattern MVVM dengan clean architecture
 - [x] Menerapkan modularization
 - [ ] Mengimplementasikan offline first (menyimpan data) agar dapat menampilkan data sementara ketika device sedang offline
 - [ ] Menggunakan Room untuk menyimpan data ke local database
 - [ ] Menerapkan data store/shared preferences untuk penyimpanan key-value
-- [ ] Menerapkan coroutine/rxjava untuk background process
+- [x] Menerapkan coroutine/rxjava untuk background process
 - [ ] Menambahkan testing minimal satu test case
-- [ ] Menerapkan Dependency Injection
-- [ ] Menggunakan API yang disediakan oleh anggota dari student Back End
-- [ ] Menggunakan Retrofit
+- [x] Menerapkan Dependency Injection
+- [x] Menggunakan API yang disediakan oleh anggota dari student Back End
+- [x] Menggunakan Retrofit
 - [x] Menggunakan salah satu fitur Firebase contoh crashlytics
 - [x] Menggunakan CI/CD pada salah satu branch untuk auto membuild APK/AAB.
 
