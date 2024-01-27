@@ -78,6 +78,18 @@
             app:layout_constraintTop_toBottomOf="@+id/et_search" />
 
         <TextView
+            android:id="@+id/tv_search_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/tv_search_not_found"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_search" />
+
+        <TextView
             android:id="@+id/btn_clear_recent_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

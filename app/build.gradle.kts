@@ -88,4 +88,7 @@ dependencies {
     api ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
+    //timber
+    implementation ("com.jakewharton.timber:timber:4.7.1")
+
 }

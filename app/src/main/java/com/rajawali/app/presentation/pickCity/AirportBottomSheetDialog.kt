@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -15,6 +14,7 @@ import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.SearchModel
 import com.rajawali.core.domain.result.UCResult
 import com.rajawali.core.presentation.adapter.SearchAdapter
+import com.rajawali.core.util.Constant
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -63,7 +63,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
             override fun onAirportClickCallback(airport: SearchModel) {
 
                 //switching saving location
-                when(type) {
+                when (type) {
                     AirportTypeEnum.DEPARTURE ->
                         airportViewModel.setDepartureAirport(airport)
 
@@ -94,7 +94,9 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
                 }
 
                 is UCResult.Error -> {
-                    Toast.makeText(activity, it.errorMessage, Toast.LENGTH_SHORT).show()
+                    if (it.errorMessage == Constant.DATA_EMPTY) {
+                        binding.tvSearchNotFound.visibility = View.VISIBLE
+                    }
                 }
             }
         }
@@ -148,6 +150,8 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 val textLength = text?.length ?: 0
 
+                binding.tvSearchNotFound.visibility = View.GONE
+
                 if (textLength < 1) {
                     tvRecentSearchLabel.visibility = View.VISIBLE
                     btnClearRecentSearch.visibility = View.VISIBLE
@@ -176,9 +180,5 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         binding.btnExit.setOnClickListener {
             findNavController().popBackStack()
         }
-    }
-
-    companion object {
-        const val TAG = "PickCityBottomSheet"
     }
 }

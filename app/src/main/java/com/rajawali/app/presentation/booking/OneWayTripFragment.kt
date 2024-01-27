@@ -19,8 +19,10 @@ import com.rajawali.app.presentation.pickCity.AirportsViewModel
 import com.rajawali.app.util.DateFormat
 import com.rajawali.app.util.DateFormat.formatToIndonesiaLanguage
 import com.rajawali.app.util.NavigationUtils.safeNavigate
+import com.rajawali.app.util.NavigationUtils.safeNavigateUsingID
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.enums.PassengerClassEnum
+import com.rajawali.core.domain.enums.TripValueEnum
 
 class OneWayTripFragment : Fragment() {
 
@@ -59,15 +61,182 @@ class OneWayTripFragment : Fragment() {
 
         setDate()
         //set current date for tv departure date and tv return date
-        setCurrentDate()
+        setDefaultDate()
 
         passengerOnClick()
         updatePassengerDisplay()
+
+        searchFlight()
+    }
+
+    private fun searchFlight() {
+        binding.includeBookingForm.btnSearch.setOnClickListener {
+            var departureId = ""
+            var departureDate = ""
+            var returnDate = ""
+            var destinationId = ""
+            var seatType = PassengerClassEnum.NULL
+            var adultPassenger = 0
+            var childPassenger = 0
+            var infantPassenger = 0
+
+            airportsViewModel.departureAirport.observe(viewLifecycleOwner) {
+                departureId = it.id
+            }
+
+            airportsViewModel.arrivingAirport.observe(viewLifecycleOwner) {
+                destinationId = it.id
+            }
+
+            tripViewModel.departureDate.observe(viewLifecycleOwner) {
+                departureDate = it
+            }
+
+            tripViewModel.returnDate.observe(viewLifecycleOwner) {
+                returnDate = it
+            }
+
+            passengerViewModel.adultPassengerCount.observe(viewLifecycleOwner) {
+                adultPassenger = it
+            }
+
+            passengerViewModel.childPassengerCount.observe(viewLifecycleOwner) {
+                childPassenger = it
+            }
+
+            passengerViewModel.infantPassengerCount.observe(viewLifecycleOwner) {
+                infantPassenger = it
+            }
+
+            passengerViewModel.passengerClass.observe(viewLifecycleOwner) {
+                seatType = PassengerClassEnum.ECONOMY
+            }
+
+            isValueEmpty(
+                departureId,
+                departureDate,
+                destinationId,
+                seatType,
+                adultPassenger,
+                childPassenger,
+                infantPassenger,
+            )
+
+            tripViewModel.isValueEmpty.observe(viewLifecycleOwner) { isEmpty ->
+                isEmpty.map {
+                    when (it) {
+                        TripValueEnum.DEPARTURE_CITY -> {
+                            Toast.makeText(activity, "From is empty", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                        TripValueEnum.DEPARTURE_DATE ->
+                            Toast.makeText(activity, "Departure date is empty", Toast.LENGTH_SHORT)
+                                .show()
+
+                        TripValueEnum.DESTINATION_CITY ->
+                            Toast.makeText(activity, "To is empty", Toast.LENGTH_SHORT)
+                                .show()
+
+                        TripValueEnum.SEAT_TYPE ->
+                            Toast.makeText(
+                                activity,
+                                "Passenger class is not yet choose",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+
+                        TripValueEnum.PASSENGER -> {
+                            Toast.makeText(activity, "Passenger is empty", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                        TripValueEnum.NULL -> {
+
+                            tripViewModel.roundTrip.observe(viewLifecycleOwner) { isRoundTrip ->
+                                if (isRoundTrip) {
+                                    val departureTrip = tripViewModel.setDepartureTicket(
+                                        departureCityCode = departureId,
+                                        departureDate = departureDate,
+                                        destinationCityCode = destinationId,
+                                        seatType = seatType,
+                                        adultPassenger = adultPassenger,
+                                        childPassenger = childPassenger,
+                                        infantPassenger = infantPassenger,
+                                    )
+                                    val returnTrip = tripViewModel.setReturnTicket(
+                                        departureCityCode = destinationId,
+                                        returnDate = returnDate,
+                                        destinationCityCode = departureId,
+                                        seatType = seatType,
+                                        adultPassenger = adultPassenger,
+                                        childPassenger = childPassenger,
+                                        infantPassenger = infantPassenger,
+                                    )
+                                    val bundle = Bundle()
+
+                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
+                                    bundle.putParcelable(DEPARTURE, departureTrip)
+                                    bundle.putParcelable(RETURN, returnTrip)
+
+                                    findNavController().safeNavigateUsingID(
+                                        R.id.action_oneWayTripFragment_to_chooseTicketFragment,
+                                        bundle
+                                    )
+
+                                }
+                                else {
+                                    val departureTrip = tripViewModel.setDepartureTicket(
+                                        departureCityCode = departureId,
+                                        departureDate = departureDate,
+                                        destinationCityCode = destinationId,
+                                        seatType = seatType,
+                                        adultPassenger = adultPassenger,
+                                        childPassenger = childPassenger,
+                                        infantPassenger = infantPassenger,
+                                    )
+                                    val bundle = Bundle()
+
+                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
+                                    bundle.putParcelable(DEPARTURE, departureTrip)
+
+                                    findNavController().safeNavigateUsingID(
+                                        R.id.action_oneWayTripFragment_to_chooseTicketFragment,
+                                        bundle
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun isValueEmpty(
+        departureId: String,
+        departureDate: String,
+        destinationId: String,
+        seatType: PassengerClassEnum,
+        adultPassenger: Int,
+        childPassenger: Int,
+        infantPassenger: Int,
+    ) {
+        tripViewModel.isValueEmpty(
+            departureCityCode = departureId,
+            departureDate = departureDate,
+            destinationCityCode = destinationId,
+            seatType = seatType,
+            adultPassenger = adultPassenger,
+            childPassenger = childPassenger,
+            infantPassenger = infantPassenger
+        )
     }
 
     private fun setDeparture() {
         val include = binding.includeBookingForm
         airportsViewModel.departureAirport.observe(viewLifecycleOwner) {
+
             include.tvDepartureCity.text =
                 getString(R.string.tv_departure_city_name_label, it.city, it.cityCode)
         }
@@ -76,6 +245,7 @@ class OneWayTripFragment : Fragment() {
     private fun setArriving() {
         val include = binding.includeBookingForm
         airportsViewModel.arrivingAirport.observe(viewLifecycleOwner) {
+
             include.tvArrivingCity.text =
                 getString(R.string.tv_arrive_city_name_label, it.city, it.cityCode)
         }
@@ -156,15 +326,17 @@ class OneWayTripFragment : Fragment() {
 
         dateRangePicker.addOnPositiveButtonClickListener {
 
-            val firstLocalDate = DateFormat.longToDate(it.first)
-            val firstFormattedDate = formatToIndonesiaLanguage(firstLocalDate)
+            val departureLocalDate = DateFormat.longToLocalDate(it.first)
+            val departureFormattedDate = formatToIndonesiaLanguage(departureLocalDate)
 
-            val secondLocalDate = DateFormat.longToDate(it.second)
-            val secondFormattedDate = formatToIndonesiaLanguage(secondLocalDate)
+            val returnLocalDate = DateFormat.longToLocalDate(it.second)
+            val returnFormattedDate = formatToIndonesiaLanguage(returnLocalDate)
 
+            binding.includeBookingForm.tvDepartureDateValue.text = departureFormattedDate
+            binding.includeBookingForm.tvReturnDateValue.text = returnFormattedDate
 
-            binding.includeBookingForm.tvDepartureDateValue.text = firstFormattedDate
-            binding.includeBookingForm.tvReturnDateValue.text = secondFormattedDate
+            tripViewModel.setDepartureDate(departureLocalDate)
+            tripViewModel.setReturnDate(returnLocalDate)
         }
     }
 
@@ -176,19 +348,28 @@ class OneWayTripFragment : Fragment() {
         datePicker.show(requireActivity().supportFragmentManager, tag)
 
         datePicker.addOnPositiveButtonClickListener {
-            val localDate = DateFormat.longToDate(it)
+            val localDate = DateFormat.longToLocalDate(it)
             val formattedDate = formatToIndonesiaLanguage(localDate)
 
             binding.includeBookingForm.tvDepartureDateValue.text = formattedDate
+
+            tripViewModel.setDepartureDate(localDate)
         }
     }
 
-    private fun setCurrentDate() {
+
+    //set the default date
+    /* I only set it for departure date in Trip View Model because by default is not a round trip*/
+    private fun setDefaultDate() {
+        val todayDate = DateFormat.currentDate
+
         binding.includeBookingForm.tvDepartureDateValue.text =
-            formatToIndonesiaLanguage(DateFormat.currentDate)
+            formatToIndonesiaLanguage(todayDate)
 
         binding.includeBookingForm.tvReturnDateValue.text =
-            formatToIndonesiaLanguage(DateFormat.currentDate)
+            formatToIndonesiaLanguage(todayDate)
+
+        tripViewModel.setDepartureDate(todayDate)
     }
 
     private fun passengerOnClick() {
@@ -244,14 +425,17 @@ class OneWayTripFragment : Fragment() {
         passengerViewModel.passengerClass.observe(viewLifecycleOwner) {
 
             text += when (it) {
-                PassengerClassEnum.ECONOMY ->
+                PassengerClassEnum.ECONOMY -> {
                     getString(R.string.tv_passenger_economy_class)
+                }
 
-                PassengerClassEnum.BUSINESS ->
-                    getString(R.string.tv_passenger_economy_class)
+                PassengerClassEnum.BUSINESS -> {
+                    getString(R.string.tv_passenger_business_class)
+                }
 
-                PassengerClassEnum.FIRST ->
+                PassengerClassEnum.FIRST -> {
                     getString(R.string.tv_passenger_first_class)
+                }
 
                 else -> {}
             }
@@ -285,7 +469,11 @@ class OneWayTripFragment : Fragment() {
 
     companion object {
         const val DEPARTURE_DATE = "DepartureDate"
-//        const val RETURN_DATE = "ReturnDate"
+
+        //        const val RETURN_DATE = "ReturnDate"
         const val RANGE_DATE = "RangeDate"
+        const val ROUND_TRIP = "isRoundTrip"
+        const val DEPARTURE = "departure"
+        const val RETURN = "return"
     }
 }

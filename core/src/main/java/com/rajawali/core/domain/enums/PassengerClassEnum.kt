@@ -4,4 +4,5 @@ enum class PassengerClassEnum {
     ECONOMY,
     BUSINESS,
     FIRST,
+    NULL,
 }
