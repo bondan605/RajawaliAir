@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.chooseTicket.ChooseTicketFragment"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    tools:context=".presentation.chooseTicket.ChooseTicketFragment">
 
     <include
         android:id="@+id/include_toolbar"
@@ -38,28 +38,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <include
+        android:id="@+id/include_chosen_departure_ticket"
+        layout="@layout/item_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_pick_date" />
+
     <TextView
         android:id="@+id/tv_departure_schedule_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:text="@string/tv_choose_ticket_departure_schedule_label"
-        android:textSize="16sp"
         android:fontFamily="@font/roboto_bold"
+        android:text="@string/tv_choose_ticket_departure_schedule_label"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_pick_date" />
+        app:layout_constraintTop_toBottomOf="@+id/include_chosen_departure_ticket" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ticket_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_ticket"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toTopOf="@+id/include_bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_departure_schedule_label" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tv_departure_schedule_label"
+        tools:listitem="@layout/item_ticket"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

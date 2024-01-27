@@ -41,36 +41,11 @@ data class ContentItem(
 	val updatedAt: String? = null
 )
 
-//@JsonClass(generateAdapter = true)
-//data class Pageable(
-//
-//	@Json(name="paged")
-//	val paged: Boolean? = null,
-//
-//	@Json(name="pageNumber")
-//	val pageNumber: Int? = null,
-//
-//	@Json(name="offset")
-//	val offset: Int? = null,
-//
-//	@Json(name="pageSize")
-//	val pageSize: Int? = null,
-//
-//	@Json(name="unpaged")
-//	val unpaged: Boolean? = null,
-//)
-
 @JsonClass(generateAdapter = true)
 data class Data(
 
 	@Json(name="size")
 	val size: Int? = null,
-
-//	@Json(name="totalPages")
-//	val totalPages: Int? = null,
-
-//	@Json(name="pageable")
-//	val pageable: Pageable? = null,
 
 	@Json(name="content")
 	val content: List<ContentItem>,

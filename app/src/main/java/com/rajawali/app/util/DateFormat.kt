@@ -2,6 +2,7 @@ package com.rajawali.app.util
 
 import java.time.Instant
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
@@ -20,10 +21,16 @@ object DateFormat {
         date.format(DateTimeFormatter.ofPattern("EEE, dd MMM yyyy"))
 
 
-    fun longToDate(long: Long): LocalDate {
+    fun longToLocalDate(long: Long): LocalDate {
         val instant = Instant.ofEpochMilli(long)
         //this need minimum of API 34
 //        return LocalDate.ofInstant(instant, ZoneId.systemDefault())
         return instant.atZone(ZoneId.systemDefault()).toLocalDate()
+    }
+
+    fun longToLocalDateTime(long: Long) : LocalDateTime {
+        val instant = Instant.ofEpochMilli(long)
+
+        return instant.atZone(ZoneId.systemDefault()).toLocalDateTime()
     }
 }

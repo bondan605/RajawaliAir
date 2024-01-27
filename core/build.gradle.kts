@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -54,25 +52,25 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     //koin
-    implementation ("io.insert-koin:koin-core:3.2.2")
-    implementation ("io.insert-koin:koin-android:3.3.0")
+    implementation("io.insert-koin:koin-core:3.2.2")
+    implementation("io.insert-koin:koin-android:3.3.0")
 
     //datastore preference
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     //api
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
     implementation("com.squareup.moshi:moshi:1.14.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     //room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 
-    //timber
-//    implementation ("com.jakewharton.timber:timber:4.7.1")
+//    timber
+    implementation("com.jakewharton.timber:timber:4.7.1")
 
 }
