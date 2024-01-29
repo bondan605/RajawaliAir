@@ -23,43 +23,27 @@ class TripViewModel : ViewModel() {
     private val _isValueEmpty = MutableLiveData<List<TripValueEnum>>()
     val isValueEmpty: LiveData<List<TripValueEnum>> = _isValueEmpty
 
-    fun setDepartureTicket(
-        departureCityCode: String,
+    fun setTicket(
+        departureId: String,
         departureDate: String,
-        destinationCityCode: String,
+        destinationId: String,
         seatType: PassengerClassEnum,
         adultPassenger: Int,
         childPassenger: Int,
         infantPassenger: Int,
+        departureCity : String,
+        destinationCity : String,
     ): FindTicketModel {
         return FindTicketModel(
-            departureCityCode = departureCityCode,
+            departureId = departureId,
             departureDate = departureDate,
-            destinationCityCode = destinationCityCode,
+            destinationId = destinationId,
             seatType = seatType,
             adultPassenger = adultPassenger,
             childPassenger = childPassenger,
             infantPassenger = infantPassenger,
-        )
-    }
-
-    fun setReturnTicket(
-        departureCityCode: String,
-        returnDate: String,
-        destinationCityCode: String,
-        seatType: PassengerClassEnum,
-        adultPassenger: Int,
-        childPassenger: Int,
-        infantPassenger: Int,
-    ): FindTicketModel {
-        return FindTicketModel(
-            departureCityCode = departureCityCode,
-            departureDate = returnDate,
-            destinationCityCode = destinationCityCode,
-            seatType = seatType,
-            adultPassenger = adultPassenger,
-            childPassenger = childPassenger,
-            infantPassenger = infantPassenger,
+            departureCity = departureCity,
+            destinationCity = destinationCity
         )
     }
 

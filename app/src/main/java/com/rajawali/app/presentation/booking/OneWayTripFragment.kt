@@ -73,6 +73,8 @@ class OneWayTripFragment : Fragment() {
         binding.includeBookingForm.btnSearch.setOnClickListener {
             var departureId = ""
             var departureDate = ""
+            var departureCity = ""
+            var destinationCity = ""
             var returnDate = ""
             var destinationId = ""
             var seatType = PassengerClassEnum.NULL
@@ -82,10 +84,12 @@ class OneWayTripFragment : Fragment() {
 
             airportsViewModel.departureAirport.observe(viewLifecycleOwner) {
                 departureId = it.id
+                departureCity = it.city
             }
 
             airportsViewModel.arrivingAirport.observe(viewLifecycleOwner) {
                 destinationId = it.id
+                destinationCity = it.city
             }
 
             tripViewModel.departureDate.observe(viewLifecycleOwner) {
@@ -155,23 +159,27 @@ class OneWayTripFragment : Fragment() {
 
                             tripViewModel.roundTrip.observe(viewLifecycleOwner) { isRoundTrip ->
                                 if (isRoundTrip) {
-                                    val departureTrip = tripViewModel.setDepartureTicket(
-                                        departureCityCode = departureId,
+                                    val departureTrip = tripViewModel.setTicket(
+                                        departureId = departureId,
                                         departureDate = departureDate,
-                                        destinationCityCode = destinationId,
+                                        destinationId = destinationId,
                                         seatType = seatType,
                                         adultPassenger = adultPassenger,
                                         childPassenger = childPassenger,
                                         infantPassenger = infantPassenger,
+                                        departureCity = departureCity,
+                                        destinationCity = destinationCity,
                                     )
-                                    val returnTrip = tripViewModel.setReturnTicket(
-                                        departureCityCode = destinationId,
-                                        returnDate = returnDate,
-                                        destinationCityCode = departureId,
+                                    val returnTrip = tripViewModel.setTicket(
+                                        departureId = destinationId,
+                                        departureDate = returnDate,
+                                        destinationId = departureId,
                                         seatType = seatType,
                                         adultPassenger = adultPassenger,
                                         childPassenger = childPassenger,
                                         infantPassenger = infantPassenger,
+                                        departureCity = destinationCity,
+                                        destinationCity = departureCity,
                                     )
                                     val bundle = Bundle()
 
@@ -184,16 +192,17 @@ class OneWayTripFragment : Fragment() {
                                         bundle
                                     )
 
-                                }
-                                else {
-                                    val departureTrip = tripViewModel.setDepartureTicket(
-                                        departureCityCode = departureId,
+                                } else {
+                                    val departureTrip = tripViewModel.setTicket(
+                                        departureId = departureId,
                                         departureDate = departureDate,
-                                        destinationCityCode = destinationId,
+                                        destinationId = destinationId,
                                         seatType = seatType,
                                         adultPassenger = adultPassenger,
                                         childPassenger = childPassenger,
                                         infantPassenger = infantPassenger,
+                                        departureCity = departureCity,
+                                        destinationCity = destinationCity,
                                     )
                                     val bundle = Bundle()
 

@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SearchViewModel(get()) }
     viewModel { AirportsViewModel()}
-    viewModel { ChooseTicketViewModel(get())}
+    viewModel { ChooseTicketViewModel(get(), get())}
 }

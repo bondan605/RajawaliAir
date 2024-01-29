@@ -6,11 +6,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class FindTicketModel(
-    val departureCityCode: String,
+    val departureId: String,
     val departureDate: String,
-    val destinationCityCode: String,
+    val destinationId: String,
     val seatType: PassengerClassEnum,
     val adultPassenger: Int,
     val childPassenger: Int,
     val infantPassenger: Int,
+    val departureCity: String,
+    val destinationCity: String
 ) : Parcelable
