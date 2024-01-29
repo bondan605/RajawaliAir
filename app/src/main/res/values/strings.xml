@@ -50,6 +50,7 @@
     <string name="tv_choose_ticket_flight_route">%1$s ➜ %2$s</string>
     <string name="tv_choose_ticket_flight_route_description">%1$s | %2$s | %3$s</string>
     <string name="tv_choose_ticket_departure_schedule_label">Departure Schedule</string>
+    <string name="tv_no_tickets">Tickets not found</string>
     <string name="tv_choose_ticket_return_schedule_label">Return Schedule</string>
 
 
@@ -136,12 +137,13 @@
     <string name="tv_flight_detail_label">Flight Details</string>
     <string name="tv_flight_length">1h 50m</string>
     <string name="tv_flight_date">Thursday, 25 Jan 2024</string>
-    <string name="tv_departing__city_code_time">%1$s | %2$s</string>
+    <string name="tv_city_code_time">%1$s (%2$s) | %3$s</string>
+    <string name="tv_city_code">%1$s (%2$s)</string>
     <string name="tv_departing_airport">%1$s | %2$s</string>
-    <string name="tv_flight_seat">%1$s | %2$s</string>
+    <string name="tv_flight_number">%1$s | %2$s</string>
     <string name="tv_arriving__city_code_time">%1$s | %2$s</string>
     <string name="tv_arriving_airport">%1$s | %2$s</string>
-    <string name="earn_10000_loyalty_points">Earn %1$s Loyalty Points</string>
+    <string name="tv_point_gain">Earn %1$d Loyalty Points</string>
     <string name="tv_luggage_additional_description">Baggage 20 kg</string>
     <string name="tv_luggage_description">Cabin baggage 7kg</string>
     <string name="tv_meal_description">In-flight meals</string>
@@ -151,7 +153,7 @@
 
     <!-- Ticket Type   -->
     <string name="tv_ticket_type">Economy</string>
-    <string name="tv_total_price">IDR %1$s</string>
+    <string name="tv_total_price">IDR %1$d</string>
     <string name="tv_safe_total_price">IDR %1$s</string>
     <string name="tv_safe">Safe</string>
 
@@ -180,7 +182,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="_25_jan_2024_08_15_09_05">25 Jan 2024, 08:15 - 09:05</string>
+    <string name="_25_jan_2024_08_15_09_05">25 Jan 2024, 08:15 – 09:05</string>
     <string name="_1h_50m">1h 50m</string>
     <string name="_0_kg">0 Kg</string>
     <string name="idr_0">IDR 0</string>

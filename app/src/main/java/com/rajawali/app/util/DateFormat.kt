@@ -20,6 +20,11 @@ object DateFormat {
     fun formatToIndonesiaLanguage(date: LocalDate): String =
         date.format(DateTimeFormatter.ofPattern("EEE, dd MMM yyyy"))
 
+    fun formatToFullDateWithDay(date: String): String {
+        val slicedDate = date.take(10)
+        val localDate = LocalDate.parse(slicedDate)
+        return localDate.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy"))
+    }
 
     fun longToLocalDate(long: Long): LocalDate {
         val instant = Instant.ofEpochMilli(long)
@@ -28,7 +33,7 @@ object DateFormat {
         return instant.atZone(ZoneId.systemDefault()).toLocalDate()
     }
 
-    fun longToLocalDateTime(long: Long) : LocalDateTime {
+    fun longToLocalDateTime(long: Long): LocalDateTime {
         val instant = Instant.ofEpochMilli(long)
 
         return instant.atZone(ZoneId.systemDefault()).toLocalDateTime()

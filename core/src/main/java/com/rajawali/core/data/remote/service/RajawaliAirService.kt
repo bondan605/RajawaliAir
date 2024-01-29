@@ -13,7 +13,7 @@ interface RajawaliAirService {
         @Query(Constant.PAGE_SIZE) size : Int
     ): AirportsResponse
 
-    @GET("flights/depatures")
+    @GET("flights/departures")
     suspend fun getPreferredFlights(
         @Query(Constant.SOURCE_AIRPORT) departure : String,
         @Query(Constant.DESTINATION_AIRPORT) destination : String,

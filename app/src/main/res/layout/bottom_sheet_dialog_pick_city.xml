@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:minHeight="700dp"
     android:paddingHorizontal="16dp"
+    android:background="@color/white"
     android:paddingBottom="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:context=".presentation.pickCity.PickCityBottomSheetDialog">
