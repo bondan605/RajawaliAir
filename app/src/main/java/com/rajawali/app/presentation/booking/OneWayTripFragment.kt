@@ -15,14 +15,16 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentOneWayTripBinding
 import com.rajawali.app.presentation.bottomSheetDialog.passenger.PassengerViewModel
+import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.pickCity.AirportsViewModel
-import com.rajawali.app.util.DateFormat
-import com.rajawali.app.util.DateFormat.formatToIndonesiaLanguage
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.NavigationUtils.safeNavigateUsingID
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.enums.PassengerClassEnum
 import com.rajawali.core.domain.enums.TripValueEnum
+import com.rajawali.core.util.DateFormat
+import com.rajawali.core.util.DateFormat.formatDateToAbbreviatedString
+import java.time.LocalDate
 
 class OneWayTripFragment : Fragment() {
 
@@ -32,6 +34,7 @@ class OneWayTripFragment : Fragment() {
     private val airportsViewModel: AirportsViewModel by activityViewModels()
     private val passengerViewModel: PassengerViewModel by activityViewModels()
     private val tripViewModel: TripViewModel by viewModels()
+    private val ticketViewModel: TicketViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,10 +75,10 @@ class OneWayTripFragment : Fragment() {
     private fun searchFlight() {
         binding.includeBookingForm.btnSearch.setOnClickListener {
             var departureId = ""
-            var departureDate = ""
+            var departureDate = LocalDate.now()
             var departureCity = ""
             var destinationCity = ""
-            var returnDate = ""
+            var returnDate = LocalDate.now()
             var destinationId = ""
             var seatType = PassengerClassEnum.NULL
             var adultPassenger = 0
@@ -181,16 +184,23 @@ class OneWayTripFragment : Fragment() {
                                         departureCity = destinationCity,
                                         destinationCity = departureCity,
                                     )
-                                    val bundle = Bundle()
+                                    val destination = OneWayTripFragmentDirections
+                                        .actionOneWayTripFragmentToChooseTicketFragment()
+                                        .actionId
+//                                    val bundle = Bundle()
 
-                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
-                                    bundle.putParcelable(DEPARTURE, departureTrip)
-                                    bundle.putParcelable(RETURN, returnTrip)
+                                    ticketViewModel.setPreferableDeparture(departureTrip)
+                                    ticketViewModel.setPreferableReturn(returnTrip)
+                                    ticketViewModel.setRoundTrip(isRoundTrip)
+//                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
+//                                    bundle.putParcelable(DEPARTURE, departureTrip)
+//                                    bundle.putParcelable(RETURN, returnTrip)
 
                                     findNavController().safeNavigateUsingID(
-                                        R.id.action_oneWayTripFragment_to_chooseTicketFragment,
-                                        bundle
+                                        destination,
+//                                        bundle
                                     )
+//                                    findNavController().safeNavigate(destination)
 
                                 } else {
                                     val departureTrip = tripViewModel.setTicket(
@@ -204,15 +214,22 @@ class OneWayTripFragment : Fragment() {
                                         departureCity = departureCity,
                                         destinationCity = destinationCity,
                                     )
-                                    val bundle = Bundle()
-
-                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
-                                    bundle.putParcelable(DEPARTURE, departureTrip)
+                                    val destination =
+                                        OneWayTripFragmentDirections
+                                            .actionOneWayTripFragmentToChooseTicketFragment()
+                                            .actionId
+//                                    val bundle = Bundle()
+//
+//                                    bundle.putBoolean(ROUND_TRIP, isRoundTrip)
+//                                    bundle.putParcelable(DEPARTURE, departureTrip)
+                                    ticketViewModel.setRoundTrip(isRoundTrip)
+                                    ticketViewModel.setPreferableDeparture(departureTrip)
 
                                     findNavController().safeNavigateUsingID(
-                                        R.id.action_oneWayTripFragment_to_chooseTicketFragment,
-                                        bundle
+                                        destination,
+//                                        bundle
                                     )
+//                                    findNavController().navigate(destination)
                                 }
                             }
                         }
@@ -224,7 +241,7 @@ class OneWayTripFragment : Fragment() {
 
     private fun isValueEmpty(
         departureId: String,
-        departureDate: String,
+        departureDate: LocalDate,
         destinationId: String,
         seatType: PassengerClassEnum,
         adultPassenger: Int,
@@ -233,7 +250,7 @@ class OneWayTripFragment : Fragment() {
     ) {
         tripViewModel.isValueEmpty(
             departureCityCode = departureId,
-            departureDate = departureDate,
+            departureDate = departureDate.toString(),
             destinationCityCode = destinationId,
             seatType = seatType,
             adultPassenger = adultPassenger,
@@ -336,10 +353,10 @@ class OneWayTripFragment : Fragment() {
         dateRangePicker.addOnPositiveButtonClickListener {
 
             val departureLocalDate = DateFormat.longToLocalDate(it.first)
-            val departureFormattedDate = formatToIndonesiaLanguage(departureLocalDate)
+            val departureFormattedDate = formatDateToAbbreviatedString(departureLocalDate)
 
             val returnLocalDate = DateFormat.longToLocalDate(it.second)
-            val returnFormattedDate = formatToIndonesiaLanguage(returnLocalDate)
+            val returnFormattedDate = formatDateToAbbreviatedString(returnLocalDate)
 
             binding.includeBookingForm.tvDepartureDateValue.text = departureFormattedDate
             binding.includeBookingForm.tvReturnDateValue.text = returnFormattedDate
@@ -358,7 +375,7 @@ class OneWayTripFragment : Fragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             val localDate = DateFormat.longToLocalDate(it)
-            val formattedDate = formatToIndonesiaLanguage(localDate)
+            val formattedDate = formatDateToAbbreviatedString(localDate)
 
             binding.includeBookingForm.tvDepartureDateValue.text = formattedDate
 
@@ -373,10 +390,10 @@ class OneWayTripFragment : Fragment() {
         val todayDate = DateFormat.currentDate
 
         binding.includeBookingForm.tvDepartureDateValue.text =
-            formatToIndonesiaLanguage(todayDate)
+            formatDateToAbbreviatedString(todayDate)
 
         binding.includeBookingForm.tvReturnDateValue.text =
-            formatToIndonesiaLanguage(todayDate)
+            formatDateToAbbreviatedString(todayDate)
 
         tripViewModel.setDepartureDate(todayDate)
     }

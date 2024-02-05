@@ -70,7 +70,14 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
 
-//    timber
+    //timber
     implementation("com.jakewharton.timber:timber:4.7.1")
+
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    //liveData
+    api ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
 }

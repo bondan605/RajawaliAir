@@ -129,7 +129,7 @@
     <string name="tv_departure_airport_name">Yogyakarta International Airport | Terminal Domestic</string>
     <string name="tv_arrive_airport_name">Sepinggan | Terminal Domestic</string>
     <string name="tv_nama_maskapai">Rajawali Air</string>
-    <string name="tv_ticket_detail">RW-225 | Economy | 1h 50m</string>
+    <string name="tv_ticket_detail">%1$s | %2$s | %3$s</string>
     <string name="tv_baggage">Cabin baggage 7kg\nBaggage 20 kg</string>
     <string name="tv_food">In-flight meals</string>
 
@@ -164,8 +164,8 @@
 
     <!--  Details Information  -->
     <string name="tv_departure_date">Thu, 25 Jan 2024</string>
-    <string name="tv_direct_flight">08:15 – 09:05 | Direct Flight</string>
-    <string name="tv_passenger_detail">Passenger 1 (Adult)</string>
+    <string name="tv_direct_flight">%1$s – %2$s | Direct Flight</string>
+    <string name="tv_passenger_detail">Passenger %1$d (%2$s)</string>
     <string name="tv_passenger_detail_other">Passenger 2 (Adult)</string>
 
     <!-- Radio Button   -->
@@ -204,6 +204,7 @@
     <string name="vegetarian_lasagna_with_tomato_sauce_nand_parsley">Vegetarian lasagna with tomato sauce\nand parsley.</string>
     <string name="idr_55_500">IDR 55.500</string>
     <string name="idr_146_000">IDR 146.000</string>
+    <string name="zero">IDR 0</string>
     <string name="_123456789">123456789</string>
     <string name="economy_direct_flight">Economy | Direct Flight</string>
     <string name="jam">02</string>
@@ -223,6 +224,14 @@
     <string name="tv_passenger_business_class">Business Class</string>
     <string name="tv_passenger_first_class">First Class</string>
     <string name="tv_passenger_default_value">1 Adult, Economy Class</string>
+
+    <!-- passenger Details Bottom dialog -->
+    <string name="tv_passenger_info_description">Make sure that the passenger’s name is exactly as written in the government issued Id/Passport/Driving License. Avoid any mistake.</string>
+    <string name="tv_name_description">Filled based on ID/passport/driver’s license (without punctuation or degree).</string>
+    <string name="btn_save">Save</string>
+
+    <!-- travel adds on fragment -->
+
 
     <!-- date picker -->
     <string name="dp_departure_label">Select departure date</string>

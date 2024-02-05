@@ -2,6 +2,7 @@ package com.rajawali.core.data.remote
 
 import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.FlightItem
+import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.service.RajawaliAirService
 import com.rajawali.core.domain.repository.RemoteRepository
 import com.rajawali.core.domain.result.ApiResponse
@@ -33,32 +34,6 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
             }
         }
     }
-
-//    override suspend fun getFlights(): ApiResponse<List<FlightItem>> {
-//        val response = service.getFlights()
-//
-//        return when (response.success) {
-//            true -> {
-//                when (response.data?.empty) {
-//                    true ->
-//                        ApiResponse.Error(Constant.DATA_EMPTY)
-//
-//                    false -> {
-//                        ApiResponse.Success(response.data.content)
-//                    }
-//
-//                    null ->
-//                        ApiResponse.Error(Constant.DATA_EMPTY)
-//                }
-//            }
-//
-//            false ->
-//                ApiResponse.Error(response.message ?: Constant.FETCH_FAILED)
-//
-//            null ->
-//                ApiResponse.Error(response.message ?: Constant.DATA_EMPTY)
-//        }
-//    }
 
     override suspend fun getPreferredFlights(
         departure: String,
@@ -112,4 +87,34 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
         }
     }
 
+    override suspend fun getFlightMeals(): ApiResponse<List<MealItem>> {
+        val response = service.getMeals()
+
+        return try {
+
+            when (response.success) {
+                true -> {
+                    when (response.data.empty) {
+                        true ->
+                            throw Exception(response.message)
+
+                        false ->
+                            ApiResponse.Success(response.data.content)
+
+                        null ->
+                            throw Exception(Constant.DATA_EMPTY)
+                    }
+                }
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw Exception(Constant.DATA_EMPTY)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
+    }
 }

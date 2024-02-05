@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogFlightDetailBinding
 import com.rajawali.app.util.AppUtils
-import com.rajawali.app.util.DateFormat
+import com.rajawali.core.util.DateFormat
 import com.rajawali.core.domain.model.FlightModel
 
 class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
@@ -28,7 +28,6 @@ class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
         super.onDestroy()
         _binding = null
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,6 +51,7 @@ class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
     private fun setTicketView() {
         val ticket: FlightModel =
             FlightDetailBottomSheetDialogArgs.fromBundle(arguments as Bundle).ticket
+        val timeDifferent = DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
 
         binding.tvDepartingCity.text = getString(
             R.string.tv_city_code,
@@ -87,5 +87,7 @@ class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
         binding.tvTotalPrice.text = getString(R.string.tv_total_price, ticket.totalPrice)
 
         binding.tvTotalPointGain.text = getString(R.string.tv_point_gain, ticket.points)
+
+        binding.tvFlightLength.text = timeDifferent
     }
 }

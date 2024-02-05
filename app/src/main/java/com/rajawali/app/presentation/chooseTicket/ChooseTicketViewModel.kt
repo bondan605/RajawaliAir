@@ -40,7 +40,7 @@ class ChooseTicketViewModel(
         adultPassenger: Int,
         childPassenger: Int,
         infantPassenger: Int,
-        departureDate: String,
+        departureDate: LocalDate,
         seatType: String,
     ): LiveData<UCResult<List<FlightModel>>> =
         useCase.getPreferredFlight(
@@ -49,7 +49,7 @@ class ChooseTicketViewModel(
             adultPassenger = adultPassenger,
             childPassenger = childPassenger,
             infantPassenger = infantPassenger,
-            departureDate = departureDate,
+            departureDate = departureDate.toString(),
             seatType = seatType,
         ).asLiveData()
 }

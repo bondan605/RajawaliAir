@@ -1,8 +1,10 @@
 package com.rajawali.core.di
 
+import com.rajawali.core.domain.usecase.CreatePassengerInformationInputUseCase
 import com.rajawali.core.domain.usecase.GetAirportsUseCase
 import com.rajawali.core.domain.usecase.GetFlightByDate
 import com.rajawali.core.domain.usecase.GetFlightsUseCase
+import com.rajawali.core.domain.usecase.GetMealsUseCase
 import com.rajawali.core.domain.usecase.GetPreferredFlight
 import org.koin.dsl.module
 
@@ -13,4 +15,6 @@ val useCaseModule = module {
     single { GetFlightsUseCase(get()) }
     single { GetPreferredFlight(get()) }
     single { GetFlightByDate() }
+    single { CreatePassengerInformationInputUseCase() }
+    single { GetMealsUseCase(get()) }
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rajawali.core.databinding.ItemPickDateBinding
-import com.rajawali.core.util.DateMapper
+import com.rajawali.core.util.DateFormat
 import java.time.LocalDate
 
 class DateAdapter :
@@ -43,7 +43,7 @@ class DateAdapter :
     class DateViewHolder(private val binding: ItemPickDateBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(localDate: LocalDate) {
-            val date = DateMapper.getDayAndDateOnly(localDate)
+            val date = DateFormat.getDayAndDateOnly(localDate)
 
             binding.tvDate.text = date
         }

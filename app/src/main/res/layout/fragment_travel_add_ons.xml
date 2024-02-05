@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_app"
+    tools:context=".presentation.addsOn.TravelAddOnsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -77,7 +79,6 @@
                 android:textSize="16sp" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_add_baggage"
                 style="?attr/materialCardViewElevatedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,6 +87,7 @@
                 app:cardElevation="2dp">
 
                 <LinearLayout
+                    android:id="@+id/ll_add_baggage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
@@ -120,6 +122,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/tv_baggage_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_baggage"
@@ -182,6 +185,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/tv_seats_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_seat_number"
@@ -244,6 +248,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/tv_meals_description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_food"
@@ -848,7 +853,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="IDR 3.204.800"
+                tools:text="IDR 3.204.800"
                 android:textColor="@color/main_color"
                 android:textSize="16sp" />
 
@@ -876,7 +881,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/coin"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Get 10000 Loyalty Points"
+                    tools:text="Get 10000 Loyalty Points"
                     android:textColor="@color/main_color"
                     android:textSize="12sp" />
             </RelativeLayout>
