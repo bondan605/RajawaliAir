@@ -5,9 +5,11 @@ import com.rajawali.core.data.remote.response.Airplane
 import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.DestinationAirport
 import com.rajawali.core.data.remote.response.FlightItem
+import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.response.SourceAirport
 import com.rajawali.core.domain.model.AirplaneModel
 import com.rajawali.core.domain.model.FlightModel
+import com.rajawali.core.domain.model.MealModel
 import com.rajawali.core.domain.model.SearchModel
 
 object DataMapper {
@@ -70,6 +72,15 @@ object DataMapper {
 
             arrivalTime = arrivalTime,
         )
+
+    fun MealsResponseToMealsDomain(response : MealItem) : MealModel =
+        MealModel(
+            id = response.id ?: "",
+            price = response.price ?: 0,
+            name = response.name ?: "",
+            description = response.description ?: "",
+            thumbnailUrl = response.thumbnailUrl ?: ""
+    )
 
     private fun destinationAirportResponseToSearchDomain(response: DestinationAirport): SearchModel =
         SearchModel(

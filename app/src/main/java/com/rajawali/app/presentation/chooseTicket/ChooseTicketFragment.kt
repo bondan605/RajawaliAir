@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentChooseTicketBinding
-import com.rajawali.app.presentation.booking.OneWayTripFragment
 import com.rajawali.app.util.AppUtils.getPassengerClassText
 import com.rajawali.app.util.AppUtils.isPassengerExist
 import com.rajawali.app.util.NavigationUtils.safeNavigate
-import com.rajawali.app.util.NavigationUtils.safeNavigateUsingID
 import com.rajawali.core.domain.enums.PassengerCategoryEnum
 import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.model.FlightModel
@@ -34,7 +32,7 @@ class ChooseTicketFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ChooseTicketViewModel by viewModel()
-    private val roundTrip: IsRoundTripViewModel by activityViewModels()
+    private val roundTrip: TicketViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,7 +78,7 @@ class ChooseTicketFragment : Fragment() {
         val rvDates = binding.rvPickDate
         val snapHelper = PagerSnapHelper()
         val _adapter = DateAdapter()
-        val date = LocalDate.parse(getParcelableBundle(OneWayTripFragment.DEPARTURE)?.departureDate)
+//        val date = LocalDate.parse(getParcelableBundle(OneWayTripFragment.DEPARTURE)?.departureDate)
 
         val _layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -88,20 +86,23 @@ class ChooseTicketFragment : Fragment() {
 //        sticky when moving the recyclerview
         snapHelper.attachToRecyclerView(rvDates)
 
-        viewModel.getDates(date).observe(viewLifecycleOwner) {
-            when (it) {
-                is UCResult.Error ->
-                    Toast.makeText(activity, "date is error", Toast.LENGTH_SHORT).show()
+        roundTrip.preferableDeparture.observe(viewLifecycleOwner) { date ->
 
-                is UCResult.Success -> {
-                    _adapter.submitList(it.data)
+            viewModel.getDates(date.departureDate).observe(viewLifecycleOwner) {
+                when (it) {
+                    is UCResult.Error ->
+                        Toast.makeText(activity, "date is error", Toast.LENGTH_SHORT).show()
 
-                    rvDates.apply {
-                        adapter = _adapter
-                        setHasFixedSize(true)
+                    is UCResult.Success -> {
+                        _adapter.submitList(it.data)
+
+                        rvDates.apply {
+                            adapter = _adapter
+                            setHasFixedSize(true)
+                        }
+
+                        rvDates.layoutManager?.scrollToPosition(4)
                     }
-
-                    rvDates.layoutManager?.scrollToPosition(4)
                 }
             }
         }
@@ -139,28 +140,31 @@ class ChooseTicketFragment : Fragment() {
 
     private fun displayPreferredTicketOnToolbar() {
         val toolbar = binding.includeToolbar
-        val preferred = getParcelableBundle(OneWayTripFragment.DEPARTURE)
-        toolbar.tvRoute.text = getString(
-            R.string.tv_choose_ticket_flight_route,
-            preferred?.departureCity,
-            preferred?.destinationCity
-        )
+//        val preferred = getParcelableBundle(OneWayTripFragment.DEPARTURE)
+        roundTrip.preferableDeparture.observe(viewLifecycleOwner) { preferred ->
 
-        val passenger = setPassengerToDisplay(
-            preferred?.adultPassenger,
-            preferred?.childPassenger,
-            preferred?.infantPassenger
-        )
-
-        val seatType = activity.getPassengerClassText(preferred?.seatType)
-
-        toolbar.tvRouteDescription.text =
-            getString(
-                R.string.tv_choose_ticket_flight_route_description,
-                preferred?.departureDate,
-                passenger,
-                seatType
+            toolbar.tvRoute.text = getString(
+                R.string.tv_choose_ticket_flight_route,
+                preferred?.departureCity,
+                preferred?.destinationCity
             )
+
+            val passenger = setPassengerToDisplay(
+                preferred?.adultPassenger,
+                preferred?.childPassenger,
+                preferred?.infantPassenger
+            )
+
+            val seatType = activity.getPassengerClassText(preferred?.seatType)
+
+            toolbar.tvRouteDescription.text =
+                getString(
+                    R.string.tv_choose_ticket_flight_route_description,
+                    preferred?.departureDate,
+                    passenger,
+                    seatType
+                )
+        }
     }
 
     private fun setPassengerToDisplay(
@@ -204,53 +208,63 @@ class ChooseTicketFragment : Fragment() {
     private fun getBooleanBundle(tag: String): Boolean =
         arguments?.getBoolean(tag) ?: false
 
+    //TODO Use activityLiveData instead
     private fun getPreferredTicket(customDate: LocalDate? = null) {
-        val isRoundTrip = getBooleanBundle(OneWayTripFragment.ROUND_TRIP)
-        val departureTrip = getParcelableBundle(OneWayTripFragment.DEPARTURE)
+//        val isRoundTrip = getBooleanBundle(OneWayTripFragment.ROUND_TRIP)
+//        roundTrip.setRoundTrip(isRoundTrip)
+//        val departureTrip = getParcelableBundle(OneWayTripFragment.DEPARTURE)
 
 
-        roundTrip.setRoundTrip(isRoundTrip)
+        roundTrip.isRoundTrip.observe(viewLifecycleOwner) { isRoundTrip ->
 
-        when (isRoundTrip) {
-            true -> {
+            when (isRoundTrip) {
+                true -> {
 
-                viewModel.isDeparturePicked.observe(viewLifecycleOwner) { isDeparturePicked ->
+                    viewModel.isDeparturePicked.observe(viewLifecycleOwner) { isDeparturePicked ->
 
-                    when (isDeparturePicked) {
-                        true -> {
-                            val returnTrip = getParcelableBundle(OneWayTripFragment.RETURN)
+                        when (isDeparturePicked) {
+                            true -> {
+//                                val returnTrip = getParcelableBundle(OneWayTripFragment.RETURN)
 
-                            if (returnTrip != null) {
+                                roundTrip.preferableReturn.observe(viewLifecycleOwner) { returnTrip ->
+//                                    if (returnTrip != null) {
 //                                val tickets = getTickets(returnTrip, customDate)
 //                                Timber.d("getPreferredTicket: $isDeparturePicked : $tickets")
 //
 //                                displayTicketToUI(tickets)
-                                customDate.isPreferredCustomDate(returnTrip)
+                                    customDate.isPreferredCustomDate(returnTrip)
+//                                    }
+                                }
+
                             }
 
-                        }
+                            false -> {
 
-                        false -> {
+                                roundTrip.preferableDeparture.observe(viewLifecycleOwner) { departureTrip ->
 
-                            if (departureTrip != null) {
+//                                    if (departureTrip != null) {
 
 //                                val tickets = getTickets(departureTrip, customDate)
 //                                displayTicketToUI(tickets)
-                                customDate.isPreferredCustomDate(departureTrip)
-                            }
+                                    customDate.isPreferredCustomDate(departureTrip)
+//                                    }
+                                }
 
+                            }
                         }
                     }
+
                 }
 
-            }
+                false -> {
+                    roundTrip.preferableDeparture.observe(viewLifecycleOwner) { departureTrip ->
 
-            false -> {
-                if (departureTrip != null) {
+//                    if (departureTrip != null) {
 //                    val tickets = getTickets(departureTrip, customDate)
 //                    displayTicketToUI(tickets)
-                    customDate.isPreferredCustomDate(departureTrip)
-
+                        customDate.isPreferredCustomDate(departureTrip)
+//                    }
+                    }
                 }
             }
         }
@@ -264,6 +278,7 @@ class ChooseTicketFragment : Fragment() {
                 val tickets = getTickets(data, this)
                 displayTicketToUI(tickets)
             }
+
             false -> {
                 val tickets = getTickets(data)
                 displayTicketToUI(tickets)
@@ -341,6 +356,7 @@ class ChooseTicketFragment : Fragment() {
                                         binding.tvNoTickets.visibility = View.GONE
 
 
+//                                        roundTrip.setDepartureTicket(ticket)
                                         viewModel.setDepartureTicket(ticket)
                                         viewModel.setDeparturePicked()
 
@@ -358,17 +374,38 @@ class ChooseTicketFragment : Fragment() {
                                     TicketAdapter.OnTicketClickCallback {
                                     override fun onTicketClickCallback(ticket: FlightModel) {
                                         viewModel.departureTicket.observe(viewLifecycleOwner) { departure ->
-                                            val bundle = Bundle()
+//                                            val bundle = Bundle()
                                             val destination =
-                                                R.id.action_chooseTicketFragment_to_selectedTicketFragment
+                                                ChooseTicketFragmentDirections
+                                                    .actionChooseTicketFragmentToSelectedTicketFragment()
+//                                                    .actionId
+//                                            val preferableDeparture =
+//                                                getParcelableBundle(OneWayTripFragment.DEPARTURE)
+//                                            val preferableReturn =
+//                                                getParcelableBundle(OneWayTripFragment.RETURN)
 
-                                            bundle.putParcelable(DEPARTURE, departure)
-                                            bundle.putParcelable(RETURN, ticket)
 
-                                            findNavController().safeNavigateUsingID(
-                                                destination,
-                                                bundle
-                                            )
+//                                            bundle.putParcelable(DEPARTURE, departure)
+//                                            bundle.putParcelable(RETURN, ticket)
+//                                            bundle.putParcelable(
+//                                                PREFERABLE_DEPARTURE,
+//                                                preferableDeparture
+//                                            )
+//                                            bundle.putParcelable(
+//                                                PREFERABLE_RETURN,
+//                                                preferableReturn
+//                                            )
+
+//                                            findNavController().safeNavigateUsingID(
+//                                                destination,
+//                                                bundle
+//                                            )
+
+                                            roundTrip.setDepartureTicket(departure)
+                                            roundTrip.setReturnTicket(ticket)
+//                                            roundTrip.setPreferableDeparture(preferableDeparture)
+//                                            roundTrip.setPreferableReturn(preferableReturn)
+                                            findNavController().safeNavigate(destination)
                                         }
                                     }
 
@@ -386,16 +423,25 @@ class ChooseTicketFragment : Fragment() {
                 false ->
                     this.setOnTicketClickCallback(object : TicketAdapter.OnTicketClickCallback {
                         override fun onTicketClickCallback(ticket: FlightModel) {
-                            val bundle = Bundle()
+//                            val bundle = Bundle()
                             val destination =
-                                R.id.action_chooseTicketFragment_to_selectedTicketFragment
+                                ChooseTicketFragmentDirections
+                                    .actionChooseTicketFragmentToSelectedTicketFragment()
+//                                    .actionId
+//                            val preferableDeparture =
+//                                getParcelableBundle(OneWayTripFragment.DEPARTURE)
+//
+//                            bundle.putParcelable(DEPARTURE, ticket)
+//                            bundle.putParcelable(PREFERABLE_DEPARTURE, preferableDeparture)
 
-                            bundle.putParcelable(DEPARTURE, ticket)
+//                            findNavController().safeNavigateUsingID(
+//                                destination,
+//                                bundle
+//                            )
 
-                            findNavController().safeNavigateUsingID(
-                                destination,
-                                bundle
-                            )
+                            roundTrip.setDepartureTicket(ticket)
+//                            roundTrip.setPreferableDeparture(preferableDeparture)
+                            findNavController().safeNavigate(destination)
                         }
 
                         override fun onRescheduleOptionsClickCallback(ticket: FlightModel) {
@@ -427,7 +473,7 @@ class ChooseTicketFragment : Fragment() {
             infantPassenger = preferred.infantPassenger,
             departureDate = when (customDate != null) {
                 true ->
-                    customDate.toString()
+                    customDate
 
                 false ->
                     preferred.departureDate
@@ -440,6 +486,8 @@ class ChooseTicketFragment : Fragment() {
     companion object {
         const val DEPARTURE = "ticketDeparture"
         const val RETURN = "ticketReturn"
+        const val PREFERABLE_DEPARTURE = "preferableDeparture"
+        const val PREFERABLE_RETURN = "preferableReturn"
     }
 
 }

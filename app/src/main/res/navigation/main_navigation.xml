@@ -99,8 +99,11 @@
     </fragment>
     <fragment
         android:id="@+id/selectedTicketFragment"
-        android:name="com.rajawali.app.presentation.confirmBooking.SelectedTicketFragment"
+        android:name="com.rajawali.app.presentation.selectedTicket.SelectedTicketFragment"
         android:label="SelectedTicketFragment" >
+        <action
+            android:id="@+id/action_selectedTicketFragment_to_detailsInformationFragment"
+            app:destination="@id/detailsInformationFragment" />
     </fragment>
     <dialog
         android:id="@+id/flightDetailBottomSheetDialog"
@@ -110,4 +113,45 @@
             android:name="ticket"
             app:argType="com.rajawali.core.domain.model.FlightModel" />
     </dialog>
+    <fragment
+        android:id="@+id/detailsInformationFragment"
+        android:name="com.rajawali.app.presentation.detailsInformation.DetailsInformationFragment"
+        android:label="fragment_details_information"
+        tools:layout="@layout/fragment_details_information" >
+        <action
+            android:id="@+id/action_detailsInformationFragment_to_passengerDetailsBottomSheetDialog"
+            app:destination="@id/passengerDetailsBottomSheetDialog" />
+        <action
+            android:id="@+id/action_detailsInformationFragment_to_travelAddOnsFragment"
+            app:destination="@id/travelAddOnsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/passengerDetailsBottomSheetDialog"
+        android:name="com.rajawali.app.presentation.bottomSheetDialog.passengerDetails.PassengerDetailsBottomSheetDialog"
+        android:label="PassengerDetailsBottomSheetDialog" >
+        <argument
+            android:name="passenger"
+            app:argType="com.rajawali.core.domain.model.PassengerInputModel" />
+    </dialog>
+    <fragment
+        android:id="@+id/travelAddOnsFragment"
+        android:name="com.rajawali.app.presentation.addsOn.TravelAddOnsFragment"
+        android:label="fragment_travel_add_ons"
+        tools:layout="@layout/fragment_travel_add_ons" >
+        <action
+            android:id="@+id/action_travelAddOnsFragment_to_baggageFragment"
+            app:destination="@id/baggageFragment" />
+        <action
+            android:id="@+id/action_travelAddOnsFragment_to_mealsFragment"
+            app:destination="@id/mealsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealsFragment"
+        android:name="com.rajawali.app.presentation.addsOn.meals.MealsFragment"
+        android:label="MealsFragment" />
+    <fragment
+        android:id="@+id/baggageFragment"
+        android:name="com.rajawali.app.presentation.addsOn.baggage.BaggageFragment"
+        android:label="fragment_baggage"
+        tools:layout="@layout/fragment_baggage" />
 </navigation>

@@ -14,18 +14,18 @@ class TripViewModel : ViewModel() {
     private val _roundTrip = MutableLiveData<Boolean>(false)
     val roundTrip: LiveData<Boolean> = _roundTrip
 
-    private val _departureDate = MutableLiveData<String>()
-    val departureDate: LiveData<String> = _departureDate
+    private val _departureDate = MutableLiveData<LocalDate>()
+    val departureDate: LiveData<LocalDate> = _departureDate
 
-    private val _returnDate = MutableLiveData<String>()
-    val returnDate: LiveData<String> = _returnDate
+    private val _returnDate = MutableLiveData<LocalDate>()
+    val returnDate: LiveData<LocalDate> = _returnDate
 
     private val _isValueEmpty = MutableLiveData<List<TripValueEnum>>()
     val isValueEmpty: LiveData<List<TripValueEnum>> = _isValueEmpty
 
     fun setTicket(
         departureId: String,
-        departureDate: String,
+        departureDate: LocalDate,
         destinationId: String,
         seatType: PassengerClassEnum,
         adultPassenger: Int,
@@ -101,10 +101,10 @@ class TripViewModel : ViewModel() {
     }
 
     fun setDepartureDate(date: LocalDate) {
-        _departureDate.value = date.toString()
+        _departureDate.value = date
     }
 
     fun setReturnDate(date: LocalDate) {
-        _returnDate.value = date.toString()
+        _returnDate.value = date
     }
 }

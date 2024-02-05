@@ -2,6 +2,7 @@ package com.rajawali.core.data.remote.service
 
 import com.rajawali.core.data.remote.response.AirportsResponse
 import com.rajawali.core.data.remote.response.FlightResponse
+import com.rajawali.core.data.remote.response.MealsResponse
 import com.rajawali.core.util.Constant
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -24,4 +25,8 @@ interface RajawaliAirService {
         @Query(Constant.SEAT_TYPE) seatType : String,
     ): FlightResponse
 
+    @GET("meals")
+    suspend fun getMeals(
+        @Query(Constant.PAGE_SIZE) size : Int = Constant.THOUSAND
+    ) : MealsResponse
 }
