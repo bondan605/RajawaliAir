@@ -14,9 +14,8 @@ import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentTravelAddOnsBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
-import com.rajawali.core.domain.enums.AddsOnEnum
+import com.rajawali.core.domain.model.Insurance
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
-import timber.log.Timber
 
 class TravelAddOnsFragment : Fragment() {
 
@@ -43,29 +42,181 @@ class TravelAddOnsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //do something here.
 
-//        onBaggageClicked()
-//        onSeatsClicked()
-//        onMealsClicked()
-
         onInsurancesClicked()
 
         populateTravelInsuranceView()
         populateBaggageInsuranceView()
         populateFlightDelayInsuranceView()
 
+        setLoyaltyPointAmount()
         setTotalPrice()
 
         setOnAddBaggageClicked()
         setOnAddMealsClicked()
 
-        onBaggageClicked()
+        onBaggageIcon()
+        onMealsIcon()
+
+        setDropdownValue()
+        setDropdownButton()
+        onDropdownIcon()
+        onDropdownContent()
     }
 
-    //TODO Instead of set (viewModel.setSeat, etc) the the seat, baggage, and meal on clicked. Do the set seat, baggage, and meal when save button is clicked.
+    private fun setDropdownButton() {
+        binding.ivDropdownBtn.setOnClickListener {
+            addsOnViewModel.setDropdownState()
+        }
+    }
+
+    private fun onDropdownContent() {
+        addsOnViewModel.dropdownBtnState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                true ->
+                    binding.includePriceDetails.root.visibility = View.VISIBLE
+
+                false ->
+                    binding.includePriceDetails.root.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun onDropdownIcon() {
+        addsOnViewModel.dropdownBtnState.observe(viewLifecycleOwner) { state ->
+            val icon =
+                when (state) {
+                    true ->
+                        R.drawable.arrow_up_20
+
+                    false ->
+                        R.drawable.arrow_down_20
+                }
+
+            binding.ivDropdownBtn.setImageResource(icon)
+        }
+    }
+
+    private fun setDropdownValue() {
+        val include = binding.includePriceDetails
+
+        //flight route section
+        ticketViewModel.departureTicket.observe(viewLifecycleOwner) { passenger ->
+            include.tvDepartureLocationLabel.text = passenger.sourceAirport.city
+            include.tvArriveLocationLabel.text = passenger.destinationAirport.city
+        }
+
+        //add-ons section
+        addsOnViewModel.totalItem.observe(viewLifecycleOwner) { item ->
+            val baggage = item.getValue(BAGGAGE)
+            val meals = item.getValue(MEALS)
+            val travelInsurance = item.getValue(TRAVEL_INSURANCE)
+            val baggageInsurance = item.getValue(BAGGAGE_INSURANCE)
+            val flightDelayInsurance = item.getValue(FLIGHT_DELAY_INSURANCE)
+
+            include.tvBaggageLabel.viewVisibility(baggage)
+            include.tvTotalBaggagePrice.viewVisibility(baggage)
+
+            include.tvMealsLabel.viewVisibility(meals)
+            include.tvTotalMealsPrice.viewVisibility(meals)
+
+            include.tvTravelInsuranceLabel.viewVisibility(travelInsurance)
+            include.tvTravelInsurancePrice.viewVisibility(travelInsurance)
+
+            include.tvBaggageInsuranceLabel.viewVisibility(baggageInsurance)
+            include.tvBaggageInsurancePrice.viewVisibility(baggageInsurance)
+
+            include.tvFlightDelayInsuranceLabel.viewVisibility(flightDelayInsurance)
+            include.tvFlightDelayInsurancePrice.viewVisibility(flightDelayInsurance)
+
+
+            include.tvTotalBaggagePrice.text =
+                getString(R.string.tv_total_price, baggage)
+
+            include.tvTotalMealsPrice.text =
+                getString(R.string.tv_total_price, meals)
+
+            include.tvTravelInsurancePrice.text =
+                getString(R.string.tv_total_price, travelInsurance)
+
+            include.tvBaggageInsurancePrice.text =
+                getString(R.string.tv_total_price, baggageInsurance)
+
+            include.tvFlightDelayInsurancePrice.text =
+                getString(R.string.tv_total_price, flightDelayInsurance)
+        }
+
+        //add-ons section
+        ticketViewModel.preferableReturn.observe(viewLifecycleOwner) { passenger ->
+            val totalPassenger =
+                passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
+
+            include.tvTravelInsuranceLabel.text =
+                getString(R.string.tv_travel_insurance_amount, totalPassenger)
+
+            include.tvBaggageInsuranceLabel.text =
+                getString(R.string.tv_baggage_insurance_amount, totalPassenger)
+
+            include.tvFlightDelayInsuranceLabel.text =
+                getString(R.string.tv_flight_delay_insurance_amount, totalPassenger)
+        }
+
+        //passenger section
+        ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { passenger ->
+            //visibility
+            include.tvAdultPassengerCount.viewVisibility(passenger.adultPassenger)
+            include.tvChildPassengerCount.viewVisibility(passenger.childPassenger)
+            include.tvInfantPassengerCount.viewVisibility(passenger.infantPassenger)
+
+            //set up the amount
+            include.tvAdultPassengerCount.text =
+                getString(R.string.tv_adult_amount, passenger.adultPassenger)
+            include.tvChildPassengerCount.text =
+                getString(R.string.tv_child_amount, passenger.childPassenger)
+            include.tvInfantPassengerCount.text =
+                getString(R.string.tv_infant_amount, passenger.infantPassenger)
+
+            ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+                //visibility
+                include.tvAdultPassengerTotalPrice.viewVisibility(passenger.adultPassenger)
+                include.tvChildPassengerTotalPrice.viewVisibility(passenger.childPassenger)
+                include.tvInfantPassengerTotalPrice.viewVisibility(passenger.infantPassenger)
+
+                //set up the price
+                val totalAdultPrice : Int = ticket.seatPrice * passenger.adultPassenger
+                val totalChildPrice : Int = (ticket.seatPrice * passenger.childPassenger - (ticket.seatPrice * 0.10)).toInt()
+                val totalInfantPrice : Int = (ticket.seatPrice * passenger.infantPassenger - (ticket.seatPrice * 0.20)).toInt()
+
+                include.tvAdultPassengerTotalPrice.text =
+                    getString(R.string.tv_total_price, totalAdultPrice)
+                include.tvChildPassengerTotalPrice.text =
+                    getString(R.string.tv_total_price, totalChildPrice)
+                include.tvInfantPassengerTotalPrice.text =
+                    getString(R.string.tv_total_price, totalInfantPrice)
+            }
+        }
+    }
+
+    private fun TextView.viewVisibility(value: Int) {
+        val visibility =
+            when (value > 0) {
+                true ->
+                    View.VISIBLE
+
+                false ->
+                    View.GONE
+            }
+
+        this.visibility = visibility
+    }
+
+    private fun setLoyaltyPointAmount() {
+        ticketViewModel.departureTicket.observe(viewLifecycleOwner) {
+            binding.loyaltyPoint.text = getString(R.string.tv_point_gain, it.points)
+        }
+    }
 
     private fun setOnAddBaggageClicked() {
         binding.llAddBaggage.setOnClickListener {
-            Timber.d("setOnAddBaggageClicked: clicked")
             val destination = TravelAddOnsFragmentDirections
                 .actionTravelAddOnsFragmentToBaggageFragment()
 
@@ -82,72 +233,102 @@ class TravelAddOnsFragment : Fragment() {
         }
     }
 
+    //put the value into a map with a key. then sum the value and use it into TextView.text
     private fun setTotalPrice() {
+        var totalPassenger = 1
 
-        addsOnViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
-            binding.totalPrice.text = getString(R.string.tv_total_price, price)
+        ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { passenger ->
+            totalPassenger = passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
+        }
+
+        ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+            addsOnViewModel.setTotalItem(PASSENGER, ticket.totalPrice)
+        }
+
+        addsOnViewModel.totalMealsPrice.observe(viewLifecycleOwner) { totalPrice ->
+            addsOnViewModel.setTotalItem(MEALS, totalPrice)
+        }
+
+        addsOnViewModel.totalBaggagePrice.observe(viewLifecycleOwner) { totalPrice ->
+            addsOnViewModel.setTotalItem(BAGGAGE, totalPrice)
+        }
+
+        addsOnViewModel.travelInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            when (isInsurance) {
+                true ->
+                    addsOnViewModel.setTotalItem(
+                        TRAVEL_INSURANCE,
+                        Insurance.PriceList.travelInsurance * totalPassenger
+                    )
+
+                false ->
+                    addsOnViewModel.setTotalItem(TRAVEL_INSURANCE, 0)
+            }
+        }
+
+        addsOnViewModel.baggageInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            when (isInsurance) {
+                true ->
+                    addsOnViewModel.setTotalItem(
+                        BAGGAGE_INSURANCE,
+                        Insurance.PriceList.baggageInsurance * totalPassenger
+                    )
+
+                false ->
+                    addsOnViewModel.setTotalItem(BAGGAGE_INSURANCE, 0)
+            }
+        }
+
+        addsOnViewModel.flightDelayInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            when (isInsurance) {
+                true ->
+                    addsOnViewModel.setTotalItem(
+                        FLIGHT_DELAY_INSURANCE,
+                        Insurance.PriceList.flightDelayInsurance * totalPassenger
+                    )
+
+                false ->
+                    addsOnViewModel.setTotalItem(FLIGHT_DELAY_INSURANCE, 0)
+            }
+        }
+
+        addsOnViewModel.totalItem.observe(viewLifecycleOwner) { items ->
+            addsOnViewModel.setTotalPrice(items)
+        }
+
+        addsOnViewModel.totalPrice.observe(viewLifecycleOwner) { totalPrice ->
+            binding.totalPrice.text = getString(R.string.tv_total_price, totalPrice)
+
+            //dropdown
+            binding.includePriceDetails.tvTotalPriceValue.text =
+                getString(R.string.tv_total_price, totalPrice)
         }
     }
 
     private fun populateFlightDelayInsuranceView() {
-        addsOnViewModel.flightDelayInsurance.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.checkboxDelay.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.DELAY_INSURANCE, checkBox = true)
-                }
-
-                false -> {
-                    binding.checkboxDelay.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.DELAY_INSURANCE, checkBox = false)
-                }
-            }
+        addsOnViewModel.flightDelayInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            binding.checkboxDelay.setCheckBoxState(isInsurance)
         }
     }
 
     private fun populateBaggageInsuranceView() {
-        addsOnViewModel.baggageInsurance.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.checkboxBaggage.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.BAGGAGE_INSURANCE, checkBox = true)
-                }
-
-                false -> {
-                    binding.checkboxBaggage.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.BAGGAGE_INSURANCE, checkBox = false)
-                }
-            }
+        addsOnViewModel.baggageInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            binding.checkboxBaggage.setCheckBoxState(isInsurance)
         }
     }
 
     private fun populateTravelInsuranceView() {
-        addsOnViewModel.travelInsurance.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.checkboxTravel.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.TRAVEL_INSURANCE, checkBox = true)
-                }
-
-                false -> {
-                    binding.checkboxTravel.setCheckBoxState(it)
-                    addsOnViewModel.setTotalPrice(AddsOnEnum.TRAVEL_INSURANCE, checkBox = false)
-                }
-            }
+        addsOnViewModel.travelInsurance.observe(viewLifecycleOwner) { isInsurance ->
+            binding.checkboxTravel.setCheckBoxState(isInsurance)
         }
     }
 
     private fun CheckBox.setCheckBoxState(value: Boolean) {
-        when (value) {
-            true ->
-                this.isChecked = true
-
-            false ->
-                this.isChecked = false
-        }
-
+        this.isChecked = value
     }
 
+
+    //this is used to save user choice
     private fun onInsurancesClicked() {
         binding.checkboxTravel.setOnClickListener {
             addsOnViewModel.setTravelInsurance()
@@ -163,84 +344,74 @@ class TravelAddOnsFragment : Fragment() {
 
     }
 
-    private fun onMealsClicked() {
-        binding.btnAddSeatNumber.setOnClickListener {
-            addsOnViewModel.seatNumber.observe(viewLifecycleOwner) {
-                when (it) {
-                    true -> {
-                        binding.tvMealsDescription.setFlightFacilitiesDescriptionBackground(it)
-                        binding.btnAddFood.setFlightFacilitiesCheckIcon(it)
-                    }
+    private fun onMealsIcon() {
+        addsOnViewModel.totalMealsPrice.observe(viewLifecycleOwner) {
+            val isExist = it > 0
 
-                    false -> {
-                        binding.tvMealsDescription.setFlightFacilitiesDescriptionBackground(it)
-                        binding.btnAddFood.setFlightFacilitiesCheckIcon(it)
-                    }
+            binding.tvMealsDescription.setFlightFacilitiesDescriptionBackground(isExist)
+            binding.btnAddFood.setFlightFacilitiesCheckIcon(isExist)
+        }
+    }
 
+    private fun onSeatsIcon() {
+        addsOnViewModel.seatNumber.observe(viewLifecycleOwner) {
+            when (it) {
+                true -> {
+                    binding.tvSeatsDescription.setFlightFacilitiesDescriptionBackground(it)
+                    binding.btnAddSeatNumber.setFlightFacilitiesCheckIcon(it)
                 }
+
+                false -> {
+                    binding.tvSeatsDescription.setFlightFacilitiesDescriptionBackground(it)
+                    binding.btnAddSeatNumber.setFlightFacilitiesCheckIcon(it)
+                }
+
             }
         }
 
     }
 
-    private fun onSeatsClicked() {
-        binding.btnAddSeatNumber.setOnClickListener {
-            addsOnViewModel.seatNumber.observe(viewLifecycleOwner) {
-                when (it) {
-                    true -> {
-                        binding.tvSeatsDescription.setFlightFacilitiesDescriptionBackground(it)
-                        binding.btnAddSeatNumber.setFlightFacilitiesCheckIcon(it)
-                    }
+    private fun onBaggageIcon() {
+        addsOnViewModel.totalBaggagePrice.observe(viewLifecycleOwner) {
+            val isExist = it > 0
 
-                    false -> {
-                        binding.tvSeatsDescription.setFlightFacilitiesDescriptionBackground(it)
-                        binding.btnAddSeatNumber.setFlightFacilitiesCheckIcon(it)
-                    }
-
-                }
-            }
-        }
-
-    }
-
-    private fun onBaggageClicked() {
-        binding.btnAddBaggage.setOnClickListener {
-            addsOnViewModel.totalBaggagePrice.observe(viewLifecycleOwner) {
-                when (it > 0) {
-                    true -> {
-                        binding.tvBaggageDescription.setFlightFacilitiesDescriptionBackground(true)
-                        binding.btnAddBaggage.setFlightFacilitiesCheckIcon(true)
-                    }
-
-                    false -> {
-                        binding.tvBaggageDescription.setFlightFacilitiesDescriptionBackground(false)
-                        binding.btnAddBaggage.setFlightFacilitiesCheckIcon(false)
-                    }
-
-                }
-            }
+            binding.tvBaggageDescription.setFlightFacilitiesDescriptionBackground(isExist)
+            binding.btnAddBaggage.setFlightFacilitiesCheckIcon(isExist)
         }
     }
 
     private fun TextView.setFlightFacilitiesDescriptionBackground(status: Boolean) {
-        when (status) {
-            true -> {
-                this.setTextColor(resources.getColor(R.color.green))
+        val color =
+            when (status) {
+                true -> {
+                    resources.getColor(R.color.green)
+                }
+
+                false ->
+                    resources.getColor(R.color.grey_text)
             }
 
-            false ->
-                this.setTextColor(resources.getColor(R.color.grey_text))
-        }
+        this.setTextColor(color)
     }
 
     private fun ImageView.setFlightFacilitiesCheckIcon(status: Boolean) {
-        when (status) {
+        val icon = when (status) {
             true ->
-                this.setImageResource(R.drawable.add_circle)
+                R.drawable.ic_check_fill
 
             false ->
-                this.setImageResource(R.drawable.ic_check_fill)
+                R.drawable.add_circle
         }
 
+        this.setImageResource(icon)
+    }
+
+    companion object {
+        const val PASSENGER = "passenger"
+        const val BAGGAGE = "baggage"
+        const val MEALS = "meals"
+        const val TRAVEL_INSURANCE = "travelInsurance"
+        const val BAGGAGE_INSURANCE = "baggageInsurance"
+        const val FLIGHT_DELAY_INSURANCE = "flightDelayInsurance"
     }
 }

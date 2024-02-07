@@ -832,7 +832,7 @@
     <LinearLayout
         android:id="@+id/bottom_button"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/card_bottom"
         android:orientation="vertical"
         android:padding="16dp"
@@ -853,11 +853,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/roboto_bold"
-                tools:text="IDR 3.204.800"
                 android:textColor="@color/main_color"
                 android:textSize="16sp" />
 
             <ImageView
+                android:id="@+id/iv_dropdown_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_down_20" />
@@ -879,13 +879,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:id="@+id/loyalty_point"
                     android:layout_toRightOf="@id/coin"
                     android:fontFamily="@font/roboto_medium"
-                    tools:text="Get 10000 Loyalty Points"
+                    tools:text="@string/earn_10000_loyalty_points"
                     android:textColor="@color/main_color"
                     android:textSize="12sp" />
             </RelativeLayout>
         </LinearLayout>
+
+        <include
+            android:id="@+id/include_price_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            layout="@layout/bottom_sheet_dialog_price_details" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue_to_payment"

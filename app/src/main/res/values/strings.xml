@@ -80,6 +80,7 @@
 
     <!--  booking flight sample data  -->
     <string name="tv_yogyakarta_airport_code">YIA</string>
+    <string name="tv_choose">Pick Airport</string>
     <string name="tv_yogyakarta_city">Yogyakarta(YK)</string>
     <string name="tv_balikpapan_airport_code">Sepinggan</string>
     <string name="tv_balikpapan_city">Balikpapan(BPN)</string>
@@ -87,7 +88,7 @@
     <!--  Select city  -->
     <string name="tv_pick_city_label">Select City or Airport</string>
     <string name="tv_recent_search_label">Recent Searches</string>
-    <string name="tv_search_not_found">City is not found</string>
+    <string name="tv_search_not_found">City/Airport is not found</string>
     <string name="btn_clear_recent_search_label">Clear</string>
 
     <!--  passenger  -->
@@ -237,5 +238,22 @@
     <string name="dp_departure_label">Select departure date</string>
     <string name="dp_return_label">Select return date</string>
     <string name="dp_range_date_label">Select departure - return date</string>
+
+
+    <!-- price details bottom sheet dialog -->
+    <string name="tv_price_details_label">Price Details</string>
+    <string name="tv_price_label">price</string>
+    <string name="tv_adult_amount">Adult (%1$dx)</string>
+    <string name="tv_child_amount">Child (%1$dx)</string>
+    <string name="tv_infant_amount">Infant (%1$dx)</string>
+    <string name="tv_baggage_label">Baggage</string>
+    <string name="tv_meals_label">Meals</string>
+    <string name="tv_travel_insurance_amount">Travel Insurance (%1$dx)</string>
+    <string name="tv_baggage_insurance_amount">Baggage Insurance (%1$dx)</string>
+    <string name="tv_flight_delay_insurance_amount">Flight Delay Insurance (%1$dx)</string>
+    <string name="tv_other_fees_label">Other Fees</string>
+    <string name="tv_tax_label">Tax</string>
+    <string name="tv_included_label">Included</string>
+    <string name="tv_add_ons_label">Add-ons</string>
 
 </resources>
