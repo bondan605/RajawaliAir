@@ -3,9 +3,7 @@ package com.rajawali.core.presentation.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rajawali.core.domain.enums.AddsOnEnum
 import com.rajawali.core.domain.enums.BaggageEnum
-import com.rajawali.core.domain.model.Insurance
 import com.rajawali.core.domain.model.PassengerBaggageModel
 import com.rajawali.core.domain.model.PassengerMealsModel
 import com.rajawali.core.domain.model.PreferredMeal
@@ -34,6 +32,9 @@ class TravelAddsOnViewModel : ViewModel() {
     private val _totalPrice = MutableLiveData<Int>(0)
     val totalPrice: LiveData<Int> = _totalPrice
 
+    private val _totalItem = MutableLiveData<Map<String, Int>>()
+    val totalItem: LiveData<Map<String, Int>> = _totalItem
+
     private val _totalBaggagePrice = MutableLiveData<Int>(0)
     val totalBaggagePrice: LiveData<Int> = _totalBaggagePrice
 
@@ -43,15 +44,25 @@ class TravelAddsOnViewModel : ViewModel() {
     private val _passengerMealsList = MutableLiveData<List<PassengerMealsModel>>()
     val passengerMealsList: LiveData<List<PassengerMealsModel>> = _passengerMealsList
 
-    private val _totalMealsPrice = MutableLiveData<Int>()
+    private val _totalMealsPrice = MutableLiveData<Int>(0)
     val totalMealsPrice: LiveData<Int> = _totalMealsPrice
+
+    private val _dropdownBtnState = MutableLiveData<Boolean>(false)
+    val dropdownBtnState: LiveData<Boolean> = _dropdownBtnState
+
+    fun setDropdownState() {
+        val state = dropdownBtnState.value ?: false
+
+        _dropdownBtnState.value = !state
+    }
 
     fun setTotalMealsPrice(passengerMeals: List<PassengerMealsModel>) {
         val totalPrice = passengerMeals.flatMap { it.meals }.sumOf { it.price }
 
         _totalMealsPrice.value = totalPrice
     }
-    fun setPassengerMeals(id: Int, meal: String, price : Int) {
+
+    fun setPassengerMeals(id: Int, meal: String, price: Int) {
         val passengerMealsList = _passengerMealsList.value?.toMutableList() ?: mutableListOf()
         val preferredMeal = PreferredMeal(meal, price)
 
@@ -76,7 +87,10 @@ class TravelAddsOnViewModel : ViewModel() {
         _passengerMealsList.value = passengerMealsList
     }
 
-    private fun updateMeals(existingMeals: List<PreferredMeal>, preferredMeal: PreferredMeal): List<PreferredMeal> =
+    private fun updateMeals(
+        existingMeals: List<PreferredMeal>,
+        preferredMeal: PreferredMeal
+    ): List<PreferredMeal> =
         if (existingMeals.contains(preferredMeal))
             existingMeals.filterNot { it == preferredMeal }
         else
@@ -109,7 +123,7 @@ class TravelAddsOnViewModel : ViewModel() {
     }
 
     fun setTotalBaggagePrice(baggageList: List<PassengerBaggageModel>) {
-        var totalPrice: Int = 0
+        var totalPrice = 0
 
         baggageList.map { passenger ->
             totalPrice += when (passenger.baggage) {
@@ -135,46 +149,19 @@ class TravelAddsOnViewModel : ViewModel() {
         _totalBaggagePrice.value = totalPrice
     }
 
+    fun setTotalItem(key: String, value: Int) {
+        val currentItem = _totalItem.value?.toMutableMap() ?: mutableMapOf()
 
-    fun setTotalPrice(addsOnType: AddsOnEnum, addsOn: Int = 0, checkBox: Boolean = false) {
-        var currentValue = totalPrice.value ?: 0
-        val insurancePrice = Insurance.PriceList
+        currentItem[key] = value
 
-        when (addsOnType) {
-            AddsOnEnum.BAGGAGE ->
-                currentValue += addsOn
-
-            AddsOnEnum.SEAT ->
-                currentValue += addsOn
-
-            AddsOnEnum.MEAL ->
-                currentValue += addsOn
-
-            AddsOnEnum.TRAVEL_INSURANCE ->
-                currentValue =
-                    checkBox.onInsuranceClicked(currentValue, insurancePrice.travelInsurance)
-
-            AddsOnEnum.BAGGAGE_INSURANCE ->
-                currentValue =
-                    checkBox.onInsuranceClicked(currentValue, insurancePrice.baggageInsurance)
-
-            AddsOnEnum.DELAY_INSURANCE ->
-                currentValue =
-                    checkBox.onInsuranceClicked(currentValue, insurancePrice.flightDelayInsurance)
-        }
-
-        _totalPrice.value = currentValue
+        _totalItem.value = currentItem
     }
 
-    private fun Boolean.onInsuranceClicked(totalPrice: Int, price: Int): Int =
-        when (this) {
-            true ->
-                totalPrice + price
+    fun setTotalPrice(items: Map<String, Int>) {
+        val totalPrice = items.values.sumOf { it }
 
-            false ->
-                totalPrice - price
-        }
-
+        _totalPrice.value = totalPrice
+    }
 
     fun setTravelInsurance() {
         val currentValue = travelInsurance.value ?: false
