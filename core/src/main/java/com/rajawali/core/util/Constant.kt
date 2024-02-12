@@ -1,5 +1,6 @@
 package com.rajawali.core.util
 
+import com.rajawali.core.domain.enums.BaggageEnum
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 
 object Constant {
@@ -33,6 +34,16 @@ object Constant {
         "canceled" to PaymentStatusEnum.PAYMENT_CANCELED,
         "valid" to PaymentStatusEnum.PAYMENT_NOT_VALID,
         "null" to PaymentStatusEnum.PAYMENT_NULL
+    )
+
+    //baggage
+    val baggageEnumToStringMap = mapOf(
+        BaggageEnum.KG0 to "0",
+        BaggageEnum.KG5 to "5",
+        BaggageEnum.KG10 to "10",
+        BaggageEnum.KG20 to "20",
+        BaggageEnum.KG30 to "30",
+        BaggageEnum.KG40 to "40",
     )
 
 }

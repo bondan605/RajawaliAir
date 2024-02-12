@@ -17,6 +17,7 @@ import com.rajawali.core.data.remote.response.ReservationData
 import com.rajawali.core.data.remote.response.SeatsData
 import com.rajawali.core.data.remote.response.SeatsItem
 import com.rajawali.core.data.remote.response.SourceAirport
+import com.rajawali.core.domain.enums.BaggageEnum
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.AirplaneModel
 import com.rajawali.core.domain.model.AvailableSeatsModel
@@ -35,6 +36,9 @@ import com.rajawali.core.domain.model.SearchModel
 import com.rajawali.core.domain.model.SeatsModel
 
 object DataMapper {
+
+    fun baggageEnumToInt(baggage : BaggageEnum) : String =
+        Constant.baggageEnumToStringMap[baggage] ?: "0"
 
     fun paymentStatusStringToPaymentStatusEnum(status : String) : PaymentStatusEnum =
         Constant.statusToEnumMap[status.lowercase()] ?: PaymentStatusEnum.PAYMENT_NULL
