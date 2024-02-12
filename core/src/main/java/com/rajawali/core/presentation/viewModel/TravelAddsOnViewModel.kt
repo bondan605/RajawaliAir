@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rajawali.core.domain.enums.BaggageEnum
+import com.rajawali.core.domain.model.CreateReservationPassengerDetailModel
 import com.rajawali.core.domain.model.PassengerBaggageModel
 import com.rajawali.core.domain.model.PassengerMealsModel
+import com.rajawali.core.domain.model.PassengerSeatModel
 import com.rajawali.core.domain.model.PreferredMeal
 
 @Suppress("RemoveExplicitTypeArguments")
@@ -47,13 +49,98 @@ class TravelAddsOnViewModel : ViewModel() {
     private val _totalMealsPrice = MutableLiveData<Int>(0)
     val totalMealsPrice: LiveData<Int> = _totalMealsPrice
 
-    private val _dropdownBtnState = MutableLiveData<Boolean>(false)
-    val dropdownBtnState: LiveData<Boolean> = _dropdownBtnState
+    private val _priceDetailsdropdownBtnState = MutableLiveData<Boolean>(false)
+    val priceDetailsDropdownBtnState: LiveData<Boolean> = _priceDetailsdropdownBtnState
 
-    fun setDropdownState() {
-        val state = dropdownBtnState.value ?: false
+    private val _travelInsuranceDetailsdropdownBtnState = MutableLiveData<Boolean>(false)
+    val travelInsuranceDetailsDropdownBtnState: LiveData<Boolean> =
+        _travelInsuranceDetailsdropdownBtnState
 
-        _dropdownBtnState.value = !state
+    private val _seats = MutableLiveData<List<PassengerSeatModel>>()
+    val seats: LiveData<List<PassengerSeatModel>> = _seats
+
+//    private val _seats = MutableLiveData<Map<Int, String>>()
+//    val seats : LiveData<Map<Int, String>> = _seats
+
+//    fun setPassengerSeat(id : Int, seat: String) {
+////        val currentSeats = seats.value?.toMutableList() ?: mutableListOf()
+//        val currentSeats = seats.value?.toMutableMap() ?: mutableMapOf()
+//
+//        currentSeats[id] = seat
+//
+//        _seats.value = currentSeats
+//    }
+
+    private fun setDefaultBaggage(passengers : Int) {
+        val baggages = passengerBaggageList.value?.toMutableList() ?: mutableListOf()
+
+        for (passenger in 1..passengers) {
+            val baggage = PassengerBaggageModel(
+                id = passenger,
+            )
+            baggages.add(baggage)
+        }
+
+        _passengerBaggageList.value = baggages
+    }
+
+    fun combinePassengerDetails(
+        mealsList: List<PassengerMealsModel>,
+        seatList: List<PassengerSeatModel>,
+        baggageList: List<PassengerBaggageModel>
+    ): List<CreateReservationPassengerDetailModel> {
+        val combinedList = mutableListOf<CreateReservationPassengerDetailModel>()
+
+        seatList.forEach { seats ->
+            val seat = seatList.find { it.id == seats.id }?.seat ?: ""
+            val baggage = baggageList.find { it.id == seats.id }?.baggage?.name ?: "0"
+            val mealsModel = mealsList.find { it.id == seats.id }
+            val mealNames = mealsModel?.meals?.map { it.id } ?: mutableListOf()
+
+            combinedList.add(
+                CreateReservationPassengerDetailModel(
+                    seatId = seat,
+                    baggage = baggage,
+                    meals = mealNames
+                )
+            )
+        }
+
+        return combinedList
+    }
+
+    fun setPassengerSeat(id: Int, preferredSeat: String) {
+        val currentSeat = seats.value?.toMutableList() ?: mutableListOf()
+
+        val isIndex = currentSeat.indexOfFirst { it.id == id }
+
+        if (isIndex != -1) {
+            val updateSeat = currentSeat[isIndex].copy(
+                seat = preferredSeat
+            )
+            currentSeat[isIndex] = updateSeat
+        } else {
+            // Passenger not found, add a new one
+            val newSeat = PassengerSeatModel(
+                id = id,
+                seat = preferredSeat
+            )
+            currentSeat.add(newSeat)
+        }
+
+        _seats.value = currentSeat
+    }
+
+    fun setPriceDetailsDropdownState() {
+        val state = priceDetailsDropdownBtnState.value ?: false
+
+        _priceDetailsdropdownBtnState.value = !state
+    }
+
+    fun setTravelInsuranceDetailsDropdownState() {
+        val state = travelInsuranceDetailsDropdownBtnState.value ?: false
+
+        _travelInsuranceDetailsdropdownBtnState.value = !state
     }
 
     fun setTotalMealsPrice(passengerMeals: List<PassengerMealsModel>) {

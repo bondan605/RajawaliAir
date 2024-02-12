@@ -20,8 +20,8 @@ val remoteModule = module {
     single {
         val retrofit = Retrofit.Builder()
             .baseUrl(Constant.BASE_URL + Constant.API_VERSION)
-            .addConverterFactory(MoshiConverterFactory.create())
             .client(get())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
         retrofit.create(RajawaliAirService::class.java)
     }

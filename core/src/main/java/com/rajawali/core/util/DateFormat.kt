@@ -15,6 +15,14 @@ import kotlin.math.abs
 object DateFormat {
 
     val currentDate = LocalDate.now()
+    fun stringToLocalDateTime(expired: String): LocalDateTime {
+        if (expired.length >= 18) {
+            val sliced = expired.slice(0..18)
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+            return LocalDateTime.parse(sliced, formatter)
+        }
+        return LocalDateTime.now()
+    }
 
     /*
     *   pattern EEEE, dd MMMM yyyy for full date.
@@ -33,7 +41,7 @@ object DateFormat {
     }
 
 
-    fun String.sliceDate() : String =
+    fun String.sliceDate(): String =
         this.take(10)
 
     fun formatToFullDateWithDay(date: String): String {
@@ -87,7 +95,8 @@ object DateFormat {
             }
 
             // Calculate absolute hour and minute differences
-            val hourDiff = abs(calendar1.get(Calendar.HOUR_OF_DAY) - calendar2.get(Calendar.HOUR_OF_DAY))
+            val hourDiff =
+                abs(calendar1.get(Calendar.HOUR_OF_DAY) - calendar2.get(Calendar.HOUR_OF_DAY))
             val minuteDiff = abs(calendar1.get(Calendar.MINUTE) - calendar2.get(Calendar.MINUTE))
 
             // Combine into "x h y m" format, handling 0 hour edge case

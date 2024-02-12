@@ -38,4 +38,8 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
+    <style name="ShapeAppearance.Radius.Four.Dp" parent="Base.Theme.RajawaliAir">
+        <item name="cornerSize">4dp</item>
+    </style>
+
 </resources>

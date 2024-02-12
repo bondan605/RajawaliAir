@@ -1,8 +1,9 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_cl_white_top_corner_12_dp"
     android:minHeight="700dp"
     android:paddingHorizontal="16dp"
     android:paddingBottom="16dp"
@@ -71,12 +72,12 @@
             android:id="@+id/tv_adult_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_adult_label"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider_passenger" />
 
@@ -105,9 +106,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_child_label"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_adult_decription" />
 
@@ -136,9 +137,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/tv_infant_label"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_child_description" />
 
@@ -332,8 +333,8 @@
             android:backgroundTint="@color/main_color"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btn_done"
-            android:textSize="16sp"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -341,4 +342,4 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_class_first" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.core.widget.NestedScrollView>

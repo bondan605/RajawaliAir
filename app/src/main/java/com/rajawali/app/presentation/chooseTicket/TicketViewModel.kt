@@ -3,13 +3,24 @@ package com.rajawali.app.presentation.chooseTicket
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.rajawali.core.domain.enums.CourtesyEnum
 import com.rajawali.core.domain.enums.PassengerCategoryEnum
 import com.rajawali.core.domain.model.BuyerContactModel
 import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.model.PassengerModel
+import com.rajawali.core.domain.model.PaymentRecordModel
+import com.rajawali.core.domain.model.ReservationModel
+import com.rajawali.core.util.DateFormat
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.time.Duration
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.ZoneId
 
 class TicketViewModel : ViewModel() {
 
@@ -33,6 +44,55 @@ class TicketViewModel : ViewModel() {
 
     private val _passenger = MutableLiveData<List<PassengerModel>>()
     val passenger: LiveData<List<PassengerModel>> = _passenger
+
+    private val _reservation = MutableLiveData<ReservationModel>()
+    val reservation: LiveData<ReservationModel> = _reservation
+
+    private val _payment = MutableLiveData<PaymentRecordModel>()
+    val payment: LiveData<PaymentRecordModel> = _payment
+
+    private val _paymentTimer = MutableLiveData<Long>()
+    val paymentTimer: LiveData<Long> = _paymentTimer
+
+    fun startTimer(end: String) {
+        val targetDateTime = DateFormat.stringToLocalDateTime(end)
+
+        _paymentTimer.postValue(calculateRemainingTime(targetDateTime))
+        launchTimer()
+    }
+
+    private fun launchTimer() {
+        val duration = paymentTimer.value ?: 0
+        viewModelScope.launch {
+            while (duration > 0) {
+                val remainingTime = paymentTimer.value ?: 0
+                _paymentTimer.postValue(remainingTime - 1000L) // Use postValue from background thread
+//                duration -= 1000L
+                delay(1000L)
+            }
+        }
+    }
+
+    private fun calculateRemainingTime(targetDateTime: LocalDateTime): Long {
+        val now = LocalDateTime.now()
+        val duration = Duration.between(now, targetDateTime)
+        return if (duration.isNegative) {
+            0L // Timer has already passed
+        } else {
+            duration.toMillis()
+        }
+    }
+
+    fun timerLongToLocalTime(value: Long): LocalTime =
+        LocalDateTime.ofInstant(Instant.ofEpochMilli(value), ZoneId.systemDefault()).toLocalTime()
+
+    fun setPayment(data: PaymentRecordModel) {
+        _payment.value = data
+    }
+
+    fun setReservation(data: ReservationModel) {
+        _reservation.value = data
+    }
 
     fun setBuyerContact(
         genderType: String,
@@ -102,20 +162,18 @@ class TicketViewModel : ViewModel() {
         ageType: PassengerCategoryEnum,
         checkBoxId: CourtesyEnum,
     ) {
-        val currentIndex = id - 1
-        val passengerList = _passenger.value?.toMutableList() ?: mutableListOf()
+        val passengerList = passenger.value?.toMutableList() ?: mutableListOf()
+        val isIndex = passengerList.indexOfFirst { it.id == id }
 
-        if (currentIndex < passengerList.size) {
-            val updatePassenger = PassengerModel(
-                passengerList[currentIndex].id,
-                genderType,
-                fullName,
-                passengerList[currentIndex].ageType,
-                checkBoxId
+        if (isIndex != -1) {
+            val updatePassenger = passengerList[isIndex].copy(
+                fullName = fullName,
+                genderType = genderType,
+                checkBoxId = checkBoxId
             )
-
-            passengerList[currentIndex] = updatePassenger
+            passengerList[isIndex] = updatePassenger
         } else {
+            // Passenger not found, add a new one
             val newPassenger = PassengerModel(
                 id,
                 genderType,
@@ -124,11 +182,11 @@ class TicketViewModel : ViewModel() {
                 checkBoxId
             )
             passengerList.add(newPassenger)
-
         }
 
         _passenger.value = passengerList
     }
+
 
     fun setRoundTrip(value: Boolean) {
         _isRoundTrip.value = value

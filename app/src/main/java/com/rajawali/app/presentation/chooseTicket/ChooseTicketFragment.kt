@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentChooseTicketBinding
 import com.rajawali.app.util.AppUtils.getPassengerClassText
-import com.rajawali.app.util.AppUtils.isPassengerExist
 import com.rajawali.app.util.NavigationUtils.safeNavigate
-import com.rajawali.core.domain.enums.PassengerCategoryEnum
 import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.result.UCResult
@@ -142,6 +140,7 @@ class ChooseTicketFragment : Fragment() {
         val toolbar = binding.includeToolbar
 //        val preferred = getParcelableBundle(OneWayTripFragment.DEPARTURE)
         roundTrip.preferableDeparture.observe(viewLifecycleOwner) { preferred ->
+            val seatType = activity.getPassengerClassText(preferred?.seatType)
 
             toolbar.tvRoute.text = getString(
                 R.string.tv_choose_ticket_flight_route,
@@ -149,21 +148,16 @@ class ChooseTicketFragment : Fragment() {
                 preferred?.destinationCity
             )
 
-            val passenger = setPassengerToDisplay(
+            setPassengerToDisplay(
                 preferred?.adultPassenger,
                 preferred?.childPassenger,
                 preferred?.infantPassenger
             )
 
-            val seatType = activity.getPassengerClassText(preferred?.seatType)
 
-            toolbar.tvRouteDescription.text =
-                getString(
-                    R.string.tv_choose_ticket_flight_route_description,
-                    preferred?.departureDate,
-                    passenger,
-                    seatType
-                )
+            toolbar.tvDate.text = getString(R.string.tv_date_picket, preferred?.departureDate)
+            toolbar.tvClassPassenger.text = getString(R.string.tv_class_passenger, seatType)
+
         }
     }
 
@@ -171,14 +165,39 @@ class ChooseTicketFragment : Fragment() {
         initialAdultPassenger: Int?,
         initialChildPassenger: Int?,
         initialInfantPassenger: Int?
-    ): String {
-        var text = ""
+    ) {
+        val toolbar = binding.includeToolbar
+        val adult = initialAdultPassenger ?: 0
+        val child = initialChildPassenger ?: 0
+        val infant = initialInfantPassenger ?: 0
+        val tvAdult = toolbar.tvAdultPassenger
+        val tvChild = toolbar.tvChildPassenger
+        val tvInfant = toolbar.tvInfantPassenger
+        val boolean1 = adult > 0 && child > 0
+        val boolean2 = child > 0 && infant > 0
 
-        text = activity.isPassengerExist(text, initialAdultPassenger, PassengerCategoryEnum.ADULT)
-        text = activity.isPassengerExist(text, initialChildPassenger, PassengerCategoryEnum.ADULT)
-        text = activity.isPassengerExist(text, initialInfantPassenger, PassengerCategoryEnum.ADULT)
+        if (adult > 0) {
+            tvAdult.text = getString(R.string.tv_adult_passenger, adult)
+            tvAdult.visibility = View.VISIBLE
+        }
 
-        return text
+        if (child > 0) {
+            tvChild.text = getString(R.string.tv_child_passenger, child)
+            tvChild.visibility = View.VISIBLE
+        }
+
+        if (infant > 0) {
+            tvInfant.text = getString(R.string.tv_infant_passenger, infant)
+            tvInfant.visibility = View.VISIBLE
+        }
+
+        if (adult > 0 && child > 0)
+            toolbar.tvComaBetweenAdultChild.visibility = View.VISIBLE
+
+        if (child > 0 && infant > 0)
+            toolbar.tvComaBetweenChildInfant.visibility = View.VISIBLE
+
+
     }
 
     private fun setChosenTicketView() {

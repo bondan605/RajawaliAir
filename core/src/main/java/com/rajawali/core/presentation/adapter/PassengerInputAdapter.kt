@@ -45,6 +45,7 @@ class PassengerInputAdapter :
     class PassengerInputViewHolder(private val binding: ItemPassengerInputBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(passenger: PassengerInputModel) {
+            val passengerAge = passenger.age.name.lowercase().capitalize()
             val age =
                 passenger.age.name.replaceFirstChar {
                     if (it.isLowerCase())
@@ -54,7 +55,7 @@ class PassengerInputAdapter :
                 }
 
             binding.tvPassengerDetailOther.text =
-                "Passenger ${passenger.id} ( ${passenger.age.name.capitalize()} )"
+                "Passenger ${passenger.id} ( $passengerAge )"
 
 //            binding.tvPassengerDetailOther.text = passenger.id.toString() + " " + passenger.age.name
 

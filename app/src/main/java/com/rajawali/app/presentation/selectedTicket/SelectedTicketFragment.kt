@@ -9,15 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentSelectedTicketBinding
-import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.AppUtils
-import com.rajawali.app.util.AppUtils.isPassengerExist
 import com.rajawali.app.util.NavigationUtils.safeNavigate
-import com.rajawali.core.domain.enums.PassengerCategoryEnum
 import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.model.Insurance
+import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.core.util.DateFormat
 
 class SelectedTicketFragment : Fragment() {
@@ -55,7 +53,7 @@ class SelectedTicketFragment : Fragment() {
         }
 
         binding.safeBtnSelect.setOnClickListener {
-            onButtonSelectListener()
+            onButtonSelectListener(true)
         }
     }
 
@@ -83,16 +81,15 @@ class SelectedTicketFragment : Fragment() {
 //        val preferableDeparture = getFindTicketBundle(ChooseTicketFragment.PREFERABLE_DEPARTURE)
 
         ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { preferableDeparture ->
-            val passenger = setPassengerToDisplay(
+            setPassengerToDisplay(
                 preferableDeparture?.adultPassenger,
                 preferableDeparture?.childPassenger,
                 preferableDeparture?.infantPassenger
             )
-
-            binding.passenger.text = passenger
         }
 
         ticketViewModel.departureTicket.observe(viewLifecycleOwner) { departure ->
+            val safeTotalPrice = departure.totalPrice + Insurance.PriceList.travelInsurance
 
             val fullDate = DateFormat.formatToFullDateWithDay(departure.departureDate)
             val departureDateAndMonth = DateFormat.formatDateAndMonthOnly(departure.departureDate)
@@ -131,11 +128,16 @@ class SelectedTicketFragment : Fragment() {
 
             binding.tvDateDeparture.text = fullDate
 
-            //safe section.
-            val safeTotalPrice = departure.totalPrice + Insurance.PriceList.travelInsurance
             binding.priceTicket.text = getString(R.string.tv_price_ticket, departure.seatPrice)
-            binding.totalPrice.text = getString(R.string.tv_total_price, safeTotalPrice)
+            binding.totalPrice.text = getString(R.string.tv_total_price, departure.totalPrice)
             binding.point.text = getString(R.string.tv_point, departure.points)
+
+
+            //safe section.
+            binding.safePriceTicket.text = getString(R.string.tv_price_ticket, departure.seatPrice)
+            binding.safeTotalPrice.text = getString(R.string.tv_total_price, safeTotalPrice)
+            binding.safePoint.text = getString(R.string.tv_point, departure.points)
+
         }
     }
 
@@ -143,21 +145,39 @@ class SelectedTicketFragment : Fragment() {
         initialAdultPassenger: Int?,
         initialChildPassenger: Int?,
         initialInfantPassenger: Int?
-    ): String {
-        var text = ""
+    ) {
+        val adult = initialAdultPassenger ?: 0
+        val child = initialChildPassenger ?: 0
+        val infant =  initialInfantPassenger ?: 0
+        val tvAdult = binding.tvAdultPassenger
+        val tvChild = binding.tvChildPassenger
+        val tvInfant = binding.tvInfantPassenger
 
-        text = activity.isPassengerExist(text, initialAdultPassenger, PassengerCategoryEnum.ADULT)
-        text = activity.isPassengerExist(text, initialChildPassenger, PassengerCategoryEnum.ADULT)
-        text = activity.isPassengerExist(text, initialInfantPassenger, PassengerCategoryEnum.ADULT)
+        if (adult > 0 && child > 0)
+            binding.tvComaBetweenAdultChild.visibility = View.VISIBLE
 
-        return text
+        if (child > 0 && infant > 0)
+            binding.tvComaBetweenChildInfant.visibility = View.VISIBLE
+
+        if (adult > 0) {
+            tvAdult.text = getString(R.string.tv_adult_passenger, adult)
+            tvAdult.visibility = View.VISIBLE
+        }
+        if (child > 0) {
+            tvChild.text = getString(R.string.tv_child_passenger, child)
+            tvChild.visibility = View.VISIBLE
+        }
+        if (infant > 0) {
+            tvInfant.text = getString(R.string.tv_infant_passenger, infant)
+            tvInfant.visibility = View.VISIBLE
+        }
     }
 
 
-    private fun getFlightBundle(tag: String): FlightModel? =
-        arguments?.getParcelable(tag)
-
-    private fun getFindTicketBundle(tag: String): FindTicketModel? =
-        arguments?.getParcelable(tag)
+//    private fun getFlightBundle(tag: String): FlightModel? =
+//        arguments?.getParcelable(tag)
+//
+//    private fun getFindTicketBundle(tag: String): FindTicketModel? =
+//        arguments?.getParcelable(tag)
 
 }
