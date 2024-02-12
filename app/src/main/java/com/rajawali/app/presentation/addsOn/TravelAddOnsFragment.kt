@@ -7,15 +7,28 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentTravelAddOnsBinding
+import com.rajawali.app.presentation.addsOn.seat.SeatsViewModel
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
+import com.rajawali.core.domain.model.CreateReservationFlightDetailModel
+import com.rajawali.core.domain.model.CreateReservationModel
 import com.rajawali.core.domain.model.Insurance
+import com.rajawali.core.domain.model.PassengerBaggageModel
+import com.rajawali.core.domain.model.PassengerMealsModel
+import com.rajawali.core.domain.model.PassengerSeatModel
+import com.rajawali.core.domain.model.ReservationPassengerModel
+import com.rajawali.core.domain.model.SeatsModel
+import com.rajawali.core.domain.result.UCResult
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
+import com.rajawali.core.util.DataMapper
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class TravelAddOnsFragment : Fragment() {
 
@@ -24,6 +37,8 @@ class TravelAddOnsFragment : Fragment() {
 
     private val ticketViewModel: TicketViewModel by activityViewModels()
     private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+    private val createReservation: CreateReservationViewModel by viewModel()
+    private val seatsViewModel: SeatsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,19 +73,207 @@ class TravelAddOnsFragment : Fragment() {
         onMealsIcon()
 
         setDropdownValue()
-        setDropdownButton()
-        onDropdownIcon()
-        onDropdownContent()
+        setPriceDetailsDropdownButton()
+        onPriceDetailsDropdownIcon()
+        onPriceDetailsDropdownContent()
+
+        setTravelInsuranceDropdownButton()
+        onTravelInsuranceDetailsDropdownIcon()
+        onTravelInsuranceDetailsDropdownContent()
+
+        getRandomAvailableSeat()
+        createReservation()
     }
 
-    private fun setDropdownButton() {
-        binding.ivDropdownBtn.setOnClickListener {
-            addsOnViewModel.setDropdownState()
+    private fun createReservation() {
+        binding.btnContinueToPayment.setOnClickListener {
+            var seatType = ""
+            var fullName = ""
+            var gender = ""
+            var email = ""
+            var phone = ""
+            var promoCode: String? = null
+            var userId: String? = null
+            var passengerList = listOf<ReservationPassengerModel>()
+            var flightId = ""
+            var useTravelInsurance = false
+            var useBaggageInsurance = false
+            var useFlightDelayInsurance = false
+            var seats = mutableListOf<PassengerSeatModel>()
+            var baggages = mutableListOf<PassengerBaggageModel>()
+            var meals = mutableListOf<PassengerMealsModel>()
+
+            ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { passenger ->
+                seatType = passenger.seatType.name
+            }
+
+            ticketViewModel.buyerContact.observe(viewLifecycleOwner) { contact ->
+                fullName = contact.fullName
+                gender = contact.genderType
+                email = contact.email
+                phone = contact.phoneNumber
+            }
+
+            ticketViewModel.passenger.observe(viewLifecycleOwner) { passengersList ->
+                passengerList = passengersList.map { passenger ->
+                    DataMapper.passengerModelToReservationPassengerModel(passenger)
+                }
+            }
+
+            ticketViewModel.passenger.observe(viewLifecycleOwner) { passengersList ->
+                passengerList = passengersList.map { passenger ->
+                    DataMapper.passengerModelToReservationPassengerModel(passenger)
+                }
+            }
+
+            ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+                flightId = ticket.id
+            }
+
+            addsOnViewModel.travelInsurance.observe(viewLifecycleOwner) {
+                useTravelInsurance = it
+            }
+
+            addsOnViewModel.baggageInsurance.observe(viewLifecycleOwner) {
+                useBaggageInsurance = it
+            }
+
+            addsOnViewModel.flightDelayInsurance.observe(viewLifecycleOwner) {
+                useFlightDelayInsurance = it
+            }
+
+            addsOnViewModel.seats.observe(viewLifecycleOwner) {
+                seats = it.toMutableList()
+            }
+
+            addsOnViewModel.passengerBaggageList.observe(viewLifecycleOwner) {
+                baggages = it.toMutableList()
+            }
+
+            addsOnViewModel.passengerMealsList.observe(viewLifecycleOwner) {
+                meals = it.toMutableList()
+            }
+
+            val passengerDetails = addsOnViewModel.combinePassengerDetails(
+                mealsList = meals,
+                baggageList = baggages,
+                seatList = seats
+            )
+
+            val flightDetail = CreateReservationFlightDetailModel(
+                flightId = flightId,
+                useTravelInsurance = useTravelInsurance,
+                useBaggageInsurance = useBaggageInsurance,
+                useFlightDelayInsurance = useFlightDelayInsurance,
+                passengerDetail = passengerDetails,
+            )
+
+            val flightDetailList = mutableListOf(flightDetail)
+
+            val reservationData = CreateReservationModel(
+                classType = seatType,
+                gender = gender,
+                fullName = fullName,
+                email = email,
+                phoneNumber = phone,
+//            promoCode = promoCode,
+//            userId = userId,
+                passengerList = passengerList,
+                flightDetailList = flightDetailList
+            )
+
+            createReservation.createReservation(reservationData)
+                .observe(viewLifecycleOwner) { reservation ->
+
+                    when (reservation) {
+                        is UCResult.Error ->
+                            Toast.makeText(
+                                activity,
+                                "Unable to create a reservation",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        is UCResult.Success -> {
+                            val destination = TravelAddOnsFragmentDirections.actionTravelAddOnsFragmentToPaymentFragment()
+
+                            ticketViewModel.setReservation(reservation.data)
+                            findNavController().safeNavigate(destination)
+                        }
+                    }
+                }
         }
     }
 
-    private fun onDropdownContent() {
-        addsOnViewModel.dropdownBtnState.observe(viewLifecycleOwner) { state ->
+    private fun getRandomAvailableSeat() {
+        var passengerAmount: Int = 0
+
+        ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) {
+            passengerAmount = it.infantPassenger + it.childPassenger + it.adultPassenger
+        }
+
+        ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+            seatsViewModel.getAvailableSeats(ticket.id, ticket.classType)
+                .observe(viewLifecycleOwner) { seats ->
+                    when (seats) {
+                        is UCResult.Error -> {
+                            Toast.makeText(activity, "No available seats", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                        is UCResult.Success -> {
+                            val availableSeats = seats.data.seats.filter { it.isAvailable }
+
+                            passengerAmount.randomSeats(availableSeats)
+                        }
+                    }
+                }
+        }
+    }
+
+    private fun Int.randomSeats(seatsList: List<SeatsModel>) {
+        for (count in 1..this) {
+            val availableSeats = seatsList.filter { it.isAvailable }
+            val random = availableSeats.random()
+
+            addsOnViewModel.setPassengerSeat(count, random.id)
+        }
+    }
+
+    private fun setTravelInsuranceDropdownButton() {
+        binding.btnMore.setOnClickListener {
+            addsOnViewModel.setTravelInsuranceDetailsDropdownState()
+        }
+
+    }
+
+    private fun onTravelInsuranceDetailsDropdownContent() {
+        addsOnViewModel.travelInsuranceDetailsDropdownBtnState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                true ->
+                    binding.llTravelInsuranceDetail.visibility = View.VISIBLE
+
+                false ->
+                    binding.llTravelInsuranceDetail.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun onTravelInsuranceDetailsDropdownIcon() {
+        addsOnViewModel.travelInsuranceDetailsDropdownBtnState.observe(viewLifecycleOwner) { state ->
+            val icon = state.setDropDownIcon()
+
+            binding.upLine.setImageResource(icon)
+        }
+    }
+
+    private fun setPriceDetailsDropdownButton() {
+        binding.ivDropdownBtn.setOnClickListener {
+            addsOnViewModel.setPriceDetailsDropdownState()
+        }
+    }
+
+    private fun onPriceDetailsDropdownContent() {
+        addsOnViewModel.priceDetailsDropdownBtnState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 true ->
                     binding.includePriceDetails.root.visibility = View.VISIBLE
@@ -81,20 +284,22 @@ class TravelAddOnsFragment : Fragment() {
         }
     }
 
-    private fun onDropdownIcon() {
-        addsOnViewModel.dropdownBtnState.observe(viewLifecycleOwner) { state ->
-            val icon =
-                when (state) {
-                    true ->
-                        R.drawable.arrow_up_20
-
-                    false ->
-                        R.drawable.arrow_down_20
-                }
+    private fun onPriceDetailsDropdownIcon() {
+        addsOnViewModel.priceDetailsDropdownBtnState.observe(viewLifecycleOwner) { state ->
+            val icon = state.setDropDownIcon()
 
             binding.ivDropdownBtn.setImageResource(icon)
         }
     }
+
+    private fun Boolean.setDropDownIcon(): Int =
+        when (this) {
+            true ->
+                R.drawable.arrow_up_20
+
+            false ->
+                R.drawable.arrow_down_20
+        }
 
     private fun setDropdownValue() {
         val include = binding.includePriceDetails
@@ -182,9 +387,11 @@ class TravelAddOnsFragment : Fragment() {
                 include.tvInfantPassengerTotalPrice.viewVisibility(passenger.infantPassenger)
 
                 //set up the price
-                val totalAdultPrice : Int = ticket.seatPrice * passenger.adultPassenger
-                val totalChildPrice : Int = (ticket.seatPrice * passenger.childPassenger - (ticket.seatPrice * 0.10)).toInt()
-                val totalInfantPrice : Int = (ticket.seatPrice * passenger.infantPassenger - (ticket.seatPrice * 0.20)).toInt()
+                val totalAdultPrice: Int = ticket.seatPrice * passenger.adultPassenger
+                val totalChildPrice: Int =
+                    (ticket.seatPrice * passenger.childPassenger - (ticket.seatPrice * 0.10)).toInt()
+                val totalInfantPrice: Int =
+                    (ticket.seatPrice * passenger.infantPassenger - (ticket.seatPrice * 0.20)).toInt()
 
                 include.tvAdultPassengerTotalPrice.text =
                     getString(R.string.tv_total_price, totalAdultPrice)
@@ -238,7 +445,8 @@ class TravelAddOnsFragment : Fragment() {
         var totalPassenger = 1
 
         ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { passenger ->
-            totalPassenger = passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
+            totalPassenger =
+                passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
         }
 
         ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->

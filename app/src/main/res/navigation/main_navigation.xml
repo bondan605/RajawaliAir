@@ -144,6 +144,9 @@
         <action
             android:id="@+id/action_travelAddOnsFragment_to_mealsFragment"
             app:destination="@id/mealsFragment" />
+        <action
+            android:id="@+id/action_travelAddOnsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/mealsFragment"
@@ -154,4 +157,39 @@
         android:name="com.rajawali.app.presentation.addsOn.baggage.BaggageFragment"
         android:label="fragment_baggage"
         tools:layout="@layout/fragment_baggage" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.rajawali.app.presentation.payment.PaymentFragment"
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_paymentMethodBottomSheetDialog"
+            app:destination="@id/paymentMethodBottomSheetDialog" />
+        <action
+            android:id="@+id/action_paymentFragment_to_paymentWaitingFragment"
+            app:destination="@id/paymentWaitingFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/paymentMethodBottomSheetDialog"
+        android:name="com.rajawali.app.presentation.bottomSheetDialog.paymentMethod.PaymentMethodBottomSheetDialog"
+        android:label="PaymentMethodBottomSheetDialog" />
+    <fragment
+        android:id="@+id/paymentCompleteFragment"
+        android:name="com.rajawali.app.presentation.paymentComplete.PaymentCompleteFragment"
+        android:label="PaymentCompleteFragment" >
+        <action
+            android:id="@+id/action_paymentCompleteFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentWaitingFragment"
+        android:name="com.rajawali.app.presentation.paymentWaiting.PaymentWaitingFragment"
+        android:label="fragment_payment_waiting"
+        tools:layout="@layout/fragment_payment_waiting" >
+        <action
+            android:id="@+id/action_paymentWaitingFragment_to_paymentCompleteFragment"
+            app:destination="@id/paymentCompleteFragment" />
+        <action
+            android:id="@+id/action_paymentWaitingFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>

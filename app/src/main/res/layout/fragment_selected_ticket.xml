@@ -104,17 +104,64 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/passenger"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/tv_passenger"
-                android:textColor="@color/neutral_700"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_adult_passenger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/neutral_700"
+                    android:textSize="12sp"
+                    tools:text="@string/tv_passenger" />
+
+                <TextView
+                    android:id="@+id/tv_coma_between_adult_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/neutral_700"
+                    android:textSize="12sp"
+                    tools:text="@string/tv_coma" />
+
+                <TextView
+                    android:id="@+id/tv_child_passenger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/neutral_700"
+                    android:textSize="12sp"
+                    tools:text="@string/tv_child_passenger" />
+
+                <TextView
+                    android:id="@+id/tv_coma_between_child_infant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/neutral_700"
+                    android:textSize="12sp"
+                    tools:text="@string/tv_coma" />
+
+                <TextView
+                    android:id="@+id/tv_infant_passenger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/neutral_700"
+                    android:textSize="12sp"
+                    tools:text="@string/tv_infant_passenger" />
+
+            </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/selected_ticket_card"
@@ -264,9 +311,9 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/roboto_medium"
-                                                tools:text="@string/tv_ticket_detail"
                                                 android:textColor="@color/neutral_700"
-                                                android:textSize="10sp" />
+                                                android:textSize="10sp"
+                                                tools:text="@string/tv_ticket_detail" />
 
                                             <TextView
                                                 android:layout_width="wrap_content"
@@ -507,9 +554,9 @@
                                     android:id="@+id/point"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/tv_point"
                                     android:textColor="@color/main_color"
-                                    android:textSize="10sp" />
+                                    android:textSize="10sp"
+                                    tools:text="@string/tv_point" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -522,7 +569,7 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_select"
                                 android:layout_width="72dp"
-                                android:layout_height="24dp"
+                                android:layout_height="36dp"
                                 android:backgroundTint="@color/main_color"
                                 android:fontFamily="@font/roboto_medium"
                                 android:padding="0dp"
@@ -645,9 +692,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="2dp"
-                                android:text="@string/tv_price_ticket"
                                 android:textColor="@color/neutral_700"
-                                android:textSize="10sp" />
+                                android:textSize="10sp"
+                                tools:text="@string/tv_price_ticket" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -667,9 +714,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_bold"
-                                    android:text="@string/tv_safe_total_price"
                                     android:textColor="@color/main_color"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    tools:text="@string/tv_safe_total_price" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -703,7 +750,7 @@
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/safe_btn_select"
                                 android:layout_width="72dp"
-                                android:layout_height="24dp"
+                                android:layout_height="36dp"
                                 android:backgroundTint="@color/main_color"
                                 android:fontFamily="@font/roboto_medium"
                                 android:padding="0dp"

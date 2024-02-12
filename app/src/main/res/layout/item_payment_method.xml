@@ -1,45 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mc_payment"
     style="?attr/materialCardViewElevatedStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
-    app:cardElevation="6dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_margin="12dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:layout_margin="12dp">
 
         <ImageView
-            android:id="@+id/ic_bank_bca"
+            android:id="@+id/iv_payment_logo"
             android:layout_width="30dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_bca" />
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_bca" />
 
         <TextView
-            android:id="@+id/tv_bca_transfer"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_payment_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/bca_transfer"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_payment_logo"
+            app:layout_constraintEnd_toStartOf="@+id/iv_arrow_right"
+            app:layout_constraintStart_toEndOf="@id/iv_payment_logo"
+            app:layout_constraintTop_toTopOf="@+id/iv_payment_logo"
+            tools:text="@string/bca_transfer" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_arrow_right"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                android:id="@+id/radio_bca_transfer"
-                android:layout_width="26dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                app:buttonTint="@color/main_color" />
-        </RelativeLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

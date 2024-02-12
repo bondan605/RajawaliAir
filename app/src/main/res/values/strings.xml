@@ -48,7 +48,9 @@
 
     <!--  choose ticket  -->
     <string name="tv_choose_ticket_flight_route">%1$s ➜ %2$s</string>
-    <string name="tv_choose_ticket_flight_route_description">%1$s | %2$s | %3$s</string>
+    <string name="tv_class_passenger">| %1$s</string>
+    <string name="tv_date_picket">%1$s |</string>
+    <string name="tv_vertical_line">| </string>
     <string name="tv_choose_ticket_departure_schedule_label">Departure Schedule</string>
     <string name="tv_no_tickets">Tickets not found</string>
     <string name="tv_choose_ticket_return_schedule_label">Return Schedule</string>
@@ -161,7 +163,10 @@
     <!--  Your Selected Flight  -->
     <string name="tv_departure">Yogyakarta</string>
     <string name="tv_arrive">Balikpapan</string>
-    <string name="tv_passenger">2 Adults</string>
+    <string name="tv_adult_passenger">%1$d Adults</string>
+    <string name="tv_child_passenger">%1$d Child</string>
+    <string name="tv_infant_passenger">%1$d Infant</string>
+    <string name="tv_coma">, </string>
 
     <!--  Details Information  -->
     <string name="tv_departure_date">Thu, 25 Jan 2024</string>
@@ -214,7 +219,8 @@
     <string name="bca_transfer">BCA Transfer</string>
     <string name="mandiri_virtual_acccount">Mandiri Virtual Acccount</string>
     <string name="bni_transfer">BNI Transfer</string>
-    <string name="pay_with_virtual_account">Pay with Virtual Account</string>
+    <string name="tv_pay">Pay</string>
+    <string name="tv_continue">Continue</string>
     <string name="apply">Apply</string>
 
     <!-- booking form -->
@@ -255,5 +261,48 @@
     <string name="tv_tax_label">Tax</string>
     <string name="tv_included_label">Included</string>
     <string name="tv_add_ons_label">Add-ons</string>
+
+    <!-- select payment method bottom sheet dialog -->
+    <string name="tv_bank_transfer_label">Bank Transfer</string>
+    <string name="tv_virtual_account_label">Virtual Account</string>
+    <string name="tv_convenient_store_label">Convenience Store</string>
+
+
+    <!--  payment fragment  -->
+    <string name="tv_date_departure_time_arrival_time_value">%1$s, %2$s - %3$s</string>
+    <string name="flight_seat_type_value">%1$s | Direct Flight</string>
+
+
+    <!--  item payment steps  -->
+    <string name="tv_order_id_value">Order ID : %1$s</string>
+    <string name="tv_choose_payment_method_label">Continue Payment</string>
+    <string name="tv_select_method_label">Select Method</string>
+    <string name="tv_strip">-</string>
+    <string name="tv_pay_label">Pay</string>
+    <string name="tv_complete_label">Complete</string>
+
+
+    <!--  item how to pay steps  -->
+    <string name="tv_how_to_pay_step_1">1. Login to <b>Internet Banking</b></string>
+    <string name="tv_how_to_pay_step_2">2. Select <b>Transfer Dana</b></string>
+    <string name="tv_how_to_pay_step_3">3. Select <b>Transfer ke BCA Virtual Account</b></string>
+    <string name="tv_how_to_pay_step_4">4. Input <b>Virtual Account Number</b></string>
+    <string name="tv_how_to_pay_step_5">5. Click <b>Lanjutkan</b> dan <b>Kirim</b></string>
+    <string name="tv_how_to_pay_step_6">6. <b>Payment receipt</b> displayed</string>
+    <string name="tv_how_to_pay_step_7">7. Payment Done</string>
+    <string name="btn_already_paid">I’ve already Paid</string>
+    <string name="tv_how_to_pay_label">How To Pay</string>
+    <string name="tv_total_payment_label">Total Payment</string>
+    <string name="tv_transfer_to_label">Transfer To</string>
+    <string name="tv_transfer_via_atm_label">Transfer Via ATM</string>
+    <string name="tv_transfer_via_internet_banking_label">Transfer Via Internet Banking</string>
+    <string name="tv_transfer_via_mobile_banking_label">Transfer Via Mobile Banking</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_purchase_successul_label">Purchase Successful</string>
+    <string name="tv_purchase_on_label">Purchase On</string>
+    <string name="tv_payment_method_label">Payment Method</string>
+    <string name="tv_total_price_label">total price</string>
+    <string name="tv_transaction_complete_description">Your transaction has been successful, Cool! \n Please check the transaction receipt!</string>
 
 </resources>

@@ -1,9 +1,16 @@
 package com.rajawali.core.data.remote
 
+import android.accounts.NetworkErrorException
 import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.MealItem
+import com.rajawali.core.data.remote.response.PayReservationData
+import com.rajawali.core.data.remote.response.ReservationByIdData
+import com.rajawali.core.data.remote.response.ReservationData
+import com.rajawali.core.data.remote.response.SeatsData
 import com.rajawali.core.data.remote.service.RajawaliAirService
+import com.rajawali.core.domain.model.CreateReservationModel
+import com.rajawali.core.domain.model.PayReservationModel
 import com.rajawali.core.domain.repository.RemoteRepository
 import com.rajawali.core.domain.result.ApiResponse
 import com.rajawali.core.util.Constant
@@ -117,4 +124,106 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
             ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
         }
     }
+
+    override suspend fun getFlightAvailableSeats(
+        id: String,
+        seatType: String
+    ): ApiResponse<SeatsData> {
+        return try {
+            val response = service.getFlightAvailableSeats(id, seatType)
+
+            when (response.success) {
+                true -> {
+                    ApiResponse.Success(response.data)
+                }
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw Exception(Constant.FETCH_FAILED)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
+    }
+
+    override suspend fun createReservation(data: CreateReservationModel): ApiResponse<ReservationData> {
+        return try {
+            val response = service.createReservation(data)
+
+            when (response.success) {
+                true ->
+                    if (response.data != null)
+                        ApiResponse.Success(response.data)
+                    else
+                        throw Exception(Constant.DATA_EMPTY)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw NetworkErrorException(Constant.FETCH_FAILED)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+
+        } catch (e: NetworkErrorException) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+
+        }
+    }
+
+
+    override suspend fun payReservation(data: PayReservationModel): ApiResponse<PayReservationData> {
+        return try {
+            val response = service.payReservation(data)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw NetworkErrorException(Constant.FETCH_FAILED)
+            }
+
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+
+        } catch (e: NetworkErrorException) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
+
+    }
+
+    override suspend fun reservationById(reservationId: String): ApiResponse<ReservationByIdData> =
+        try {
+            val response = service.reservationById(reservationId)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw NetworkErrorException(Constant.FETCH_FAILED)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        } catch (e: NetworkErrorException) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
+
 }

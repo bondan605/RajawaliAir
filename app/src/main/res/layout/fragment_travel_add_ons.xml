@@ -419,8 +419,10 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_travel_insurance_detail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:orientation="vertical">
 
                         <View
@@ -893,12 +895,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            layout="@layout/bottom_sheet_dialog_price_details" />
+            layout="@layout/drop_down_price_details" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue_to_payment"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:padding="0dp"
             android:backgroundTint="@color/main_color"
             android:fontFamily="@font/roboto_bold"

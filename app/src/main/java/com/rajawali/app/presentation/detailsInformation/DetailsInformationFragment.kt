@@ -80,7 +80,7 @@ class DetailsInformationFragment : Fragment() {
                 gender = it.name
             }
 
-            if (passengerAmount == passengerList && fullName.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && gender.isNotEmpty()) {
+            if (passengerAmount == passengerList && fullName.isNotEmpty() && phone.isNotEmpty() && email.contains("@", ignoreCase = true) && gender.isNotEmpty()) {
                 val destination =
                     DetailsInformationFragmentDirections.actionDetailsInformationFragmentToTravelAddOnsFragment()
 
@@ -99,7 +99,7 @@ class DetailsInformationFragment : Fragment() {
                 Toast.makeText(activity, "We need your name", Toast.LENGTH_SHORT).show()
             else if (phone.isEmpty())
                 Toast.makeText(activity, "We need your phone", Toast.LENGTH_SHORT).show()
-            else if (email.isEmpty())
+            else if (!email.contains("@", ignoreCase = true))
                 Toast.makeText(activity, "We need your email", Toast.LENGTH_SHORT).show()
             else if (passengerAmount != passengerList)
                 Toast.makeText(activity, "Passenger is still empty", Toast.LENGTH_SHORT).show()
@@ -204,6 +204,13 @@ class DetailsInformationFragment : Fragment() {
         }
     }
 
+    private fun populateFirstPassengerView(firstPassenger: PassengerInputModel) {
+        val passengerAge = firstPassenger.age.name.lowercase().capitalize()
+
+        binding.tvPassengerDetail.text =
+            getString(R.string.tv_passenger_detail, firstPassenger.id, passengerAge)
+    }
+
     private fun createPassengerDetailInput() {
         ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) { preferableTrip ->
             detailsInformationViewModel.createPassengerInput(
@@ -223,12 +230,15 @@ class DetailsInformationFragment : Fragment() {
                             LinearLayoutManager.VERTICAL,
                             false
                         )
+                        val passengerData = passenger.data.toMutableList()
+                        val firstPassengerData = passengerData[0]
 
                         snapHelper.attachToRecyclerView(recyclerView)
 
-                        val passengerData = passenger.data.toMutableList()
-                        onFirstPassengerClicked(passengerData[0])
-                        onBtnSwitchClicked(passengerData[0])
+
+                        populateFirstPassengerView(firstPassengerData)
+                        onFirstPassengerClicked(firstPassengerData)
+                        onBtnSwitchClicked(firstPassengerData)
 
                         _adapter.apply {
                             passengerData.removeAt(0)
@@ -243,6 +253,7 @@ class DetailsInformationFragment : Fragment() {
 
                         _adapter.adapterPassengerInputOnClick()
                     }
+
                 }
             }
         }

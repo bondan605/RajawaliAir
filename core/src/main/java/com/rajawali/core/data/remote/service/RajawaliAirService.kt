@@ -1,10 +1,21 @@
 package com.rajawali.core.data.remote.service
 
 import com.rajawali.core.data.remote.response.AirportsResponse
+import com.rajawali.core.data.remote.response.AvailableSeatsResponse
+import com.rajawali.core.data.remote.response.CreateReservationResponse
 import com.rajawali.core.data.remote.response.FlightResponse
 import com.rajawali.core.data.remote.response.MealsResponse
+import com.rajawali.core.data.remote.response.PayReservationResponse
+import com.rajawali.core.data.remote.response.ReservationByIdResponse
+import com.rajawali.core.domain.enums.PassengerClassEnum
+import com.rajawali.core.domain.model.CreateReservationModel
+import com.rajawali.core.domain.model.PayReservationModel
 import com.rajawali.core.util.Constant
+import retrofit2.http.Body
+import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RajawaliAirService {
@@ -29,4 +40,26 @@ interface RajawaliAirService {
     suspend fun getMeals(
         @Query(Constant.PAGE_SIZE) size : Int = Constant.THOUSAND
     ) : MealsResponse
+
+    @GET("reservations/available-seats/{id}/{seatType}")
+    suspend fun getFlightAvailableSeats(
+        @Path("id") flightId : String,
+        @Path("seatType") seatType : String
+    ) : AvailableSeatsResponse
+
+    @GET("reservations/{id}")
+    suspend fun reservationById(
+        @Path("id") reservationId : String,
+        ) : ReservationByIdResponse
+
+    @POST("reservations")
+    suspend fun createReservation(
+        @Body data : CreateReservationModel
+    ) : CreateReservationResponse
+
+    @POST("payments/create")
+    suspend fun payReservation(
+        @Body data : PayReservationModel
+    ) : PayReservationResponse
+
 }

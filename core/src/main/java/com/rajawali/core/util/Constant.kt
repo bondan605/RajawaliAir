@@ -1,5 +1,7 @@
 package com.rajawali.core.util
 
+import com.rajawali.core.domain.enums.PaymentStatusEnum
+
 object Constant {
 
     //message
@@ -22,4 +24,15 @@ object Constant {
 
 
     const val THOUSAND = 1000
+
+    //payment status
+    val statusToEnumMap = mapOf(
+        "waiting" to PaymentStatusEnum.PAYMENT_WAITING,
+        "pending" to PaymentStatusEnum.PAYMENT_PENDING,
+        "successful" to PaymentStatusEnum.PAYMENT_SUCCESS,
+        "canceled" to PaymentStatusEnum.PAYMENT_CANCELED,
+        "valid" to PaymentStatusEnum.PAYMENT_NOT_VALID,
+        "null" to PaymentStatusEnum.PAYMENT_NULL
+    )
+
 }

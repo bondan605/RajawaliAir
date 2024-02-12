@@ -28,21 +28,98 @@
         tools:text="@string/tv_choose_ticket_flight_route"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_route_description"
+        app:layout_constraintBottom_toTopOf="@+id/tv_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_route_description"
-        android:layout_width="0dp"
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="6dp"
-        tools:text="@string/tv_choose_ticket_flight_route_description"
+        tools:text="@string/tv_date_picket"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_back" />
+
+    <TextView
+        android:id="@+id/tv_adult_passenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:visibility="gone"
+        android:layout_marginBottom="6dp"
+        tools:text="1 Adult"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_date" />
+
+    <TextView
+        android:id="@+id/tv_coma_between_adult_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="6dp"
+        tools:text="@string/tv_vertical_line"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_adult_passenger" />
+
+    <TextView
+        android:id="@+id/tv_child_passenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="6dp"
+        tools:text="3 Child"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_coma_between_adult_child" />
+
+    <TextView
+        android:id="@+id/tv_coma_between_child_infant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:visibility="gone"
+        android:layout_marginBottom="6dp"
+        tools:text="@string/tv_vertical_line"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_child_passenger" />
+
+    <TextView
+        android:id="@+id/tv_infant_passenger"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="6dp"
+        tools:text="2 Infant"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_coma_between_child_infant" />
+
+    <TextView
+        android:id="@+id/tv_class_passenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="6dp"
+        tools:text="@string/tv_class_passenger"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_infant_passenger" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
