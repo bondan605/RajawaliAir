@@ -9,6 +9,7 @@ import com.rajawali.core.domain.model.PassengerBaggageModel
 import com.rajawali.core.domain.model.PassengerMealsModel
 import com.rajawali.core.domain.model.PassengerSeatModel
 import com.rajawali.core.domain.model.PreferredMeal
+import com.rajawali.core.util.DataMapper
 
 @Suppress("RemoveExplicitTypeArguments")
 class TravelAddsOnViewModel : ViewModel() {
@@ -84,6 +85,9 @@ class TravelAddsOnViewModel : ViewModel() {
         _passengerBaggageList.value = baggages
     }
 
+    private fun baggageEnumToString(baggage: BaggageEnum) : String =
+        DataMapper.baggageEnumToInt(baggage)
+
     fun combinePassengerDetails(
         mealsList: List<PassengerMealsModel>,
         seatList: List<PassengerSeatModel>,
@@ -93,7 +97,8 @@ class TravelAddsOnViewModel : ViewModel() {
 
         seatList.forEach { seats ->
             val seat = seatList.find { it.id == seats.id }?.seat ?: ""
-            val baggage = baggageList.find { it.id == seats.id }?.baggage?.name ?: "0"
+            val baggageEnum = baggageList.find { it.id == seats.id }?.baggage ?: BaggageEnum.KG0
+            val baggage = baggageEnumToString(baggageEnum)
             val mealsModel = mealsList.find { it.id == seats.id }
             val mealNames = mealsModel?.meals?.map { it.id } ?: mutableListOf()
 
