@@ -18,7 +18,7 @@ import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.enums.CourtesyEnum
 import com.rajawali.core.domain.enums.GenderEnum
 import com.rajawali.core.domain.model.PassengerInputModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.PassengerInputAdapter
 import com.rajawali.core.util.DateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -219,9 +219,9 @@ class DetailsInformationFragment : Fragment() {
                 infant = preferableTrip.infantPassenger
             ).observe(viewLifecycleOwner) { passenger ->
                 when (passenger) {
-                    is UCResult.Error -> {}
+                    is CommonResult.Error -> {}
 
-                    is UCResult.Success -> {
+                    is CommonResult.Success -> {
                         val recyclerView = binding.rvPassengerInput
                         val snapHelper = PagerSnapHelper()
                         val _adapter = PassengerInputAdapter()

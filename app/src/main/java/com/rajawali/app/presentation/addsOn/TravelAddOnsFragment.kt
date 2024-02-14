@@ -24,11 +24,10 @@ import com.rajawali.core.domain.model.PassengerMealsModel
 import com.rajawali.core.domain.model.PassengerSeatModel
 import com.rajawali.core.domain.model.ReservationPassengerModel
 import com.rajawali.core.domain.model.SeatsModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.core.util.DataMapper
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class TravelAddOnsFragment : Fragment() {
 
@@ -186,14 +185,14 @@ class TravelAddOnsFragment : Fragment() {
                 .observe(viewLifecycleOwner) { reservation ->
 
                     when (reservation) {
-                        is UCResult.Error ->
+                        is CommonResult.Error ->
                             Toast.makeText(
                                 activity,
                                 "Unable to create a reservation",
                                 Toast.LENGTH_SHORT
                             ).show()
 
-                        is UCResult.Success -> {
+                        is CommonResult.Success -> {
                             val destination = TravelAddOnsFragmentDirections.actionTravelAddOnsFragmentToPaymentFragment()
 
                             ticketViewModel.setReservation(reservation.data)
@@ -215,12 +214,12 @@ class TravelAddOnsFragment : Fragment() {
             seatsViewModel.getAvailableSeats(ticket.id, ticket.classType)
                 .observe(viewLifecycleOwner) { seats ->
                     when (seats) {
-                        is UCResult.Error -> {
+                        is CommonResult.Error -> {
                             Toast.makeText(activity, "No available seats", Toast.LENGTH_SHORT)
                                 .show()
                         }
 
-                        is UCResult.Success -> {
+                        is CommonResult.Success -> {
                             val availableSeats = seats.data.seats.filter { it.isAvailable }
 
                             passengerAmount.randomSeats(availableSeats)

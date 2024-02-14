@@ -1,6 +1,5 @@
 package com.rajawali.core.data.local.room.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,15 +7,19 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "recentSearch")
 data class RecentSearchEntity(
 
+    @PrimaryKey
     @ColumnInfo(name = "id")
-    val id : String,
+    val id: String,
 
     @ColumnInfo(name = "city")
-    val city : String,
+    val city: String,
 
     @ColumnInfo(name = "cityCode")
-    val cityCode : String,
+    val cityCode: String,
 
     @ColumnInfo(name = "airport")
-    val airport : String,
-    )
+    val airport: String,
+
+    @ColumnInfo(name = "created")
+    val created: Long,
+)

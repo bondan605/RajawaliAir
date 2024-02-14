@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.ReservationByIdModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.domain.usecase.GetReservationByIdUseCase
-import com.rajawali.core.util.Constant
 import com.rajawali.core.util.DataMapper
 import timber.log.Timber
 
@@ -30,7 +29,7 @@ class PaymentWaitingViewModel(private val useCase: GetReservationByIdUseCase) : 
         return statusEnum
     }
 
-    fun getReservationById(id : String) : LiveData<UCResult<ReservationByIdModel>> = useCase.getReservation(id).asLiveData()
+    fun getReservationById(id : String) : LiveData<CommonResult<ReservationByIdModel>> = useCase.getReservation(id).asLiveData()
 
     fun setTransferDropdown() {
         val state = transferDropdown.value ?: false

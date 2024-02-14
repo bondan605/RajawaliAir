@@ -18,7 +18,7 @@ import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.detailsInformation.DetailsInformationViewModel
 import com.rajawali.core.domain.model.MealModel
 import com.rajawali.core.domain.model.PassengerInputModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.MealsAdapter
 import com.rajawali.core.presentation.adapter.PassengerSelectionAdapter
 import com.rajawali.core.presentation.viewModel.MealsViewModel
@@ -88,8 +88,8 @@ class MealsFragment : Fragment() {
                 infant = preferableTrip.infantPassenger
             ).observe(viewLifecycleOwner) { passenger ->
                 when (passenger) {
-                    is UCResult.Error -> TODO()
-                    is UCResult.Success -> {
+                    is CommonResult.Error -> TODO()
+                    is CommonResult.Success -> {
                         val recyclerView = binding.rvPassengerSelection
                         val snapHelper = PagerSnapHelper()
                         val _adapter = PassengerSelectionAdapter()
@@ -187,8 +187,8 @@ class MealsFragment : Fragment() {
     private fun getMeals() {
         mealsViewModel.mealsList.observe(viewLifecycleOwner) { isMeals ->
             when (isMeals) {
-                is UCResult.Error -> {} //TODO()
-                is UCResult.Success -> {
+                is CommonResult.Error -> {} //TODO()
+                is CommonResult.Success -> {
                     val recyclerView = binding.rvMeals
                     val snapHelper = PagerSnapHelper()
                     val _adapter = MealsAdapter(mealsViewModel)

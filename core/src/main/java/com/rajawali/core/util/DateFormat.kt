@@ -6,6 +6,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
@@ -15,6 +16,16 @@ import kotlin.math.abs
 object DateFormat {
 
     val currentDate = LocalDate.now()
+
+    fun getTodayLocalDateTimeInLong() : Long {
+        val today = LocalDateTime.now()
+
+        return localDateTimeToLong(today)
+    }
+
+    fun localDateTimeToLong(date : LocalDateTime) : Long =
+        date.toEpochSecond(ZoneOffset.UTC)
+
     fun stringToLocalDateTime(expired: String): LocalDateTime {
         if (expired.length >= 18) {
             val sliced = expired.slice(0..18)

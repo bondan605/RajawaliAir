@@ -11,12 +11,12 @@ import org.koin.dsl.module
     when app is released
 */
 val databaseModule = module {
+    factory { get<RajawaliDatabase>().recentSearchDao() }
     single {
-        factory { get<RajawaliDatabase>().recentSearchDao() }
         Room.databaseBuilder(
             androidContext(),
             RajawaliDatabase::class.java,
-            "RajawaliDatabase"
+            "RajawaliAir.db"
         ).fallbackToDestructiveMigration()
             .build()
     }

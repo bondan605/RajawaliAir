@@ -3,7 +3,7 @@ package com.rajawali.core.domain.usecase
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.repository.RemoteRepository
 import com.rajawali.core.domain.result.ApiResponse
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.Constant
 import com.rajawali.core.util.DataMapper
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +19,7 @@ class GetPreferredFlight(private val repo: RemoteRepository) {
         infantPassenger: Int,
         departureDate: String,
         seatType: String,
-    ): Flow<UCResult<List<FlightModel>>> = flow {
+    ): Flow<CommonResult<List<FlightModel>>> = flow {
         try {
             val response = repo.getPreferredFlights(
                 departure = departure,
@@ -51,7 +51,7 @@ class GetPreferredFlight(private val repo: RemoteRepository) {
                     }
                     Timber.d("getPreferredFlight $model")
 
-                    emit(UCResult.Success(model))
+                    emit(CommonResult.Success(model))
                 }
             }
 
@@ -59,7 +59,7 @@ class GetPreferredFlight(private val repo: RemoteRepository) {
         } catch (e: Exception) {
             Timber.w(e)
 
-            emit(UCResult.Error(e.message ?: Constant.FETCH_FAILED))
+            emit(CommonResult.Error(e.message ?: Constant.FETCH_FAILED))
         }
     }
 

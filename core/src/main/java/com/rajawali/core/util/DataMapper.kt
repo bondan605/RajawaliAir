@@ -57,12 +57,13 @@ object DataMapper {
             airport = entity.airport
         )
 
-    fun recentSearchDomainToEntity(domain: SearchModel): RecentSearchEntity =
+    fun recentSearchDomainToEntity(domain: SearchModel, created : Long): RecentSearchEntity =
         RecentSearchEntity(
             id = domain.id,
             city = domain.city,
             cityCode = domain.cityCode,
-            airport = domain.airport
+            airport = domain.airport,
+            created = created
         )
 
     fun airportsResponseToSearchDomain(response: ContentItem): SearchModel =

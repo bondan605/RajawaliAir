@@ -1,10 +1,9 @@
 package com.rajawali.core.domain.usecase
 
-import com.rajawali.core.domain.enums.PassengerClassEnum
 import com.rajawali.core.domain.model.AvailableSeatsModel
 import com.rajawali.core.domain.repository.RemoteRepository
 import com.rajawali.core.domain.result.ApiResponse
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.Constant
 import com.rajawali.core.util.DataMapper
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +15,7 @@ class GetAvailableSeatsUseCase(private val remote: RemoteRepository) {
     fun getAvailableSeats(
         id: String,
         seatType: String
-    ): Flow<UCResult<AvailableSeatsModel>> = flow {
+    ): Flow<CommonResult<AvailableSeatsModel>> = flow {
         try {
 
             val response = remote.getFlightAvailableSeats(id, seatType)
@@ -29,12 +28,12 @@ class GetAvailableSeatsUseCase(private val remote: RemoteRepository) {
                     val model =
                         DataMapper.availableSeatsResponseToAvailableSeatsModel(response.data)
 
-                    emit(UCResult.Success(model))
+                    emit(CommonResult.Success(model))
                 }
             }
         } catch (e: Exception) {
             Timber.w(e)
-            emit(UCResult.Error(e.message ?: Constant.FETCH_FAILED))
+            emit(CommonResult.Error(e.message ?: Constant.FETCH_FAILED))
         }
     }
 }

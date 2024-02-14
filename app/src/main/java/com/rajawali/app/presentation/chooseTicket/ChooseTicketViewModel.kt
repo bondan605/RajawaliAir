@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.FlightModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.domain.usecase.GetFlightByDate
 import com.rajawali.core.domain.usecase.GetPreferredFlight
 import java.time.LocalDate
@@ -30,7 +30,7 @@ class ChooseTicketViewModel(
         _isDeparturePicked.value = !value
     }
 
-    fun getDates(preferredDate: LocalDate): LiveData<UCResult<List<LocalDate>>> =
+    fun getDates(preferredDate: LocalDate): LiveData<CommonResult<List<LocalDate>>> =
         dateUseCase.createDates(preferredDate).asLiveData()
 
 
@@ -42,7 +42,7 @@ class ChooseTicketViewModel(
         infantPassenger: Int,
         departureDate: LocalDate,
         seatType: String,
-    ): LiveData<UCResult<List<FlightModel>>> =
+    ): LiveData<CommonResult<List<FlightModel>>> =
         useCase.getPreferredFlight(
             departure = departure,
             destination = destination,

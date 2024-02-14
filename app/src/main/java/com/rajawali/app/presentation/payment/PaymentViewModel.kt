@@ -6,7 +6,7 @@ import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.PayReservationModel
 import com.rajawali.core.domain.model.PaymentRecordModel
 import com.rajawali.core.domain.model.PaymentViewState
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.domain.usecase.PayReservationUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +23,7 @@ class PaymentViewModel(private val createPayment : PayReservationUseCase) : View
         _paymentViewState.value = paymentViewState.value.copy(paymentMethod = method)
     }
 
-    fun payTicket(reservationId: String, paymentMethod: String) : LiveData<UCResult<PaymentRecordModel>> {
+    fun payTicket(reservationId: String, paymentMethod: String) : LiveData<CommonResult<PaymentRecordModel>> {
         val payment =
             PayReservationModel(
                 reservationId = reservationId,
