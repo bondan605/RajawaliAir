@@ -49,7 +49,7 @@ Total 12 requiment wajib.
 - [ ] Menggunakan Room untuk menyimpan data ke local database
 - [ ] Menerapkan data store/shared preferences untuk penyimpanan key-value
 - [x] Menerapkan coroutine/rxjava untuk background process
-- [ ] Menambahkan testing minimal satu test case
+- [x] Menambahkan testing minimal satu test case
 - [x] Menerapkan Dependency Injection
 - [x] Menggunakan API yang disediakan oleh anggota dari student Back End
 - [x] Menggunakan Retrofit
