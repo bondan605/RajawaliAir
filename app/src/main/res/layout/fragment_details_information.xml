@@ -179,6 +179,7 @@
                         android:id="@+id/btn_forward"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
+                        android:visibility="gone"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/arrow_forward" />

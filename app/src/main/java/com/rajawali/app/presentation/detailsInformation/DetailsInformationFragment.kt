@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentDetailsInformationBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
@@ -88,7 +87,11 @@ class DetailsInformationFragment : Fragment() {
                 gender = it.name
             }
 
-            if (passengerAmount == passengerList && fullName.isNotEmpty() && phone.isNotEmpty() && email.contains("@", ignoreCase = true) && gender.isNotEmpty()) {
+            if (passengerAmount == passengerList && fullName.isNotEmpty() && phone.isNotEmpty() && email.contains(
+                    "@",
+                    ignoreCase = true
+                ) && gender.isNotEmpty()
+            ) {
                 val destination =
                     DetailsInformationFragmentDirections.actionDetailsInformationFragmentToTravelAddOnsFragment()
 
@@ -231,7 +234,6 @@ class DetailsInformationFragment : Fragment() {
 
                     is CommonResult.Success -> {
                         val recyclerView = binding.rvPassengerInput
-                        val snapHelper = PagerSnapHelper()
                         val _adapter = PassengerInputAdapter()
                         val _layoutManager = LinearLayoutManager(
                             requireActivity(),
@@ -240,8 +242,6 @@ class DetailsInformationFragment : Fragment() {
                         )
                         val passengerData = passenger.data.toMutableList()
                         val firstPassengerData = passengerData[0]
-
-                        snapHelper.attachToRecyclerView(recyclerView)
 
 
                         populateFirstPassengerView(firstPassengerData)

@@ -147,7 +147,7 @@
     <string name="tv_arriving__city_code_time">%1$s | %2$s</string>
     <string name="tv_arriving_airport">%1$s | %2$s</string>
     <string name="tv_point_gain">Earn %1$d Loyalty Points</string>
-    <string name="tv_luggage_additional_description">Baggage 20 kg</string>
+    <string name="tv_luggage_additional_description">Additional baggage up to 40kg</string>
     <string name="tv_luggage_description">Cabin baggage 7kg</string>
     <string name="tv_meal_description">In-flight meals</string>
     <string name="tv_total_label">Total</string>
@@ -297,12 +297,13 @@
     <string name="tv_transfer_via_atm_label">Transfer Via ATM</string>
     <string name="tv_transfer_via_internet_banking_label">Transfer Via Internet Banking</string>
     <string name="tv_transfer_via_mobile_banking_label">Transfer Via Mobile Banking</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_purchase_successul_label">Purchase Successful</string>
     <string name="tv_purchase_on_label">Purchase On</string>
     <string name="tv_payment_method_label">Payment Method</string>
     <string name="tv_total_price_label">total price</string>
     <string name="tv_transaction_complete_description">Your transaction has been successful, Cool! \n Please check the transaction receipt!</string>
+
+    //register
+    <string name="tv_register_policy">I agree to the <b><font color="#1e90ff">Terms &amp; Conditions</font></b> and <b><font color="#1e90ff">Privacy\nPolicy</font></b> of the application.</string>
 
 </resources>

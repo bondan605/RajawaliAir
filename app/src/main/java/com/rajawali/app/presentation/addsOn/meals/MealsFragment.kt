@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.card.MaterialCardView
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentMealsBinding
@@ -24,6 +23,7 @@ import com.rajawali.core.presentation.adapter.PassengerSelectionAdapter
 import com.rajawali.core.presentation.viewModel.MealsViewModel
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class MealsFragment : Fragment() {
     private val binding get() = _binding!!
@@ -87,11 +87,12 @@ class MealsFragment : Fragment() {
                 child = preferableTrip.childPassenger,
                 infant = preferableTrip.infantPassenger
             ).observe(viewLifecycleOwner) { passenger ->
+                Timber.d("getPassenger : $passenger")
+
                 when (passenger) {
                     is CommonResult.Error -> TODO()
                     is CommonResult.Success -> {
                         val recyclerView = binding.rvPassengerSelection
-                        val snapHelper = PagerSnapHelper()
                         val _adapter = PassengerSelectionAdapter()
                         val _layoutManager = LinearLayoutManager(
                             requireActivity(),
@@ -99,7 +100,6 @@ class MealsFragment : Fragment() {
                             false
                         )
 
-                        snapHelper.attachToRecyclerView(recyclerView)
 
                         _adapter.apply {
                             submitList(passenger.data)
@@ -190,15 +190,12 @@ class MealsFragment : Fragment() {
                 is CommonResult.Error -> {} //TODO()
                 is CommonResult.Success -> {
                     val recyclerView = binding.rvMeals
-                    val snapHelper = PagerSnapHelper()
                     val _adapter = MealsAdapter(mealsViewModel)
                     val _layoutManager = LinearLayoutManager(
                         requireActivity(),
                         LinearLayoutManager.VERTICAL,
                         false
                     )
-
-                    snapHelper.attachToRecyclerView(recyclerView)
 
                     _adapter.apply {
                         submitList(isMeals.data)

@@ -10,6 +10,8 @@ object Constant {
     const val DATA_FOUND = "data is found"
     const val DATA_EMPTY = "data is empty"
     const val FETCH_FAILED = "Unable to fetch data"
+    const val ACCOUNT_NOT_FOUND = "Account is not found"
+    const val OTP_VERIFY_FAILED = "Wrong code"
 
     //api
     const val BASE_URL = "https://rajawali-production.up.railway.app/api/"

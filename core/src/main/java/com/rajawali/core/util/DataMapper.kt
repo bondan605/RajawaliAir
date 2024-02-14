@@ -6,6 +6,7 @@ import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.DestinationAirport
 import com.rajawali.core.data.remote.response.FlightDetailListItem
 import com.rajawali.core.data.remote.response.FlightItem
+import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.response.MealsAddOnsItem
 import com.rajawali.core.data.remote.response.PassengerDetailListItem
@@ -23,6 +24,7 @@ import com.rajawali.core.domain.model.AirplaneModel
 import com.rajawali.core.domain.model.AvailableSeatsModel
 import com.rajawali.core.domain.model.BookingModel
 import com.rajawali.core.domain.model.FlightModel
+import com.rajawali.core.domain.model.LoggedInUserModel
 import com.rajawali.core.domain.model.MealModel
 import com.rajawali.core.domain.model.PassengerModel
 import com.rajawali.core.domain.model.PaymentRecordModel
@@ -37,12 +39,25 @@ import com.rajawali.core.domain.model.SeatsModel
 
 object DataMapper {
 
-    fun baggageEnumToInt(baggage : BaggageEnum) : String =
+    fun loginResponseToLoggedInUserModel(response: LoginData): LoggedInUserModel =
+        LoggedInUserModel(
+            id = response.id ?: "",
+            fullName = response.fullName ?: "",
+            email = response.email ?: "",
+            phoneNumber = response.phoneNumber ?: "",
+            accessToken = response.accessToken ?: "",
+            refreshToken = response.refreshToken ?: "",
+            type = response.type ?: "",
+
+            )
+
+    fun baggageEnumToInt(baggage: BaggageEnum): String =
         Constant.baggageEnumToStringMap[baggage] ?: "0"
 
-    fun paymentStatusStringToPaymentStatusEnum(status : String) : PaymentStatusEnum =
+    fun paymentStatusStringToPaymentStatusEnum(status: String): PaymentStatusEnum =
         Constant.statusToEnumMap[status.lowercase()] ?: PaymentStatusEnum.PAYMENT_NULL
-    fun reservationByIdResponseToReservationByIdModel(response : ReservationByIdData ) : ReservationByIdModel =
+
+    fun reservationByIdResponseToReservationByIdModel(response: ReservationByIdData): ReservationByIdModel =
         ReservationByIdModel(
             id = response.id ?: "",
             paymentStatus = response.paymentStatus ?: "",
@@ -57,7 +72,7 @@ object DataMapper {
             airport = entity.airport
         )
 
-    fun recentSearchDomainToEntity(domain: SearchModel, created : Long): RecentSearchEntity =
+    fun recentSearchDomainToEntity(domain: SearchModel, created: Long): RecentSearchEntity =
         RecentSearchEntity(
             id = domain.id,
             city = domain.city,

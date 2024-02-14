@@ -3,14 +3,19 @@ package com.rajawali.core.data.remote
 import android.accounts.NetworkErrorException
 import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.FlightItem
+import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.response.PayReservationData
+import com.rajawali.core.data.remote.response.RegisterData
 import com.rajawali.core.data.remote.response.ReservationByIdData
 import com.rajawali.core.data.remote.response.ReservationData
 import com.rajawali.core.data.remote.response.SeatsData
 import com.rajawali.core.data.remote.service.RajawaliAirService
 import com.rajawali.core.domain.model.CreateReservationModel
+import com.rajawali.core.domain.model.LoginModel
 import com.rajawali.core.domain.model.PayReservationModel
+import com.rajawali.core.domain.model.RegisterModel
+import com.rajawali.core.domain.model.VerifyModel
 import com.rajawali.core.domain.repository.RemoteRepository
 import com.rajawali.core.domain.result.ApiResponse
 import com.rajawali.core.util.Constant
@@ -224,6 +229,70 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
         } catch (e: NetworkErrorException) {
             Timber.w(e)
             ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
+
+    override suspend fun login(data: LoginModel): ApiResponse<LoginData> =
+        try {
+            val response = service.login(data)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw NetworkErrorException(response.message.toString())
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(Constant.ACCOUNT_NOT_FOUND)
+        } catch (e: NetworkErrorException) {
+            Timber.w(e)
+            ApiResponse.Error(Constant.ACCOUNT_NOT_FOUND)
+        }
+
+    override suspend fun register(data: RegisterModel): ApiResponse<RegisterData> =
+        try {
+            val response = service.register(data)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw NetworkErrorException(response.message.toString())
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(Constant.ACCOUNT_NOT_FOUND)
+        } catch (e: NetworkErrorException) {
+            Timber.w(e)
+            ApiResponse.Error(Constant.ACCOUNT_NOT_FOUND)
+        }
+
+    override suspend fun verifyNewAccount(data: VerifyModel): ApiResponse<String> =
+        try {
+            val response = service.verifyNewAccount(data)
+
+            when (response.success) {
+                true -> {
+                    if (response.message != null)
+                        ApiResponse.Success(response.message)
+                    else
+                        throw Exception()
+                }
+
+                false ->
+                    throw Exception(response.message)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.OTP_VERIFY_FAILED)
         }
 
 }
