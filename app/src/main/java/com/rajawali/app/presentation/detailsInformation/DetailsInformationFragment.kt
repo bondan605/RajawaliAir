@@ -57,6 +57,14 @@ class DetailsInformationFragment : Fragment() {
         getCheckboxGenderAndId()
 
         onBtnNextPageClicked()
+
+        setOnBackButtonClicked()
+    }
+
+    private fun setOnBackButtonClicked() {
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun onBtnNextPageClicked() {
