@@ -12,8 +12,6 @@ import com.rajawali.app.databinding.FragmentSelectedTicketBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.AppUtils
 import com.rajawali.app.util.NavigationUtils.safeNavigate
-import com.rajawali.core.domain.model.FindTicketModel
-import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.model.Insurance
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.core.util.DateFormat
@@ -45,6 +43,14 @@ class SelectedTicketFragment : Fragment() {
         populateView()
 
         onButtonSelected()
+
+        setOnBtnBackSelected()
+    }
+
+    private fun setOnBtnBackSelected() {
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun onButtonSelected() {
@@ -148,7 +154,7 @@ class SelectedTicketFragment : Fragment() {
     ) {
         val adult = initialAdultPassenger ?: 0
         val child = initialChildPassenger ?: 0
-        val infant =  initialInfantPassenger ?: 0
+        val infant = initialInfantPassenger ?: 0
         val tvAdult = binding.tvAdultPassenger
         val tvChild = binding.tvChildPassenger
         val tvInfant = binding.tvInfantPassenger
