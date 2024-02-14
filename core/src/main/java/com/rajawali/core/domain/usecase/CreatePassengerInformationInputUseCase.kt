@@ -2,7 +2,7 @@ package com.rajawali.core.domain.usecase
 
 import com.rajawali.core.domain.enums.PassengerCategoryEnum
 import com.rajawali.core.domain.model.PassengerInputModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.Constant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,7 +14,7 @@ class CreatePassengerInformationInputUseCase {
         adult: Int,
         child: Int,
         infant: Int
-    ): Flow<UCResult<List<PassengerInputModel>>> = flow {
+    ): Flow<CommonResult<List<PassengerInputModel>>> = flow {
         id = 1
 
         try {
@@ -28,7 +28,7 @@ class CreatePassengerInformationInputUseCase {
 
             when (passenger.isNotEmpty()) {
                 true ->
-                    emit(UCResult.Success(passenger))
+                    emit(CommonResult.Success(passenger))
 
                 false ->
                     throw Exception(Constant.DATA_EMPTY)
@@ -36,7 +36,7 @@ class CreatePassengerInformationInputUseCase {
 
         } catch (e: Exception) {
             Timber.w(e)
-            emit(UCResult.Error(e.message ?: Constant.FETCH_FAILED))
+            emit(CommonResult.Error(e.message ?: Constant.FETCH_FAILED))
         }
     }
 

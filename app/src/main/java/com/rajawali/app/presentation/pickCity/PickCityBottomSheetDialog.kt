@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
 import com.rajawali.core.domain.model.SearchModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.SearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -65,11 +65,11 @@ class PickCityBottomSheetDialog : BottomSheetDialogFragment() {
             //need to add loading animation.
 
             when (it) {
-                is UCResult.Success -> {
+                is CommonResult.Success -> {
                     _adapter.submitList(it.data)
                 }
 
-                is UCResult.Error -> {
+                is CommonResult.Error -> {
                     Toast.makeText(activity, it.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }

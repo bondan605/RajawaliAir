@@ -13,7 +13,7 @@ import com.rajawali.app.databinding.FragmentBaggageBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.detailsInformation.DetailsInformationViewModel
 import com.rajawali.core.domain.enums.BaggageEnum
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.BaggageAdapter
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -78,9 +78,9 @@ class BaggageFragment : Fragment() {
                 infant = preferableTrip.infantPassenger
             ).observe(viewLifecycleOwner) { passenger ->
                 when (passenger) {
-                    is UCResult.Error -> {}
+                    is CommonResult.Error -> {}
 
-                    is UCResult.Success -> {
+                    is CommonResult.Success -> {
                         val recyclerView = binding.rvPassengersBaggage
 //                        val snapHelper = PagerSnapHelper()
                         val _adapter = BaggageAdapter(addsOnViewModel)

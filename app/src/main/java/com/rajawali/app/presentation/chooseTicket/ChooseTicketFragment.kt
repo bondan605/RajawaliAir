@@ -18,7 +18,7 @@ import com.rajawali.app.util.AppUtils.getPassengerClassText
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.model.FlightModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.DateAdapter
 import com.rajawali.core.presentation.adapter.TicketAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -88,10 +88,10 @@ class ChooseTicketFragment : Fragment() {
 
             viewModel.getDates(date.departureDate).observe(viewLifecycleOwner) {
                 when (it) {
-                    is UCResult.Error ->
+                    is CommonResult.Error ->
                         Toast.makeText(activity, "date is error", Toast.LENGTH_SHORT).show()
 
-                    is UCResult.Success -> {
+                    is CommonResult.Success -> {
                         _adapter.submitList(it.data)
 
                         rvDates.apply {
@@ -115,10 +115,10 @@ class ChooseTicketFragment : Fragment() {
                 val _adapter = DateAdapter()
                 viewModel.getDates(date).observe(viewLifecycleOwner) {
                     when (it) {
-                        is UCResult.Error ->
+                        is CommonResult.Error ->
                             Toast.makeText(activity, "date is error", Toast.LENGTH_SHORT).show()
 
-                        is UCResult.Success -> {
+                        is CommonResult.Success -> {
                             _adapter.submitList(it.data)
                             rvDates.adapter = _adapter
 
@@ -308,18 +308,18 @@ class ChooseTicketFragment : Fragment() {
 
     //TODO rename
     private fun displayTicketToUI(
-        tickets: LiveData<UCResult<List<FlightModel>>>,
+        tickets: LiveData<CommonResult<List<FlightModel>>>,
     ) {
         tickets.observe(viewLifecycleOwner) { result ->
 
             when (result) {
-                is UCResult.Error -> {
+                is CommonResult.Error -> {
                     binding.tvNoTickets.visibility = View.VISIBLE
                     binding.rvTicketList.visibility = View.GONE
 
                 }
 
-                is UCResult.Success -> {
+                is CommonResult.Success -> {
                     Timber.d("displayTicketToUI: ${result.data}")
 
                     binding.tvNoTickets.visibility = View.GONE
@@ -483,7 +483,7 @@ class ChooseTicketFragment : Fragment() {
     private fun getTickets(
         preferred: FindTicketModel,
         customDate: LocalDate? = null
-    ): LiveData<UCResult<List<FlightModel>>> {
+    ): LiveData<CommonResult<List<FlightModel>>> {
         return viewModel.getPreferredTickets(
             departure = preferred.departureId,
             destination = preferred.destinationId,

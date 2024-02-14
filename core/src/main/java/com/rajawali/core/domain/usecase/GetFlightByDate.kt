@@ -1,7 +1,7 @@
 package com.rajawali.core.domain.usecase
 
 import com.rajawali.core.domain.enums.DateOrderEnum
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.Constant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -10,7 +10,7 @@ import java.time.LocalDate
 
 class GetFlightByDate {
 
-    fun createDates(preferredDate: LocalDate): Flow<UCResult<List<LocalDate>>> = flow {
+    fun createDates(preferredDate: LocalDate): Flow<CommonResult<List<LocalDate>>> = flow {
         try {
 
             val date = mutableListOf(preferredDate)
@@ -19,13 +19,13 @@ class GetFlightByDate {
             val dates = priorDate + date + afterDate
 
             if (priorDate.isNotEmpty() && afterDate.isNotEmpty())
-                emit(UCResult.Success(dates))
+                emit(CommonResult.Success(dates))
             else
                 throw Exception()
 
         } catch (e: Exception) {
             Timber.w(e)
-            emit(UCResult.Error(Constant.DATA_EMPTY))
+            emit(CommonResult.Error(Constant.DATA_EMPTY))
         }
     }
 

@@ -7,8 +7,8 @@ import com.rajawali.core.data.local.room.entity.RecentSearchEntity
 
 
 @Database(
-    entities = [RecentSearchDao::class],
-    version = 1,
+    entities = [RecentSearchEntity::class],
+    version = 2,
     exportSchema = false
 )
 abstract class RajawaliDatabase: RoomDatabase() {

@@ -18,10 +18,9 @@ import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.Payment
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.PopulatePaymentMethodModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.DateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class PaymentWaitingFragment : Fragment() {
@@ -91,7 +90,7 @@ class PaymentWaitingFragment : Fragment() {
                     .observe(viewLifecycleOwner) { paymentStatus ->
 
                         when (paymentStatus) {
-                            is UCResult.Error -> {
+                            is CommonResult.Error -> {
                                 //loading visibility
                                 setLoadingVisibility(false)
 
@@ -102,7 +101,7 @@ class PaymentWaitingFragment : Fragment() {
                                 ).show()
                             }
 
-                            is UCResult.Success -> {
+                            is CommonResult.Success -> {
                                 val status = paymentStatus.data.paymentStatus
                                 //loading visibility
                                 setLoadingVisibility(false)

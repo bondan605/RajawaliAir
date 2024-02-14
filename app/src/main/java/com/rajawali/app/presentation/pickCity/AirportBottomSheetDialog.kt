@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.SearchModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.SearchAdapter
 import com.rajawali.core.util.Constant
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -49,18 +49,28 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         whenSearching()
         dismissBottomSheet()
 
-
         recentSearch()
+        clearRecentSearch()
 
         type = AirportBottomSheetDialogArgs.fromBundle(
             arguments as Bundle
         ).airport
     }
 
+    private fun clearRecentSearch() {
+        binding.btnClearRecentSearch.setOnClickListener {
+            searchViewModel.clearRecentSearch()
+            binding.rvRecentSearch.visibility = View.GONE
+        }
+    }
+
     //on airport clicked
     private fun SearchAdapter.onAirportClickCallback() {
         this.setOnAirportClickCallback(object : SearchAdapter.OnAirportClickCallback {
             override fun onAirportClickCallback(airport: SearchModel) {
+                //save to recentSearch
+                searchViewModel.addSearch(airport)
+
 
                 //switching saving location
                 when (type) {
@@ -89,11 +99,11 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
             //TODO need to add loading animation.
 
             when (it) {
-                is UCResult.Success -> {
+                is CommonResult.Success -> {
                     _adapter.submitList(it.data)
                 }
 
-                is UCResult.Error -> {
+                is CommonResult.Error -> {
                     if (it.errorMessage == Constant.DATA_EMPTY) {
                         binding.tvSearchNotFound.visibility = View.VISIBLE
                     }
@@ -115,23 +125,25 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         val _layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-//        viewModel.getRecentSearch.observe(viewLifecycleOwner) {
-//            when (it) {
-//                is UCResult.Success -> {
-//                    _adapter.submitList(it.data)
-//                }
-//
-////                TODO need to add response when data is empty
-//                is UCResult.Error -> {}
-//            }
-//
-//        }
+        searchViewModel.getRecentSearch.observe(viewLifecycleOwner) { searchData ->
 
-        recyclerview.apply {
-            adapter = _adapter
-            layoutManager = _layoutManager
-            setHasFixedSize(true)
+            when (searchData) {
+                is CommonResult.Error ->
+                    recyclerview.visibility = View.GONE
+
+                is CommonResult.Success ->
+                    _adapter.submitList(searchData.data)
+
+            }
+
+            recyclerview.apply {
+                adapter = _adapter
+                layoutManager = _layoutManager
+                setHasFixedSize(true)
+            }
         }
+
+        _adapter.onAirportClickCallback()
     }
 
     private fun whenSearching() {

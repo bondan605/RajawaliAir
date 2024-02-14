@@ -14,7 +14,7 @@ import com.rajawali.app.presentation.bottomSheetDialog.paymentMethod.PaymentMeth
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.Payment
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.util.DateFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -109,14 +109,14 @@ class PaymentFragment : Fragment() {
             ).observe(viewLifecycleOwner) { payment ->
 
                 when (payment) {
-                    is UCResult.Error ->
+                    is CommonResult.Error ->
                         Toast.makeText(
                             activity,
                             "Unable to pay. Check your Network",
                             Toast.LENGTH_SHORT
                         ).show()
 
-                    is UCResult.Success -> {
+                    is CommonResult.Success -> {
                         val destination = PaymentFragmentDirections
                             .actionPaymentFragmentToPaymentWaitingFragment()
 

@@ -1,7 +1,7 @@
 package com.rajawali.app
 
 import com.rajawali.core.domain.model.PassengerInputModel
-import com.rajawali.core.domain.result.UCResult
+import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.domain.usecase.CreatePassengerInformationInputUseCase
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
@@ -27,8 +27,8 @@ class CreatePassengerAmountTest {
         val result = useCase.createPassengerDetail(adult, child, infant).toList()
 
         // Assert
-        assertEquals(UCResult.Success::class, result[0]::class)
-        val passengerList = (result[0] as UCResult.Success<List<PassengerInputModel>>).data
+        assertEquals(CommonResult.Success::class, result[0]::class)
+        val passengerList = (result[0] as CommonResult.Success<List<PassengerInputModel>>).data
         assertEquals(adult + child + infant, passengerList.size)
     }
 }
