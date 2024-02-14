@@ -251,7 +251,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I agree to the Terms &amp; Conditions and Privacy\nPolicy of the application."/>
+                android:text="@string/tv_register_policy"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton

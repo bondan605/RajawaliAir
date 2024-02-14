@@ -9,6 +9,9 @@ import com.rajawali.app.presentation.payment.PaymentViewModel
 import com.rajawali.app.presentation.paymentWaiting.PaymentWaitingViewModel
 import com.rajawali.app.presentation.pickCity.AirportsViewModel
 import com.rajawali.app.presentation.pickCity.SearchViewModel
+import com.rajawali.app.presentation.ui.auth.login.LoginViewModel
+import com.rajawali.app.presentation.ui.auth.register.RegisterViewModel
+import com.rajawali.app.presentation.ui.auth.veritication.VerifyViewModel
 import com.rajawali.core.presentation.viewModel.MealsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,4 +28,7 @@ val viewModelModule = module {
     viewModel { CreateReservationViewModel(get()) }
     viewModel { PaymentViewModel(get()) }
     viewModel { PaymentWaitingViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
+    viewModel { VerifyViewModel(get()) }
 }

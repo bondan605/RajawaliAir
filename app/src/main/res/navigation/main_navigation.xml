@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
     </fragment>
     <dialog
         android:id="@+id/airportBottomSheetDialog"
@@ -167,6 +170,9 @@
         <action
             android:id="@+id/action_paymentFragment_to_paymentWaitingFragment"
             app:destination="@id/paymentWaitingFragment" />
+        <action
+            android:id="@+id/action_paymentFragment_to_flightDetailBottomSheetDialog"
+            app:destination="@id/flightDetailBottomSheetDialog" />
     </fragment>
     <dialog
         android:id="@+id/paymentMethodBottomSheetDialog"
@@ -191,5 +197,19 @@
         <action
             android:id="@+id/action_paymentWaitingFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_paymentWaitingFragment_to_flightDetailBottomSheetDialog"
+            app:destination="@id/flightDetailBottomSheetDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.rajawali.app.presentation.ui.auth.veritication.VerificationFragment"
+        android:label="VerificationFragment" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_verificationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

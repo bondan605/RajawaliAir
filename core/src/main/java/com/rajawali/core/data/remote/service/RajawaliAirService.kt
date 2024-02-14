@@ -4,15 +4,19 @@ import com.rajawali.core.data.remote.response.AirportsResponse
 import com.rajawali.core.data.remote.response.AvailableSeatsResponse
 import com.rajawali.core.data.remote.response.CreateReservationResponse
 import com.rajawali.core.data.remote.response.FlightResponse
+import com.rajawali.core.data.remote.response.LoginResponse
 import com.rajawali.core.data.remote.response.MealsResponse
 import com.rajawali.core.data.remote.response.PayReservationResponse
+import com.rajawali.core.domain.model.RegisterModel
+import com.rajawali.core.data.remote.response.RegisterResponse
 import com.rajawali.core.data.remote.response.ReservationByIdResponse
-import com.rajawali.core.domain.enums.PassengerClassEnum
+import com.rajawali.core.data.remote.response.VerifyNewAccountResponse
 import com.rajawali.core.domain.model.CreateReservationModel
+import com.rajawali.core.domain.model.LoginModel
 import com.rajawali.core.domain.model.PayReservationModel
+import com.rajawali.core.domain.model.VerifyModel
 import com.rajawali.core.util.Constant
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -61,5 +65,20 @@ interface RajawaliAirService {
     suspend fun payReservation(
         @Body data : PayReservationModel
     ) : PayReservationResponse
+
+    @POST("auth/signin")
+    suspend fun login(
+        @Body data : LoginModel
+    ) : LoginResponse
+
+    @POST("auth/sign-up")
+    suspend fun register(
+        @Body data : RegisterModel
+    ) : RegisterResponse
+
+    @POST("auth/enable-user")
+    suspend fun verifyNewAccount(
+        @Body data : VerifyModel
+    ) : VerifyNewAccountResponse
 
 }

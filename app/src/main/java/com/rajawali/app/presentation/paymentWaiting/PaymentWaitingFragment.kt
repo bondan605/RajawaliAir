@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentPaymentWaitingBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
+import com.rajawali.app.presentation.payment.PaymentFragmentDirections
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.Payment
 import com.rajawali.core.domain.enums.PaymentStatusEnum
@@ -71,7 +72,21 @@ class PaymentWaitingFragment : Fragment() {
         populateAppBarView()
 
         setOnBtnAlreadyPaidClicked()
+
+        setOnBtnForwardClicked()
     }
+
+    private fun setOnBtnForwardClicked() {
+        binding.includeTicketPreview.root.setOnClickListener {
+            ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+                val destination = PaymentFragmentDirections
+                    .actionPaymentFragmentToFlightDetailBottomSheetDialog(ticket)
+
+                findNavController().safeNavigate(destination)
+            }
+        }
+    }
+
 
     private fun findPaymentMethodName(method: String): PopulatePaymentMethodModel? {
         val paymentMethod = method.replace(" ", "_", ignoreCase = true).lowercase()

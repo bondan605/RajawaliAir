@@ -60,10 +60,23 @@ class PaymentFragment : Fragment() {
 
         onBtnMorePaymentMethodClicked()
 
+        setOnBtnForwardClicked()
+
         startPaymentTimer()
         populatePaymentTimerView()
 
         populateAppBarView()
+    }
+
+    private fun setOnBtnForwardClicked() {
+        binding.itemTicket.setOnClickListener {
+            ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
+                val destination = PaymentFragmentDirections
+                    .actionPaymentFragmentToFlightDetailBottomSheetDialog(ticket)
+
+                findNavController().safeNavigate(destination)
+            }
+        }
     }
 
     private fun populateAppBarView() {

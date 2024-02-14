@@ -12,7 +12,10 @@ import com.rajawali.core.domain.usecase.GetMealsUseCase
 import com.rajawali.core.domain.usecase.GetPreferredFlight
 import com.rajawali.core.domain.usecase.GetRecentSearchUseCase
 import com.rajawali.core.domain.usecase.GetReservationByIdUseCase
+import com.rajawali.core.domain.usecase.LoginUseCase
 import com.rajawali.core.domain.usecase.PayReservationUseCase
+import com.rajawali.core.domain.usecase.RegisterUseCase
+import com.rajawali.core.domain.usecase.VerifyUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -29,4 +32,7 @@ val useCaseModule = module {
     single { PayReservationUseCase(get()) }
     single { GetReservationByIdUseCase(get()) }
     single { ClearRecentSearchUseCase(get()) }
+    single { LoginUseCase(get()) }
+    single { RegisterUseCase(get()) }
+    single { VerifyUseCase(get()) }
 }
