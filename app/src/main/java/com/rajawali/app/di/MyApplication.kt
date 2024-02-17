@@ -1,6 +1,7 @@
 package com.rajawali.app.di
 
 import android.app.Application
+import com.rajawali.core.di.dataStorePreferenceModule
 import com.rajawali.core.di.databaseModule
 import com.rajawali.core.di.localRepository
 import com.rajawali.core.di.remoteModule
@@ -22,6 +23,7 @@ class MyApplication : Application() {
             modules(
                 listOf(
                     databaseModule,
+                    dataStorePreferenceModule,
                     remoteModule,
                     remoteRepository,
                     localRepository,

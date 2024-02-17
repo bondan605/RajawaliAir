@@ -34,6 +34,9 @@ class GetAvailableSeatsUseCase(private val remote: RemoteRepository) {
         } catch (e: Exception) {
             Timber.w(e)
             emit(CommonResult.Error(e.message ?: Constant.FETCH_FAILED))
+        } catch (e : IndexOutOfBoundsException) {
+            Timber.w(e)
+            emit(CommonResult.Error(e.message ?: Constant.FETCH_FAILED))
         }
     }
 }

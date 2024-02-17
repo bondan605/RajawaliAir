@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentPaymentBinding
 import com.rajawali.app.presentation.bottomSheetDialog.paymentMethod.PaymentMethodViewModel
@@ -26,8 +27,10 @@ class PaymentFragment : Fragment() {
     private var _binding: FragmentPaymentBinding? = null
     private val binding get() = _binding!!
 
-    private val ticketViewModel: TicketViewModel by activityViewModels()
-    private val paymentMethodViewModel: PaymentMethodViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val paymentMethodViewModel: PaymentMethodViewModel by activityViewModels()
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
+    private val paymentMethodViewModel: PaymentMethodViewModel by navGraphViewModels(R.id.nav_booking)
     private val paymentViewModel: PaymentViewModel by viewModel()
 
     override fun onCreateView(

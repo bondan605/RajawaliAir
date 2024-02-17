@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.SearchModel
@@ -22,6 +24,7 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
     private val binding: BottomSheetDialogPickCityBinding get() = _binding!!
     private var _binding: BottomSheetDialogPickCityBinding? = null
     private val airportViewModel: AirportsViewModel by activityViewModel()
+//    private val airportViewModel: AirportsViewModel by navGraphViewModels(R.id.nav_booking)
 
     private val searchViewModel: SearchViewModel by viewModel()
 
@@ -96,7 +99,6 @@ class AirportBottomSheetDialog : BottomSheetDialogFragment() {
         _adapter.onAirportClickCallback()
 
         searchViewModel.getSearchedAirport(keyword).observe(viewLifecycleOwner) {
-            //TODO need to add loading animation.
 
             when (it) {
                 is CommonResult.Success -> {

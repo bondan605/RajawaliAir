@@ -271,5 +271,6 @@
     <string name="tv_mandiri_virtual_label">Mandiri Virtual Account</string>
     <string name="tv_alfamart_label">Alfamart/Alfamidi</string>
     <string name="tv_indomaret_label">Indomaret</string>
+    <string name="tv_date_and_time_value">%1$s, %2$s</string>
 
 </resources>

@@ -45,7 +45,7 @@ class TicketAdapter :
         }
     }
 
-    class FlightViewHolder(private val binding: ItemTicketBinding) :
+    inner class FlightViewHolder(private val binding: ItemTicketBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(ticket: FlightModel) {
             val flightLength = DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
@@ -58,6 +58,9 @@ class TicketAdapter :
             binding.tvDepartureTime.text = ticket.departureTime
             binding.tvArriveTime.text = ticket.arrivalTime
             binding.directTime.text = flightLength
+
+            if (ticket.availableSeats < 0)
+                binding.clParent.alpha = 0.5F
         }
     }
 

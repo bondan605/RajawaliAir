@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentBaggageBinding
@@ -22,8 +23,9 @@ class BaggageFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentBaggageBinding? = null
 
-    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
-    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+    private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val passenger: DetailsInformationViewModel by viewModel()
 
     override fun onCreateView(

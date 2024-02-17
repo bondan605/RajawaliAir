@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.card.MaterialCardView
 import com.rajawali.app.R
@@ -29,8 +30,10 @@ class MealsFragment : Fragment() {
     private val binding get() = _binding!!
     private var _binding: FragmentMealsBinding? = null
 
-    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
-    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val mealsViewModel: MealsViewModel by viewModel()
     private val passenger: DetailsInformationViewModel by viewModel()
 
