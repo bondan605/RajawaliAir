@@ -9,6 +9,8 @@ import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.response.MealsAddOnsItem
+import com.rajawali.core.data.remote.response.NotificationData
+import com.rajawali.core.data.remote.response.NotificationsItem
 import com.rajawali.core.data.remote.response.PassengerDetailListItem
 import com.rajawali.core.data.remote.response.PassengersItem
 import com.rajawali.core.data.remote.response.PayReservationData
@@ -26,6 +28,8 @@ import com.rajawali.core.domain.model.BookingModel
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.model.LoggedInUserModel
 import com.rajawali.core.domain.model.MealModel
+import com.rajawali.core.domain.model.NotificationItemModel
+import com.rajawali.core.domain.model.NotificationModel
 import com.rajawali.core.domain.model.PassengerModel
 import com.rajawali.core.domain.model.PaymentRecordModel
 import com.rajawali.core.domain.model.ReservationByIdModel
@@ -38,6 +42,26 @@ import com.rajawali.core.domain.model.SearchModel
 import com.rajawali.core.domain.model.SeatsModel
 
 object DataMapper {
+
+    fun notificationDataResponseToNotificationModel(response: NotificationData): NotificationModel =
+        NotificationModel(
+            isSeen = response.isSeen ?: false,
+            notifications = response.notifications.map {
+                notificationItemResponseToNotificationItemModel(
+                    it
+                )
+            }
+        )
+
+    private fun notificationItemResponseToNotificationItemModel(response: NotificationsItem): NotificationItemModel =
+        NotificationItemModel(
+            createdAt = response.createdAt ?: "",
+            description = response.description ?: "",
+            id = response.id ?: "",
+            notificationType = response.notificationType ?: "",
+            updatedAt = response.updatedAt ?: ""
+
+        )
 
     fun loginResponseToLoggedInUserModel(response: LoginData): LoggedInUserModel =
         LoggedInUserModel(
@@ -55,7 +79,7 @@ object DataMapper {
         Constant.baggageEnumToStringMap[baggage] ?: "0"
 
     fun paymentStatusStringToPaymentStatusEnum(status: String): PaymentStatusEnum =
-        Constant.statusToEnumMap[status.lowercase()] ?: PaymentStatusEnum.PAYMENT_NULL
+        Constant.statusToEnumMap[status] ?: PaymentStatusEnum.PAYMENT_NULL
 
     fun reservationByIdResponseToReservationByIdModel(response: ReservationByIdData): ReservationByIdModel =
         ReservationByIdModel(

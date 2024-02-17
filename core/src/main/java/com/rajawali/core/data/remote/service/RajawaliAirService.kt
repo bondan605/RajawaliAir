@@ -6,6 +6,7 @@ import com.rajawali.core.data.remote.response.CreateReservationResponse
 import com.rajawali.core.data.remote.response.FlightResponse
 import com.rajawali.core.data.remote.response.LoginResponse
 import com.rajawali.core.data.remote.response.MealsResponse
+import com.rajawali.core.data.remote.response.NotificationResponse
 import com.rajawali.core.data.remote.response.PayReservationResponse
 import com.rajawali.core.domain.model.RegisterModel
 import com.rajawali.core.data.remote.response.RegisterResponse
@@ -18,6 +19,9 @@ import com.rajawali.core.domain.model.VerifyModel
 import com.rajawali.core.util.Constant
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.HeaderMap
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -56,6 +60,14 @@ interface RajawaliAirService {
         @Path("id") reservationId : String,
         ) : ReservationByIdResponse
 
+
+    @GET("notifications/user/{id}")
+    suspend fun getNotification(
+        @Path("id") id : String,
+//        @HeaderMap headers: Map<String, String>,
+        @Header("Authorization") header: String,
+    ) : NotificationResponse
+
     @POST("reservations")
     suspend fun createReservation(
         @Body data : CreateReservationModel
@@ -80,5 +92,6 @@ interface RajawaliAirService {
     suspend fun verifyNewAccount(
         @Body data : VerifyModel
     ) : VerifyNewAccountResponse
+
 
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentOneWayTripBinding
@@ -22,6 +23,7 @@ import com.rajawali.app.util.NavigationUtils.safeNavigateUsingID
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.enums.PassengerClassEnum
 import com.rajawali.core.domain.enums.TripValueEnum
+import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.core.util.DateFormat
 import com.rajawali.core.util.DateFormat.formatDateToAbbreviatedString
 import java.time.LocalDate
@@ -32,9 +34,14 @@ class OneWayTripFragment : Fragment() {
     private var _binding: FragmentOneWayTripBinding? = null
 
     private val airportsViewModel: AirportsViewModel by activityViewModels()
-    private val passengerViewModel: PassengerViewModel by activityViewModels()
+//    private val passengerViewModel: PassengerViewModel by activityViewModels()
     private val tripViewModel: TripViewModel by viewModels()
-    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+
+    private val ticketViewModel : TicketViewModel by navGraphViewModels(R.id.nav_booking)
+//    private val airportsViewModel: AirportsViewModel by navGraphViewModels(R.id.nav_booking)
+    private val passengerViewModel: PassengerViewModel by navGraphViewModels(R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,7 +77,109 @@ class OneWayTripFragment : Fragment() {
         updatePassengerDisplay()
 
         searchFlight()
+
+//        resetTicketViewModelData()
+//        resetAddsOnViewModelData()
+//        resetPassengerViewModelData()
     }
+
+    //probably because of this.
+//    private fun resetPassengerViewModelData() {
+//        passengerViewModel.adultPassengerCount.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        passengerViewModel.childPassengerCount.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        passengerViewModel.infantPassengerCount.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        passengerViewModel.passengerClass.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        passengerViewModel.onButtonDoneClickListener.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//    }
+//
+//    private fun resetAddsOnViewModelData() {
+//        addsOnViewModel.baggage.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.seatNumber.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.meals.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.travelInsurance.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.baggageInsurance.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.flightDelayInsurance.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.totalPrice.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.totalItem.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.totalBaggagePrice.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.passengerMealsList.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.totalMealsPrice.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.priceDetailsDropdownBtnState.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        addsOnViewModel.travelInsuranceDetailsDropdownBtnState.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//    }
+//
+//    private fun resetTicketViewModelData() {
+//        ticketViewModel.departureTicket.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.buyerContact.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.isRoundTrip.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.preferableReturn.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.departureTicket.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.returnTicket.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.passenger.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.reservation.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.payment.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//        ticketViewModel.paymentTimer.observe(viewLifecycleOwner) {
+//            requireActivity().viewModelStore.clear()
+//        }
+//    }
+
 
     private fun searchFlight() {
         binding.includeBookingForm.btnSearch.setOnClickListener {

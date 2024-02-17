@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -30,7 +30,9 @@ class ChooseTicketFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ChooseTicketViewModel by viewModel()
-    private val roundTrip: TicketViewModel by activityViewModels()
+
+    //    private val roundTrip: TicketViewModel by activityViewModels()
+    private val roundTrip: TicketViewModel by navGraphViewModels(R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +66,13 @@ class ChooseTicketFragment : Fragment() {
         displayDates()
 
         onBackButtonClicked()
+        setOnBtnNoAvailable()
+    }
+
+    private fun setOnBtnNoAvailable() {
+        binding.includeNoTickets.btnNoAvailable.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun onBackButtonClicked() {
@@ -314,15 +323,17 @@ class ChooseTicketFragment : Fragment() {
 
             when (result) {
                 is CommonResult.Error -> {
-                    binding.tvNoTickets.visibility = View.VISIBLE
+                    binding.includeNoTickets.root.visibility = View.VISIBLE
                     binding.rvTicketList.visibility = View.GONE
+                    binding.tvDepartureScheduleLabel.visibility = View.GONE
 
                 }
 
                 is CommonResult.Success -> {
                     Timber.d("displayTicketToUI: ${result.data}")
 
-                    binding.tvNoTickets.visibility = View.GONE
+                    binding.includeNoTickets.root.visibility = View.GONE
+                    binding.tvDepartureScheduleLabel.visibility = View.VISIBLE
                     binding.rvTicketList.visibility = View.VISIBLE
 
                     setDisplayAdapter(result.data)
@@ -339,7 +350,7 @@ class ChooseTicketFragment : Fragment() {
         val _layoutManager =
             LinearLayoutManager(
                 requireActivity(),
-                LinearLayoutManager.HORIZONTAL,
+                LinearLayoutManager.VERTICAL,
                 false
             )
 
@@ -368,17 +379,19 @@ class ChooseTicketFragment : Fragment() {
                                     TicketAdapter.OnTicketClickCallback {
                                     override fun onTicketClickCallback(ticket: FlightModel) {
 
-                                        /*
-                                        visible gone forever if the return tickets is none.
-                                        visibility will be change on displayTicketToUI() when return ticket is not null
-                                         */
-                                        binding.tvNoTickets.visibility = View.GONE
+                                        if (ticket.availableSeats > 0) {
+
+                                            /*
+                                            visible gone forever if the return tickets is none.
+                                            visibility will be change on displayTicketToUI() when return ticket is not null
+                                             */
+                                            binding.includeNoTickets.root.visibility = View.GONE
 
 
 //                                        roundTrip.setDepartureTicket(ticket)
-                                        viewModel.setDepartureTicket(ticket)
-                                        viewModel.setDeparturePicked()
-
+                                            viewModel.setDepartureTicket(ticket)
+                                            viewModel.setDeparturePicked()
+                                        }
                                     }
 
                                     override fun onRescheduleOptionsClickCallback(ticket: FlightModel) {
@@ -394,10 +407,17 @@ class ChooseTicketFragment : Fragment() {
                                     override fun onTicketClickCallback(ticket: FlightModel) {
                                         viewModel.departureTicket.observe(viewLifecycleOwner) { departure ->
 //                                            val bundle = Bundle()
-                                            val destination =
-                                                ChooseTicketFragmentDirections
-                                                    .actionChooseTicketFragmentToSelectedTicketFragment()
+                                            if (ticket.availableSeats > 0) {
+
+                                                val destination =
+                                                    ChooseTicketFragmentDirections
+                                                        .actionChooseTicketFragmentToSelectedTicketFragment()
 //                                                    .actionId
+
+                                                roundTrip.setDepartureTicket(departure)
+                                                roundTrip.setReturnTicket(ticket)
+                                                findNavController().safeNavigate(destination)
+                                            }
 //                                            val preferableDeparture =
 //                                                getParcelableBundle(OneWayTripFragment.DEPARTURE)
 //                                            val preferableReturn =
@@ -420,11 +440,8 @@ class ChooseTicketFragment : Fragment() {
 //                                                bundle
 //                                            )
 
-                                            roundTrip.setDepartureTicket(departure)
-                                            roundTrip.setReturnTicket(ticket)
 //                                            roundTrip.setPreferableDeparture(preferableDeparture)
 //                                            roundTrip.setPreferableReturn(preferableReturn)
-                                            findNavController().safeNavigate(destination)
                                         }
                                     }
 
@@ -443,10 +460,16 @@ class ChooseTicketFragment : Fragment() {
                     this.setOnTicketClickCallback(object : TicketAdapter.OnTicketClickCallback {
                         override fun onTicketClickCallback(ticket: FlightModel) {
 //                            val bundle = Bundle()
-                            val destination =
-                                ChooseTicketFragmentDirections
-                                    .actionChooseTicketFragmentToSelectedTicketFragment()
+                            if (ticket.availableSeats > 0) {
+                                val destination =
+                                    ChooseTicketFragmentDirections
+                                        .actionChooseTicketFragmentToSelectedTicketFragment()
 //                                    .actionId
+
+                                roundTrip.setDepartureTicket(ticket)
+                                findNavController().safeNavigate(destination)
+
+                            }
 //                            val preferableDeparture =
 //                                getParcelableBundle(OneWayTripFragment.DEPARTURE)
 //
@@ -458,9 +481,7 @@ class ChooseTicketFragment : Fragment() {
 //                                bundle
 //                            )
 
-                            roundTrip.setDepartureTicket(ticket)
 //                            roundTrip.setPreferableDeparture(preferableDeparture)
-                            findNavController().safeNavigate(destination)
                         }
 
                         override fun onRescheduleOptionsClickCallback(ticket: FlightModel) {

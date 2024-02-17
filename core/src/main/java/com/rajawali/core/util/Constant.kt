@@ -5,6 +5,12 @@ import com.rajawali.core.domain.enums.PaymentStatusEnum
 
 object Constant {
 
+    //login
+    const val LOGIN_FAILED = "Login failed"
+
+    //data Store preference
+    const val USER_PREF = "userRajawali"
+
     //message
     const val DATA_NOT_FOUND = "No data is found"
     const val DATA_FOUND = "data is found"
@@ -30,13 +36,16 @@ object Constant {
 
     //payment status
     val statusToEnumMap = mapOf(
-        "waiting" to PaymentStatusEnum.PAYMENT_WAITING,
-        "pending" to PaymentStatusEnum.PAYMENT_PENDING,
-        "successful" to PaymentStatusEnum.PAYMENT_SUCCESS,
-        "canceled" to PaymentStatusEnum.PAYMENT_CANCELED,
-        "valid" to PaymentStatusEnum.PAYMENT_NOT_VALID,
+        "Waiting for Payment" to PaymentStatusEnum.PAYMENT_WAITING,
+        "Purchase Pending" to PaymentStatusEnum.PAYMENT_PENDING,
+        "Purchase Successful" to PaymentStatusEnum.PAYMENT_SUCCESS,
+        "Purchase Canceled" to PaymentStatusEnum.PAYMENT_CANCELED,
+        "Payment Not Valid" to PaymentStatusEnum.PAYMENT_NOT_VALID,
         "null" to PaymentStatusEnum.PAYMENT_NULL
     )
+
+    //payment network fail
+    const val PAYMENT_NO_NETWORK = "Network is disturb. Please check your network"
 
     //baggage
     val baggageEnumToStringMap = mapOf(

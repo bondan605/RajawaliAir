@@ -7,7 +7,7 @@ import com.rajawali.core.domain.repository.RemoteRepository
 import org.koin.dsl.module
 
 val localRepository = module {
-    single<LocalRepository> { LocalRepositoryImp(get()) }
+    single<LocalRepository> { LocalRepositoryImp(get(), get()) }
 }
 
 val remoteRepository = module {

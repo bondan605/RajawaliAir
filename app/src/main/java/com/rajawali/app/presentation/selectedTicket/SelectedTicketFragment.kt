@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentSelectedTicketBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
@@ -20,8 +21,10 @@ class SelectedTicketFragment : Fragment() {
     private var _binding: FragmentSelectedTicketBinding? = null
     private val binding get() = _binding!!
 
-    private val ticketViewModel: TicketViewModel by activityViewModels()
-    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
+    private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

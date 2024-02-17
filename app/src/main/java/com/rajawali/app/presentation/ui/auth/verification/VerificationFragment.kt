@@ -1,4 +1,4 @@
-package com.rajawali.app.presentation.ui.auth.veritication
+package com.rajawali.app.presentation.ui.auth.verification
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -12,7 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogPassengerBinding
 import com.rajawali.app.util.AppUtils
 import com.rajawali.core.domain.enums.ModifyCountTypeEnum
@@ -26,7 +28,8 @@ class PassengerBottomSheetDialog : BottomSheetDialogFragment() {
     private val binding: BottomSheetDialogPassengerBinding get() = _binding!!
     private var _binding: BottomSheetDialogPassengerBinding? = null
 
-    private val passengerViewModel: PassengerViewModel by activityViewModels()
+//    private val passengerViewModel: PassengerViewModel by activityViewModels()
+    private val passengerViewModel: PassengerViewModel by navGraphViewModels(R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

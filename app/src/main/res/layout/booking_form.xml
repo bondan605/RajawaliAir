@@ -39,7 +39,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="From"
                     android:textColor="@color/hint_text"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -60,9 +60,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
+                        android:layout_gravity="bottom"
                         android:text="@string/tv_home_page_departure_label"
                         android:textColor="@color/grey_text"
-                        android:textSize="18sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <View
@@ -84,7 +85,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="To"
                     android:textColor="@color/hint_text"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -107,7 +108,8 @@
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/tv_home_page_arrive_label"
                         android:textColor="@color/grey_text"
-                        android:textSize="18sp" />
+                        android:textSize="12sp"
+                        android:layout_gravity="bottom"/>
                 </LinearLayout>
 
                 <View
@@ -129,12 +131,11 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="Departure Date"
                     android:textColor="@color/hint_text"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/calendar"
@@ -147,14 +148,15 @@
 
                     <TextView
                         android:id="@+id/tv_departure_date_value"
-                        android:layout_toEndOf="@id/calendar"
-                        android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/calendar"
+                        android:layout_alignBottom="@+id/calendar"
+                        android:layout_toEndOf="@id/calendar"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Thursday, 25 Jan 2024"
                         android:textColor="@color/grey_text"
-                        android:textSize="18sp" />
+                        android:textSize="12sp" />
 
                     <LinearLayout
                         android:layout_alignParentTop="true"
@@ -168,7 +170,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Round-trip?"
-                            android:textSize="14sp"
+                            android:textSize="10sp"
                             android:textColor="@color/hint_text"/>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/btn_switch_round_trip"
@@ -190,7 +192,7 @@
                 android:id="@+id/ll_return_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginBottom="12dp"
                 android:orientation="vertical">
 
@@ -200,7 +202,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="Return Date"
                     android:textColor="@color/hint_text"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -224,8 +226,9 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Saturday, 27 jan 2024"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/grey_text"
-                        android:textSize="18sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -247,7 +250,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="Passenger(s) and Cabin Class"
                     android:textColor="@color/hint_text"
-                    android:textSize="16sp" />
+                    android:textSize="12sp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -271,7 +274,8 @@
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/tv_passenger_default_value"
                         android:textColor="@color/grey_text"
-                        android:textSize="18sp" />
+                        android:textSize="12sp"
+                        android:layout_gravity="bottom"/>
                 </LinearLayout>
 
                 <View

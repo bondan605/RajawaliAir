@@ -5,6 +5,7 @@ import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
+import com.rajawali.core.data.remote.response.NotificationData
 import com.rajawali.core.data.remote.response.PayReservationData
 import com.rajawali.core.data.remote.response.RegisterData
 import com.rajawali.core.data.remote.response.ReservationByIdData
@@ -293,6 +294,32 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
         } catch (e: Exception) {
             Timber.w(e)
             ApiResponse.Error(e.message ?: Constant.OTP_VERIFY_FAILED)
+        }
+
+    override suspend fun getNotification(
+        id: String,
+        accessToken: String
+    ): ApiResponse<NotificationData> =
+        try {
+//            val header = HashMap<String, String>()
+//            header["Bearer"] = "Bearer $accessToken"
+            val header = "Bearer $accessToken"
+
+            val response = service.getNotification(id, header)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw Exception(Constant.FETCH_FAILED)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
         }
 
 }

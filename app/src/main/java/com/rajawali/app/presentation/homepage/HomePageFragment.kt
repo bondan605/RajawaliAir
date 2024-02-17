@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentHomePageBinding
+import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.pickCity.AirportsViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.enums.AirportTypeEnum
@@ -20,6 +22,7 @@ import com.rajawali.core.domain.model.TouristDestinationList
 import com.rajawali.core.presentation.adapter.PromotionAdapter
 import com.rajawali.core.presentation.adapter.TouristDestinationAdapter
 import com.rajawali.core.presentation.customView.setPreviewBothSide
+import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class HomePageFragment : Fragment() {
@@ -56,10 +59,23 @@ class HomePageFragment : Fragment() {
         //do something here.
 
         promotionViewPager()
+
         touristDestinationRecyclerview()
+
         btnBookNow()
+
         setDeparture()
         setArriving()
+
+        setOnNotificationClicked()
+    }
+
+    private fun setOnNotificationClicked() {
+        binding.includeToolbar.ibNotification.setOnClickListener {
+            val destination = HomePageFragmentDirections.actionHomePageFragmentToNotificationFragment()
+
+            findNavController().safeNavigate(destination)
+        }
     }
 
     private fun promotionViewPager() {

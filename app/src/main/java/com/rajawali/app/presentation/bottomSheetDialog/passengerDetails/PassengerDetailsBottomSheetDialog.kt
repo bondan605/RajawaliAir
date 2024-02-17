@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogPassengerDetailsBinding
@@ -25,7 +26,8 @@ class PassengerDetailsBottomSheetDialog : BottomSheetDialogFragment() {
     private val binding: BottomSheetDialogPassengerDetailsBinding get() = _binding!!
     private var _binding: BottomSheetDialogPassengerDetailsBinding? = null
 
-    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val viewModel: FlightDetailBottomSheetViewModel by viewModel()
 
     override fun onCreateView(

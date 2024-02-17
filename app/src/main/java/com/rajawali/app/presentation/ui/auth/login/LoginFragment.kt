@@ -12,6 +12,7 @@ import com.rajawali.app.databinding.FragmentLoginBinding
 import com.rajawali.app.util.AppUtils
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.result.CommonResult
+import com.rajawali.core.util.Constant
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -56,20 +57,41 @@ class LoginFragment : Fragment() {
 
                 when (response) {
                     is CommonResult.Error ->
-                        Toast.makeText(activity, response.errorMessage, Toast.LENGTH_SHORT).show()
+                        setToast(response.errorMessage)
 
                     is CommonResult.Success -> {
-                        val destination =
-                            LoginFragmentDirections
-                                .actionLoginFragmentToHomePageFragment()
+                        val accessToken = response.data.accessToken
+                        val id = response.data.id
 
+                        loginViewModel.createLoginSession(accessToken, id)
+                            .observe(viewLifecycleOwner) { isLoginSession ->
 
-                        findNavController().safeNavigate(destination)
+                                when (isLoginSession) {
+                                    true ->
+                                        navigate()
+
+                                    false ->
+                                        setToast(Constant.LOGIN_FAILED)
+                                }
+                            }
                     }
                 }
             }
 
         }
+    }
+
+    private fun navigate() {
+        val destination =
+            LoginFragmentDirections
+                .actionLoginFragmentToHomePageFragment()
+
+        findNavController().safeNavigate(destination)
+
+    }
+
+    private fun setToast(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun onBtnRegisterClicked() {

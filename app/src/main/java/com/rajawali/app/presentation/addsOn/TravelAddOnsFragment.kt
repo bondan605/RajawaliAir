@@ -9,13 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentTravelAddOnsBinding
 import com.rajawali.app.presentation.addsOn.seat.SeatsViewModel
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
+import com.rajawali.core.domain.enums.NotAvailableEnum
 import com.rajawali.core.domain.model.CreateReservationFlightDetailModel
 import com.rajawali.core.domain.model.CreateReservationModel
 import com.rajawali.core.domain.model.Insurance
@@ -28,14 +29,17 @@ import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import com.rajawali.core.util.DataMapper
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class TravelAddOnsFragment : Fragment() {
 
     private val binding get() = _binding!!
     private var _binding: FragmentTravelAddOnsBinding? = null
 
-    private val ticketViewModel: TicketViewModel by activityViewModels()
-    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+    //    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
+    private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
     private val createReservation: CreateReservationViewModel by viewModel()
     private val seatsViewModel: SeatsViewModel by viewModel()
 
@@ -80,8 +84,16 @@ class TravelAddOnsFragment : Fragment() {
         onTravelInsuranceDetailsDropdownIcon()
         onTravelInsuranceDetailsDropdownContent()
 
-        getRandomAvailableSeat()
+        getAvailableSeat()
         createReservation()
+    }
+
+    private fun setOnNotAvailableSeats() {
+        val destination =
+            TravelAddOnsFragmentDirections
+                .actionTravelAddOnsFragmentToNotAvailableBottomSheetDialog(NotAvailableEnum.SEAT)
+
+        findNavController().safeNavigate(destination)
     }
 
     private fun createReservation() {
@@ -193,7 +205,8 @@ class TravelAddOnsFragment : Fragment() {
                             ).show()
 
                         is CommonResult.Success -> {
-                            val destination = TravelAddOnsFragmentDirections.actionTravelAddOnsFragmentToPaymentFragment()
+                            val destination =
+                                TravelAddOnsFragmentDirections.actionTravelAddOnsFragmentToPaymentFragment()
 
                             ticketViewModel.setReservation(reservation.data)
                             findNavController().safeNavigate(destination)
@@ -203,7 +216,7 @@ class TravelAddOnsFragment : Fragment() {
         }
     }
 
-    private fun getRandomAvailableSeat() {
+    private fun getAvailableSeat() {
         var passengerAmount: Int = 0
 
         ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) {
@@ -220,9 +233,13 @@ class TravelAddOnsFragment : Fragment() {
                         }
 
                         is CommonResult.Success -> {
-                            val availableSeats = seats.data.seats.filter { it.isAvailable }
+                            val availableSeats = seatsViewModel.filterSeat(seats.data.seats)
+                            Timber.d("getRandomAvailableSeat $availableSeats")
 
-                            passengerAmount.randomSeats(availableSeats)
+                            if (availableSeats.isNotEmpty())
+                                passengerAmount.randomSeats(availableSeats)
+                            else
+                                setOnNotAvailableSeats()
                         }
                     }
                 }
@@ -231,8 +248,8 @@ class TravelAddOnsFragment : Fragment() {
 
     private fun Int.randomSeats(seatsList: List<SeatsModel>) {
         for (count in 1..this) {
-            val availableSeats = seatsList.filter { it.isAvailable }
-            val random = availableSeats.random()
+            val random = seatsList[count - 1]
+            Timber.d("randomSeats $random")
 
             addsOnViewModel.setPassengerSeat(count, random.id)
         }

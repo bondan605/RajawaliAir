@@ -230,7 +230,7 @@
     <string name="tv_passenger_economy_class">Economy Class</string>
     <string name="tv_passenger_business_class">Business Class</string>
     <string name="tv_passenger_first_class">First Class</string>
-    <string name="tv_passenger_default_value">1 Adult, Economy Class</string>
+    <string name="tv_passenger_default_value">Passenger &amp; Class</string>
 
     <!-- passenger Details Bottom dialog -->
     <string name="tv_passenger_info_description">Make sure that the passenger’s name is exactly as written in the government issued Id/Passport/Driving License. Avoid any mistake.</string>
@@ -303,7 +303,25 @@
     <string name="tv_total_price_label">total price</string>
     <string name="tv_transaction_complete_description">Your transaction has been successful, Cool! \n Please check the transaction receipt!</string>
 
-    //register
+    <!--  register  -->
     <string name="tv_register_policy">I agree to the <b><font color="#1e90ff">Terms &amp; Conditions</font></b> and <b><font color="#1e90ff">Privacy\nPolicy</font></b> of the application.</string>
 
+    <!--  no available  -->
+    <string name="tv_no_flight_ticket_available_label">The flight you’re looking for isn’t available right now</string>
+    <string name="tv_no_flight_ticket_available_description">Let’s try changing the date or exploring other destinations to find a delightful journey</string>
+    <string name="btn_no_flight_ticket_available_label">Search Other Flights</string>
+    <string name="tv_payment_not_available_anymore_label">This flight Payment is Already Expired</string>
+    <string name="tv_payment_not_available_anymore_description">Let’s try re-booking flight or exploring other destinations to find a delightful journey</string>
+    <string name="btn_payment_not_available_anymore_label">Re-Booking</string>
+    <string name="tv_seats_not_available_anymore_label">Insufficient seats for chosen passenger count</string>
+    <string name="tv_seats_not_available_anymore_description">Let’s try find another flight or exploring other destinations to find a delightful journey</string>
+    <string name="btn_seats_not_available_anymore_label">Find Another Flight</string>
+    <string name="tv_not_login_description">Let’s try to login first so you can find a delightful journey</string>
+    <string name="tv_not_login_label">Not Yet Login</string>
+    <string name="btn_login_label">Login</string>
+
+    <!--  notification  -->
+    <string name="tv_notification_label">Notification</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -11,24 +11,29 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentPaymentWaitingBinding
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.payment.PaymentFragmentDirections
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.Payment
+import com.rajawali.core.domain.enums.NotAvailableEnum
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.PopulatePaymentMethodModel
 import com.rajawali.core.domain.result.CommonResult
+import com.rajawali.core.util.Constant
 import com.rajawali.core.util.DateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class PaymentWaitingFragment : Fragment() {
     private var _binding: FragmentPaymentWaitingBinding? = null
     private val binding get() = _binding!!
 
-    private val ticketViewModel: TicketViewModel by activityViewModels()
+//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
 
     //    private val paymentMethodViewModel: PaymentMethodViewModel by activityViewModels()
     private val paymentViewModel: PaymentWaitingViewModel by viewModel()
@@ -102,72 +107,60 @@ class PaymentWaitingFragment : Fragment() {
 
             ticketViewModel.payment.observe(viewLifecycleOwner) { payment ->
                 paymentViewModel.getReservationById(payment.reservation.id)
-                    .observe(viewLifecycleOwner) { paymentStatus ->
+                .observe(viewLifecycleOwner) { paymentStatus ->
+                    Timber.d("setOnBtnAlreadyPaidClicked: $paymentStatus")
 
-                        when (paymentStatus) {
-                            is CommonResult.Error -> {
-                                //loading visibility
-                                setLoadingVisibility(false)
+                    when (paymentStatus) {
+                        is CommonResult.Error -> {
+                            //loading visibility
+                            setLoadingVisibility(false)
+                            setToast(Constant.PAYMENT_NO_NETWORK)
+                        }
 
-                                Toast.makeText(
-                                    activity,
-                                    "Network is disturb. Please check your network",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                        is CommonResult.Success -> {
+                            val status = paymentStatus.data.paymentStatus
+                            val demoStatus = "Purchase Successful"
+                            //loading visibility
+                            setLoadingVisibility(false)
 
-                            is CommonResult.Success -> {
-                                val status = paymentStatus.data.paymentStatus
-                                //loading visibility
-                                setLoadingVisibility(false)
+                            when (paymentViewModel.getPaymentStatus(status)) {
+                                PaymentStatusEnum.PAYMENT_WAITING ->
+                                    setToast(status)
 
-                                val statusEnum = paymentViewModel.getPaymentStatus(status)
+                                PaymentStatusEnum.PAYMENT_PENDING ->
+                                    setToast(status)
 
-                                when (statusEnum) {
-                                    PaymentStatusEnum.PAYMENT_WAITING ->
-                                        Toast.makeText(
-                                            activity,
-                                            "Payment is not received yet. Please try again",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-//                                        setOnBtnAlreadyPaidClicked()
+                                PaymentStatusEnum.PAYMENT_SUCCESS -> {
 
-                                    PaymentStatusEnum.PAYMENT_PENDING ->
-                                        Toast.makeText(
-                                            activity,
-                                            "Payment is still on pending. Please try again",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-//                                        setOnBtnAlreadyPaidClicked()
+                                    val destination =
+                                        PaymentWaitingFragmentDirections.actionPaymentWaitingFragmentToPaymentCompleteFragment()
+                                    findNavController().safeNavigate(destination)
+                                }
 
-                                    PaymentStatusEnum.PAYMENT_SUCCESS -> {
-                                        val destinaton =
-                                            PaymentWaitingFragmentDirections.actionPaymentWaitingFragmentToPaymentCompleteFragment()
-                                        findNavController().safeNavigate(destinaton)
-                                    }
+                                else -> {
+                                    val destination =
+                                        PaymentWaitingFragmentDirections
+                                            .actionPaymentWaitingFragmentToNotAvailableBottomSheetDialog(NotAvailableEnum.PAYMENT)
 
-                                    else -> {
-//                                        val destination =
-//                                            PaymentWaitingFragmentDirections.actionPaymentWaitingFragmentToHomePageFragment()
+                                    findNavController().safeNavigate(destination)
 
-                                        setLoadingVisibility(false)
-
-                                        Toast.makeText(
-                                            activity,
-                                            "Payment is not valid. Please try again",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-
-//                                        findNavController().safeNavigate(destination)
-                                    }
                                 }
                             }
                         }
-
                     }
+
+                }
             }
         }
 
+    }
+
+    private fun setToast(text: String) {
+        Toast.makeText(
+            activity,
+            text,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun setLoadingVisibility(isVisible: Boolean) {
