@@ -179,6 +179,10 @@
             <action
                 android:id="@+id/action_oneWayTripFragment_to_notAvailableBottomSheetDialog"
                 app:destination="@id/notAvailableBottomSheetDialog" />
+            <action
+                android:id="@+id/action_oneWayTripFragment_to_notificationFragment"
+                app:destination="@id/notificationFragment" />
+
         </fragment>
         <dialog
             android:id="@+id/paymentMethodBottomSheetDialog"

@@ -83,12 +83,19 @@ class OneWayTripFragment : Fragment() {
         searchFlight()
 
         setOnBottomNavigationClicked()
-        setDefaultFocusesBottomNavigation()
+
+        setOnNotificationClicked()
     }
 
-    private fun setDefaultFocusesBottomNavigation() {
-        binding.includeBottomNavigation.bottomNavigation.selectedItemId = R.id.menu_bookings
+    private fun setOnNotificationClicked() {
+        binding.includeToolbar.ibNotification.setOnClickListener {
+            val destination =
+                OneWayTripFragmentDirections.actionOneWayTripFragmentToNotificationFragment()
+
+            findNavController().safeNavigate(destination)
+        }
     }
+
 
     private fun navigate(destination: NavDirections) {
         findNavController().safeNavigate(destination)

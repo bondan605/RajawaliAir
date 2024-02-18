@@ -69,11 +69,6 @@ class HomePageFragment : Fragment() {
         setOnNotificationClicked()
 
         setOnBottomNavigationClicked()
-        setDefaultFocusesBottomNavigation()
-    }
-
-    private fun setDefaultFocusesBottomNavigation() {
-        binding.includeBottomNavigation.bottomNavigation.selectedItemId = R.id.menu_home
     }
 
     private fun setOnBottomNavigationClicked() {
