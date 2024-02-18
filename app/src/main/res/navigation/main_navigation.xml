@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_notLoginSheetDialog"
+            app:destination="@id/notLoginSheetDialog" />
     </fragment>
     <dialog
         android:id="@+id/airportBottomSheetDialog"
@@ -145,7 +148,7 @@
             android:id="@+id/notAvailableBottomSheetDialog"
             android:name="com.rajawali.app.presentation.bottomSheetDialog.notAvailable.NotAvailableBottomSheetDialog"
             android:label="NotAvailableBottomSheetDialog"
-            tools:layout="@layout/not_available_bottom_sheet_dialog">
+            tools:layout="@layout/bottom_sheet_dialog_not_available">
             <argument
                 android:name="type"
                 app:argType="com.rajawali.core.domain.enums.NotAvailableEnum" />
@@ -156,8 +159,8 @@
                 android:id="@+id/action_notAvailableBottomSheetDialog_to_loginFragment"
                 app:destination="@id/loginFragment" />
             <action
-                android:id="@+id/action_notAvailableBottomSheetDialog_to_loginFragment2"
-                app:destination="@id/loginFragment" />
+                android:id="@+id/action_notAvailableBottomSheetDialog_to_homePageFragment"
+                app:destination="@id/homePageFragment" />
         </dialog>
         <fragment
             android:id="@+id/oneWayTripFragment"
@@ -173,6 +176,9 @@
             <action
                 android:id="@+id/action_oneWayTripFragment_to_chooseTicketFragment"
                 app:destination="@id/chooseTicketFragment" />
+            <action
+                android:id="@+id/action_oneWayTripFragment_to_notAvailableBottomSheetDialog"
+                app:destination="@id/notAvailableBottomSheetDialog" />
         </fragment>
         <dialog
             android:id="@+id/paymentMethodBottomSheetDialog"
@@ -270,10 +276,14 @@
     <dialog
         android:id="@+id/notLoginSheetDialog"
         android:name="com.rajawali.app.presentation.bottomSheetDialog.notLogin.NotLoginSheetDialog"
-        android:label="NotLoginSheetDialog" >
+        android:label="NotLoginSheetDialog"
+        tools:layout="@layout/bottom_sheet_dialog_not_available">
         <action
             android:id="@+id/action_notLoginSheetDialog_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="type"
+            app:argType="com.rajawali.core.domain.enums.NotAvailableEnum" />
     </dialog>
 
 

@@ -8,7 +8,7 @@
     android:paddingHorizontal="16dp"
     android:paddingBottom="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".presentation.pickCity.AirportBottomSheetDialog">
+    tools:context=".presentation.bottomSheetDialog.notAvailable.NotAvailableBottomSheetDialog">
 
     <com.google.android.material.bottomsheet.BottomSheetDragHandleView
         android:id="@+id/dhv_drag_handle"

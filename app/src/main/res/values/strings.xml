@@ -319,6 +319,12 @@
     <string name="tv_not_login_description">Let’s try to login first so you can find a delightful journey</string>
     <string name="tv_not_login_label">Not Yet Login</string>
     <string name="btn_login_label">Login</string>
+    <string name="tv_null_label">How Did You Reach Here?</string>
+    <string name="tv_null_description">It seems you\'ve found a hidden corner of the app! This section is currently unavailable. You can return to the main menu by tapping Home</string>
+    <string name="btn_null_label">Home</string>
+    <string name="tv_not_implemented_label">It\'s Not Yet Implemented</string>
+    <string name="tv_not_implemented_description">This feature is currently under development, and we\'re excited to bring it to you soon! Stay tuned for updates</string>
+    <string name="btn_not_implemented_label">Go Back</string>
 
     <!--  notification  -->
     <string name="tv_notification_label">Notification</string>

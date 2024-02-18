@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rajawali.app.databinding.FragmentNotificationBinding
 import com.rajawali.app.util.NavigationUtils.safeNavigate
+import com.rajawali.core.domain.enums.NotAvailableEnum
 import com.rajawali.core.domain.model.IsLoginModel
 import com.rajawali.core.domain.result.CommonResult
 import com.rajawali.core.presentation.adapter.NotificationAdapter
@@ -65,7 +66,7 @@ class NotificationFragment : Fragment() {
 
     private fun navigate() {
         val destination =
-            NotificationFragmentDirections.actionNotificationFragmentToNotLoginSheetDialog()
+            NotificationFragmentDirections.actionNotificationFragmentToNotLoginSheetDialog(NotAvailableEnum.LOGIN)
 
         findNavController().safeNavigate(destination)
     }
