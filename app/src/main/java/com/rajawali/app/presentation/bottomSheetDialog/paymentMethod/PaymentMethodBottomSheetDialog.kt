@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogPaymentMethodBinding
@@ -19,7 +19,7 @@ class PaymentMethodBottomSheetDialog : BottomSheetDialogFragment() {
     private val binding: BottomSheetDialogPaymentMethodBinding get() = _binding!!
     private var _binding: BottomSheetDialogPaymentMethodBinding? = null
 
-    private val paymentMethod: PaymentMethodViewModel by activityViewModels()
+    private val paymentMethod: PaymentMethodViewModel by navGraphViewModels(R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
