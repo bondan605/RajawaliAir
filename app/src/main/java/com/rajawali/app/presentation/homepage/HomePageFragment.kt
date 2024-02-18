@@ -7,22 +7,21 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentHomePageBinding
-import com.rajawali.app.presentation.chooseTicket.TicketViewModel
 import com.rajawali.app.presentation.pickCity.AirportsViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.enums.AirportTypeEnum
+import com.rajawali.core.domain.enums.NotAvailableEnum
 import com.rajawali.core.domain.model.PromotionList
 import com.rajawali.core.domain.model.TouristDestinationList
 import com.rajawali.core.presentation.adapter.PromotionAdapter
 import com.rajawali.core.presentation.adapter.TouristDestinationAdapter
 import com.rajawali.core.presentation.customView.setPreviewBothSide
-import com.rajawali.core.presentation.viewModel.TravelAddsOnViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class HomePageFragment : Fragment() {
@@ -68,11 +67,52 @@ class HomePageFragment : Fragment() {
         setArriving()
 
         setOnNotificationClicked()
+
+        setOnBottomNavigationClicked()
+        setDefaultFocusesBottomNavigation()
+    }
+
+    private fun setDefaultFocusesBottomNavigation() {
+        binding.includeBottomNavigation.bottomNavigation.selectedItemId = R.id.menu_home
+    }
+
+    private fun setOnBottomNavigationClicked() {
+        binding.includeBottomNavigation.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_home -> {
+                    true
+                }
+
+                R.id.menu_bookings -> {
+                    navigate(HomePageFragmentDirections.actionHomePageFragmentToOneWayTripFragment())
+                    true
+                }
+
+                R.id.menu_account -> {
+                    navigate(HomePageFragmentDirections.actionHomePageFragmentToNotLoginSheetDialog(NotAvailableEnum.IMPLEMENT))
+                    true
+                }
+
+                R.id.menu_history -> {
+                    navigate(HomePageFragmentDirections.actionHomePageFragmentToNotLoginSheetDialog(NotAvailableEnum.IMPLEMENT))
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
+    private fun navigate(destination: NavDirections) {
+        findNavController().safeNavigate(destination)
     }
 
     private fun setOnNotificationClicked() {
         binding.includeToolbar.ibNotification.setOnClickListener {
-            val destination = HomePageFragmentDirections.actionHomePageFragmentToNotificationFragment()
+            val destination =
+                HomePageFragmentDirections.actionHomePageFragmentToNotificationFragment()
 
             findNavController().safeNavigate(destination)
         }
