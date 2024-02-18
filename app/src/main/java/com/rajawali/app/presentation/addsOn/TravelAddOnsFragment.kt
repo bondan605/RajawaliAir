@@ -86,6 +86,14 @@ class TravelAddOnsFragment : Fragment() {
 
         getAvailableSeat()
         createReservation()
+
+        setOnBtnBackClicked()
+    }
+
+    private fun setOnBtnBackClicked() {
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setOnNotAvailableSeats() {
