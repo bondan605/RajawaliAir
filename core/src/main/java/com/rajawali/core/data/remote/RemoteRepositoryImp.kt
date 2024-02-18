@@ -2,6 +2,7 @@ package com.rajawali.core.data.remote
 
 import android.accounts.NetworkErrorException
 import com.rajawali.core.data.remote.response.ContentItem
+import com.rajawali.core.data.remote.response.FinishPaymentData
 import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
@@ -322,4 +323,22 @@ class RemoteRepositoryImp(private val service: RajawaliAirService) : RemoteRepos
             ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
         }
 
+    override suspend fun finishPayment(id: String): ApiResponse<FinishPaymentData> =
+        try {
+            val response = service.finishPayment(id)
+
+            when (response.success) {
+                true ->
+                    ApiResponse.Success(response.data)
+
+                false ->
+                    throw Exception(response.message)
+
+                null ->
+                    throw Exception(Constant.FETCH_FAILED)
+            }
+        } catch (e: Exception) {
+            Timber.w(e)
+            ApiResponse.Error(e.message ?: Constant.FETCH_FAILED)
+        }
 }

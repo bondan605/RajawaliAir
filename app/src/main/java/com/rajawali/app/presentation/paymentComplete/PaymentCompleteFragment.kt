@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.rajawali.app.NavBookingDirections
@@ -22,7 +21,7 @@ class PaymentCompleteFragment : Fragment() {
     private var _binding: FragmentPaymentCompleteBinding? = null
     private val binding get() = _binding!!
 
-//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    //    private val ticketViewModel: TicketViewModel by activityViewModels()
 //    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
     private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
@@ -58,9 +57,11 @@ class PaymentCompleteFragment : Fragment() {
     private fun populatePaymentInformationCard() {
         ticketViewModel.payment.observe(viewLifecycleOwner) { payment ->
             val purchaseDate = DateFormat.formatDateStringToAbbreviatedString(payment.createdAt)
+            val method =
+                payment.method.replace("_", " ", ignoreCase = true).lowercase().capitalize()
 
             binding.tvPurchaseDateValue.text = purchaseDate
-            binding.tvPaymentMethodValue.text = payment.method
+            binding.tvPaymentMethodValue.text = method
             binding.tvTotalPriceValue.text =
                 getString(R.string.tv_total_price, payment.reservation.totalPrice)
         }

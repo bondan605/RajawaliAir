@@ -6,6 +6,7 @@ import com.rajawali.core.domain.usecase.CreateLoginSessionUseCase
 import com.rajawali.core.domain.usecase.CreatePassengerInformationInputUseCase
 import com.rajawali.core.domain.usecase.CreateReservationUseCase
 import com.rajawali.core.domain.usecase.FilterSeatsUseCase
+import com.rajawali.core.domain.usecase.FinishPaymentUseCase
 import com.rajawali.core.domain.usecase.GetAirportsUseCase
 import com.rajawali.core.domain.usecase.GetAvailableSeatsUseCase
 import com.rajawali.core.domain.usecase.GetFlightByDate
@@ -50,5 +51,6 @@ val useCaseModule = module {
     single { GetLoggedInDataUseCase(get()) }
 
     single { GetNotificationUseCase(get()) }
+    single { FinishPaymentUseCase(get()) }
 
 }

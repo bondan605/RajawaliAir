@@ -329,4 +329,9 @@
 
     <!--  notification  -->
     <string name="tv_notification_label">Notification</string>
+
+
+    <!--  purchase pending  -->
+    <string name="tv_purchase_pending_description">Your payment process is taking longer than usual. Please wait!</string>
+    <string name="tv_purchase_pending_label">Pending</string>
 </resources>

@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.enums.PaymentStatusEnum
-import com.rajawali.core.domain.model.ReservationByIdModel
+import com.rajawali.core.domain.model.FinishPaymentModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.GetReservationByIdUseCase
+import com.rajawali.core.domain.usecase.FinishPaymentUseCase
 import com.rajawali.core.util.DataMapper
 import timber.log.Timber
 
-class PaymentWaitingViewModel(private val useCase: GetReservationByIdUseCase) : ViewModel() {
+class PaymentWaitingViewModel(private val useCase: FinishPaymentUseCase) : ViewModel() {
 
     private val _transferDropdown = MutableLiveData<Boolean>(false)
     val transferDropdown: LiveData<Boolean> = _transferDropdown
@@ -22,14 +22,18 @@ class PaymentWaitingViewModel(private val useCase: GetReservationByIdUseCase) : 
     private val _mobileDropdown = MutableLiveData<Boolean>(false)
     val mobileDropdown: LiveData<Boolean> = _mobileDropdown
 
-    fun getPaymentStatus(status : String) : PaymentStatusEnum {
+    fun getPaymentStatus(status: String): PaymentStatusEnum {
         val statusEnum = DataMapper.paymentStatusStringToPaymentStatusEnum(status)
         Timber.d("getPaymentStatus : $status , $statusEnum")
 
         return statusEnum
     }
 
-    fun getReservationById(id : String) : LiveData<CommonResult<ReservationByIdModel>> = useCase.getReservation(id).asLiveData()
+    fun finishPayment(id: String): LiveData<CommonResult<FinishPaymentModel>> =
+        useCase.finish(id).asLiveData()
+
+
+//    fun getReservationById(id : String) : LiveData<CommonResult<ReservationByIdModel>> = useCase.getReservation(id).asLiveData()
 
     fun setTransferDropdown() {
         val state = transferDropdown.value ?: false
