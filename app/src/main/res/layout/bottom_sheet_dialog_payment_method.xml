@@ -12,7 +12,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="16sp">
+    android:paddingHorizontal="16sp"
+    android:paddingBottom="16dp">
 
     <com.google.android.material.bottomsheet.BottomSheetDragHandleView
         android:id="@+id/dhv_drag_handle"
@@ -190,12 +191,13 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/main_color"
-        android:textColor="@color/white"
         android:fontFamily="@font/roboto_bold"
         android:padding="0dp"
         android:text="@string/apply"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="16sp"
+        android:visibility="gone"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

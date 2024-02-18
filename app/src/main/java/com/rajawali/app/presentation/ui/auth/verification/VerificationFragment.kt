@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentVerificationBinding
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.result.CommonResult
@@ -66,7 +67,7 @@ class VerificationFragment : Fragment() {
 
                 when (status) {
                     is CommonResult.Error ->
-                        Toast.makeText(activity, status.errorMessage, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, getString(R.string.tv_top_code_wrong), Toast.LENGTH_SHORT).show()
 
                     is CommonResult.Success -> {
                         Toast.makeText(activity, status.data, Toast.LENGTH_SHORT).show()

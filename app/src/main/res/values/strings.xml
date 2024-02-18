@@ -36,6 +36,7 @@
     <string name="tv_verification_form_description">Enter the verification code that has been sent to your email</string>
     <string name="tv_resend_verification_label">Resend Code</string>
     <string name="btn_verification_label">Verify</string>
+    <string name="tv_top_code_wrong">OTP Code is Incorrect</string>
 
     <!--  home page  -->
     <!--  home page booking flight  -->
@@ -328,6 +329,4 @@
 
     <!--  notification  -->
     <string name="tv_notification_label">Notification</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
