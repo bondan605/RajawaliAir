@@ -1,11 +1,11 @@
 package com.rajawali.core.domain.repository
 
 import com.rajawali.core.data.remote.response.ContentItem
+import com.rajawali.core.data.remote.response.FinishPaymentData
 import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.LoginData
 import com.rajawali.core.data.remote.response.MealItem
 import com.rajawali.core.data.remote.response.NotificationData
-import com.rajawali.core.data.remote.response.NotificationResponse
 import com.rajawali.core.data.remote.response.PayReservationData
 import com.rajawali.core.data.remote.response.RegisterData
 import com.rajawali.core.data.remote.response.ReservationByIdData
@@ -17,8 +17,6 @@ import com.rajawali.core.domain.model.PayReservationModel
 import com.rajawali.core.domain.model.RegisterModel
 import com.rajawali.core.domain.model.VerifyModel
 import com.rajawali.core.domain.result.ApiResponse
-import retrofit2.http.Body
-import retrofit2.http.Path
 
 interface RemoteRepository {
 
@@ -50,7 +48,10 @@ interface RemoteRepository {
 
     suspend fun verifyNewAccount(data: VerifyModel): ApiResponse<String>
 
-    suspend fun getNotification(id : String, accessToken : String
-    ) : ApiResponse<NotificationData>
+    suspend fun getNotification(
+        id: String, accessToken: String
+    ): ApiResponse<NotificationData>
+
+    suspend fun finishPayment(id: String): ApiResponse<FinishPaymentData>
 
 }

@@ -109,6 +109,9 @@
             <action
                 android:id="@+id/action_paymentWaitingFragment_to_notAvailableBottomSheetDialog"
                 app:destination="@id/notAvailableBottomSheetDialog" />
+            <action
+                android:id="@+id/action_paymentWaitingFragment_to_paymentPendingFragment"
+                app:destination="@id/paymentPendingFragment" />
         </fragment>
         <fragment
             android:id="@+id/travelAddOnsFragment"
@@ -264,9 +267,19 @@
                 android:id="@+id/action_chooseTicketFragment_to_flightDetailBottomSheetDialog"
                 app:destination="@id/flightDetailBottomSheetDialog" />
         </fragment>
+        <fragment
+            android:id="@+id/paymentPendingFragment"
+            android:name="com.rajawali.app.presentation.paymentPending.PaymentPendingFragment"
+            android:label="fragment_payment_pending"
+            tools:layout="@layout/fragment_payment_pending" >
+            <action
+                android:id="@+id/action_paymentPendingFragment_to_paymentCompleteFragment"
+                app:destination="@id/paymentCompleteFragment" />
+        </fragment>
         <action
             android:id="@+id/action_global_homePageFragment"
             app:destination="@id/homePageFragment" />
+
     </navigation>
     <fragment
         android:id="@+id/notificationFragment"

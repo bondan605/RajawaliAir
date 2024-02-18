@@ -43,6 +43,7 @@ object Constant {
         "Payment Not Valid" to PaymentStatusEnum.PAYMENT_NOT_VALID,
         "null" to PaymentStatusEnum.PAYMENT_NULL
     )
+    const val PURCHASE_SUCCESS = "Purchase Successful"
 
     //payment network fail
     const val PAYMENT_NO_NETWORK = "Network is disturb. Please check your network"

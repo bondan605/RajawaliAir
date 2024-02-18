@@ -4,6 +4,7 @@ import com.rajawali.core.data.local.room.entity.RecentSearchEntity
 import com.rajawali.core.data.remote.response.Airplane
 import com.rajawali.core.data.remote.response.ContentItem
 import com.rajawali.core.data.remote.response.DestinationAirport
+import com.rajawali.core.data.remote.response.FinishPaymentData
 import com.rajawali.core.data.remote.response.FlightDetailListItem
 import com.rajawali.core.data.remote.response.FlightItem
 import com.rajawali.core.data.remote.response.LoginData
@@ -25,6 +26,7 @@ import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.AirplaneModel
 import com.rajawali.core.domain.model.AvailableSeatsModel
 import com.rajawali.core.domain.model.BookingModel
+import com.rajawali.core.domain.model.FinishPaymentModel
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.model.LoggedInUserModel
 import com.rajawali.core.domain.model.MealModel
@@ -42,6 +44,25 @@ import com.rajawali.core.domain.model.SearchModel
 import com.rajawali.core.domain.model.SeatsModel
 
 object DataMapper {
+
+    fun finishPaymentDataResponseToFinishPaymentModel(response: FinishPaymentData): FinishPaymentModel =
+        FinishPaymentModel(
+            receiverNumber = response.receiverNumber ?: "",
+
+            createdAt = response.createdAt ?: "",
+
+            method = response.method ?: "",
+
+            verifiedAt = response.verifiedAt ?: "",
+
+            paidAt = response.paidAt ?: "",
+
+            id = response.id ?: "",
+
+            paymentStatus = response.paymentStatus ?: "",
+
+            updatedAt = response.updatedAt ?: ""
+        )
 
     fun notificationDataResponseToNotificationModel(response: NotificationData): NotificationModel =
         NotificationModel(
