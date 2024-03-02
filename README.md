@@ -47,7 +47,7 @@ Total 12 requiment wajib.
 - [x] Menerapkan modularization
 - [x] Mengimplementasikan offline first (menyimpan data) agar dapat menampilkan data sementara ketika device sedang offline
 - [x] Menggunakan Room untuk menyimpan data ke local database
-- [ ] Menerapkan data store/shared preferences untuk penyimpanan key-value
+- [x] Menerapkan data store/shared preferences untuk penyimpanan key-value
 - [x] Menerapkan coroutine/rxjava untuk background process
 - [x] Menambahkan testing minimal satu test case
 - [x] Menerapkan Dependency Injection
