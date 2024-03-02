@@ -1,13 +1,5 @@
 # Deadline
-| Judul | Keterangan |
-| --- | --- |
-| Sprint saat ini | 2 sprint |
-| Total Sprint | 3 sprint (total 6 minggu) |
-| Submission Proyek | 12 Februari 2024 |
-| Presentasi Proyek | 19 Februari 2024 |
-
 <img src="https://github.com/bondan605/RajawaliAir/assets/60184727/36cfa8e8-6398-44cb-83bc-aa3d12797bd4" width="650" height="400" alt="Timeline"></image>
-
 
 # Overview Requirement
 
@@ -32,13 +24,6 @@ Bila ada fitur yang tidak bekerja sesuai dengan tujuannya, atau ada masalah pada
 2. Tekan tombol 'New Issue' yang bewarna hijau
 3. Isi judul, deskripsi dan screenshoot dari issue.
 4. Klik 'Submit new issue' untuk memposting issue tersebut.
-
-# Related Link
-Link website yang berhubungan dengan proyek app ini.
-
-- [Trello](https://trello.com/invite/b/CItZNqXi/ATTI55da11c4e8063b4cd2e895f261c84138D13DC3DD/rajawali-air-tim-7)
-- [Figma Hi-fi](https://www.figma.com/file/CqLxp63OoBEAqKdwJcmXlV/Tim-7---%5BFlight-Ticketing%5D-Final-Project?type=design&node-id=4156%3A1049&mode=design&t=c6P4kZ1ScgCo5EjI-1)
-- [Figma Jam](https://www.figma.com/file/l04I8GmpuOIBgzDfWEqSzz/Emphatize%2C-Define%2C-Ideate---PM-Tim-7-Final-Project?type=whiteboard&node-id=0%3A1&t=UZUeHLQ6jphiwrQd-1)
   
 # Requirement
 Total 12 requiment wajib.
