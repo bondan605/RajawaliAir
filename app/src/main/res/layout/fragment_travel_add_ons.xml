@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/background_app"
+    android:background="@color/solitude"
     tools:context=".presentation.addsOn.TravelAddOnsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
+        android:background="@color/dodger_blue"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_back"
+                    android:src="@drawable/ic_arrow_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +110,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginEnd="8dp"
-                                android:src="@drawable/add_baggage" />
+                                android:src="@drawable/img_add_baggage" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_baggage"
                             android:text="You can bring up to 20kg baggage per passenger.\nAre you sure this is enough?"
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="10sp" />
 
                         <ImageView
@@ -136,7 +136,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/add_circle" />
+                            android:src="@drawable/ic_add_circle" />
                     </RelativeLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -173,7 +173,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginEnd="8dp"
-                                android:src="@drawable/seat_number" />
+                                android:src="@drawable/img_seat_number" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_seat_number"
                             android:text="Sitting by the window is truly delightful. Don’t miss the\nopportunity to enjoy beautiful views near the window."
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="10sp" />
 
                         <ImageView
@@ -236,7 +236,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginEnd="8dp"
-                                android:src="@drawable/add_food" />
+                                android:src="@drawable/img_add_food" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -253,7 +253,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/title_food"
                             android:text="Don’t let yourself go hungry during the flight.\nEnjoy the meals we have prepared for you."
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="10sp" />
 
                         <ImageView
@@ -262,7 +262,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/add_circle" />
+                            android:src="@drawable/ic_add_circle" />
                     </RelativeLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -337,7 +337,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Covers up to IDR 500.000.000"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                             <LinearLayout
@@ -368,7 +368,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Covers up to IDR 30.000.000"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -398,14 +398,14 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="More Details"
-                                android:textColor="@color/main_color"
+                                android:textColor="@color/dodger_blue"
                                 android:textSize="12sp" />
 
                             <ImageView
                                 android:id="@+id/up_line"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/arrow_up_20" />
+                                android:src="@drawable/ic_arrow_up" />
                         </LinearLayout>
 
                         <TextView
@@ -414,7 +414,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:text="IDR 100.000/pax"
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="12sp" />
                     </RelativeLayout>
 
@@ -429,7 +429,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginBottom="8dp"
-                            android:background="@color/grey_text" />
+                            android:background="@color/emperor" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -459,7 +459,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Covers up to IDR 5.000.000"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="12sp" />
 
                         <LinearLayout
@@ -490,7 +490,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Covers up to IDR 3.000.000"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="12sp" />
 
                         <LinearLayout
@@ -521,7 +521,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Covers up to IDR 100.000.000/ticket"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="12sp" />
 
                         <LinearLayout
@@ -552,7 +552,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Covers up to IDR 5.000.000"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -620,7 +620,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Covers up to IDR 5.000.000"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                             <LinearLayout
@@ -651,7 +651,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Covers up to IDR 3.000.000"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -676,7 +676,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:text="IDR 13.500/pax"
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="12sp" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -744,7 +744,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Reimbursement up to IDR 600.000"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                             <LinearLayout
@@ -775,7 +775,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="Automated email &amp; SMS notifications"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -804,14 +804,14 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="More Details"
-                                android:textColor="@color/main_color"
+                                android:textColor="@color/dodger_blue"
                                 android:textSize="12sp" />
 
                             <ImageView
                                 android:id="@+id/down_line"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/arrow_down_20" />
+                                android:src="@drawable/ic_arrow_down" />
                         </LinearLayout>
 
                         <TextView
@@ -820,7 +820,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:text="IDR 60.000/pax"
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="12sp" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -835,7 +835,7 @@
         android:id="@+id/bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/card_bottom"
+        android:background="@drawable/custom_dodger_blue_card_bottom"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -855,14 +855,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/iv_dropdown_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/arrow_down_20" />
+                android:src="@drawable/ic_arrow_down" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -875,7 +875,7 @@
                     android:layout_height="12dp"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="4dp"
-                    android:src="@drawable/coins_circle" />
+                    android:src="@drawable/img_coins_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -884,8 +884,8 @@
                     android:id="@+id/loyalty_point"
                     android:layout_toRightOf="@id/coin"
                     android:fontFamily="@font/roboto_medium"
-                    tools:text="@string/earn_10000_loyalty_points"
-                    android:textColor="@color/main_color"
+                    tools:text="@string/tv_point_gain"
+                    android:textColor="@color/dodger_blue"
                     android:textSize="12sp" />
             </RelativeLayout>
         </LinearLayout>
@@ -902,7 +902,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp"
-            android:backgroundTint="@color/main_color"
+            android:backgroundTint="@color/dodger_blue"
             android:fontFamily="@font/roboto_bold"
             android:text="Continue to Payment"
             android:textAllCaps="false"

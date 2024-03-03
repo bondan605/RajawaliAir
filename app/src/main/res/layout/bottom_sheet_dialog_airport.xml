@@ -33,7 +33,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="0dp"
             app:icon="@drawable/ic_mingcute_close_fill"
-            app:iconTint="@color/neutral"
+            app:iconTint="@color/boulder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +91,7 @@
             android:paddingEnd="0dp"
             android:text="@string/btn_clear_recent_search_label"
             android:textAlignment="textEnd"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_recent_search"
             app:layout_constraintEnd_toEndOf="parent"

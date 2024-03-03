@@ -67,13 +67,13 @@ class PaymentPendingFragment : Fragment() {
     private fun populatePaymentInformationCard() {
         ticketViewModel.payment.observe(viewLifecycleOwner) { payment ->
             val purchaseDate = DateFormat.formatDateStringToAbbreviatedString(payment.createdAt)
-            val orderId = getString(R.string.tv_order_id_value, payment.reservation.id)
+            val orderId = getString(com.rajawali.common_resource.R.string.tv_order_id_value, payment.reservation.id)
             val method = payment.method.replace("_", " ", ignoreCase = true).lowercase().capitalize()
 
             binding.tvPurchaseDateValue.text = purchaseDate
             binding.tvPaymentMethodValue.text = method
             binding.tvTotalPriceValue.text =
-                getString(R.string.tv_total_price, payment.reservation.totalPrice)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, payment.reservation.totalPrice)
 
             setOrderId(orderId)
         }

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.MealModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.GetMealsUseCase
+import com.rajawali.core.domain.usecase.addOns.GetMealsUseCase
 
 class MealsViewModel(meals : GetMealsUseCase) : ViewModel() {
 

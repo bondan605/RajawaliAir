@@ -68,7 +68,7 @@ class BaggageFragment : Fragment() {
         }
 
         addsOnViewModel.totalBaggagePrice.observe(viewLifecycleOwner) { totalPrice ->
-            binding.totalPrice.text = getString(R.string.tv_total_price, totalPrice)
+            binding.totalPrice.text = getString(com.rajawali.common_resource.R.string.tv_total_price, totalPrice)
         }
     }
 

@@ -7,7 +7,7 @@ import com.rajawali.core.domain.model.PayReservationModel
 import com.rajawali.core.domain.model.PaymentRecordModel
 import com.rajawali.core.domain.model.PaymentViewState
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.PayReservationUseCase
+import com.rajawali.core.domain.usecase.payment.PayReservationUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

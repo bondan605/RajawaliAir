@@ -38,7 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/png_rajawali_air_logo_blue"
+            app:srcCompat="@drawable/img_rajawali_air_logo_blue"
             android:contentDescription="@string/rajawali_air_logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/dodger_blue"
         android:fontFamily="@font/roboto_bold"
         android:padding="0dp"
         android:textColor="@color/white"

@@ -29,7 +29,7 @@
                     android:layout_width="26dp"
                     android:layout_height="16dp"
                     android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_rajawali" />
+                    android:src="@drawable/img_rajawali" />
 
                 <TextView
                     android:id="@+id/tv_departure_city_code_label"
@@ -44,7 +44,7 @@
                     android:layout_width="16dp"
                     android:layout_height="8dp"
                     android:layout_marginHorizontal="8dp"
-                    android:src="@drawable/arrow_right" />
+                    android:src="@drawable/img_long_arrow_forward" />
 
                 <TextView
                     android:id="@+id/tv_arrive_city_code_label"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_25_jan_2024_08_15_09_05"
-                android:textColor="@color/neutral_700"
+                android:textColor="@color/boulder"
                 android:textSize="10sp" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:text="@string/economy_direct_flight"
-                android:textColor="@color/neutral_700"
+                android:textColor="@color/boulder"
                 android:textSize="10sp" />
 
 
@@ -82,7 +82,7 @@
             android:layout_height="16dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/arrow_forward" />
+            android:src="@drawable/ic_arrow_forward" />
 
     </RelativeLayout>
 
@@ -90,13 +90,13 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_gravity="bottom"
-        android:background="@drawable/bottom_card_color"
+        android:background="@drawable/custom_onahau_bottom_card"
         android:gravity="center">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/watch" />
+            android:src="@drawable/ic_watch" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,13 +105,13 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Complete payment in"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:textSize="12sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:cardBackgroundColor="@color/main_color"
+            app:cardBackgroundColor="@color/dodger_blue"
             app:cardCornerRadius="4dp">
 
             <TextView
@@ -131,13 +131,13 @@
             android:layout_marginHorizontal="4dp"
             android:fontFamily="@font/roboto_bold"
             android:text=":"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:textSize="12sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:cardBackgroundColor="@color/main_color"
+            app:cardBackgroundColor="@color/dodger_blue"
             app:cardCornerRadius="4dp">
 
             <TextView
@@ -157,13 +157,13 @@
             android:layout_marginHorizontal="4dp"
             android:fontFamily="@font/roboto_bold"
             android:text=":"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:textSize="12sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            app:cardBackgroundColor="@color/main_color"
+            app:cardBackgroundColor="@color/dodger_blue"
             app:cardCornerRadius="4dp">
 
             <TextView

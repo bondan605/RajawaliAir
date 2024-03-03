@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.RegisterModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.RegisterUseCase
+import com.rajawali.core.domain.usecase.authentication.RegisterUseCase
 
 class RegisterViewModel(private val registerUseCase: RegisterUseCase) : ViewModel() {
 

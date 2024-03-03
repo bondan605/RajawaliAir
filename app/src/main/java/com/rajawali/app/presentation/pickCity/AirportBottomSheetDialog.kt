@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogPickCityBinding
 import com.rajawali.core.domain.enums.AirportTypeEnum
 import com.rajawali.core.domain.model.SearchModel

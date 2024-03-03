@@ -8,7 +8,7 @@ import com.rajawali.core.domain.enums.CourtesyEnum
 import com.rajawali.core.domain.enums.GenderEnum
 import com.rajawali.core.domain.model.PassengerInputModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.CreatePassengerInformationInputUseCase
+import com.rajawali.core.domain.usecase.tickets.CreatePassengerInformationInputUseCase
 
 class DetailsInformationViewModel(private val createPassenger: CreatePassengerInformationInputUseCase) :
     ViewModel() {

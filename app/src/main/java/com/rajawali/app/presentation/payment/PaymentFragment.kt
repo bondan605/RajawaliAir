@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
@@ -27,7 +26,7 @@ class PaymentFragment : Fragment() {
     private var _binding: FragmentPaymentBinding? = null
     private val binding get() = _binding!!
 
-//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    //    private val ticketViewModel: TicketViewModel by activityViewModels()
 //    private val paymentMethodViewModel: PaymentMethodViewModel by activityViewModels()
     private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val paymentMethodViewModel: PaymentMethodViewModel by navGraphViewModels(R.id.nav_booking)
@@ -86,7 +85,8 @@ class PaymentFragment : Fragment() {
         val included = binding.includeAppbar
 
         ticketViewModel.reservation.observe(viewLifecycleOwner) { reservation ->
-            included.tvOrderId.text = getString(R.string.tv_order_id_value, reservation.id)
+            included.tvOrderId.text =
+                getString(com.rajawali.common_resource.R.string.tv_order_id_value, reservation.id)
         }
 
         included.ivBack.setOnClickListener {
@@ -183,14 +183,17 @@ class PaymentFragment : Fragment() {
             binding.tvArriveCityCodeLabel.text = ticket.destinationAirport.cityCode
 
             binding.directFlight.text = getString(
-                R.string.tv_date_departure_time_arrival_time_value,
+                com.rajawali.common_resource.R.string.tv_date_departure_time_arrival_time_value,
                 date,
                 ticket.departureTime,
                 ticket.arrivalTime
             )
 
             binding.ticketType.text =
-                getString(R.string.flight_seat_type_value, ticket.classType.capitalize())
+                getString(
+                    com.rajawali.common_resource.R.string.flight_seat_type_value,
+                    ticket.classType.capitalize()
+                )
         }
     }
 

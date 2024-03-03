@@ -7,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.FinishPaymentModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.FinishPaymentUseCase
+import com.rajawali.core.domain.usecase.payment.FinishPaymentUseCase
 import com.rajawali.core.util.DataMapper
 import timber.log.Timber
 

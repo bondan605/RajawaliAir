@@ -63,7 +63,7 @@ class PaymentCompleteFragment : Fragment() {
             binding.tvPurchaseDateValue.text = purchaseDate
             binding.tvPaymentMethodValue.text = method
             binding.tvTotalPriceValue.text =
-                getString(R.string.tv_total_price, payment.reservation.totalPrice)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, payment.reservation.totalPrice)
         }
     }
 
@@ -115,19 +115,19 @@ class PaymentCompleteFragment : Fragment() {
 
 
             included.tvTotalBaggagePrice.text =
-                getString(R.string.tv_total_price, baggage)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, baggage)
 
             included.tvTotalMealsPrice.text =
-                getString(R.string.tv_total_price, meals)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, meals)
 
             included.tvTravelInsurancePrice.text =
-                getString(R.string.tv_total_price, travelInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, travelInsurance)
 
             included.tvBaggageInsurancePrice.text =
-                getString(R.string.tv_total_price, baggageInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, baggageInsurance)
 
             included.tvFlightDelayInsurancePrice.text =
-                getString(R.string.tv_total_price, flightDelayInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, flightDelayInsurance)
         }
 
         //add-ons section
@@ -136,13 +136,13 @@ class PaymentCompleteFragment : Fragment() {
                 passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
 
             included.tvTravelInsuranceLabel.text =
-                getString(R.string.tv_travel_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_travel_insurance_amount, totalPassenger)
 
             included.tvBaggageInsuranceLabel.text =
-                getString(R.string.tv_baggage_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_baggage_insurance_amount, totalPassenger)
 
             included.tvFlightDelayInsuranceLabel.text =
-                getString(R.string.tv_flight_delay_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_flight_delay_insurance_amount, totalPassenger)
         }
 
         //passenger section
@@ -154,11 +154,11 @@ class PaymentCompleteFragment : Fragment() {
 
             //set up the amount
             included.tvAdultPassengerCount.text =
-                getString(R.string.tv_adult_amount, passenger.adultPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_adult_amount, passenger.adultPassenger)
             included.tvChildPassengerCount.text =
-                getString(R.string.tv_child_amount, passenger.childPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_child_amount, passenger.childPassenger)
             included.tvInfantPassengerCount.text =
-                getString(R.string.tv_infant_amount, passenger.infantPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_infant_amount, passenger.infantPassenger)
 
             ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
                 //visibility
@@ -174,11 +174,11 @@ class PaymentCompleteFragment : Fragment() {
                     (ticket.seatPrice * passenger.infantPassenger - (ticket.seatPrice * 0.20)).toInt()
 
                 included.tvAdultPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalAdultPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalAdultPrice)
                 included.tvChildPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalChildPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalChildPrice)
                 included.tvInfantPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalInfantPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalInfantPrice)
             }
         }
 
@@ -187,14 +187,14 @@ class PaymentCompleteFragment : Fragment() {
     private fun setPaymentStepsView() {
         val included = binding.includePaymentSteps
 
-        included.ivStepTwo.setImageResource(R.drawable.ic_number_two_circle_filled)
+        included.ivStepTwo.setImageResource(com.rajawali.common_resource.R.drawable.ic_number_two_circle_filled)
 
-        included.ivStepThree.setImageResource(R.drawable.ic_number_three_circle_filled)
+        included.ivStepThree.setImageResource(com.rajawali.common_resource.R.drawable.ic_number_three_circle_filled)
     }
 
     private fun populateOrderId() {
         ticketViewModel.payment.observe(viewLifecycleOwner) { payment ->
-            val text = getString(R.string.tv_order_id_value, payment.reservation.id)
+            val text = getString(com.rajawali.common_resource.R.string.tv_order_id_value, payment.reservation.id)
 
             binding.includeAppbar.tvOrderId.text = text
             binding.tvOrderIdValue.text = text

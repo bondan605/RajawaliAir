@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.rajawali.app.R
@@ -21,7 +20,7 @@ class SelectedTicketFragment : Fragment() {
     private var _binding: FragmentSelectedTicketBinding? = null
     private val binding get() = _binding!!
 
-//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    //    private val ticketViewModel: TicketViewModel by activityViewModels()
 //    private val addsOnViewModel: TravelAddsOnViewModel by activityViewModels()
     private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val addsOnViewModel: TravelAddsOnViewModel by navGraphViewModels(R.id.nav_booking)
@@ -115,21 +114,21 @@ class SelectedTicketFragment : Fragment() {
             binding.tvArriveDateMonth.text = arrivalDateAndMonth
 
             binding.tvDepartureCityNameLabel.text = getString(
-                R.string.tv_city_code,
+                com.rajawali.common_resource.R.string.tv_city_code,
                 departure.sourceAirport.city,
                 departure.sourceAirport.cityCode
             )
             binding.tvDepartureAirportName.text = departure.sourceAirport.airport
 
             binding.tvArriveCityNameLabel.text = getString(
-                R.string.tv_city_code,
+                com.rajawali.common_resource.R.string.tv_city_code,
                 departure.destinationAirport.city,
                 departure.destinationAirport.cityCode
             )
             binding.tvArriveAirportName.text = departure.destinationAirport.airport
 
             binding.ticketDetail.text = getString(
-                R.string.tv_ticket_detail,
+                com.rajawali.common_resource.R.string.tv_ticket_detail,
                 departure.airplane.airplaneCode,
                 AppUtils.capitalize(departure.classType),
                 flightLengthHour
@@ -137,15 +136,27 @@ class SelectedTicketFragment : Fragment() {
 
             binding.tvDateDeparture.text = fullDate
 
-            binding.priceTicket.text = getString(R.string.tv_price_ticket, departure.seatPrice)
-            binding.totalPrice.text = getString(R.string.tv_total_price, departure.totalPrice)
-            binding.point.text = getString(R.string.tv_point, departure.points)
+            binding.priceTicket.text = getString(
+                com.rajawali.common_resource.R.string.tv_price_ticket,
+                departure.seatPrice
+            )
+            binding.totalPrice.text = getString(
+                com.rajawali.common_resource.R.string.tv_total_price,
+                departure.totalPrice
+            )
+            binding.point.text =
+                getString(com.rajawali.common_resource.R.string.tv_point, departure.points)
 
 
             //safe section.
-            binding.safePriceTicket.text = getString(R.string.tv_price_ticket, departure.seatPrice)
-            binding.safeTotalPrice.text = getString(R.string.tv_total_price, safeTotalPrice)
-            binding.safePoint.text = getString(R.string.tv_point, departure.points)
+            binding.safePriceTicket.text = getString(
+                com.rajawali.common_resource.R.string.tv_price_ticket,
+                departure.seatPrice
+            )
+            binding.safeTotalPrice.text =
+                getString(com.rajawali.common_resource.R.string.tv_total_price, safeTotalPrice)
+            binding.safePoint.text =
+                getString(com.rajawali.common_resource.R.string.tv_point, departure.points)
 
         }
     }
@@ -169,15 +180,18 @@ class SelectedTicketFragment : Fragment() {
             binding.tvComaBetweenChildInfant.visibility = View.VISIBLE
 
         if (adult > 0) {
-            tvAdult.text = getString(R.string.tv_adult_passenger, adult)
+            tvAdult.text =
+                getString(com.rajawali.common_resource.R.string.tv_adult_passenger, adult)
             tvAdult.visibility = View.VISIBLE
         }
         if (child > 0) {
-            tvChild.text = getString(R.string.tv_child_passenger, child)
+            tvChild.text =
+                getString(com.rajawali.common_resource.R.string.tv_child_passenger, child)
             tvChild.visibility = View.VISIBLE
         }
         if (infant > 0) {
-            tvInfant.text = getString(R.string.tv_infant_passenger, infant)
+            tvInfant.text =
+                getString(com.rajawali.common_resource.R.string.tv_infant_passenger, infant)
             tvInfant.visibility = View.VISIBLE
         }
     }

@@ -53,7 +53,7 @@ class PassengerSelectionAdapter :
             )
 
             binding.tvPassenger2.text = itemView.context.getString(
-                R.string.tv_passenger_detail,
+                com.rajawali.common_resource.R.string.tv_passenger_detail,
                 passenger.id,
                 passenger.age
             )

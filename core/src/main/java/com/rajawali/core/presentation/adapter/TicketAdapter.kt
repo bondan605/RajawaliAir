@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.rajawali.core.R
 import com.rajawali.core.databinding.ItemTicketBinding
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.util.DateFormat
@@ -48,11 +47,18 @@ class TicketAdapter :
     inner class FlightViewHolder(private val binding: ItemTicketBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(ticket: FlightModel) {
-            val flightLength = DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
+            val flightLength =
+                DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
 
-            binding.priceTicket.text = itemView.context.getString(R.string.tv_price_ticket, ticket.seatPrice)
+            binding.priceTicket.text = itemView.context.getString(
+                com.rajawali.common_resource.R.string.tv_price_ticket,
+                ticket.seatPrice
+            )
             binding.airplaneId.text = ticket.airplane.airplaneCode
-            binding.point.text = itemView.context.getString(R.string.tv_point, ticket.points)
+            binding.point.text = itemView.context.getString(
+                com.rajawali.common_resource.R.string.tv_point,
+                ticket.points
+            )
             binding.tvDepartureCityCodeLabel.text = ticket.sourceAirport.cityCode
             binding.tvArriveCityCodeLabel.text = ticket.destinationAirport.cityCode
             binding.tvDepartureTime.text = ticket.departureTime

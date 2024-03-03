@@ -1,25 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00FFFFFF</color>
-    <color name="grey">#C2C2C2</color>
-    <color name="neutral">#757575</color>
-    <color name="et_select_city_background">#EDEDED</color>
-    <color name="home_page_background">#f9f9f9</color>
-    <color name="young_grey">#F9F9F9</color>
-    <color name="main_color">#1e90ff</color>
-    <color name="secondary_color">#0f53b7</color>
-    <color name="grey_text">#505050</color>
-    <color name="hint_text">#646464</color>
-    <color name="neutral_700">#757575</color>
-    <color name="tertiary_color">#A4E0FF</color>
-    <color name="background_app">#E3EEFF</color>
-    <color name="quaternary_color">#1e90ff</color>
-    <color name="green">#18AF5E</color>
-    <color name="background_color">#e3eeff</color>
-    <color name="light_blue">#E9F8FF</color>
-    <color name="neutral_400">#E0E0E0</color>
-    <color name="super_light_blue">#D2F1FF</color>
-    <color name="silver_chalice">#9e9e9e</color>
+<resources>
 </resources>

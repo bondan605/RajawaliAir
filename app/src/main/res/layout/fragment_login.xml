@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.login.LoginFragment">
+    tools:context=".presentation.ui.auth.login.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:id="@+id/iv_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/icon_rajawali"
+            android:src="@drawable/img_rajawali_white_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_skip"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/iv_icon"
@@ -39,7 +39,7 @@
             android:layout_width="220dp"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/login_ilustration"
+            android:src="@drawable/img_login_ilustration"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_skip" />
@@ -51,7 +51,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Login"
-            android:textColor="@color/secondary_color"
+            android:textColor="@color/denim"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ilustration" />
@@ -67,10 +67,10 @@
             app:boxCornerRadiusBottomStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="@color/main_color"
+            app:boxStrokeColor="@color/dodger_blue"
             app:boxStrokeWidth="2dp"
             app:cursorColor="@color/black"
-            app:hintTextColor="@color/hint_text"
+            app:hintTextColor="@color/dove_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/login">
@@ -96,10 +96,10 @@
             app:boxCornerRadiusBottomStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="@color/main_color"
+            app:boxStrokeColor="@color/dodger_blue"
             app:boxStrokeWidth="2dp"
             app:cursorColor="@color/black"
-            app:hintTextColor="@color/hint_text"
+            app:hintTextColor="@color/dove_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email"
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Forgot Password?"
-            android:textColor="@color/main_color"
+            android:textColor="@color/dodger_blue"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/main_color"
+            android:backgroundTint="@color/dodger_blue"
             android:text="Login"
             android:textAllCaps="false"
             android:textSize="16sp"
@@ -147,7 +147,7 @@
             android:layout_height="2dp"
             android:visibility="gone"
             android:layout_marginEnd="5dp"
-            app:dividerColor="@color/secondary_color"
+            app:dividerColor="@color/denim"
             app:layout_constraintBottom_toBottomOf="@id/txt_another"
             app:layout_constraintEnd_toStartOf="@id/txt_another"
             app:layout_constraintTop_toTopOf="@id/txt_another" />
@@ -169,7 +169,7 @@
             android:layout_height="2dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"
-            app:dividerColor="@color/secondary_color"
+            app:dividerColor="@color/denim"
             app:layout_constraintBottom_toBottomOf="@id/txt_another"
             app:layout_constraintStart_toEndOf="@id/txt_another"
             app:layout_constraintTop_toTopOf="@id/txt_another" />
@@ -189,12 +189,12 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginEnd="41dp"
-                android:src="@drawable/icon_google" />
+                android:src="@drawable/img_google" />
 
             <ImageView
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:src="@drawable/icon_facebook" />
+                android:src="@drawable/img_facebook" />
 
         </LinearLayout>
 
@@ -226,7 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_register"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_departure_time"

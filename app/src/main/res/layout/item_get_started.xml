@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/tv_onboarding_1_label"
-        android:src="@drawable/svg_get_started"
+        android:src="@drawable/ic_get_started"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/tv_get_started_label"
         android:textAlignment="center"
-        android:textColor="@color/secondary_color"
+        android:textColor="@color/denim"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

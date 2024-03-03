@@ -8,6 +8,7 @@ import com.rajawali.core.domain.model.FindTicketModel
 import com.rajawali.core.domain.enums.TripValueEnum
 import java.time.LocalDate
 
+@Suppress("RemoveExplicitTypeArguments")
 class TripViewModel : ViewModel() {
 
     //init is required to be false for it to work.

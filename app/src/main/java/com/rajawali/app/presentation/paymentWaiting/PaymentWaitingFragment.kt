@@ -217,7 +217,7 @@ class PaymentWaitingFragment : Fragment() {
             if (preferredPaymentMethod != null)
                 included.tvAppBarLabel.text = getString(preferredPaymentMethod.name)
 
-            included.tvOrderId.text = getString(R.string.tv_order_id_value, payment.reservation.id)
+            included.tvOrderId.text = getString(com.rajawali.common_resource.R.string.tv_order_id_value, payment.reservation.id)
         }
 
         included.ivBack.setOnClickListener {
@@ -298,10 +298,10 @@ class PaymentWaitingFragment : Fragment() {
     private fun Boolean.setDropDownIcon(): Int =
         when (this) {
             true ->
-                R.drawable.arrow_up_20
+                com.rajawali.common_resource.R.drawable.ic_arrow_up
 
             false ->
-                R.drawable.arrow_down_20
+                com.rajawali.common_resource.R.drawable.ic_arrow_down
         }
 
     private fun Boolean.setDropDownContentVisibility(): Int =
@@ -343,7 +343,7 @@ class PaymentWaitingFragment : Fragment() {
     private fun setPayIcon() {
         val include = binding.includePaymentSteps
 
-        include.ivStepTwo.setImageResource(R.drawable.ic_number_two_circle_filled)
+        include.ivStepTwo.setImageResource(com.rajawali.common_resource.R.drawable.ic_number_two_circle_filled)
     }
 
     private fun populateTicketCard() {
@@ -355,14 +355,15 @@ class PaymentWaitingFragment : Fragment() {
             included.tvArriveCityCodeLabel.text = ticket.destinationAirport.cityCode
 
             included.directFlight.text = getString(
-                R.string.tv_date_departure_time_arrival_time_value,
+                com.rajawali.common_resource.R.string.tv_date_departure_time_arrival_time_value,
                 date,
                 ticket.departureTime,
                 ticket.arrivalTime
             )
 
             included.ticketType.text =
-                getString(R.string.flight_seat_type_value, ticket.classType.capitalize())
+                getString(
+                    com.rajawali.common_resource.R.string.flight_seat_type_value, ticket.classType.capitalize())
         }
     }
 
@@ -375,7 +376,7 @@ class PaymentWaitingFragment : Fragment() {
                 binding.ivPaymentMethodLogo.setImageResource(preferredPaymentMethod.logo)
                 binding.tvPaymentNumber.text = payment.receiverNumber
                 binding.tvTotalPaymentAmount.text =
-                    getString(R.string.tv_total_price, payment.reservation.totalPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, payment.reservation.totalPrice)
             }
 
 

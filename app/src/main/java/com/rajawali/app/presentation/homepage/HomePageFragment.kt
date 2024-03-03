@@ -38,7 +38,7 @@ class HomePageFragment : Fragment() {
 
         //work wonderful. setting the status bar
         activity?.window?.statusBarColor =
-            ContextCompat.getColor(requireActivity(), R.color.main_color)
+            ContextCompat.getColor(requireActivity(), com.rajawali.common_resource.R.color.dodger_blue)
         val windowInsetController = WindowCompat.getInsetsController(
             requireActivity().window,
             requireActivity().window.decorView
@@ -122,8 +122,8 @@ class HomePageFragment : Fragment() {
         vpPromotion.apply {
             adapter = _adapter
             setPreviewBothSide(
-                R.dimen.vp_next_item_visible_size,
-                R.dimen.vp_current_item_horizontal_margin
+                com.rajawali.common_resource.R.dimen.vp_next_item_visible_size,
+                com.rajawali.common_resource.R.dimen.vp_current_item_horizontal_margin
             )
         }
 
@@ -173,7 +173,7 @@ class HomePageFragment : Fragment() {
         airportsViewModel.departureAirport.observe(viewLifecycleOwner) { departure ->
             binding.tvDepartureCityCodeLabel.text = departure.cityCode
             binding.tvDepartureCityNameLabel.text =
-                getString(R.string.tv_departure_city_name_label, departure.city, departure.cityCode)
+                getString(com.rajawali.common_resource.R.string.tv_departure_city_name_label, departure.city, departure.cityCode)
         }
     }
 
@@ -190,7 +190,7 @@ class HomePageFragment : Fragment() {
 
             binding.tvArriveCityCodeLabel.text = arriving.cityCode
             binding.tvArriveCityNameLabel.text =
-                getString(R.string.tv_departure_city_name_label, arriving.city, arriving.cityCode)
+                getString(com.rajawali.common_resource.R.string.tv_departure_city_name_label, arriving.city, arriving.cityCode)
         }
 
     }

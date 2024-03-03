@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="@color/solitude"
     tools:context=".presentation.paymentPending.PaymentPendingFragment">
 
     <include
@@ -38,7 +38,7 @@
                 android:id="@+id/cl_pay_information_app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/et_select_city_background"
+                android:background="@color/gallery"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/png_rajawali_air_logo_transparent"
+                    android:src="@drawable/img_rajawali_air_logo_transparent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ImageContrastCheck" />

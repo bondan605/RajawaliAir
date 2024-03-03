@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
-    android:background="@color/main_color"
+    android:background="@color/dodger_blue"
     android:paddingHorizontal="16dp"
     android:paddingVertical="6dp">
 
@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back"
+        app:srcCompat="@drawable/ic_arrow_back"
         android:contentDescription="@string/app_name" />
 
     <TextView

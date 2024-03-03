@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/tv_onboarding_1_label"
-        android:src="@drawable/svg_onboarding_1"
+        android:src="@drawable/ic_onboarding_1"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
 
@@ -40,7 +40,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/tv_onboarding_1_label"
         android:textAlignment="center"
-        android:textColor="@color/secondary_color"
+        android:textColor="@color/denim"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/iv_background_1"
         app:layout_constraintStart_toStartOf="@+id/iv_background_1"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/tv_onboarding_2_label"
-        android:src="@drawable/svg_onboarding_2"
+        android:src="@drawable/ic_onboarding_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
 
@@ -76,7 +76,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/tv_onboarding_2_label"
         android:textAlignment="center"
-        android:textColor="@color/secondary_color"
+        android:textColor="@color/denim"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_background_2" />
@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/tv_onboarding_3_label"
-        android:src="@drawable/svg_onboarding_3"
+        android:src="@drawable/ic_onboarding_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
@@ -111,7 +111,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/tv_onboarding_3_label"
         android:textAlignment="center"
-        android:textColor="@color/secondary_color"
+        android:textColor="@color/denim"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_background_3" />
@@ -138,40 +138,40 @@
         android:id="@+id/menu1"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:altSrc="@drawable/svg_current_location"
+        app:altSrc="@drawable/ic_current_location"
         app:layout_constraintBottom_toBottomOf="@+id/menu2"
         app:layout_constraintEnd_toStartOf="@+id/menu2"
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/svg_other_location" />
+        app:srcCompat="@drawable/ic_other_location" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu2"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:altSrc="@drawable/svg_current_location"
+        app:altSrc="@drawable/ic_current_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/svg_other_location"
+        app:srcCompat="@drawable/ic_other_location"
         tools:layout_editor_absoluteY="515dp" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu3"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        app:altSrc="@drawable/svg_current_location"
+        app:altSrc="@drawable/ic_current_location"
         app:layout_constraintBottom_toBottomOf="@+id/menu2"
         app:layout_constraintStart_toEndOf="@+id/menu2"
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/svg_other_location" />
+        app:srcCompat="@drawable/ic_other_location" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/dodger_blue"
         android:text="@string/btn_next"
         android:textSize="16sp"
         android:fontFamily="@font/roboto_medium"
@@ -185,7 +185,7 @@
         android:id="@+id/btn_get_started"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/dodger_blue"
         android:text="@string/btn_get_started_label"
         android:textSize="16sp"
         app:cornerRadius="4dp"

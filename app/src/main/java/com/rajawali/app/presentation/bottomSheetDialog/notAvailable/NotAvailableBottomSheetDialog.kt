@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rajawali.app.NavBookingDirections
-import com.rajawali.app.R
+import com.rajawali.common_resource.R
 import com.rajawali.app.databinding.BottomSheetDialogNotAvailableBinding
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.core.domain.enums.NotAvailableEnum

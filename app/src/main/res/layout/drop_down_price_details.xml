@@ -16,7 +16,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/grey"
+            android:background="@color/silver"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
             android:layout_height="16dp"
             android:layout_marginStart="4dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/long_arrow_right"
+            android:src="@drawable/img_arrow_forward"
             app:layout_constraintBottom_toBottomOf="@+id/tv_departure_location_label"
             app:layout_constraintStart_toEndOf="@+id/tv_departure_location_label"
             app:layout_constraintTop_toTopOf="@+id/tv_departure_location_label" />
@@ -152,7 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
-            android:background="@color/grey"
+            android:background="@color/silver"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_infant_passenger_count" />
@@ -293,7 +293,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
-            android:background="@color/grey"
+            android:background="@color/silver"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_flight_delay_insurance_price" />
@@ -325,7 +325,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_included_label"
-            android:textColor="@color/green"
+            android:textColor="@color/mountain_meadow"
             app:layout_constraintBottom_toBottomOf="@+id/tv_tax_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_tax_label"
@@ -336,7 +336,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
-            android:background="@color/grey"
+            android:background="@color/silver"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_tax_label" />

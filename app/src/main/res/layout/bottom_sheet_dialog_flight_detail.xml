@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:minHeight="700dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".presentation.pickCity.PickCityBottomSheetDialog">
+    tools:context=".presentation.pickCity.PickCityBottomSheetDialog"
+    tools:ignore="SmallSp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,9 +40,10 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="0dp"
                 app:icon="@drawable/ic_mingcute_close_fill"
-                app:iconTint="@color/neutral"
+                app:iconTint="@color/boulder"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <TextView
                 android:id="@+id/tv_flight_detail_label"
@@ -105,7 +107,7 @@
                 android:text="@string/tv_flight_length"
                 android:textSize="10sp"
                 app:drawableLeftCompat="@drawable/ic_clock"
-                app:drawableTint="@color/neutral"
+                app:drawableTint="@color/boulder"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_flight_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_departing_city" />
@@ -182,7 +184,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/png_rajawali_air_logo_transparent"
+                    android:src="@drawable/img_rajawali_air_logo_transparent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -334,7 +336,8 @@
                 android:text="@string/tv_arriving_airport"
                 android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/iv_ellipse"
-                app:layout_constraintTop_toBottomOf="@+id/tv_arriving__city_code_time" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_arriving__city_code_time"
+                tools:ignore="SmallSp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -356,7 +359,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/main_color"
+                android:backgroundTint="@color/dodger_blue"
                 android:fontFamily="@font/roboto_bold"
                 android:paddingHorizontal="35dp"
                 android:text="@string/btn_continue"
@@ -385,7 +388,7 @@
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/tv_total_price"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_total_price_label"
                 app:layout_constraintTop_toBottomOf="@+id/tv_total_price_label" />
@@ -403,10 +406,10 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="0dp"
                 android:text="@string/tv_point_gain"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 android:textSize="10sp"
                 app:drawableLeftCompat="@drawable/ic_pepicons_pencil_coins_circle"
-                app:drawableTint="@color/neutral"
+                app:drawableTint="@color/boulder"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

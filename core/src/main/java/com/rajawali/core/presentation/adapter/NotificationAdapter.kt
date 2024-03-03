@@ -35,7 +35,7 @@ class NotificationAdapter :
             val time = data.createdAt.slice(11..15)
 
             binding.tvDate.text =
-                itemView.context.getString(R.string.tv_date_and_time_value, time, date)
+                itemView.context.getString(com.rajawali.common_resource.R.string.tv_date_and_time_value, time, date)
             binding.tvDescription.text = data.description
         }
 

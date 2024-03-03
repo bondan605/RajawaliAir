@@ -169,7 +169,7 @@ object DataMapper {
             arrivalTime = arrivalTime,
         )
 
-    fun MealsResponseToMealsDomain(response: MealItem): MealModel =
+    fun mealsResponseToMealsDomain(response: MealItem): MealModel =
         MealModel(
             id = response.id ?: "",
             price = response.price ?: 0,

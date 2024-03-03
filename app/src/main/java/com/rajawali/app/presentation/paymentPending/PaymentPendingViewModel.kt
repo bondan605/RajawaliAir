@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.rajawali.core.domain.enums.PaymentStatusEnum
 import com.rajawali.core.domain.model.PaymentStatus
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.GetReservationByIdUseCase
+import com.rajawali.core.domain.usecase.reservation.GetReservationByIdUseCase
 import com.rajawali.core.util.Constant
 import com.rajawali.core.util.DataMapper
 import kotlinx.coroutines.delay

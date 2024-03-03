@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.VerifyModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.VerifyUseCase
+import com.rajawali.core.domain.usecase.authentication.VerifyUseCase
 
 class VerifyViewModel(private val verifyUseCase: VerifyUseCase) : ViewModel() {
 

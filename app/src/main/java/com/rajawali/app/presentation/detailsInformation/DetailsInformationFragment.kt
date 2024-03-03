@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +27,7 @@ class DetailsInformationFragment : Fragment() {
     private var _binding: FragmentDetailsInformationBinding? = null
     private val binding get() = _binding!!
 
-//    private val ticketViewModel: TicketViewModel by activityViewModels()
+    //    private val ticketViewModel: TicketViewModel by activityViewModels()
     private val ticketViewModel: TicketViewModel by navGraphViewModels(R.id.nav_booking)
     private val detailsInformationViewModel: DetailsInformationViewModel by viewModel()
 
@@ -214,7 +213,11 @@ class DetailsInformationFragment : Fragment() {
             binding.tvArriveCityCodeLabel.text = departure.destinationAirport.cityCode
 
             binding.directFlight.text =
-                getString(R.string.tv_direct_flight, departure.departureTime, departure.arrivalTime)
+                getString(
+                    com.rajawali.common_resource.R.string.tv_direct_flight,
+                    departure.departureTime,
+                    departure.arrivalTime
+                )
             binding.ticketType.text = AppUtils.capitalize(departure.classType)
         }
     }
@@ -223,7 +226,11 @@ class DetailsInformationFragment : Fragment() {
         val passengerAge = firstPassenger.age.name.lowercase().capitalize()
 
         binding.tvPassengerDetail.text =
-            getString(R.string.tv_passenger_detail, firstPassenger.id, passengerAge)
+            getString(
+                com.rajawali.common_resource.R.string.tv_passenger_detail,
+                firstPassenger.id,
+                passengerAge
+            )
     }
 
     private fun createPassengerDetailInput() {

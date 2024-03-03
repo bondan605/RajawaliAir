@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="@color/solitude"
     tools:context=".presentation.selectedTicket.SelectedTicketFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
+        android:background="@color/dodger_blue"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_back"
+                    android:src="@drawable/ic_arrow_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -91,7 +91,7 @@
                     android:layout_width="14dp"
                     android:layout_height="16dp"
                     android:layout_marginEnd="8dp"
-                    android:src="@drawable/long_arrow_right" />
+                    android:src="@drawable/img_arrow_forward" />
 
                 <TextView
                     android:id="@+id/arrive"
@@ -117,9 +117,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="12sp"
-                    tools:text="@string/tv_passenger" />
+                    tools:text="@string/tv_passenger_label" />
 
                 <TextView
                     android:id="@+id/tv_coma_between_adult_child"
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="12sp"
                     tools:text="@string/tv_coma" />
 
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="12sp"
                     tools:text="@string/tv_child_passenger" />
 
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="12sp"
                     tools:text="@string/tv_coma" />
 
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="12sp"
                     tools:text="@string/tv_infant_passenger" />
 
@@ -187,7 +187,7 @@
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/tv_date_departure"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -216,7 +216,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="199dp"
                                 android:text="@string/tv_date_month"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp" />
 
                             <TextView
@@ -233,7 +233,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tv_date_month"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp" />
                         </LinearLayout>
 
@@ -241,7 +241,7 @@
                             android:layout_width="11dp"
                             android:layout_height="247dp"
                             android:layout_marginTop="4dp"
-                            android:src="@drawable/spacer" />
+                            android:src="@drawable/img_spacer" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -265,7 +265,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:text="@string/tv_departure_airport_name"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp" />
 
                             <com.google.android.material.card.MaterialCardView
@@ -289,7 +289,7 @@
                                             android:layout_width="32dp"
                                             android:layout_height="20dp"
                                             android:layout_marginEnd="12dp"
-                                            android:src="@drawable/ic_rajawali" />
+                                            android:src="@drawable/img_rajawali" />
 
                                         <LinearLayout
                                             android:layout_width="wrap_content"
@@ -311,7 +311,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/roboto_medium"
-                                                android:textColor="@color/neutral_700"
+                                                android:textColor="@color/boulder"
                                                 android:textSize="10sp"
                                                 tools:text="@string/tv_ticket_detail" />
 
@@ -320,7 +320,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/roboto_medium"
                                                 android:text="Direct Flight"
-                                                android:textColor="@color/neutral_700"
+                                                android:textColor="@color/boulder"
                                                 android:textSize="10sp" />
                                         </LinearLayout>
 
@@ -335,7 +335,7 @@
                                             android:layout_width="32dp"
                                             android:layout_height="24dp"
                                             android:layout_marginEnd="10dp"
-                                            android:src="@drawable/baggage" />
+                                            android:src="@drawable/img_baggage" />
 
                                         <LinearLayout
                                             android:layout_width="wrap_content"
@@ -348,7 +348,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/roboto_medium"
                                                 android:text="@string/tv_baggage"
-                                                android:textColor="@color/neutral_700"
+                                                android:textColor="@color/boulder"
                                                 android:textSize="10sp" />
                                         </LinearLayout>
 
@@ -364,7 +364,7 @@
                                             android:layout_width="32dp"
                                             android:layout_height="24dp"
                                             android:layout_marginEnd="10dp"
-                                            android:src="@drawable/food" />
+                                            android:src="@drawable/img_food" />
 
                                         <LinearLayout
                                             android:layout_width="wrap_content"
@@ -377,7 +377,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/roboto_medium"
                                                 android:text="@string/tv_food"
-                                                android:textColor="@color/neutral_700"
+                                                android:textColor="@color/boulder"
                                                 android:textSize="10sp" />
                                         </LinearLayout>
 
@@ -389,7 +389,7 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/roboto_medium"
                                         android:text="See more facilities"
-                                        android:textColor="@color/main_color"
+                                        android:textColor="@color/dodger_blue"
                                         android:textSize="10sp" />
 
                                 </LinearLayout>
@@ -410,7 +410,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tv_arrive_airport_name"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -465,13 +465,13 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_calendar_edit" />
+                            android:src="@drawable/img_calendar_edit" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Reschedule Available"
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -486,13 +486,13 @@
                             android:layout_height="14dp"
                             android:layout_marginStart="2dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_money_bill" />
+                            android:src="@drawable/img_money_bill" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Refundable up to 75%"
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -512,7 +512,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="2dp"
                                 android:text="@string/tv_price_ticket"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp" />
 
                             <LinearLayout
@@ -525,7 +525,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="2dp"
                                     android:text="Total"
-                                    android:textColor="@color/neutral_700"
+                                    android:textColor="@color/boulder"
                                     android:textSize="10sp" />
 
                                 <TextView
@@ -534,7 +534,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_bold"
                                     android:text="@string/tv_total_price"
-                                    android:textColor="@color/main_color"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="12sp" />
                             </LinearLayout>
 
@@ -547,14 +547,14 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="2dp"
                                     android:text="Get"
-                                    android:textColor="@color/neutral_700"
+                                    android:textColor="@color/boulder"
                                     android:textSize="10sp" />
 
                                 <TextView
                                     android:id="@+id/point"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/main_color"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="10sp"
                                     tools:text="@string/tv_point" />
                             </LinearLayout>
@@ -570,7 +570,7 @@
                                 android:id="@+id/btn_select"
                                 android:layout_width="72dp"
                                 android:layout_height="36dp"
-                                android:backgroundTint="@color/main_color"
+                                android:backgroundTint="@color/dodger_blue"
                                 android:fontFamily="@font/roboto_medium"
                                 android:padding="0dp"
                                 android:text="Select"
@@ -621,13 +621,13 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_calendar_edit" />
+                            android:src="@drawable/img_calendar_edit" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Reschedule Available"
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -642,15 +642,15 @@
                             android:layout_height="14dp"
                             android:layout_marginStart="2dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_money_bill"
-                            android:tint="@color/green"
+                            android:src="@drawable/img_money_bill"
+                            android:tint="@color/mountain_meadow"
                             tools:ignore="UseAppTint" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="100% Refund From Original Ticket Price"
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -665,15 +665,15 @@
                             android:layout_height="14dp"
                             android:layout_marginStart="2dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_insurance_hand"
-                            android:tint="@color/green"
+                            android:src="@drawable/img_insurance_hand"
+                            android:tint="@color/mountain_meadow"
                             tools:ignore="UseAppTint" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Travel Insurance"
-                            android:textColor="@color/green"
+                            android:textColor="@color/mountain_meadow"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -692,7 +692,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="2dp"
-                                android:textColor="@color/neutral_700"
+                                android:textColor="@color/boulder"
                                 android:textSize="10sp"
                                 tools:text="@string/tv_price_ticket" />
 
@@ -706,7 +706,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="2dp"
                                     android:text="Total"
-                                    android:textColor="@color/neutral_700"
+                                    android:textColor="@color/boulder"
                                     android:textSize="10sp" />
 
                                 <TextView
@@ -714,7 +714,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_bold"
-                                    android:textColor="@color/main_color"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="12sp"
                                     tools:text="@string/tv_safe_total_price" />
                             </LinearLayout>
@@ -728,7 +728,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="2dp"
                                     android:text="Get"
-                                    android:textColor="@color/neutral_700"
+                                    android:textColor="@color/boulder"
                                     android:textSize="10sp" />
 
                                 <TextView
@@ -736,7 +736,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/tv_point"
-                                    android:textColor="@color/main_color"
+                                    android:textColor="@color/dodger_blue"
                                     android:textSize="10sp" />
                             </LinearLayout>
 
@@ -751,7 +751,7 @@
                                 android:id="@+id/safe_btn_select"
                                 android:layout_width="72dp"
                                 android:layout_height="36dp"
-                                android:backgroundTint="@color/main_color"
+                                android:backgroundTint="@color/dodger_blue"
                                 android:fontFamily="@font/roboto_medium"
                                 android:padding="0dp"
                                 android:text="Select"

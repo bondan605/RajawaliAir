@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="@color/solitude"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.booking.OneWayTripFragment">
 
@@ -39,7 +39,7 @@
 
             <include
                 android:layout_marginHorizontal="16dp"
-                layout="@layout/promo_code_form"
+                layout="@layout/item_promo_code_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

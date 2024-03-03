@@ -44,12 +44,12 @@
                     android:layout_marginEnd="4dp"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_calendar_edit"/>
+                    android:src="@drawable/img_calendar_edit"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/grey_text"
+                    android:textColor="@color/emperor"
                     android:text="Reschedule Available"/>
             </LinearLayout>
             <LinearLayout
@@ -62,12 +62,12 @@
                     android:layout_marginEnd="4dp"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:src="@drawable/ic_money_bill"/>
+                    android:src="@drawable/img_money_bill"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/grey_text"
+                    android:textColor="@color/emperor"
                     android:text="Refundable up to 75%"/>
             </LinearLayout>
             <LinearLayout
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp"
                         android:text="@string/tv_price_ticket"/>
                     <LinearLayout
@@ -94,7 +94,7 @@
                             android:layout_marginEnd="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp"
                             android:text="Total"/>
                         <TextView
@@ -103,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_bold"
                             android:textSize="12sp"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:text="@string/tv_total_price"/>
                     </LinearLayout>
                     <LinearLayout
@@ -113,7 +113,7 @@
                             android:layout_marginEnd="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp"
                             android:text="Get"/>
                         <TextView
@@ -121,7 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="10sp"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:text="@string/tv_point"/>
                     </LinearLayout>
 
@@ -134,7 +134,7 @@
                         android:id="@+id/btn_select"
                         android:layout_width="72dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="@color/main_color"
+                        android:backgroundTint="@color/dodger_blue"
                         android:text="Select"
                         android:padding="0dp"
                         android:textAllCaps="false"
@@ -187,12 +187,12 @@
                     android:layout_marginEnd="4dp"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_calendar_edit"/>
+                    android:src="@drawable/img_calendar_edit"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/grey_text"
+                    android:textColor="@color/emperor"
                     android:text="Reschedule Available"/>
             </LinearLayout>
             <LinearLayout
@@ -205,14 +205,14 @@
                     android:layout_marginEnd="4dp"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:src="@drawable/ic_money_bill"
-                    android:tint="@color/green"
+                    android:src="@drawable/img_money_bill"
+                    android:tint="@color/mountain_meadow"
                     tools:ignore="UseAppTint" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/green"
+                    android:textColor="@color/mountain_meadow"
                     android:text="100% Refund From Original Ticket Price"/>
             </LinearLayout>
             <LinearLayout
@@ -225,14 +225,14 @@
                     android:layout_marginEnd="4dp"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:src="@drawable/ic_insurance_hand"
-                    android:tint="@color/green"
+                    android:src="@drawable/img_insurance_hand"
+                    android:tint="@color/mountain_meadow"
                     tools:ignore="UseAppTint" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/green"
+                    android:textColor="@color/mountain_meadow"
                     android:text="Travel Insurance"/>
             </LinearLayout>
             <LinearLayout
@@ -248,7 +248,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp"
                         android:text="@string/tv_price_ticket"/>
                     <LinearLayout
@@ -259,7 +259,7 @@
                             android:layout_marginEnd="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp"
                             android:text="Total"/>
                         <TextView
@@ -268,7 +268,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_bold"
                             android:textSize="12sp"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:text="@string/tv_safe_total_price"/>
                     </LinearLayout>
                     <LinearLayout
@@ -278,7 +278,7 @@
                             android:layout_marginEnd="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp"
                             android:text="Get"/>
                         <TextView
@@ -286,7 +286,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="10sp"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:text="@string/tv_point"/>
                     </LinearLayout>
 
@@ -299,7 +299,7 @@
                         android:id="@+id/safe_btn_select"
                         android:layout_width="72dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="@color/main_color"
+                        android:backgroundTint="@color/dodger_blue"
                         android:text="Select"
                         android:padding="0dp"
                         android:textAllCaps="false"
