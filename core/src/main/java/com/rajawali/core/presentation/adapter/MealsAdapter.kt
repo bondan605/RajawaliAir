@@ -55,7 +55,7 @@ class MealsAdapter(private val mealsViewModel: MealsViewModel) :
             binding.tvMealName.text = meals.name
             binding.tvMealDescription.text = meals.description
             binding.tvMealPrice.text =
-                itemView.context.getString(R.string.tv_price_ticket, meals.price)
+                itemView.context.getString(com.rajawali.common_resource.R.string.tv_price_ticket, meals.price)
 
             Glide
                 .with(itemView.context)

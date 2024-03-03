@@ -6,7 +6,7 @@ import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.IsLoginModel
 import com.rajawali.core.domain.model.NotificationModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.GetLoggedInDataUseCase
+import com.rajawali.core.domain.usecase.authentication.GetLoggedInDataUseCase
 import com.rajawali.core.domain.usecase.GetNotificationUseCase
 
 class NotificationViewModel(

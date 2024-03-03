@@ -9,13 +9,14 @@
         android:layout_marginEnd="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/add_circle" />
+        android:src="@drawable/ic_add_circle"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD ANOTHER FLIGHT"
-        android:textColor="@color/main_color"
+        android:textColor="@color/dodger_blue"
         android:fontFamily="@font/roboto_bold"
         android:textSize="16sp"/>
 

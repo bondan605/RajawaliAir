@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -79,7 +78,7 @@ class MealsFragment : Fragment() {
         }
 
         addsOnViewModel.totalMealsPrice.observe(viewLifecycleOwner) { totalPrice ->
-            binding.totalPrice.text = getString(R.string.tv_total_price, totalPrice)
+            binding.totalPrice.text = getString(com.rajawali.common_resource.R.string.tv_total_price, totalPrice)
         }
     }
 
@@ -152,13 +151,13 @@ class MealsFragment : Fragment() {
                             when (totalItem > 0) {
                                 true ->
                                     getString(
-                                        com.rajawali.core.R.string.got_orders,
+                                        com.rajawali.common_resource.R.string.tv_meals_and_total_price_value,
                                         totalItem,
                                         totalPrice
                                     )
 
                                 false ->
-                                    getString(R.string.no_orders_yet)
+                                    getString(com.rajawali.common_resource.R.string.no_orders_yet)
                             }
 
                         tvOrder.text = orderText
@@ -176,10 +175,10 @@ class MealsFragment : Fragment() {
         tvPassenger: TextView
     ) {
 //        val white = resources.getColor(R.color.white)
-        val alto = resources.getColor(com.rajawali.core.R.color.alto)
-        val black = resources.getColor(R.color.black)
+        val alto = resources.getColor(com.rajawali.common_resource.R.color.alto)
+        val black = resources.getColor(com.rajawali.common_resource.R.color.black)
 //        val quartenary_color = resources.getColor(R.color.quaternary_color)
-        val main_color = resources.getColor(R.color.main_color)
+        val main_color = resources.getColor(com.rajawali.common_resource.R.color.dodger_blue)
 
         cardPassenger.strokeColor = if (this) main_color else alto
 //        cardPassenger.setCardBackgroundColor(if (this) quartenary_color  else white )

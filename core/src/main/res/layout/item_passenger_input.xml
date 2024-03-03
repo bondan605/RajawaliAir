@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/tv_passenger_detail"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 android:textSize="14sp" />
 
             <ImageView
@@ -36,8 +36,8 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/arrow_forward"
-                android:tint="@color/main_color"
+                android:src="@drawable/ic_arrow_forward"
+                android:tint="@color/dodger_blue"
                 tools:ignore="UseAppTint" />
         </RelativeLayout>
     </LinearLayout>

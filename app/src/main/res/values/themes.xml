@@ -4,7 +4,7 @@
         <!-- Customize your light theme here. -->
 <!--         <item name="colorPrimary">@color/my_light_primary</item> -->
         <!--    status bar    -->
-        <item name="android:statusBarColor">@color/main_color</item>
+        <item name="android:statusBarColor">@color/dodger_blue</item>
         <item name="android:windowLightStatusBar">false</item>
         <!--    font    -->
         <item name="android:fontFamily">@font/roboto</item>
@@ -31,7 +31,7 @@
     <item name="android:height">@dimen/m3_bottom_nav_item_active_indicator_height</item>
     <item name="marginHorizontal">@dimen/m3_bottom_nav_item_active_indicator_margin_horizontal</item>
     <item name="shapeAppearance">@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item>
-    <item name="android:color">@color/secondary_color</item>
+    <item name="android:color">@color/denim</item>
     </style>
 
     <style name="MainColorWindowBackground" parent="Base.Theme.RajawaliAir">

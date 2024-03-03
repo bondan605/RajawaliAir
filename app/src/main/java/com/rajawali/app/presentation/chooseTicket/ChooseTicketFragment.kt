@@ -12,7 +12,7 @@ import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.rajawali.app.R
+import com.rajawali.common_resource.R
 import com.rajawali.app.databinding.FragmentChooseTicketBinding
 import com.rajawali.app.util.AppUtils.getPassengerClassText
 import com.rajawali.app.util.NavigationUtils.safeNavigate
@@ -32,7 +32,7 @@ class ChooseTicketFragment : Fragment() {
     private val viewModel: ChooseTicketViewModel by viewModel()
 
     //    private val roundTrip: TicketViewModel by activityViewModels()
-    private val roundTrip: TicketViewModel by navGraphViewModels(R.id.nav_booking)
+    private val roundTrip: TicketViewModel by navGraphViewModels(com.rajawali.app.R.id.nav_booking)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -215,10 +215,10 @@ class ChooseTicketFragment : Fragment() {
 
             departureTicket.root.visibility = View.VISIBLE
             departureTicket.priceTicket.text =
-                getString(com.rajawali.core.R.string.tv_price_ticket, ticket.seatPrice)
+                getString(R.string.tv_price_ticket, ticket.seatPrice)
             departureTicket.airplaneId.text = ticket.airplane.airplaneCode
             departureTicket.point.text =
-                getString(com.rajawali.core.R.string.tv_point, ticket.points)
+                getString(R.string.tv_point, ticket.points)
             departureTicket.tvDepartureCityCodeLabel.text = ticket.sourceAirport.cityCode
             departureTicket.tvArriveCityCodeLabel.text = ticket.destinationAirport.cityCode
             departureTicket.tvDepartureTime.text = ticket.departureTime

@@ -42,7 +42,7 @@ class BaggageAdapter(private val viewModel: TravelAddsOnViewModel) :
         fun bind(passengers: PassengerInputModel) {
 
             binding.tvPassenger.text = itemView.context.getString(
-                R.string.tv_passenger_detail,
+                com.rajawali.common_resource.R.string.tv_passenger_detail,
                 passengers.id,
                 passengers.age.name
             )
@@ -113,11 +113,11 @@ class BaggageAdapter(private val viewModel: TravelAddsOnViewModel) :
             weight: TextView,
             price: TextView
         ) {
-            val on = itemView.resources.getColor(R.color.main_color)
-            val onBackground = itemView.resources.getColor(R.color.lily_white)
-            val off = itemView.resources.getColor(R.color.alto)
-            val offBackground = itemView.resources.getColor(R.color.white)
-            val offBlack = itemView.resources.getColor(R.color.black)
+            val on = itemView.resources.getColor(com.rajawali.common_resource.R.color.dodger_blue)
+            val onBackground = itemView.resources.getColor(com.rajawali.common_resource.R.color.lily_white)
+            val off = itemView.resources.getColor(com.rajawali.common_resource.R.color.alto)
+            val offBackground = itemView.resources.getColor(com.rajawali.common_resource.R.color.white)
+            val offBlack = itemView.resources.getColor(com.rajawali.common_resource.R.color.black)
 
             cardView.setCardBackgroundColor(if (isSelected) onBackground else offBackground)
             cardView.strokeColor = if (isSelected) on else off

@@ -2,7 +2,7 @@ package com.rajawali.app
 
 import com.rajawali.core.domain.model.PassengerInputModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.CreatePassengerInformationInputUseCase
+import com.rajawali.core.domain.usecase.tickets.CreatePassengerInformationInputUseCase
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

@@ -6,10 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.FlightModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.GetFlightByDate
-import com.rajawali.core.domain.usecase.GetPreferredFlight
+import com.rajawali.core.domain.usecase.tickets.GetFlightByDate
+import com.rajawali.core.domain.usecase.tickets.GetPreferredFlight
 import java.time.LocalDate
 
+@Suppress("RemoveExplicitTypeArguments")
 class ChooseTicketViewModel(
     private val useCase: GetPreferredFlight,
     private val dateUseCase: GetFlightByDate

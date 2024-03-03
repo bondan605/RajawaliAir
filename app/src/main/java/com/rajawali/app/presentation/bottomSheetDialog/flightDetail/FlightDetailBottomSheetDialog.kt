@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.rajawali.app.R
 import com.rajawali.app.databinding.BottomSheetDialogFlightDetailBinding
 import com.rajawali.app.util.AppUtils
-import com.rajawali.core.util.DateFormat
 import com.rajawali.core.domain.model.FlightModel
+import com.rajawali.core.util.DateFormat
+import com.rajawali.common_resource.R
 
 class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
     private val binding: BottomSheetDialogFlightDetailBinding get() = _binding!!
@@ -51,7 +51,8 @@ class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
     private fun setTicketView() {
         val ticket: FlightModel =
             FlightDetailBottomSheetDialogArgs.fromBundle(arguments as Bundle).ticket
-        val timeDifferent = DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
+        val timeDifferent =
+            DateFormat.calculateTimeDifference(ticket.departureTime, ticket.arrivalTime)
 
         binding.tvDepartingCity.text = getString(
             R.string.tv_city_code,
@@ -84,9 +85,11 @@ class FlightDetailBottomSheetDialog : BottomSheetDialogFragment() {
         )
         binding.tvFlightDate.text = DateFormat.formatToFullDateWithDay(ticket.departureDate)
 
-        binding.tvTotalPrice.text = getString(R.string.tv_total_price, ticket.totalPrice)
+        binding.tvTotalPrice.text =
+            getString(R.string.tv_total_price, ticket.totalPrice)
 
-        binding.tvTotalPointGain.text = getString(R.string.tv_point_gain, ticket.points)
+        binding.tvTotalPointGain.text =
+            getString(R.string.tv_point_gain, ticket.points)
 
         binding.tvFlightLength.text = timeDifferent
     }

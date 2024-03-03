@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_bca" />
+            tools:src="@drawable/img_bca" />
 
         <TextView
             android:id="@+id/tv_payment_name"
@@ -44,7 +44,7 @@
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/arrow_forward"
+            android:src="@drawable/ic_arrow_forward"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

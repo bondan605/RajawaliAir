@@ -18,7 +18,6 @@ import com.rajawali.app.R
 import com.rajawali.app.databinding.FragmentOneWayTripBinding
 import com.rajawali.app.presentation.bottomSheetDialog.passenger.PassengerViewModel
 import com.rajawali.app.presentation.chooseTicket.TicketViewModel
-import com.rajawali.app.presentation.homepage.HomePageFragmentDirections
 import com.rajawali.app.presentation.pickCity.AirportsViewModel
 import com.rajawali.app.util.NavigationUtils.safeNavigate
 import com.rajawali.app.util.NavigationUtils.safeNavigateUsingID
@@ -331,7 +330,11 @@ class OneWayTripFragment : Fragment() {
         airportsViewModel.departureAirport.observe(viewLifecycleOwner) {
 
             include.tvDepartureCity.text =
-                getString(R.string.tv_departure_city_name_label, it.city, it.cityCode)
+                getString(
+                    com.rajawali.common_resource.R.string.tv_departure_city_name_label,
+                    it.city,
+                    it.cityCode
+                )
         }
     }
 
@@ -340,7 +343,11 @@ class OneWayTripFragment : Fragment() {
         airportsViewModel.arrivingAirport.observe(viewLifecycleOwner) {
 
             include.tvArrivingCity.text =
-                getString(R.string.tv_arrive_city_name_label, it.city, it.cityCode)
+                getString(
+                    com.rajawali.common_resource.R.string.tv_arrive_city_name_label,
+                    it.city,
+                    it.cityCode
+                )
         }
     }
 
@@ -397,7 +404,10 @@ class OneWayTripFragment : Fragment() {
 
                 false -> {
                     binding.includeBookingForm.llDepartureDate.setOnClickListener {
-                        openDatePicker(DEPARTURE_DATE, getString(R.string.dp_departure_label))
+                        openDatePicker(
+                            DEPARTURE_DATE,
+                            getString(com.rajawali.common_resource.R.string.dp_departure_label)
+                        )
                     }
                 }
             }
@@ -407,7 +417,7 @@ class OneWayTripFragment : Fragment() {
     private fun dateRangePicker() {
         val dateRangePicker =
             MaterialDatePicker.Builder.dateRangePicker()
-                .setTitleText(R.string.dp_range_date_label)
+                .setTitleText(com.rajawali.common_resource.R.string.dp_range_date_label)
                 .setSelection(
                     Pair(
                         MaterialDatePicker.todayInUtcMilliseconds(),
@@ -479,12 +489,20 @@ class OneWayTripFragment : Fragment() {
 
         passengerViewModel.adultPassengerCount.observe(viewLifecycleOwner) {
             if (it > 0)
-                text = isPassengerExist(text, it, R.string.tv_passenger_adult_category)
+                text = isPassengerExist(
+                    text,
+                    it,
+                    com.rajawali.common_resource.R.string.tv_passenger_adult_category
+                )
         }
 
         passengerViewModel.childPassengerCount.observe(viewLifecycleOwner) {
             if (it > 0)
-                text = isPassengerExist(text, it, R.string.tv_passenger_child_category)
+                text = isPassengerExist(
+                    text,
+                    it,
+                    com.rajawali.common_resource.R.string.tv_passenger_child_category
+                )
         }
 
         passengerViewModel.infantPassengerCount.observe(viewLifecycleOwner) {
@@ -492,7 +510,7 @@ class OneWayTripFragment : Fragment() {
                 text = isPassengerExist(
                     text,
                     it,
-                    R.string.tv_passenger_infant_category
+                    com.rajawali.common_resource.R.string.tv_passenger_infant_category
                 )
         }
         return text
@@ -519,15 +537,15 @@ class OneWayTripFragment : Fragment() {
 
             text += when (it) {
                 PassengerClassEnum.ECONOMY -> {
-                    getString(R.string.tv_passenger_economy_class)
+                    getString(com.rajawali.common_resource.R.string.tv_passenger_economy_class)
                 }
 
                 PassengerClassEnum.BUSINESS -> {
-                    getString(R.string.tv_passenger_business_class)
+                    getString(com.rajawali.common_resource.R.string.tv_passenger_business_class)
                 }
 
                 PassengerClassEnum.FIRST -> {
-                    getString(R.string.tv_passenger_first_class)
+                    getString(com.rajawali.common_resource.R.string.tv_passenger_first_class)
                 }
 
                 else -> {}

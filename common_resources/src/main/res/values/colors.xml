@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="silver">#C2C2C2</color>
+    <color name="boulder">#757575</color>
+    <color name="gallery">#EDEDED</color>
+    <color name="alabaster">#f9f9f9</color>
+    <color name="dodger_blue">#1e90ff</color>
+    <color name="denim">#0f53b7</color>
+    <color name="emperor">#505050</color>
+    <color name="dove_gray">#646464</color>
+    <color name="anakiwa">#A4E0FF</color>
+    <color name="solitude">#E3EEFF</color>
+    <color name="mountain_meadow">#18AF5E</color>
+    <color name="silver_chalice">#9e9e9e</color>
+    <color name="onahau">#D2F1FF</color>
+    <color name="lily_white">#E9F8FF</color>
+    <color name="alto">#E0E0E0</color>
+
+</resources>

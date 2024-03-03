@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/jpg_jakarta" />
+            app:srcCompat="@drawable/img_dummy_jakarta_building" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +61,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:maxLines="1"
                 android:text="@string/tv_semarang_to_jakarta_route_price"
-                android:textColor="@color/main_color"
+                android:textColor="@color/dodger_blue"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_destination_route" />
         </androidx.constraintlayout.widget.ConstraintLayout>

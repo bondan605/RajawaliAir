@@ -225,7 +225,7 @@ class TravelAddOnsFragment : Fragment() {
     }
 
     private fun getAvailableSeat() {
-        var passengerAmount: Int = 0
+        var passengerAmount = 0
 
         ticketViewModel.preferableDeparture.observe(viewLifecycleOwner) {
             passengerAmount = it.infantPassenger + it.childPassenger + it.adultPassenger
@@ -319,10 +319,10 @@ class TravelAddOnsFragment : Fragment() {
     private fun Boolean.setDropDownIcon(): Int =
         when (this) {
             true ->
-                R.drawable.arrow_up_20
+                com.rajawali.common_resource.R.drawable.ic_arrow_up
 
             false ->
-                R.drawable.arrow_down_20
+                com.rajawali.common_resource.R.drawable.ic_arrow_down
         }
 
     private fun setDropdownValue() {
@@ -359,19 +359,19 @@ class TravelAddOnsFragment : Fragment() {
 
 
             include.tvTotalBaggagePrice.text =
-                getString(R.string.tv_total_price, baggage)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, baggage)
 
             include.tvTotalMealsPrice.text =
-                getString(R.string.tv_total_price, meals)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, meals)
 
             include.tvTravelInsurancePrice.text =
-                getString(R.string.tv_total_price, travelInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, travelInsurance)
 
             include.tvBaggageInsurancePrice.text =
-                getString(R.string.tv_total_price, baggageInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, baggageInsurance)
 
             include.tvFlightDelayInsurancePrice.text =
-                getString(R.string.tv_total_price, flightDelayInsurance)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, flightDelayInsurance)
         }
 
         //add-ons section
@@ -380,13 +380,13 @@ class TravelAddOnsFragment : Fragment() {
                 passenger.adultPassenger + passenger.childPassenger + passenger.infantPassenger
 
             include.tvTravelInsuranceLabel.text =
-                getString(R.string.tv_travel_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_travel_insurance_amount, totalPassenger)
 
             include.tvBaggageInsuranceLabel.text =
-                getString(R.string.tv_baggage_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_baggage_insurance_amount, totalPassenger)
 
             include.tvFlightDelayInsuranceLabel.text =
-                getString(R.string.tv_flight_delay_insurance_amount, totalPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_flight_delay_insurance_amount, totalPassenger)
         }
 
         //passenger section
@@ -398,11 +398,11 @@ class TravelAddOnsFragment : Fragment() {
 
             //set up the amount
             include.tvAdultPassengerCount.text =
-                getString(R.string.tv_adult_amount, passenger.adultPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_adult_amount, passenger.adultPassenger)
             include.tvChildPassengerCount.text =
-                getString(R.string.tv_child_amount, passenger.childPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_child_amount, passenger.childPassenger)
             include.tvInfantPassengerCount.text =
-                getString(R.string.tv_infant_amount, passenger.infantPassenger)
+                getString(com.rajawali.common_resource.R.string.tv_infant_amount, passenger.infantPassenger)
 
             ticketViewModel.departureTicket.observe(viewLifecycleOwner) { ticket ->
                 //visibility
@@ -418,11 +418,11 @@ class TravelAddOnsFragment : Fragment() {
                     (ticket.seatPrice * passenger.infantPassenger - (ticket.seatPrice * 0.20)).toInt()
 
                 include.tvAdultPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalAdultPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalAdultPrice)
                 include.tvChildPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalChildPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalChildPrice)
                 include.tvInfantPassengerTotalPrice.text =
-                    getString(R.string.tv_total_price, totalInfantPrice)
+                    getString(com.rajawali.common_resource.R.string.tv_total_price, totalInfantPrice)
             }
         }
     }
@@ -442,7 +442,7 @@ class TravelAddOnsFragment : Fragment() {
 
     private fun setLoyaltyPointAmount() {
         ticketViewModel.departureTicket.observe(viewLifecycleOwner) {
-            binding.loyaltyPoint.text = getString(R.string.tv_point_gain, it.points)
+            binding.loyaltyPoint.text = getString(com.rajawali.common_resource.R.string.tv_point_gain, it.points)
         }
     }
 
@@ -529,11 +529,11 @@ class TravelAddOnsFragment : Fragment() {
         }
 
         addsOnViewModel.totalPrice.observe(viewLifecycleOwner) { totalPrice ->
-            binding.totalPrice.text = getString(R.string.tv_total_price, totalPrice)
+            binding.totalPrice.text = getString(com.rajawali.common_resource.R.string.tv_total_price, totalPrice)
 
             //dropdown
             binding.includePriceDetails.tvTotalPriceValue.text =
-                getString(R.string.tv_total_price, totalPrice)
+                getString(com.rajawali.common_resource.R.string.tv_total_price, totalPrice)
         }
     }
 
@@ -616,11 +616,11 @@ class TravelAddOnsFragment : Fragment() {
         val color =
             when (status) {
                 true -> {
-                    resources.getColor(R.color.green)
+                    resources.getColor(com.rajawali.common_resource.R.color.mountain_meadow)
                 }
 
                 false ->
-                    resources.getColor(R.color.grey_text)
+                    resources.getColor(com.rajawali.common_resource.R.color.emperor)
             }
 
         this.setTextColor(color)
@@ -629,10 +629,10 @@ class TravelAddOnsFragment : Fragment() {
     private fun ImageView.setFlightFacilitiesCheckIcon(status: Boolean) {
         val icon = when (status) {
             true ->
-                R.drawable.ic_check_fill
+                com.rajawali.common_resource.R.drawable.ic_check_fill
 
             false ->
-                R.drawable.add_circle
+                com.rajawali.common_resource.R.drawable.ic_add_circle
         }
 
         this.setImageResource(icon)

@@ -62,7 +62,7 @@ class DateAdapter :
             if (currentPosition == centerPosition) {
                 binding.tvDate.apply {
                     setTypeface(typeface, Typeface.BOLD)
-                    setTextColor(itemView.context.getColor(R.color.main_color))
+                    setTextColor(itemView.context.getColor(com.rajawali.common_resource.R.color.dodger_blue))
                 }
                 binding.tvBackground.visibility = View.VISIBLE
             }

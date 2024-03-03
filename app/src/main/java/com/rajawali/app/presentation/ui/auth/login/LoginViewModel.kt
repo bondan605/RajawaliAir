@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.LoggedInUserModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.CreateLoginSessionUseCase
-import com.rajawali.core.domain.usecase.LoginUseCase
+import com.rajawali.core.domain.usecase.authentication.CreateLoginSessionUseCase
+import com.rajawali.core.domain.usecase.authentication.LoginUseCase
 
 class LoginViewModel(private val loginUseCase: LoginUseCase, private val createLoginSessionUseCase: CreateLoginSessionUseCase) : ViewModel() {
 

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="@color/solitude"
     tools:context=".presentation.detailsInformation.DetailsInformationFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
+        android:background="@color/dodger_blue"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
                     android:id="@+id/iv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_back"
+                    android:src="@drawable/ic_arrow_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -99,7 +99,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginEnd="8dp"
-                                android:src="@drawable/plane_departure" />
+                                android:src="@drawable/img_plane_departure" />
 
                             <TextView
                                 android:id="@+id/departure_date"
@@ -123,7 +123,7 @@
                                 android:layout_width="26dp"
                                 android:layout_height="16dp"
                                 android:layout_marginEnd="8dp"
-                                android:src="@drawable/ic_rajawali" />
+                                android:src="@drawable/img_rajawali" />
 
                             <TextView
                                 android:id="@+id/tv_departure_city_code_label"
@@ -138,7 +138,7 @@
                                 android:layout_width="16dp"
                                 android:layout_height="8dp"
                                 android:layout_marginHorizontal="8dp"
-                                android:src="@drawable/arrow_right" />
+                                android:src="@drawable/img_long_arrow_forward" />
 
                             <TextView
                                 android:id="@+id/tv_arrive_city_code_label"
@@ -155,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             tools:text="@string/tv_direct_flight"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp" />
 
                         <TextView
@@ -164,14 +164,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="@string/tv_ticket_type"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp" />
 
                         <ImageView
                             android:id="@+id/btn_reschedule"
                             android:layout_width="148dp"
                             android:layout_height="22dp"
-                            android:src="@drawable/btn_reschedule" />
+                            android:src="@drawable/img_btn_reschedule" />
 
                     </LinearLayout>
 
@@ -182,7 +182,7 @@
                         android:visibility="gone"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/arrow_forward" />
+                        android:src="@drawable/ic_arrow_forward" />
 
                 </RelativeLayout>
 
@@ -203,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Contact details will be used to send the e-ticket and for\nrefund or reschedule purposes."
-                android:textColor="@color/neutral_700"
+                android:textColor="@color/boulder"
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -232,7 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/radio_mr"
-                            app:buttonTint="@color/main_color" />
+                            app:buttonTint="@color/dodger_blue" />
 
                         <RadioButton
                             android:id="@+id/radio_button_mrs"
@@ -240,14 +240,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="40dp"
                             android:text="@string/radio_mrs"
-                            app:buttonTint="@color/main_color" />
+                            app:buttonTint="@color/dodger_blue" />
 
                         <RadioButton
                             android:id="@+id/radio_button_ms"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/radio_ms"
-                            app:buttonTint="@color/main_color" />
+                            app:buttonTint="@color/dodger_blue" />
                     </RadioGroup>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -262,10 +262,10 @@
                         app:boxCornerRadiusBottomStart="4dp"
                         app:boxCornerRadiusTopEnd="4dp"
                         app:boxCornerRadiusTopStart="4dp"
-                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeColor="@color/dodger_blue"
                         app:boxStrokeWidth="2dp"
                         app:cursorColor="@color/black"
-                        app:hintTextColor="@color/hint_text">
+                        app:hintTextColor="@color/dove_gray">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_full_name"
@@ -284,7 +284,7 @@
                         android:layout_marginEnd="5dp"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="4dp"
-                        app:strokeColor="@color/main_color"
+                        app:strokeColor="@color/dodger_blue"
                         app:strokeWidth="2dp">
 
                         <TextView
@@ -293,7 +293,7 @@
                             android:fontFamily="@font/roboto_bold"
                             android:gravity="center"
                             android:text="+62"
-                            android:textColor="@color/grey_text"
+                            android:textColor="@color/emperor"
                             android:textSize="12sp" />
                     </com.google.android.material.card.MaterialCardView>
 
@@ -310,10 +310,10 @@
                         app:boxCornerRadiusBottomStart="4dp"
                         app:boxCornerRadiusTopEnd="4dp"
                         app:boxCornerRadiusTopStart="4dp"
-                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeColor="@color/dodger_blue"
                         app:boxStrokeWidth="2dp"
                         app:cursorColor="@color/black"
-                        app:hintTextColor="@color/hint_text">
+                        app:hintTextColor="@color/dove_gray">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_phone"
@@ -334,10 +334,10 @@
                         app:boxCornerRadiusBottomStart="4dp"
                         app:boxCornerRadiusTopEnd="4dp"
                         app:boxCornerRadiusTopStart="4dp"
-                        app:boxStrokeColor="@color/main_color"
+                        app:boxStrokeColor="@color/dodger_blue"
                         app:boxStrokeWidth="2dp"
                         app:cursorColor="@color/black"
-                        app:hintTextColor="@color/hint_text">
+                        app:hintTextColor="@color/dove_gray">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_email"
@@ -383,7 +383,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Same as contact details"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -392,13 +392,13 @@
                             android:layout_height="0dp"
                             android:checked="false"
                             android:gravity="end"
-                            app:thumbTint="@color/main_color" />
+                            app:thumbTint="@color/dodger_blue" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/neutral_700" />
+                        android:background="@color/boulder" />
 
                     <RelativeLayout
                         android:id="@+id/rl_first_passenger"
@@ -413,7 +413,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_bold"
                             android:text="@string/tv_passenger_detail"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:textSize="14sp" />
 
                         <ImageView
@@ -421,8 +421,8 @@
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@drawable/arrow_forward"
-                            android:tint="@color/main_color"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:tint="@color/dodger_blue"
                             tools:ignore="UseAppTint" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -442,7 +442,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/main_color"
+                android:backgroundTint="@color/dodger_blue"
                 android:text="Next"
                 android:textAllCaps="false"
                 android:textSize="16sp"

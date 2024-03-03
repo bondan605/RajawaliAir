@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app">
+    android:background="@color/solitude">
 
 
     <include
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
-            android:backgroundTint="@color/main_color"
+            android:backgroundTint="@color/dodger_blue"
             android:fontFamily="@font/roboto_medium"
             android:text="One-way / Round-trip"
             app:cornerRadius="5dp" />
@@ -41,9 +41,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:text="Multi-city"
-            android:textColor="@color/secondary_color"
+            android:textColor="@color/denim"
             app:cornerRadius="5dp"
-            app:strokeColor="@color/secondary_color"
+            app:strokeColor="@color/denim"
             app:strokeWidth="2dp" />
     </LinearLayout>
 

@@ -10,7 +10,7 @@
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/png_rajawali_air_logo_transparent"
+        app:srcCompat="@drawable/img_rajawali_air_logo_transparent"
         android:contentDescription="@string/rajawali_air_logo" />
 
     <com.google.android.material.button.MaterialButton
@@ -21,7 +21,7 @@
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/btn_skip"
-        android:textColor="@color/main_color"
+        android:textColor="@color/dodger_blue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_rajawali_logo"
         app:layout_constraintEnd_toEndOf="parent"

@@ -13,14 +13,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            layout="@layout/multi_city_form" />
+            layout="@layout/item_multi_city_form" />
 
         <include
             android:id="@+id/btn_add_flight"
             layout="@layout/button_add_another_flight" />
 
         <include
-            layout="@layout/passenger_and_cabin_card" />
+            layout="@layout/item_passenger_and_cabin_card" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

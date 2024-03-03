@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Rajawali Air"
 include(":app")
 include(":core")
+include(":common_resources")

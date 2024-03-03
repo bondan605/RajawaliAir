@@ -6,8 +6,8 @@ import androidx.lifecycle.asLiveData
 import com.rajawali.core.domain.model.AvailableSeatsModel
 import com.rajawali.core.domain.model.SeatsModel
 import com.rajawali.core.domain.result.CommonResult
-import com.rajawali.core.domain.usecase.FilterSeatsUseCase
-import com.rajawali.core.domain.usecase.GetAvailableSeatsUseCase
+import com.rajawali.core.domain.usecase.addOns.FilterSeatsUseCase
+import com.rajawali.core.domain.usecase.addOns.GetAvailableSeatsUseCase
 
 class SeatsViewModel(
     private val getAvailableSeats: GetAvailableSeatsUseCase,

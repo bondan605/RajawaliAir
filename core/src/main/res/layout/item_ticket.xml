@@ -36,14 +36,14 @@
                     android:layout_width="26dp"
                     android:layout_height="16dp"
                     android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_rajawali" />
+                    android:src="@drawable/img_rajawali" />
 
                 <TextView
                     android:id="@+id/airplane_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_airplane_id"
-                    android:textColor="@color/neutral_700"
+                    android:textColor="@color/boulder"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_departure_city_code_label"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -91,19 +91,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_direct_time"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp" />
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="8dp"
-                        android:src="@drawable/arrow_right" />
+                        android:src="@drawable/img_long_arrow_forward" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Direct"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -128,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_arrive_city_code_label"
-                        android:textColor="@color/neutral_700"
+                        android:textColor="@color/boulder"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -151,7 +151,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:textColor="@color/main_color"
+                            android:textColor="@color/dodger_blue"
                             android:textSize="16sp"
                             tools:text="@string/tv_price_ticket" />
 
@@ -174,14 +174,14 @@
                             android:layout_width="12dp"
                             android:layout_height="12dp"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/coins_circle" />
+                            android:src="@drawable/img_coins_circle" />
 
                         <TextView
                             android:id="@+id/point"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:textColor="@color/neutral_700"
+                            android:textColor="@color/boulder"
                             android:textSize="10sp"
                             tools:text="@string/tv_point" />
                     </LinearLayout>
@@ -198,12 +198,12 @@
                     android:layout_width="32dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
-                    android:src="@drawable/baggage" />
+                    android:src="@drawable/img_baggage" />
 
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/food" />
+                    android:src="@drawable/img_food" />
             </LinearLayout>
 
             <LinearLayout
@@ -215,7 +215,7 @@
                     android:id="@+id/btn_reschedule"
                     android:layout_width="148dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/btn_reschedule" />
+                    android:src="@drawable/img_btn_reschedule" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -226,7 +226,7 @@
                         android:id="@+id/btn_hide"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@drawable/down_line" />
+                        android:src="@drawable/img_down_line" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

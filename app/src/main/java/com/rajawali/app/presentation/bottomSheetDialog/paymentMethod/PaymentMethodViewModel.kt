@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rajawali.core.domain.enums.PaymentMethodEnum
 
+@Suppress("RemoveExplicitTypeArguments")
 class PaymentMethodViewModel : ViewModel() {
 
     private val _paymentMethod = MutableLiveData<PaymentMethodEnum>(PaymentMethodEnum.BCA_VIRTUAL)
