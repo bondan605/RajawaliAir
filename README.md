@@ -1,7 +1,7 @@
-# Rajawali Air : Solusi penerbangan yang simpel dan terpercaya.
+# ![App Icon](https://github.com/bondan605/RajawaliAir/assets/60184727/82ec5353-0467-4833-b7ac-f946afa16bd0)Rajawali Air : Solusi Penerbangan Yang Simpel Dan Terpercaya.
 <center>
 
-![release](https://github.com/bondan605/RajawaliAir/assets/60184727/23ef43f1-6330-41cc-bbd0-d8660c2ad9ea)
+![App Interface](https://github.com/bondan605/RajawaliAir/assets/60184727/23ef43f1-6330-41cc-bbd0-d8660c2ad9ea)
 
 ![Search Flights Interface](https://github.com/bondan605/RajawaliAir/assets/60184727/0fc8bd50-9d21-4073-bcf0-31c4d00610d4)
 
