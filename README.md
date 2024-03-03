@@ -1,4 +1,4 @@
-# ![App Icon](https://github.com/bondan605/RajawaliAir/assets/60184727/82ec5353-0467-4833-b7ac-f946afa16bd0)Rajawali Air : Solusi Penerbangan Yang Simpel Dan Terpercaya.
+# Rajawali Air : Solusi Penerbangan Yang Simpel Dan Terpercaya.
 <center>
 
 ![App Interface](https://github.com/bondan605/RajawaliAir/assets/60184727/23ef43f1-6330-41cc-bbd0-d8660c2ad9ea)
