@@ -10,6 +10,9 @@
 ![Payment Interfaces](https://github.com/bondan605/RajawaliAir/assets/60184727/bd791f82-90d5-4ca0-9f62-56d646ec4fc4)
 </center>
 
+# Important Note
+11/03/2024: The backend developer is shutting down the API. so you can't no longer use most of the features 🤷‍♂️
+
 # Deadline
 <img src="https://github.com/bondan605/RajawaliAir/assets/60184727/36cfa8e8-6398-44cb-83bc-aa3d12797bd4" width="650" height="400" alt="Timeline"></image>
 
